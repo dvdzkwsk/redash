@@ -1,10 +1,10 @@
 {
   "name": "functional-js",
   "version": "0.0.0",
-  "description": "utility to aid in writing functional javascript",
-  "main": "index.js",
+  "description": "compact functional javascript library",
+  "main": "functional.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "jshint-stylish": "~0.2.0",
     "gulp-concat": "~2.3.4",
     "gulp-load-plugins": "~0.5.3",
-    "gulp-plumber": "~0.6.4"
+    "gulp-plumber": "~0.6.4",
+    "mocha": "~1.21.4",
+    "gulp-mocha": "~1.0.0"
   }
 }
