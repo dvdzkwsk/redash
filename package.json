@@ -1,0 +1,33 @@
+{
+  "name": "functional-js",
+  "version": "0.0.0",
+  "description": "utility to aid in writing functional javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davezuko/functional-js"
+  },
+  "keywords": [
+    "functional",
+    "js",
+    "javascript"
+  ],
+  "author": "David Zukowski <zukoproxy@gmail.com> (http://github.com/davezuko)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davezuko/functional-js/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.5",
+    "gulp-watch": "~0.6.8",
+    "gulp-uglify": "~0.3.1",
+    "gulp-jshint": "~1.6.3",
+    "jshint-stylish": "~0.2.0",
+    "gulp-concat": "~2.3.4",
+    "gulp-load-plugins": "~0.5.3",
+    "gulp-plumber": "~0.6.4"
+  }
+}
