@@ -19,7 +19,7 @@ exports.js = {
 exports.lint = {
   bitwise   : false,
   camelcase : true,
-  curly     : true,
+  curly     : false,
   eqeqeq    : true,
   forin     : true,
   immed     : true,
@@ -36,5 +36,6 @@ exports.lint = {
   maxparams : false,
   maxdepth  : false,
   maxlen    : 80,
+  sub       : false,
   globals   : exports.js.globals
 };

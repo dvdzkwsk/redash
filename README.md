@@ -26,3 +26,7 @@ Usage
 
 TODO
 ===
+* optimize compose()
+* implement partial application/recurrying
+* improve code organization
+* improve test organization
