@@ -2,14 +2,30 @@ var _      = require('../functional'),
     assert = require('assert');
 
 // --------------------------
-// Curry
+// Curry / Partial Application
 // --------------------------
-describe('Curry', function () {
-  // TODO
-});
+describe('Curry/Partial Application', function () {
+  describe('_.curry()', function () {
+    // TODO
+  });
 
-describe('Partial', function () {
+  describe('_.partial() || _.partially()', function () {
+    it('should partially apply a binary function', function () {
+      assert.equal('function', typeof _.partial(add, 2));
+    });
+    it('should execute the partially applied binary function when supplied with its second argument', function () {
+      assert.equal(10, _.partial(add,2)(8));
+    });
 
+    it('should partially apply a quaternary function', function () {
+      assert.equal('function', typeof _.partial(quaternary,1,2,3));
+    });
+    it('should reapply a quaternary function until it receives all arguments', function () {
+      assert.equal('function', typeof _.partial(quaternary)(1,2));
+      assert.equal('function', typeof _.partial(quaternary)(1,2)(3));
+      assert.equal(10, _.partial(quaternary)(1,2)(3)(4));
+    });
+  });
 });
 
 // --------------------------
@@ -57,7 +73,10 @@ describe('Array Helpers', function () {
 // --------------------------
 //  Helpers
 // --------------------------
-var add    = function(a,b) { return a + b; },
+var add    = function(a,b) {return a + b; },
     square = function(x) { return x * x; },
     double = function(x) { return x << 1; },
-    triple = function(x) { return x * 3; };
+    triple = function(x) { return x * 3; },
+    quaternary = function (a,b,c,d) {
+      return a + b + c + d;
+    };

@@ -25,9 +25,21 @@
     };
   };
 
+  // partially apply a function until all arguments
+  // have been supplied.
   _.partial = _.partially = function (fn) {
-    var arity = fn.length;
-    console.log(arity);
+    var arity = fn.length,
+        args  = _.toArray(arguments, 1);
+
+    return function () {
+      args = args.concat(_.toArray(arguments));
+      if (args.length >= arity) {
+        return fn.apply(null, args);
+      } else {
+        args.unshift(fn);
+        return _.partial.apply(null, args);
+      }
+    };
   };
 
   // ------------------------
@@ -63,9 +75,7 @@
   _.inArray = function (item, arr) {
     return (arr.indexOf(item) !== -1) ?
       true :
-      !!(arr.filter(_.isArray).filter(function(arr) {
-        return _.inArray(item, arr);
-      })).length;
+      !!arr.filter(_.isArray).filter(_.partial(_.inArray, item)).length;
   };
 
   _.isArray = function (array) {
