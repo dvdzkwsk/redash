@@ -1,5 +1,5 @@
-;(function(factory) {
-    'use strict';
+//! Functional JavaScript library by https://github.com/davezuko
+;(function(factory) { 'use strict';
 
     // Pattern by Ramda.js for properly exposing module based on
     // execution environment.
@@ -9,9 +9,8 @@
       define(factory);
     } else this.functional = factory(this);
 
-}(function(context) {
-  'use strict';
-  var _ = {}; // public module exports
+}(function(context) { 'use strict';
+  var _ = {};
 
   // ------------------------
   // Curry / Partial Application
@@ -19,11 +18,16 @@
   // TODO: this is only a simple curry at the moment,
   // need to expand to implement recurrying until
   // all arguments have been applied
-  _.curry = function(fn) {
+  _.curry = function (fn) {
     var args = _.toArray(arguments, 1);
     return function() {
       return fn.apply(this, args.concat(_.toArray(arguments)));
     };
+  };
+
+  _.partial = _.partially = function (fn) {
+    var arity = fn.length;
+    console.log(arity);
   };
 
   // ------------------------
@@ -32,7 +36,7 @@
   // TODO: build compositions with private method
   // to reduce execution time. Current return function
   // runs .reduceRight() on each call.
-  _.compose = function() {
+  _.compose = function () {
     var fns  = _.toArray(arguments),
         last = fns.length - 1;
 
@@ -50,20 +54,57 @@
   // ------------------------
   // Array Helpers
   // ------------------------
-  _.toArray = function(x, offset) {
-    return [].slice.call(x).slice(offset);
+  _.toArray = function (x, offset) {
+    return [].slice.call(x, offset);
   };
 
-  _.inArray = function(arr, x) {
-    for (var i=0,len=arr.length; i<len; i++) {
-      if (arr[i] === x) return true;
+  // recursively searches an array and all nested arrays
+  // for a specified item.
+  _.inArray = function (item, arr) {
+    return (arr.indexOf(item) !== -1) ?
+      true :
+      !!(arr.filter(_.isArray).filter(function(arr) {
+        return _.inArray(item, arr);
+      })).length;
+  };
+
+  _.isArray = function (array) {
+    if (typeof Array.isArray !== 'undefined') {
+      _.isArray = function (array) {
+        return Array.isArray(array);
+      };
+    } else {
+      _.isArray = function (array) {
+        return Object.toString.call(array) === '[object Array]';
+      };
     }
-    return false;
+    return _.isArray(array);
   };
 
-  _.log = function(i) {
+  _.first = function (array) {
+    return array[0];
+  };
+
+  _.last = function (array) {
+    return array[array.length - 1];
+  };
+ 
+  // ------------------------
+  // Collections
+  // ------------------------
+
+
+  // ------------------------
+  // Common / Utility
+  // ------------------------
+  _.log = function (i) {
     console.log(i); return i;
   };
+
+  // ------------------------
+  // Setup (Resolve Dynamic Functions)
+  // ------------------------
+  _.inArray(5, [1]);
 
   return _;
 }));

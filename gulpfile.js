@@ -2,36 +2,37 @@ var gulp    = require('gulp'),
     config  = require('./config/gulp'),
     plugins = require('gulp-load-plugins')({
       scope: ['devDependencies']
-    });
+    }),
+    EXIT_ON_FAIL = false;
 
-gulp.task('default', function() {
-  compile(gulp.src('./' + config.name + '.js'), true);
+
+gulp.task('build', function () {
+  EXIT_ON_FAIL = true;
+  gulp.start('compile', 'test');
 });
 
-function compile(source, exitOnFail) {
-  
-  // lint
-  var stream = source
-    .pipe(plugins.jshint(config.lint))
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
-
-  exitOnFail && stream.pipe(plugins.jshint.reporter('fail'));
-
-  // compile/minify
-  stream
-    .pipe(plugins.plumber())
-    .pipe(plugins.uglify({ global_defs: config.js.globals }))
-    .pipe(plugins.concat(config.name + '.min.js'))
-    .pipe(gulp.dest('./'));
-}
-
-gulp.task('test', function() {
-  gulp.src('./tests/suite.js', { read: false })
+gulp.task('test', function () {
+  gulp.src('./tests/*', { read : false })
     .pipe(plugins.mocha());
 });
 
-gulp.task('watch', function() {
-  gulp.src(file).pipe(plugins.watch(function() {
-    gulp.start('js'); 
-  }));
+gulp.task('compile', ['lint'], function () {
+  gulp.src(config.src)
+    .pipe(plugins.plumber())
+    .pipe(plugins.uglify({
+      global_defs: config.js.globals,
+      preserveComments: 'some'
+    }))
+    .pipe(plugins.concat(config.name + '.min.js'))
+    .pipe(gulp.dest(config.dest));
+});
+
+gulp.task('lint', function () {
+  var stream = gulp.src(config.src + '.js')
+    .pipe(plugins.jshint(config.lint))
+    .pipe(plugins.jshint.reporter('jshint-stylish'));
+
+  if (EXIT_ON_FAIL) {
+    stream.pipe(plugins.jshint.reporter('fail'));
+  }
 });

@@ -20,13 +20,23 @@ If you're actively developing, use the watch task to help with automatic linting
 gulp watch
 ```
 
+Before deploying or submitting a pull request, please ensure that all tests are passing (as well as lint). This should all be handled in the default gulp task, but in case you want to run tests separately:
+
+```
+gulp test
+```
+
 Usage
 ===
-
+... todo ...
 
 TODO
 ===
+* redo gulp file... wtf was i thinking
+* deploy process (need to start forcing lints)
+* test environments (amd, browser)
 * optimize compose()
 * implement partial application/recurrying
 * improve code organization
 * improve test organization
+* function documentation

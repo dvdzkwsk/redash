@@ -1,8 +1,10 @@
-var base = './';
+var base = '.',
+    name = 'functional';
 
 module.exports = exports = {
-  name : 'functional',
-  src  : base
+  name : name,
+  src  : [base,name].join('/'),
+  dest : base + '/'
 };
 
 exports.js = {
