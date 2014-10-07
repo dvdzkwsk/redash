@@ -14,7 +14,8 @@ exports.js = {
     console : true,
     module  : true,
     exports : true,
-    define  : false
+    define  : false,
+    window  : false
   }
 };
 

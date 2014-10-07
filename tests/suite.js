@@ -9,7 +9,7 @@ describe('Curry/Partial Application', function () {
     // TODO
   });
 
-  describe('_.partial() || _.partially()', function () {
+  describe('_.partial()', function () {
     it('should partially apply a binary function', function () {
       assert.equal('function', typeof _.partial(add, 2));
     });
@@ -47,7 +47,8 @@ describe('Compose', function () {
 // --------------------------
 describe('Array Helpers', function () {
   var array  = [1,2,3,4,5,6,7,8,9,10],
-      nested = [1,2,[4,5,6,7],[8,[9,10,11]],12];
+      nested = [1,2,[4,5,6,7],[8,[9,10,11]],12],
+      simpleNested = [1,[2,3],4,[5,6]];
 
   describe('_.inArray()', function () {
     it('Should return true when an item is found in the array.', function () {
@@ -61,6 +62,12 @@ describe('Array Helpers', function () {
     });
   });
 
+  describe('_.flatten()', function () {
+    it('should flatten top-level nested arrays (no deep flattening)', function () {
+      assert.deepEqual([1,2,3,4,5,6], _.flatten(simpleNested));
+    });
+  });
+
   describe('_.toArray()', function () {
     it('Should transform an array-like object into an array (in this case the \'argument\` object).', function () {
       assert.deepEqual(['foo','bar','baz'], _.toArray(function () {
@@ -68,6 +75,48 @@ describe('Array Helpers', function () {
       }('foo','bar','baz')));
     });
   });
+});
+
+// --------------------------
+// Common / Utility
+// --------------------------
+describe('Common / Utility', function () {
+  describe('_.log()', function () {
+    it('should return the value in addition to logging it.', function () {
+      var str = 'sample log output';
+      assert.equal(str, _.log(str));
+    });
+  });
+
+  describe('_.property()', function () {
+    it('should get a top-level property from an object', function () {
+      var obj = { key : 'myvalue' };
+
+      assert.equal('myvalue', _.property('key', obj));
+    });
+
+    it('should auto-curry', function () {
+      var obj = { key : 'myvalue' };
+
+      assert.equal('function', typeof _.property('key'));
+      assert.equal('myvalue', _.property('key')(obj));
+    });
+  });
+
+  describe('_.deepProperty()', function () {
+    var obj = {
+      key : {
+        subKey : {
+          value : 'myvalue'
+        }
+      }
+    };
+
+    it('should find a nested property using dot notation', function () {
+      assert.equal('myvalue', _.deepProperty('key.subKey.value', obj));
+    });
+  });
+
 });
 
 // --------------------------
