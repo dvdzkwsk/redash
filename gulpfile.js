@@ -8,7 +8,7 @@ var gulp    = require('gulp'),
 
 gulp.task('build', function () {
   EXIT_ON_FAIL = true;
-  gulp.start('compile', 'test');
+  gulp.start('compile');
 });
 
 gulp.task('test', function () {

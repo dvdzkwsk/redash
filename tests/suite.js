@@ -62,11 +62,11 @@ describe('Array Helpers', function () {
     });
   });
 
-  describe('_.flatten()', function () {
-    it('should flatten top-level nested arrays (no deep flattening)', function () {
-      assert.deepEqual([1,2,3,4,5,6], _.flatten(simpleNested));
-    });
-  });
+  // describe('_.flatten()', function () {
+  //   it('should flatten top-level nested arrays (no deep flattening)', function () {
+  //     assert.deepEqual([1,2,3,4,5,6], _.flatten(simpleNested));
+  //   });
+  // });
 
   describe('_.toArray()', function () {
     it('Should transform an array-like object into an array (in this case the \'argument\` object).', function () {
@@ -88,22 +88,22 @@ describe('Common / Utility', function () {
     });
   });
 
-  describe('_.property()', function () {
+  describe('_.get()', function () {
     it('should get a top-level property from an object', function () {
       var obj = { key : 'myvalue' };
 
-      assert.equal('myvalue', _.property('key', obj));
+      assert.equal('myvalue', _.get('key', obj));
     });
 
     it('should auto-curry', function () {
       var obj = { key : 'myvalue' };
 
-      assert.equal('function', typeof _.property('key'));
-      assert.equal('myvalue', _.property('key')(obj));
+      assert.equal('function', typeof _.get('key'));
+      assert.equal('myvalue', _.get('key')(obj));
     });
   });
 
-  describe('_.deepProperty()', function () {
+  describe('_.get()', function () {
     var obj = {
       key : {
         subKey : {
@@ -113,7 +113,7 @@ describe('Common / Utility', function () {
     };
 
     it('should find a nested property using dot notation', function () {
-      assert.equal('myvalue', _.deepProperty('key.subKey.value', obj));
+      assert.equal('myvalue', _.get('key.subKey.value', obj));
     });
   });
 

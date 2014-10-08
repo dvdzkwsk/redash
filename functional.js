@@ -86,11 +86,13 @@
     return Array.isArray(arr);
   };
 
-  _.flatten = function (arr) {
-    return arr.reduce(function (memo, item) {
-      return memo.concat(item);
-    });
-  };
+  // TODO: fix, needs to support non-array first items
+  // (and better than just inserting into an array)
+  // _.flatten = function (arr) {
+  //   return arr.reduce(function (memo, item) {
+  //     return memo.concat(item);
+  //   });
+  // };
 
   _.first = function (arr) {
     return arr[0];
@@ -120,7 +122,63 @@
   // Objects
   // ------------------------
 
+  _.get = function (path, obj) {
+    var props;
+
+    // return auto-curried function if no source obj received.
+    if (typeof obj === 'undefined') {
+      return _.partial(_.get, path);
+    }
+
+    // return early if it's a top level property
+    props = path.split('.');
+    if (props.length === 1) return obj[props[0]];
+    
+    try {
+      props[0] = obj[props[0]];
+      // TODO: this should just use _.partialRight(_.get)
+      return props.reduce(function (memo, prop) {
+        return _.get(prop, memo);
+      });
+    } catch (e) {
+      return undefined;
+    }
+  };
+
+  _.set = function (path, obj, val) {
+    var props = path.split('.'),
+        len   = props.length;
+
+    // top-level property, return early
+    if (len === 1) {
+      obj[props[0]] = val;
+      return obj[props[0]];
+    }
+
+    // verify that intermediary properties exist and then
+    // assign value to destination property.
+    // TODO: change to a reduce.
+    props.forEach(function (prop, index) {
+      if (index < len - 1) {
+        if (typeof obj[prop] === 'undefined') obj[prop] = {};
+        obj = obj[prop];
+      } else obj[prop] = val;
+    });
+    return obj[props[len - 1]];
+  };
+
+  _.remap = function (map, obj) {
+    var remapped = {};
+
+    Object.keys(map).forEach(function (source) {
+      _.set(map[source], remapped, _.get(source, obj));
+    });
+
+    return remapped;
+  };
+
   // copy
+
   // shallow-copy
 
   // ------------------------
@@ -138,33 +196,6 @@
 
   _.log = function (m) {
     console.log(m); return m;
-  };
-
-  // access a top-level property on an object. Auto-curried function
-  // is returned if both arguments are not provided.
-  _.prop = _.property = function (prop, obj) {
-    return typeof obj !== 'undefined' ?
-      obj[prop] :
-      _.partial(function(prop, obj) {
-       return obj[prop]; 
-      }, prop);
-  };
-
-  // TODO: this shouldn't have to exist.. need to make
-  // a _.partialRight and apply that to _.prop
-  _.propRight = function (obj, prop) {
-    return obj[prop];
-  };
-
-  _.deepProp = _.deepProperty = function (props, obj) {
-    props = props.split('.');
-
-    try {
-      props[0] = obj[props[0]];
-      return props.reduce(_.propRight);
-    } catch(e) {
-      return undefined;
-    }
   };
 
   return _;
