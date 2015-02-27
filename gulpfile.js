@@ -1,38 +1,55 @@
-var gulp    = require('gulp'),
-    config  = require('./config/gulp'),
-    plugins = require('gulp-load-plugins')({
-      scope: ['devDependencies']
-    }),
-    EXIT_ON_FAIL = false;
+'use strict';
 
+const gulp    = require('gulp');
+const config  = require('./config/gulp');
+const plugins = require('gulp-load-plugins')({
+  scope: ['devDependencies']
+});
+const runSequence = require('run-sequence');
 
-gulp.task('build', function () {
-  EXIT_ON_FAIL = true;
-  gulp.start('compile');
+// --------------------------------------
+gulp.task('default', ['lint'], function () {
+  runSequence('compile', 'test');
+});
+
+gulp.task('compile', function () {
+
+  // Copy to es6 folder for convenience.
+  // TODO: create minified es6 copy when uglify supports it
+  compile('./index.js')
+    .pipe(gulp.dest('./es6'));
+
+  // ES5-ified versions
+  compile('./index.js', { babel : true })
+    .pipe(gulp.dest('./es5'));
+
+  compile('./index.js', { babel : true, minify : true })
+    .pipe(gulp.dest('./es5/min'));
+});
+
+function compile (source, opts) {
+  let stream = gulp.src(source)
+    .pipe(plugins.plumber());
+
+  opts = opts || {};
+  if (opts.babel) stream.pipe(plugins.babel());
+  if (opts.minify) stream.pipe(plugins.uglify({
+    global_defs      : config.js.globals,
+    preserveComments : 'some'
+  }));
+
+  return stream;
+}
+
+gulp.task('lint', function (cb) {
+  gulp.src('./index.js')
+    .pipe(plugins.jshint(config.lint))
+    .pipe(plugins.jshint.reporter('jshint-stylish'));
+
+  setTimeout(cb, 1000); // hacky...
 });
 
 gulp.task('test', function () {
   gulp.src('./tests/*', { read : false })
     .pipe(plugins.mocha());
-});
-
-gulp.task('compile', ['lint'], function () {
-  gulp.src(config.src)
-    .pipe(plugins.plumber())
-    .pipe(plugins.uglify({
-      global_defs: config.js.globals,
-      preserveComments: 'some'
-    }))
-    .pipe(plugins.concat(config.name + '.min.js'))
-    .pipe(gulp.dest(config.dest));
-});
-
-gulp.task('lint', function () {
-  var stream = gulp.src(config.src + '.js')
-    .pipe(plugins.jshint(config.lint))
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
-
-  if (EXIT_ON_FAIL) {
-    stream.pipe(plugins.jshint.reporter('fail'));
-  }
 });

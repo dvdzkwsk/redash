@@ -1,11 +1,4 @@
-var base = '.',
-    name = 'functional';
-
-module.exports = exports = {
-  name : name,
-  src  : [base,name].join('/'),
-  dest : base + '/'
-};
+module.exports = exports = {};
 
 exports.js = {
   globals: {
@@ -25,7 +18,7 @@ exports.lint = {
   curly     : false,
   eqeqeq    : true,
   forin     : true,
-  immed     : true,
+  immed     : false,
   indent    : 2,
   latedef   : false,
   noarg     : true,
@@ -40,5 +33,6 @@ exports.lint = {
   maxdepth  : false,
   maxlen    : 80,
   sub       : false,
-  globals   : exports.js.globals
+  globals   : exports.js.globals,
+  esnext    : true
 };

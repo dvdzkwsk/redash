@@ -13,7 +13,8 @@
   "keywords": [
     "functional",
     "js",
-    "javascript"
+    "javascript",
+    "es6"
   ],
   "author": "David Zukowski <zukoproxy@gmail.com> (http://github.com/davezuko)",
   "license": "MIT",
@@ -21,15 +22,18 @@
     "url": "https://github.com/davezuko/functional-js/issues"
   },
   "devDependencies": {
-    "gulp": "~3.8.5",
-    "gulp-watch": "~0.6.8",
-    "gulp-uglify": "~0.3.1",
-    "gulp-jshint": "~1.6.3",
-    "jshint-stylish": "~0.2.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0",
     "gulp-concat": "~2.3.4",
+    "gulp-jshint": "~1.6.3",
     "gulp-load-plugins": "~0.5.3",
+    "gulp-mocha": "~1.0.0",
     "gulp-plumber": "~0.6.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "~0.3.1",
+    "gulp-watch": "~0.6.8",
+    "jshint-stylish": "~0.2.0",
     "mocha": "~1.21.4",
-    "gulp-mocha": "~1.0.0"
+    "run-sequence": "^1.0.2"
   }
 }
