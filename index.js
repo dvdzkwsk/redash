@@ -1,29 +1,25 @@
-+(lib => {
-  'use strict';
-
++(lib => { 'use strict';
   if (typeof exports === 'object') {
     module.exports = exports = lib;
   } else if (window) {
     window.F = window.F || lib;
   }
-})((() => {
-  'use strict';
+})((() => { 'use strict';
   let _ = {};
 
   // ----------------------------------
   // Curry
   // ----------------------------------
-  const recurry = (fn, ...applied) => {
-    let arity = fn.length;
-
+  const curry = (fn, arity, ...applied) => {
     if (applied.length >= arity) {
       return fn(...applied);
     } else {
-      return (...newArgs) => recurry(fn, ...[...applied, ...newArgs]);
+      return (...newArgs) => curry(fn, arity, ...applied, ...newArgs);
     }
-  };
+  }
 
-  _.curry = (fn, ...args) => recurry(fn, ...args);
+  _.curry = (fn, ...args) => curry(fn, fn.length, ...args);
+  _.curryN = (fn, arity, ...args) => curry(fn, arity, ...args);
 
   // ----------------------------------
   // Collections

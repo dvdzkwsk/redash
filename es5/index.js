@@ -2,7 +2,6 @@
 
 +(function (lib) {
   "use strict";
-
   if (typeof exports === "object") {
     module.exports = exports = lib;
   } else if (window) {
@@ -15,12 +14,10 @@
   // ----------------------------------
   // Curry
   // ----------------------------------
-  var recurry = function (fn) {
-    for (var _len = arguments.length, applied = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      applied[_key - 1] = arguments[_key];
+  var curry = function (fn, arity) {
+    for (var _len = arguments.length, applied = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      applied[_key - 2] = arguments[_key];
     }
-
-    var arity = fn.length;
 
     if (applied.length >= arity) {
       return fn.apply(undefined, applied);
@@ -30,7 +27,7 @@
           newArgs[_key2] = arguments[_key2];
         }
 
-        return recurry.apply(undefined, [fn].concat([].concat(applied, newArgs)));
+        return curry.apply(undefined, [fn, arity].concat(applied, newArgs));
       };
     }
   };
@@ -40,7 +37,14 @@
       args[_key - 1] = arguments[_key];
     }
 
-    return recurry.apply(undefined, [fn].concat(args));
+    return curry.apply(undefined, [fn, fn.length].concat(args));
+  };
+  _.curryN = function (fn, arity) {
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    return curry.apply(undefined, [fn, arity].concat(args));
   };
 
   // ----------------------------------
