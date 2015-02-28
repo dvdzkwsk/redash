@@ -57,10 +57,8 @@
   };
 
   _.each = _.curry(function (cb, collection) {
-    if (!collection.length) return;
-
     for (var i = 0, len = collection.length; i < len; i++) {
-      cb(collection[i]);
+      cb(collection[i], i);
     }
   });
 
@@ -68,37 +66,29 @@
     var mapped = [];
 
     for (var i = 0, len = collection.length; i < len; i++) {
-      mapped.push(cb(collection[i]));
+      mapped.push(cb(collection[i], i));
     }
     return mapped;
   });
 
   _.reduce = _.curry(function (cb, memo, collection) {
-    var offset = 0;
+    var i = 0;
 
-    if (memo === undefined) memo = collection[offset++];
-    for (var len = collection.length; offset < len; offset++) {
-      memo = cb(memo, collection[offset]);
+    if (memo === undefined) memo = collection[i++];
+    for (var len = collection.length; i < len; i++) {
+      memo = cb(memo, collection[i], i);
     }
     return memo;
   });
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.contains = _.curry(function (compare, collection) {
+  _.contains = _.curry(function (comparator, collection) {
     var contains = false;
+    var compare = typeof comparator === "function" ? comparator : _.equals(comparator);
 
-    if (typeof compare !== "function") {
-      compare = (function (compareTo) {
-        return function (item) {
-          return item === compareTo;
-        };
-      }).call(undefined, compare);
-    }
     for (var i = 0, len = collection.length; i < len; i++) {
-      if (compare(collection[i])) {
-        contains = true;
-      }
+      if (compare(collection[i], i)) contains = true;
     }
     return contains;
   });
@@ -106,11 +96,22 @@
   _.reverse = function (collection) {
     var pos = collection.length;
     var reversed = [];
-
     while (pos--) {
       reversed.push(collection[pos]);
     }
     return reversed;
+  };
+
+  // TODO: Better way to fix loop redundancy than always comparing
+  // against a function?
+  _.filter = function (filter, collection) {
+    var filtered = [];
+    var compare = typeof filter === "function" ? filter : _.equals(filter);
+
+    for (var i = 0, len = collection.length; i < len; i++) {
+      if (compare(collection[i], i)) filtered.push(collection[i]);
+    }
+    return filtered;
   };
 
   // ----------------------------------
@@ -145,11 +146,24 @@
   });
 
   // ----------------------------------
+  // Utility
+  // ----------------------------------
+  _.wrap = function (item) {
+    return Array.isArray(item) ? item : [item];
+  };
+  _.tap = _.curry(function (fn, resp) {
+    fn(resp);return resp;
+  });
+
+  // ----------------------------------
   // Comparators
   // ----------------------------------
-  _.is = function (type, val) {
+  _.is = _.curry(function (type, val) {
     return typeof val === type;
-  };
+  });
+  _.equals = _.curry(function (comparator, val) {
+    return comparator === val;
+  });
 
   // ----------------------------------
   return _;

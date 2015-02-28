@@ -35,10 +35,8 @@
   _.last  = (arr) => arr.length ? arr[arr.length - 1] : undefined;
 
   _.each = _.curry((cb, collection) => {
-    if (!collection.length) return;
-
     for (let i=0,len=collection.length; i<len; i++) {
-      cb(collection[i]);
+      cb(collection[i], i);
     }
   });
 
@@ -46,34 +44,30 @@
     let mapped = [];
 
     for (let i=0,len=collection.length; i<len; i++) {
-      mapped.push(cb(collection[i]));
+      mapped.push(cb(collection[i], i));
     }
     return mapped;
   });
 
   _.reduce = _.curry((cb, memo, collection) => {
-    let offset = 0;
+    let i = 0;
 
-    if (memo === undefined) memo = collection[offset++];
-    for (let len=collection.length; offset<len; offset++) {
-      memo = cb(memo, collection[offset]);
+    if (memo === undefined) memo = collection[i++];
+    for (let len=collection.length; i<len; i++) {
+      memo = cb(memo, collection[i], i);
     }
     return memo;
   });
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.contains = _.curry((compare, collection) => {
+  _.contains = _.curry((comparator, collection) => {
     let contains = false;
+    let compare = typeof comparator === 'function' ?
+      comparator : _.equals(comparator);
 
-    if (typeof compare !== 'function') {
-      compare = (compareTo => item => item === compareTo)
-        .call(undefined, compare);
-    }
     for (let i=0,len=collection.length; i<len; i++) {
-      if (compare(collection[i])) {
-        contains = true;
-      }
+      if (compare(collection[i], i)) contains = true;
     }
     return contains;
   });
@@ -81,11 +75,23 @@
   _.reverse = (collection) => {
     let pos = collection.length;
     let reversed = [];
-
     while (pos--) {
       reversed.push(collection[pos]);
     }
     return reversed;
+  };
+
+  // TODO: Better way to fix loop redundancy than always comparing
+  // against a function?
+  _.filter = (filter, collection) => {
+    let filtered = [];
+    let compare  = typeof filter === 'function' ?
+      filter : _.equals(filter);
+
+    for (let i=0,len=collection.length; i<len; i++) {
+      if (compare(collection[i], i)) filtered.push(collection[i]);
+    }
+    return filtered;
   };
 
   // ----------------------------------
@@ -114,9 +120,16 @@
   _.get = _.curry((key, obj) => obj[key]);
 
   // ----------------------------------
+  // Utility
+  // ----------------------------------
+  _.wrap = (item) => Array.isArray(item) ? item : [item];
+  _.tap = _.curry((fn, resp) => { fn(resp); return resp; });
+
+  // ----------------------------------
   // Comparators
   // ----------------------------------
-  _.is = (type, val) => typeof val === type;
+  _.is = _.curry((type, val) => typeof val === type);
+  _.equals = _.curry((comparator, val) => comparator === val);
 
   // ----------------------------------
   return _;

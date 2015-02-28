@@ -30,3 +30,6 @@ TODO
 * [ ] Improve code organization
 * [ ] Improve test organization
 * [ ] Documentation
+* [ ] Optimize curry by caching/specifying arity
+* [ ] Optimize object extend/mixin
+* [ ] Expand tests
