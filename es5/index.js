@@ -1,5 +1,7 @@
 "use strict";
 
+var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } };
+
 +(function (lib) {
   "use strict";
   if (typeof exports === "object") {
@@ -39,12 +41,42 @@
 
     return curry.apply(undefined, [fn, fn.length].concat(args));
   };
-  _.curryN = function (fn, arity) {
+  _.curryN = function (arity, fn) {
     for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
       args[_key - 2] = arguments[_key];
     }
 
-    return curry.apply(undefined, [fn, arity].concat(args));
+    return curry.apply(undefined, [arity, fn].concat(args));
+  };
+
+  // ----------------------------------
+  // Composition
+  // ----------------------------------
+  _.pipe = function () {
+    for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+      fns[_key] = arguments[_key];
+    }
+
+    var first = fns[0];
+    var rest = fns.slice(1);
+
+    return function () {
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return _.reduce(function (memo, fn) {
+        return fn(memo);
+      }, first.apply(undefined, args), rest);
+    };
+  };
+
+  _.compose = function () {
+    for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+      fns[_key] = arguments[_key];
+    }
+
+    return _.pipe.apply(_, _toConsumableArray(_.reverse(fns)));
   };
 
   // ----------------------------------
@@ -54,10 +86,10 @@
   // local _.each for performance purposes.
   // ----------------------------------
   _.first = function (arr) {
-    return arr.length ? arr[0] : undefined;
+    return arr[0];
   };
   _.last = function (arr) {
-    return arr.length ? arr[arr.length - 1] : undefined;
+    return arr[arr.length - 1];
   };
 
   _.each = _.curry(function (cb, collection) {
@@ -67,10 +99,11 @@
   });
 
   _.map = _.curry(function (cb, collection) {
-    var mapped = [];
+    var len = collection.length;
+    var mapped = new Array(len);
 
-    for (var i = 0, len = collection.length; i < len; i++) {
-      mapped.push(cb(collection[i], i));
+    for (var i = 0; i < len; i++) {
+      mapped[i] = cb(collection[i], i);
     }
     return mapped;
   });
@@ -98,10 +131,11 @@
   });
 
   _.reverse = function (collection) {
-    var pos = collection.length;
+    var i = collection.length;
     var reversed = [];
-    while (pos--) {
-      reversed.push(collection[pos]);
+
+    while (i--) {
+      reversed.push(collection[i]);
     }
     return reversed;
   };
@@ -117,6 +151,12 @@
     }
     return filtered;
   };
+
+  _.take = _.curry(function (amt, arr) {
+    return _.filter(function (item, idx) {
+      return idx < amt;
+    });
+  });
 
   // ----------------------------------
   // Objects

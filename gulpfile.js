@@ -12,7 +12,7 @@ gulp.task('default', ['lint'], function () {
   runSequence('compile', 'test');
 });
 
-gulp.task('compile', function () {
+gulp.task('compile', function (cb) {
 
   // Copy to es6 folder for convenience.
   // TODO: create minified es6 copy when uglify supports it
@@ -25,6 +25,8 @@ gulp.task('compile', function () {
 
   compile('./index.js', { babel : true, minify : true })
     .pipe(gulp.dest('./es5/min'));
+
+  setTimeout(cb, 1000); // hacky...
 });
 
 function compile (source, opts) {

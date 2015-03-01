@@ -16,10 +16,22 @@
     } else {
       return (...newArgs) => curry(fn, arity, ...applied, ...newArgs);
     }
-  }
+  };
 
   _.curry = (fn, ...args) => curry(fn, fn.length, ...args);
-  _.curryN = (fn, arity, ...args) => curry(fn, arity, ...args);
+  _.curryN = (arity, fn, ...args) => curry(arity, fn, ...args);
+
+  // ----------------------------------
+  // Composition
+  // ----------------------------------
+  _.pipe = (...fns) => {
+    let [first, ...rest] = fns;
+
+    return (...args) =>
+      _.reduce((memo, fn) => fn(memo), first(...args), rest);
+  };
+
+  _.compose = (...fns) => _.pipe(..._.reverse(fns));
 
   // ----------------------------------
   // Collections
@@ -27,8 +39,8 @@
   // Note: iterations are not performed using native methods or
   // local _.each for performance purposes.
   // ----------------------------------
-  _.first = (arr) => arr.length ? arr[0] : undefined;
-  _.last  = (arr) => arr.length ? arr[arr.length - 1] : undefined;
+  _.first = (arr) => arr[0];
+  _.last  = (arr) => arr[arr.length - 1];
 
   _.each = _.curry((cb, collection) => {
     for (let i=0,len=collection.length; i<len; i++) {
@@ -37,10 +49,11 @@
   });
 
   _.map = _.curry((cb, collection) => {
-    let mapped = [];
+    let len    = collection.length;
+    let mapped = new Array(len);
 
-    for (let i=0,len=collection.length; i<len; i++) {
-      mapped.push(cb(collection[i], i));
+    for (let i=0; i<len; i++) {
+      mapped[i] = cb(collection[i], i);
     }
     return mapped;
   });
@@ -69,10 +82,11 @@
   });
 
   _.reverse = (collection) => {
-    let pos = collection.length;
+    let i = collection.length;
     let reversed = [];
-    while (pos--) {
-      reversed.push(collection[pos]);
+
+    while (i--) {
+      reversed.push(collection[i]);
     }
     return reversed;
   };
@@ -89,6 +103,8 @@
     }
     return filtered;
   };
+
+  _.take = _.curry((amt, arr) => _.filter((item, idx) => idx < amt));
 
   // ----------------------------------
   // Objects

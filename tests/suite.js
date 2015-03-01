@@ -7,20 +7,52 @@ const assert = require('assert');
 // --------------------------
 describe('Curry', function () {
   describe('_.curry()', function () {
-    it('should partially apply a binary function when supplied with one argument.', function () {
+    it('Should partially apply a binary function when supplied with one argument.', function () {
       assert.equal('function', typeof _.curry(add, 2));
     });
-    it('should execute the partially applied binary function when supplied with its second argument.', function () {
+    it('Should execute the partially applied binary function when supplied with its second argument.', function () {
       assert.equal(10, _.curry(add,2)(8));
     });
 
-    it('should partially apply a quaternary function when provided with less than 3 arguments.', function () {
+    it('Should partially apply a quaternary function when provided with less than 3 arguments.', function () {
       assert.equal('function', typeof _.curry(quaternary,1,2,3));
     });
-    it('should reapply a quaternary function until it receives all arguments.', function () {
+    it('Should reapply a quaternary function until it receives all arguments.', function () {
       assert.equal('function', typeof _.curry(quaternary)(1,2));
       assert.equal('function', typeof _.curry(quaternary)(1,2)(3));
       assert.equal(10, _.curry(quaternary)(1,2)(3)(4));
+    });
+  });
+});
+
+// --------------------------
+// Composition
+// --------------------------
+describe('Composition', function () {
+
+  describe('_.pipe()', function () {
+    it('Should return a function.', function () {
+      assert.equal('function', typeof _.pipe(square, double));
+    });
+
+    it('Should apply the functions left to right.', function () {
+      let squareThenDouble = _.pipe(square, double);
+
+      assert.equal(8, squareThenDouble(2));
+      assert.equal(32, squareThenDouble(4));
+    });
+  });
+
+  describe('_.compose()', function () {
+    it('Should return a function.', function () {
+      assert.equal('function', typeof _.compose(square, double));
+    });
+
+    it('Should apply the functions right to left.', function () {
+      let doubleThenSquare = _.compose(square, double);
+
+      assert.equal(16, doubleThenSquare(2));
+      assert.equal(64, doubleThenSquare(4));
     });
   });
 });
@@ -69,6 +101,20 @@ describe('Objects', function () {
 
     it('Should return false if the property is from a prototype.', function () {
       assert.equal(false, _.has('notOwn', instance));
+    });
+  });
+
+  describe('.get()', function () {
+    let obj = { foo : 'foo' };
+
+    it('Should return the specified property off of the object.', function () {
+      assert.equal('foo', _.get('foo', obj));
+      assert.equal('foo', _.get('foo')(obj));
+    });
+
+    it('Should return undefined if the property does not exist.', function () {
+      assert.equal(undefined, _.get('bar', obj));
+      assert.equal(undefined, _.get('bar')(obj));
     });
   });
 });
