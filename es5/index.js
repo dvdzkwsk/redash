@@ -80,6 +80,35 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   };
 
   // ----------------------------------
+  // Functions
+  // ----------------------------------
+  // TODO: Create/Expand methods to allow calling/invoking functions
+  // with specific contexts/arguments. These should be used with .all(),
+  // for example.
+
+  _.invoke = _.curry(function (method, obj) {
+    if (typeof obj[method] === "function") {
+      obj[method].call(obj);
+    }
+  });
+
+  _.all = function () {
+    for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+      fns[_key] = arguments[_key];
+    }
+
+    return function () {
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return _.each(function (fn) {
+        return fn.apply(undefined, args);
+      }, fns);
+    };
+  };
+
+  // ----------------------------------
   // Collections
   // ----------------------------------
   // Note: iterations are not performed using native methods or

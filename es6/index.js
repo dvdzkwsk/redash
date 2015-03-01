@@ -34,6 +34,21 @@
   _.compose = (...fns) => _.pipe(..._.reverse(fns));
 
   // ----------------------------------
+  // Functions
+  // ----------------------------------
+  // TODO: Create/Expand methods to allow calling/invoking functions
+  // with specific contexts/arguments. These should be used with .all(),
+  // for example.
+  
+  _.invoke = _.curry((method, obj) => {
+    if (typeof obj[method] === 'function') {
+      obj[method].call(obj);
+    }
+  });
+
+  _.all = (...fns) => (...args) => _.each((fn) => fn(...args), fns);
+
+  // ----------------------------------
   // Collections
   // ----------------------------------
   // Note: iterations are not performed using native methods or
