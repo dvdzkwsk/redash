@@ -39,7 +39,7 @@
   // TODO: Create/Expand methods to allow calling/invoking functions
   // with specific contexts/arguments. These should be used with .all(),
   // for example.
-  
+
   _.invoke = _.curry((method, obj) => {
     if (typeof obj[method] === 'function') {
       obj[method].call(obj);
@@ -56,75 +56,76 @@
   // ----------------------------------
   _.first = (arr) => arr[0];
   _.last  = (arr) => arr[arr.length - 1];
+  _.join  = _.curry((chr, arr) => arr.join(chr));
 
-  _.each = _.curry((cb, collection) => {
-    for (let i=0,len=collection.length; i<len; i++) {
-      cb(collection[i], i);
+  _.each = _.curry((cb, arr) => {
+    for (let i=0,len=arr.length; i<len; i++) {
+      cb(arr[i], i);
     }
   });
 
-  _.map = _.curry((cb, collection) => {
-    let len    = collection.length;
+  _.map = _.curry((cb, arr) => {
+    let len    = arr.length;
     let mapped = new Array(len);
 
     for (let i=0; i<len; i++) {
-      mapped[i] = cb(collection[i], i);
+      mapped[i] = cb(arr[i], i);
     }
     return mapped;
   });
 
-  _.reduce = _.curry((cb, memo, collection) => {
+  _.reduce = _.curry((cb, memo, arr) => {
     let i = 0;
 
-    if (typeof memo === 'undefined') memo = collection[i++];
-    for (let len=collection.length; i<len; i++) {
-      memo = cb(memo, collection[i], i);
+    if (typeof memo === 'undefined') memo = arr[i++];
+    for (let len=arr.length; i<len; i++) {
+      memo = cb(memo, arr[i], i);
     }
     return memo;
   });
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.contains = _.curry((comparator, collection) => {
+  _.contains = _.curry((comparator, arr) => {
     let contains = false;
     let compare = typeof comparator === 'function' ?
       comparator : _.equals(comparator);
 
-    for (let i=0,len=collection.length; i<len; i++) {
-      if (compare(collection[i], i)) contains = true;
+    for (let i=0,len=arr.length; i<len; i++) {
+      if (compare(arr[i], i)) contains = true;
     }
     return contains;
   });
 
-  _.reverse = (collection) => {
-    let i = collection.length;
+  _.reverse = (arr) => {
+    let i = arr.length;
     let reversed = [];
 
     while (i--) {
-      reversed.push(collection[i]);
+      reversed.push(arr[i]);
     }
     return reversed;
   };
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.filter = _.curry((filter, collection) => {
+  _.filter = _.curry((filter, arr) => {
     let filtered = [];
     let compare  = typeof filter === 'function' ?
       filter : _.equals(filter);
 
-    for (let i=0,len=collection.length; i<len; i++) {
-      if (compare(collection[i], i)) filtered.push(collection[i]);
+    for (let i=0,len=arr.length; i<len; i++) {
+      if (compare(arr[i], i)) filtered.push(arr[i]);
     }
     return filtered;
   });
 
-  _.take = _.curry((amt, collection) => {
-    let max = amt > collection.length ? collection.length : amt;
+  _.take = _.curry((amt, arr) => {
+    let max = amt > arr.length ? arr.length : amt;
     let result = new Array(max);
 
     for (let i=0; i<max; i++) {
-      result[i] = collection[i];
+      result[i] = arr[i];
     }
     return result;
   });
@@ -153,6 +154,11 @@
 
   _.has = _.curry((key, obj) => obj.hasOwnProperty(key));
   _.get = _.curry((key, obj) => obj[key]);
+
+  // ----------------------------------
+  // Strings
+  // ----------------------------------
+  _.split = _.curry((chr, str) => str.split(chr));
 
   // ----------------------------------
   // Utility
