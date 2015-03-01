@@ -61,7 +61,7 @@
   _.reduce = _.curry((cb, memo, collection) => {
     let i = 0;
 
-    if (memo === undefined) memo = collection[i++];
+    if (typeof memo === 'undefined') memo = collection[i++];
     for (let len=collection.length; i<len; i++) {
       memo = cb(memo, collection[i], i);
     }
@@ -93,7 +93,7 @@
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.filter = (filter, collection) => {
+  _.filter = _.curry((filter, collection) => {
     let filtered = [];
     let compare  = typeof filter === 'function' ?
       filter : _.equals(filter);
@@ -102,9 +102,17 @@
       if (compare(collection[i], i)) filtered.push(collection[i]);
     }
     return filtered;
-  };
+  });
 
-  _.take = _.curry((amt, arr) => _.filter((item, idx) => idx < amt));
+  _.take = _.curry((amt, collection) => {
+    let max = amt > collection.length ? collection.length : amt;
+    let result = new Array(max);
+
+    for (let i=0; i<max; i++) {
+      result[i] = collection[i];
+    }
+    return result;
+  });
 
   // ----------------------------------
   // Objects
