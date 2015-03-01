@@ -120,73 +120,76 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   _.last = function (arr) {
     return arr[arr.length - 1];
   };
+  _.join = _.curry(function (chr, arr) {
+    return arr.join(chr);
+  });
 
-  _.each = _.curry(function (cb, collection) {
-    for (var i = 0, len = collection.length; i < len; i++) {
-      cb(collection[i], i);
+  _.each = _.curry(function (cb, arr) {
+    for (var i = 0, len = arr.length; i < len; i++) {
+      cb(arr[i], i);
     }
   });
 
-  _.map = _.curry(function (cb, collection) {
-    var len = collection.length;
+  _.map = _.curry(function (cb, arr) {
+    var len = arr.length;
     var mapped = new Array(len);
 
     for (var i = 0; i < len; i++) {
-      mapped[i] = cb(collection[i], i);
+      mapped[i] = cb(arr[i], i);
     }
     return mapped;
   });
 
-  _.reduce = _.curry(function (cb, memo, collection) {
+  _.reduce = _.curry(function (cb, memo, arr) {
     var i = 0;
 
-    if (typeof memo === "undefined") memo = collection[i++];
-    for (var len = collection.length; i < len; i++) {
-      memo = cb(memo, collection[i], i);
+    if (typeof memo === "undefined") memo = arr[i++];
+    for (var len = arr.length; i < len; i++) {
+      memo = cb(memo, arr[i], i);
     }
     return memo;
   });
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.contains = _.curry(function (comparator, collection) {
+  _.contains = _.curry(function (comparator, arr) {
     var contains = false;
     var compare = typeof comparator === "function" ? comparator : _.equals(comparator);
 
-    for (var i = 0, len = collection.length; i < len; i++) {
-      if (compare(collection[i], i)) contains = true;
+    for (var i = 0, len = arr.length; i < len; i++) {
+      if (compare(arr[i], i)) contains = true;
     }
     return contains;
   });
 
-  _.reverse = function (collection) {
-    var i = collection.length;
+  _.reverse = function (arr) {
+    var i = arr.length;
     var reversed = [];
 
     while (i--) {
-      reversed.push(collection[i]);
+      reversed.push(arr[i]);
     }
     return reversed;
   };
 
   // TODO: Better way to fix loop redundancy than always comparing
   // against a function?
-  _.filter = _.curry(function (filter, collection) {
+  _.filter = _.curry(function (filter, arr) {
     var filtered = [];
     var compare = typeof filter === "function" ? filter : _.equals(filter);
 
-    for (var i = 0, len = collection.length; i < len; i++) {
-      if (compare(collection[i], i)) filtered.push(collection[i]);
+    for (var i = 0, len = arr.length; i < len; i++) {
+      if (compare(arr[i], i)) filtered.push(arr[i]);
     }
     return filtered;
   });
 
-  _.take = _.curry(function (amt, collection) {
-    var max = amt > collection.length ? collection.length : amt;
+  _.take = _.curry(function (amt, arr) {
+    var max = amt > arr.length ? arr.length : amt;
     var result = new Array(max);
 
     for (var i = 0; i < max; i++) {
-      result[i] = collection[i];
+      result[i] = arr[i];
     }
     return result;
   });
@@ -220,6 +223,13 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   });
   _.get = _.curry(function (key, obj) {
     return obj[key];
+  });
+
+  // ----------------------------------
+  // Strings
+  // ----------------------------------
+  _.split = _.curry(function (chr, str) {
+    return str.split(chr);
   });
 
   // ----------------------------------
