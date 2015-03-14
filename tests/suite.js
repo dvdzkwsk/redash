@@ -58,6 +58,20 @@ describe('Composition', function () {
 });
 
 // --------------------------
+// Functions
+// --------------------------
+describe('Functions', function () {
+
+  describe('not()', function () {
+    it('should negate the result of a function.', function () {
+
+      assert.equal(false, _.not(_.eq(false))(false));
+      assert.equal(false, _.not(_.eq)(false, false));
+    });
+  });
+});
+
+// --------------------------
 // Collections
 // --------------------------
 describe('Collections', function () {
@@ -175,6 +189,47 @@ describe('Utility', function () {
       assert.equal('baz', extended.foo);
     });
   });
+
+  describe('should return the type of a supplied variable.', function () {
+    assert.equal('undefined', _.type(undefined));
+    assert.equal('object', _.type({}));
+    assert.equal('number', _.type(1));
+    assert.equal('string', _.type('foo'));
+  });
+});
+
+// --------------------------
+// Strings
+// --------------------------
+describe('Strings', function () {
+
+  describe('split()', function () {
+    it('Should split a string by a specified delimiter.', function () {
+      assert.deepEqual(['hello', 'there'], _.split(' ', 'hello there'));
+      assert.deepEqual(['hello', 'there'], _.split(' ')('hello there'));
+    });
+  });
+
+  describe('lower()', function () {
+    it('Should lowercase an entire string.', function () {
+      assert.equal('hello', _.lower('HELLO'));
+      assert.equal('hello test!1', _.lower('HELLO TeSt!1'));
+    });
+  });
+
+  describe('upper()', function () {
+    it('Should uppercase an entire string.', function () {
+      assert.equal('HELLO', _.upper('hello'));
+      assert.equal('HELLO TEST!1', _.upper('hello test!1'));
+    });
+  });
+
+  describe('proper()', function () {
+    it('Should capitilize the first character in a string, and lowercase the rest.', function () {
+      assert.equal('Hello', _.proper('Hello'));
+      assert.equal('Hello', _.proper('hELLO'));
+    });
+  });
 });
 
 // --------------------------
@@ -193,19 +248,15 @@ describe('Comparators', function () {
     });
   });
 
-  describe('equals()', function () {
+  describe('eq()', function () {
 
     it('Should return true only if the values are strictly equal.', function () {
-      assert.equal(true, _.equals(2, 2));
-      assert.equal(false, _.equals(2, '2'));
-      assert.equal(true, _.equals('test', 'test'));
-    });
-
-    it('Should return false if the values are _only_ truthy.', function () {
-      assert.equal(false, _.equals(2, '2'));
-      assert.equal(false, _.equals(false, 0));
-      assert.equal(false, _.equals(true, 1));
-      assert.equal(false, _.equals(true, '1'));
+      assert.equal(true, _.eq(2, 2));
+      assert.equal(false, _.eq(2, '2'));
+      assert.equal(true, _.eq('test', 'test'));
+      assert.equal(false, _.eq(false, 0));
+      assert.equal(false, _.eq(true, 1));
+      assert.equal(false, _.eq(true, '1'));
     });
   });
 });

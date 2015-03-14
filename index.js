@@ -48,6 +48,8 @@
 
   _.all = (...fns) => (...args) => _.each((fn) => fn(...args), fns);
 
+  _.not = (fn) => (...args) => !fn(...args);
+
   // ----------------------------------
   // Collections
   // ----------------------------------
@@ -89,7 +91,7 @@
   _.contains = _.curry((comparator, arr) => {
     let contains = false;
     let compare = typeof comparator === 'function' ?
-      comparator : _.equals(comparator);
+      comparator : _.eq(comparator);
 
     for (let i=0,len=arr.length; i<len; i++) {
       if (compare(arr[i], i)) contains = true;
@@ -112,7 +114,7 @@
   _.filter = _.curry((filter, arr) => {
     let filtered = [];
     let compare  = typeof filter === 'function' ?
-      filter : _.equals(filter);
+      filter : _.eq(filter);
 
     for (let i=0,len=arr.length; i<len; i++) {
       if (compare(arr[i], i)) filtered.push(arr[i]);
@@ -153,24 +155,35 @@
     extend(extend({}, base), extender));
 
   _.has = _.curry((key, obj) => obj.hasOwnProperty(key));
+
   _.get = _.curry((key, obj) => obj[key]);
 
   // ----------------------------------
   // Strings
   // ----------------------------------
-  _.split = _.curry((chr, str) => str.split(chr));
+  _.split = _.curry((delim, str) => str.split(delim));
+
+  _.lower = (str) => str.toLowerCase();
+
+  _.upper = (str) => str.toUpperCase();
+
+  _.proper = (str) => _.upper(str[0]) + _.lower(str.slice(1));
 
   // ----------------------------------
   // Utility
   // ----------------------------------
   _.wrap = (item) => Array.isArray(item) ? item : [item];
+
   _.tap = _.curry((fn, resp) => { fn(resp); return resp; });
+
+  _.type = (val) => typeof val;
 
   // ----------------------------------
   // Comparators
   // ----------------------------------
-  _.is = _.curry((type, val) => typeof val === type);
-  _.equals = _.curry((comparator, val) => comparator === val);
+  _.eq = _.curry((comparator, val) => comparator === val);
+
+  _.is = _.curry((type, val) => _.eq(type, _.type(val)));
 
   // ----------------------------------
   return _;

@@ -108,6 +108,16 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
     };
   };
 
+  _.not = function (fn) {
+    return function () {
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return !fn.apply(undefined, args);
+    };
+  };
+
   // ----------------------------------
   // Collections
   // ----------------------------------
@@ -154,7 +164,7 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   // against a function?
   _.contains = _.curry(function (comparator, arr) {
     var contains = false;
-    var compare = typeof comparator === "function" ? comparator : _.equals(comparator);
+    var compare = typeof comparator === "function" ? comparator : _.eq(comparator);
 
     for (var i = 0, len = arr.length; i < len; i++) {
       if (compare(arr[i], i)) contains = true;
@@ -176,7 +186,7 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   // against a function?
   _.filter = _.curry(function (filter, arr) {
     var filtered = [];
-    var compare = typeof filter === "function" ? filter : _.equals(filter);
+    var compare = typeof filter === "function" ? filter : _.eq(filter);
 
     for (var i = 0, len = arr.length; i < len; i++) {
       if (compare(arr[i], i)) filtered.push(arr[i]);
@@ -221,6 +231,7 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   _.has = _.curry(function (key, obj) {
     return obj.hasOwnProperty(key);
   });
+
   _.get = _.curry(function (key, obj) {
     return obj[key];
   });
@@ -228,9 +239,21 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   // ----------------------------------
   // Strings
   // ----------------------------------
-  _.split = _.curry(function (chr, str) {
-    return str.split(chr);
+  _.split = _.curry(function (delim, str) {
+    return str.split(delim);
   });
+
+  _.lower = function (str) {
+    return str.toLowerCase();
+  };
+
+  _.upper = function (str) {
+    return str.toUpperCase();
+  };
+
+  _.proper = function (str) {
+    return _.upper(str[0]) + _.lower(str.slice(1));
+  };
 
   // ----------------------------------
   // Utility
@@ -238,18 +261,24 @@ var _toConsumableArray = function (arr) { if (Array.isArray(arr)) { for (var i =
   _.wrap = function (item) {
     return Array.isArray(item) ? item : [item];
   };
+
   _.tap = _.curry(function (fn, resp) {
     fn(resp);return resp;
   });
 
+  _.type = function (val) {
+    return typeof val;
+  };
+
   // ----------------------------------
   // Comparators
   // ----------------------------------
-  _.is = _.curry(function (type, val) {
-    return typeof val === type;
-  });
-  _.equals = _.curry(function (comparator, val) {
+  _.eq = _.curry(function (comparator, val) {
     return comparator === val;
+  });
+
+  _.is = _.curry(function (type, val) {
+    return _.eq(type, _.type(val));
   });
 
   // ----------------------------------
