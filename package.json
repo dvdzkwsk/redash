@@ -4,7 +4,9 @@
   "description": "compact functional javascript library",
   "main": "functional.js",
   "scripts": {
-    "test": "gulp test"
+    "compile": "webpack -p",
+    "test": "node ./node_modules/karma/bin/karma start",
+    "test:prod": "NODE_ENV=production npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,18 +24,21 @@
     "url": "https://github.com/davezuko/functional-js/issues"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-babel": "^4.0.0",
-    "gulp-concat": "~2.3.4",
-    "gulp-jshint": "~1.6.3",
-    "gulp-load-plugins": "~0.5.3",
-    "gulp-mocha": "~1.0.0",
-    "gulp-plumber": "~0.6.4",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "~0.3.1",
-    "gulp-watch": "~0.6.8",
-    "jshint-stylish": "~0.2.0",
-    "mocha": "~1.21.4",
-    "run-sequence": "^1.0.2"
+    "babel": "^5.4.7",
+    "chai": "^2.3.0",
+    "jshint": "^2.7.0",
+    "jshint-loader": "^0.8.3",
+    "jshint-loader-stylish": "^1.0.0",
+    "karma": "^0.12.32",
+    "karma-chai": "^0.1.0",
+    "karma-chai-plugins": "^0.5.0",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-spec-reporter": "0.0.19",
+    "karma-webpack": "^1.5.1",
+    "mocha": "^2.2.5",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.9",
+    "yargs": "^3.9.1"
   }
 }
