@@ -1,3 +1,7 @@
 .DS_STORE
 *.log
 node_modules
+
+dist/**
+!dist/daedalus.js
+!dist/daedalus.min.js
