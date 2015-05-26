@@ -2,13 +2,15 @@
   "name": "daedalus",
   "version": "0.0.0",
   "description": "compact functional javascript library",
-  "main": "dist/daedalus.js",
+  "main": "src/daedalus.js",
   "scripts": {
-    "clean": "",
-    "compile": "",
+    "clean": "rm -rf dist; mkdir dist",
+    "webpack": "node ./node_modules/.bin/webpack ./src/daedalus.js",
+    "webpack:prod": "node ./node_modules/.bin/webpack ./src/daedalus.js -p",
+    "compile": "npm run webpack ./dist/daedalus.js; npm run webpack:prod ./dist/daedalus.min.js",
     "test": "node ./node_modules/karma/bin/karma start",
     "test:prod": "NODE_ENV=production npm run test",
-    "deploy": "npm run test:prod"
+    "deploy": "npm run clean; npm run compile; npm run test:prod"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,6 @@
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",
     "phantomjs-polyfill": "0.0.1",
-    "yargs": "^3.9.1"
+    "webpack": "^1.9.10"
   }
 }
