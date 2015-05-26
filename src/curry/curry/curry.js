@@ -1,11 +1,9 @@
-var _slice = require('../../utils/slice');
-var curryN = require('../curry-n/curry-n');
+var _slice  = require('../../utils/slice'),
+    _curryN = require('../curry-n/_curry-n');
 
 module.exports = function (fn) {
-  var applied;
+  var applied = arguments.length > 1 ?
+    _slice.apply(arguments).slice(1) : [];
 
-  if (arguments.length > 1) {
-    applied = _slice.apply(arguments).slice(1);
-  }
-  return curryN(fn.length, fn, applied);
+  return _curryN.apply(undefined, [fn.length, fn, applied]);
 };

@@ -1,15 +1,9 @@
-var _slice = require('../../utils/slice');
+var _slice  = require('../../utils/slice'),
+    _curryN = require('./_curry-n');
 
-function curryN (arity, fn, applied) {
-  if (applied && applied.length >= arity) {
-    return fn.apply(undefined, applied);
-  } else {
-    return function () {
-      var args = _slice.apply(arguments);
+module.exports = function (arity, fn) {
+  var applied = arguments.length > 2 ?
+    _slice.apply(arguments).slice(2) : [];
 
-      return curryN(arity, fn, (applied || []).concat(args));
-    };
-  }
-}
-
-module.exports = curryN;
+  return _curryN(arity, fn, applied);
+};
