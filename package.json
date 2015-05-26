@@ -7,7 +7,8 @@
     "clean": "",
     "compile": "",
     "test": "node ./node_modules/karma/bin/karma start",
-    "deploy": ""
+    "test:prod": "NODE_ENV=production npm run test",
+    "deploy": "npm run test:prod"
   },
   "repository": {
     "type": "git",

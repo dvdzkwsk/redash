@@ -1,4 +1,6 @@
-var path = require('path');
+var path = require('path'),
+    NODE_ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
+    node_env = NODE_ENV.toLowerCase();
 
 module.exports = function (config) {
   return config.set({
@@ -7,11 +9,12 @@ module.exports = function (config) {
       'src/daedalus.unit.js'
     ],
     frameworks : ['chai', 'mocha'],
-    preprocessors: {
+    preprocessors : {
       './src/**/*.js' : ['webpack']
     },
-    reporters: ['spec'],
-    browsers: ['PhantomJS'],
+    reporters : ['spec'],
+    browsers : ['PhantomJS'],
+    singleRun : node_env === 'production',
     webpack : {
       devtool : 'inline-source-map',
       resolve : path.resolve(__dirname, 'src')
@@ -19,7 +22,7 @@ module.exports = function (config) {
     webpackMiddleware : {
       noInfo : true
     },
-    plugins: [
+    plugins : [
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-chai'),
