@@ -170,14 +170,37 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = exports = {
-	  forEach : __webpack_require__(8),
-	  map     : __webpack_require__(9),
-	  reduce  : __webpack_require__(10)
+	  filter  : __webpack_require__(8),
+	  forEach : __webpack_require__(9),
+	  map     : __webpack_require__(10),
+	  reduce  : __webpack_require__(11),
+	  reject  : __webpack_require__(12)
 	};
 
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var curryN = __webpack_require__(6);
+
+	// TODO: is it faster to push or concat?
+	// TODO: is it faster to clone entire array and splice removals?
+	module.exports = curryN(2, function (fn, xs) {
+	  var i=0, len=xs.length,
+	      ys = [];
+
+	  for (; i<len; i++) {
+	    if (fn(xs[i], i)) {
+	      ys.push(xs[i]);
+	    }
+	  }
+	  return ys;
+	});
+
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -192,7 +215,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -209,7 +232,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -225,7 +248,27 @@
 
 	module.exports = curryN(3, function (fn, accum, xs) {
 	  return typeof accum === 'undefined' ?
-	    reduce(fn, xs[0], xs, 1) : reduce(fn, accum, xs, 0);
+	    _reduce(fn, xs[0], xs, 1) : _reduce(fn, accum, xs, 0);
+	});
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var curryN = __webpack_require__(6);
+
+	// TODO: is it faster to clone the entire array and splice removals?
+	module.exports = curryN(2, function (fn, xs) {
+	  var i=0, len=xs.length,
+	      ys = [];
+
+	  for (; i<len; i++) {
+	    if (!fn(xs[i], i)) {
+	      ys.push(xs[i]);
+	    }
+	  }
+	  return ys;
 	});
 
 
