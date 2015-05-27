@@ -1,7 +1,7 @@
 {
   "name": "daedalus",
   "version": "0.0.0",
-  "description": "compact functional javascript library",
+  "description": "Utility library for writing performant functional JavaScript",
   "main": "src/daedalus.js",
   "scripts": {
     "clean": "rm -rf dist; mkdir dist",
