@@ -1,4 +1,4 @@
-var map = require('./map');
+var map = require('.');
 
 describe('.map()', function () {
 

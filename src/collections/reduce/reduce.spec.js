@@ -1,4 +1,4 @@
-var reduce = require('./reduce');
+var reduce = require('.');
 
 describe('.reduce()', function () {
 

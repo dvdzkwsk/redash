@@ -1,4 +1,4 @@
-var reject = require('./reject');
+var reject = require('.');
 
 describe('.reject()', function () {
   it('Should return a new array that contains only elements that don\'t match the predicate function.', function () {

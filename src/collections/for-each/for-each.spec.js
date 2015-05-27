@@ -1,4 +1,4 @@
-var forEach = require('./for-each');
+var forEach = require('.');
 
 describe('.forEach()', function () {
   it('Should pass each element in a collection to the provided callback.', function () {

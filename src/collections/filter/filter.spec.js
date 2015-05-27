@@ -1,4 +1,4 @@
-var filter = require('./filter');
+var filter = require('.');
 
 describe('.filter()', function () {
   it('Should return a new array that contains only elements that match the predicate function.', function () {

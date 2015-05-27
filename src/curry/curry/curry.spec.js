@@ -1,4 +1,4 @@
-var _curry = require('./curry');
+var _curry = require('.');
 
 // --------------------------
 // Helpers

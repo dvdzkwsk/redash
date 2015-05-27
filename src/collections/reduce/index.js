@@ -1,4 +1,4 @@
-var curryN = require('../../curry/curry-n/curry-n');
+var curryN = require('../../curry/curry-n');
 
 function _reduce (fn, accum, xs, i) {
   var len = xs.length;
