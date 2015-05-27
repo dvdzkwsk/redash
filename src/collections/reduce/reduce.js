@@ -1,3 +1,5 @@
+var curryN = require('../../curry/curry-n/curry-n');
+
 function _reduce (fn, accum, xs, i) {
   var len = xs.length;
 
@@ -7,7 +9,7 @@ function _reduce (fn, accum, xs, i) {
   return accum;
 }
 
-module.exports = function (fn, accum, xs) {
+module.exports = curryN(3, function (fn, accum, xs) {
   return typeof accum === 'undefined' ?
     reduce(fn, xs[0], xs, 1) : reduce(fn, accum, xs, 0);
-};
+});

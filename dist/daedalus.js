@@ -180,20 +180,24 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = function (fn, xs) {
+	var curryN = __webpack_require__(6);
+
+	module.exports = curryN(2, function (fn, xs) {
 	  var i = 0, len = xs.length;
 
 	  for (; i < len; i++) {
 	    fn(xs[i], i);
 	  }
-	};
+	});
 
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = function (fn, xs) {
+	var curryN = __webpack_require__(6);
+
+	module.exports = curryN(3, function (fn, xs) {
 	  var i  = 0, len = xs.length,
 	      ys = new Array(len);
 
@@ -201,12 +205,14 @@
 	    ys[i] = fn(xs[i], i);
 	  }
 	  return ys;
-	};
+	});
 
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
+
+	var curryN = __webpack_require__(6);
 
 	function _reduce (fn, accum, xs, i) {
 	  var len = xs.length;
@@ -217,10 +223,10 @@
 	  return accum;
 	}
 
-	module.exports = function (fn, accum, xs) {
+	module.exports = curryN(3, function (fn, accum, xs) {
 	  return typeof accum === 'undefined' ?
 	    reduce(fn, xs[0], xs, 1) : reduce(fn, accum, xs, 0);
-	};
+	});
 
 
 /***/ }
