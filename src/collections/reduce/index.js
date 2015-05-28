@@ -1,13 +1,5 @@
-var curryN = require('../../curry/curry-n');
-
-function _reduce (fn, accum, xs, i) {
-  var len = xs.length;
-
-  for (; i < len; i++) {
-    accum = fn(accum, xs[i], i);
-  }
-  return accum;
-}
+var curryN  = require('../../curry/curry-n'),
+    _reduce = require('./_internal');
 
 module.exports = curryN(3, function (fn, accum, xs) {
   return typeof accum === 'undefined' ?

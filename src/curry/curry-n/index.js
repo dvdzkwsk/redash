@@ -1,5 +1,5 @@
 var _slice  = require('../../utils/slice'),
-    _curryN = require('./_curry-n');
+    _curryN = require('./_internal');
 
 module.exports = function (arity, fn) {
   var applied = arguments.length > 2 ?
