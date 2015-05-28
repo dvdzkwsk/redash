@@ -1,4 +1,6 @@
-module.exports = function (inc, start, end) {
+var curryN  = require('../../curry/curry-n');
+
+module.exports = curryN(3, function (inc, start, end) {
   var i, y, ct, ys;
 
   // return early if the expression would result in an infinite loop.
@@ -20,4 +22,4 @@ module.exports = function (inc, start, end) {
     y += inc;
   }
   return ys;
-};
+});

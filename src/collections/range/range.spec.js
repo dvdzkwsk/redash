@@ -16,6 +16,10 @@ describe('.range()', function () {
     expect(threes[threes.length - 1]).to.equal(99);
   });
 
+  it('Should not exceed the upper bounds.', function () {
+    expect(range(3,1,5)).to.deep.equal([1,4]);
+  });
+
   it('Should return an empty array if the upper bound is less than the lower bounds and the incrementer is positive.', function () {
     expect(range(1, 1, 0)).to.be.an.array;
     expect(range(1, 1, 0)).to.have.length(0);
@@ -50,5 +54,16 @@ describe('.range()', function () {
 
   it('Should properly handle a positive lower bound with a positive lower bound and a negative incrementer.', function () {
     expect(range(-1, 4, 2)).to.deep.equal([4,3,2]);
+  });
+
+  it('Should return a curried function when partially applied.', function () {
+    var rangeWith1 = range(1),
+        rangeWith3 = range(3);
+
+    expect(rangeWith1()(1)()(5)).to.deep.equal([1,2,3,4,5]);
+    expect(rangeWith1()(1, 5)).to.deep.equal([1,2,3,4,5]);
+
+    expect(rangeWith3()(1)()(5)).to.deep.equal([1,4]);
+    expect(rangeWith3()(1, 5)).to.deep.equal([1,4]);
   });
 });
