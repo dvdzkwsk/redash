@@ -183,7 +183,9 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = function (inc, start, end) {
+	var curryN  = __webpack_require__(6);
+
+	module.exports = curryN(3, function (inc, start, end) {
 	  var i, y, ct, ys;
 
 	  // return early if the expression would result in an infinite loop.
@@ -205,7 +207,7 @@
 	    y += inc;
 	  }
 	  return ys;
-	};
+	});
 
 
 /***/ },
