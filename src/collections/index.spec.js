@@ -3,6 +3,7 @@ var collections = require('./index'),
       'filter',
       'forEach',
       'map',
+      'range',
       'reduce',
       'reject'
     ];
