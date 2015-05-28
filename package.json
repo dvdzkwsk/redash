@@ -10,7 +10,7 @@
     "compile": "npm run webpack ./dist/daedalus.js; npm run webpack:prod ./dist/daedalus.min.js",
     "test": "node ./node_modules/karma/bin/karma start",
     "test:prod": "NODE_ENV=production npm run test",
-    "deploy": "npm run clean; npm run compile; npm run test:prod"
+    "deploy": "npm run test:prod && npm run clean && npm run compile"
   },
   "repository": {
     "type": "git",

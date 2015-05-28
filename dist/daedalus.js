@@ -170,16 +170,46 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = exports = {
-	  filter  : __webpack_require__(8),
-	  forEach : __webpack_require__(9),
-	  map     : __webpack_require__(10),
-	  reduce  : __webpack_require__(11),
-	  reject  : __webpack_require__(12)
+	  filter  : __webpack_require__(9),
+	  forEach : __webpack_require__(10),
+	  map     : __webpack_require__(11),
+	  range   : __webpack_require__(8),
+	  reduce  : __webpack_require__(12),
+	  reject  : __webpack_require__(14)
 	};
 
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function (inc, start, end) {
+	  var i, y, ct, ys;
+
+	  // return early if the expression would result in an infinite loop.
+	  if (
+	    inc === 0 ||
+	    (end < start && inc > 0) ||
+	    (end > start && inc < 0)
+	  ) {
+	    return [];
+	  }
+
+	  i  = 0;
+	  y  = start;
+	  ct = Math.abs(Math.floor((end - start) / inc));
+	  ys = new Array(ct);
+
+	  for (; i <= ct; i++) {
+	    ys[i] = y;
+	    y += inc;
+	  }
+	  return ys;
+	};
+
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -200,7 +230,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -215,7 +245,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
@@ -232,19 +262,11 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var curryN = __webpack_require__(6);
-
-	function _reduce (fn, accum, xs, i) {
-	  var len = xs.length;
-
-	  for (; i < len; i++) {
-	    accum = fn(accum, xs[i], i);
-	  }
-	  return accum;
-	}
+	var curryN  = __webpack_require__(6),
+	    _reduce = __webpack_require__(13);
 
 	module.exports = curryN(3, function (fn, accum, xs) {
 	  return typeof accum === 'undefined' ?
@@ -253,7 +275,21 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function (fn, accum, xs, i) {
+	  var len = xs.length;
+
+	  for (; i < len; i++) {
+	    accum = fn(accum, xs[i], i);
+	  }
+	  return accum;
+	};
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var curryN = __webpack_require__(6);
