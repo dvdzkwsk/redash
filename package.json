@@ -7,7 +7,7 @@
     "clean": "rm -rf dist; mkdir dist",
     "webpack": "node ./node_modules/.bin/webpack ./src/daedalus.js",
     "webpack:prod": "node ./node_modules/.bin/webpack ./src/daedalus.js -p",
-    "compile": "npm run webpack ./dist/daedalus.js; npm run webpack:prod ./dist/daedalus.min.js",
+    "compile": "echo \"Compilation currently disabled (noop)\"",
     "test": "node ./node_modules/karma/bin/karma start",
     "test:prod": "NODE_ENV=production npm run test",
     "deploy": "npm run test:prod && npm run clean && npm run compile"
