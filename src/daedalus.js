@@ -1,6 +1,6 @@
-require('./utils/object-assign-polyfill');
+var assign = require('./utils/assign');
 
-var DAEDALUS = Object.assign(
+var DAEDALUS = assign(
   {
     VERSION : '0.0.0'
   },
