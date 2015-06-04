@@ -51,7 +51,8 @@
 	    VERSION : '0.0.0'
 	  },
 	  __webpack_require__(2),
-	  __webpack_require__(7)
+	  __webpack_require__(7),
+	  __webpack_require__(15)
 	);
 
 	module.exports = exports = DAEDALUS;
@@ -307,6 +308,38 @@
 	    }
 	  }
 	  return ys;
+	});
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = exports = {
+	  prop   : __webpack_require__(16),
+	  propEq : __webpack_require__(17)
+	};
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var curryN = __webpack_require__(6);
+
+	module.exports = curryN(2, function (prop, obj) {
+	  return obj[prop];
+	});
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var curryN = __webpack_require__(6);
+
+	module.exports = curryN(3, function (prop, val, obj) {
+	  return obj[prop] === val;
 	});
 
 
