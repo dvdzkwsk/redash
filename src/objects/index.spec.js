@@ -1,6 +1,11 @@
 var objects = require('./'),
     EXPECTED_FUNCTIONS = [
-      'prop'
+      'keys',
+      'keysOwn',
+      'prop',
+      'propEq',
+      'vals',
+      'valsOwn'
     ];
 
 describe('Objects', function () {
