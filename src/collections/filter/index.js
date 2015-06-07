@@ -1,4 +1,4 @@
-var curryN = require('../../curry/curry-n');
+var curryN = require('../../functions/curry-n');
 
 // TODO: is it faster to push or concat?
 // TODO: is it faster to clone entire array and splice removals?

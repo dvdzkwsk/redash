@@ -1,4 +1,4 @@
-var curryN  = require('../../curry/curry-n'),
+var curryN  = require('../../functions/curry-n'),
     _reduce = require('./_internal');
 
 module.exports = curryN(3, function reduce (fn, accum, xs) {

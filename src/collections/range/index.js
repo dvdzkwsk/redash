@@ -1,4 +1,4 @@
-var curryN  = require('../../curry/curry-n');
+var curryN  = require('../../functions/curry-n');
 
 module.exports = curryN(3, function range (inc, start, end) {
   var i, y, ct, ys;

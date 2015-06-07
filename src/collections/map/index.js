@@ -1,4 +1,4 @@
-var curryN = require('../../curry/curry-n');
+var curryN = require('../../functions/curry-n');
 
 module.exports = curryN(2, function map (fn, xs) {
   var i  = 0, len = xs.length,

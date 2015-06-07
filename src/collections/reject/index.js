@@ -1,4 +1,4 @@
-var curryN = require('../../curry/curry-n');
+var curryN = require('../../functions/curry-n');
 
 // TODO: is it faster to clone the entire array and splice removals?
 module.exports = curryN(2, function reject (fn, xs) {

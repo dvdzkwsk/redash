@@ -4,8 +4,8 @@ var DAEDALUS = assign(
   {
     VERSION : '0.0.0'
   },
-  require('./curry'),
   require('./collections'),
+  require('./functions'),
   require('./objects')
 );
 
