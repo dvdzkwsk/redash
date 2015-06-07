@@ -1,6 +1,6 @@
 var curryN  = require('../../curry/curry-n');
 
-module.exports = curryN(3, function (inc, start, end) {
+module.exports = curryN(3, function range (inc, start, end) {
   var i, y, ct, ys;
 
   // return early if the expression would result in an infinite loop.

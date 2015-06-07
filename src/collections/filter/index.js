@@ -2,7 +2,7 @@ var curryN = require('../../curry/curry-n');
 
 // TODO: is it faster to push or concat?
 // TODO: is it faster to clone entire array and splice removals?
-module.exports = curryN(2, function (fn, xs) {
+module.exports = curryN(2, function filter (fn, xs) {
   var i  = 0, len = xs.length,
       ys = [];
 
