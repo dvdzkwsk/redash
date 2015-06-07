@@ -5,9 +5,9 @@ function _curryN (arity, fn, applied) {
     return fn.apply(undefined, applied);
   } else {
     return function () {
-      var args = _slice.apply(arguments);
-
-      return _curryN(arity, fn, applied.concat(args));
+      return arguments.length ?
+        _curryN(arity, fn, applied.concat(_slice.apply(arguments))) :
+        _curryN(arity, fn, applied);
     };
   }
 };
