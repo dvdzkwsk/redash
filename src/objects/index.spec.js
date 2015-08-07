@@ -4,8 +4,7 @@ var objects = require('./'),
       'keysOwn',
       'prop',
       'propEq',
-      'vals',
-      'valsOwn'
+      'vals'
     ];
 
 describe('Objects', function () {

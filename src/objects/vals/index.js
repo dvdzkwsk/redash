@@ -1,10 +1,14 @@
 module.exports = function vals (obj) {
   var keys = Object.keys(obj),
       len  = keys.length,
-      vals = [];
+      vals = [],
+      prop;
 
   while (len--) {
-    vals.push(obj[keys[len]]);
+    prop = keys[len];
+    if (obj.hasOwnProperty(prop)) {
+      vals.push(obj[prop]);
+    }
   }
   return vals;
 };

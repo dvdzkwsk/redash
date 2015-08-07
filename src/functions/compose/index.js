@@ -6,7 +6,7 @@ module.exports = function compose () {
 
   return function composition () {
     var args   = _slice.apply(arguments),
-        result = fns[i--].apply(undefined, args);
+        result = fns[i--].apply(null, args);
 
     for (; i >= 0; i--) {
       result = fns[i](result);

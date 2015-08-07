@@ -3,6 +3,5 @@ module.exports = exports = {
   keysOwn : require('./keys-own'),
   prop    : require('./prop'),
   propEq  : require('./prop-eq'),
-  vals    : require('./vals'),
-  valsOwn : require('./vals-own')
+  vals    : require('./vals')
 };

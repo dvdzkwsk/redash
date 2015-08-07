@@ -1,6 +1,6 @@
 var assign = require('./utils/assign');
 
-var DAEDALUS = assign(
+module.exports = exports = assign(
   {
     VERSION : '0.0.0'
   },
@@ -8,5 +8,3 @@ var DAEDALUS = assign(
   require('./functions'),
   require('./objects')
 );
-
-module.exports = exports = DAEDALUS;

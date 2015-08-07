@@ -5,5 +5,5 @@ module.exports = function curry (fn) {
   var applied = arguments.length > 1 ?
     _slice.apply(arguments).slice(1) : [];
 
-  return _curryN.apply(undefined, [fn.length, fn, applied]);
+  return _curryN.apply(null, [fn.length, fn, applied]);
 };
