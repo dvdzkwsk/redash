@@ -15,6 +15,7 @@ export { default as props }       from './src/props';
 export { default as reduce }      from './src/reduce';
 export { default as reduceRight } from './src/reduceRight';
 export { default as reject }      from './src/reject';
+export { default as reverse }     from './src/reverse';
 export { default as tail }        from './src/tail';
 export { default as take }        from './src/take';
 export { default as takeUntil }   from './src/takeUntil';
