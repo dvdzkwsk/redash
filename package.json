@@ -1,0 +1,34 @@
+{
+  "name": "daedalus",
+  "version": "0.0.0",
+  "description": "",
+  "main": "daedalus.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "bundle": "rollup --format iife --name Daedalus -i daedalus.js -o dist/daedalus.js",
+    "minify": "uglifyjs dist/daedalus.js --compress --mangle -o dist/daedalus.min.js",
+    "compile": "npm run bundle && npm run minify",
+    "test": "node ./node_modules/karma/bin/karma start",
+    "deploy": "npm run lint && npm run compile && npm run test"
+  },
+  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "eslint": "^1.9.0",
+    "karma": "^0.13.15",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^0.5.3",
+    "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sinon-chai": "^1.1.0",
+    "karma-spec-reporter": "0.0.22",
+    "mocha": "^2.3.4",
+    "rollup": "^0.21.0",
+    "uglify-js": "^2.6.1",
+    "yargs": "^3.30.0"
+  }
+}
