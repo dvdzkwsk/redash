@@ -16,4 +16,12 @@ describe('(Function) take', function () {
   it('Should only take as many items as actually exist.', function () {
     expect(take(15, [1,2,3,4])).to.deep.equal([1,2,3,4])
   })
+  
+  it('Should produce a new object reference even if the result is identitical.', function () {
+    var arr = [1,2,3,4,5]
+    var res = take(100, arr)
+     
+    expect(res).to.deep.equal([1,2,3,4,5])
+    expect(res).to.not.equal(arr)
+  })
 })
