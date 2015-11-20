@@ -1,5 +1,6 @@
 const argv       = require('yargs').argv;
 const WATCH_MODE = !!argv.watch;
+const IS_CI      = process.env.NODE_ENV === 'CI';
 
 const config = {
   files : [
@@ -16,14 +17,14 @@ const config = {
   coverageReporter : {
     reporters : [
       { type : 'text-summary' },
-      { type : 'lcov', dir : 'coverage' }
+      { type : IS_CI ? 'lcov' : 'html', dir : 'coverage' }
     ]
   }
 };
 
 if (!WATCH_MODE) {
   config.reporters.push('coverage');
-  if (process.env.NODE_ENV === 'CI') {
+  if (IS_CI) {
     config.reporters.push('coveralls');
   }
 }
