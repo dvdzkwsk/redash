@@ -16,13 +16,16 @@ const config = {
   coverageReporter : {
     reporters : [
       { type : 'text-summary' },
-      { type : 'html', dir : 'coverage' }
+      { type : 'lcov', dir : 'coverage' }
     ]
   }
 };
 
 if (!WATCH_MODE) {
   config.reporters.push('coverage');
+  if (process.env.NODE_ENV === 'CI') {
+    config.reporters.push('coveralls');
+  }
 }
 
 module.exports = function (karma) {
