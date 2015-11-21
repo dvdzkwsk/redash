@@ -25,6 +25,9 @@ if (!WATCH_MODE) {
   config.coverageReporter.reporters.push(
     { type : IS_CI ? 'lcov' : 'html', dir : 'coverage' }
   )
+  if (IS_CI) {
+    config.reporters.push('coveralls')
+  }
 }
 
 module.exports = function (karma) {
