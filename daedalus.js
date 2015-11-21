@@ -19,5 +19,4 @@ export { default as reverse }     from './src/reverse';
 export { default as tail }        from './src/tail';
 export { default as take }        from './src/take';
 export { default as takeUntil }   from './src/takeUntil';
-export { default as takeWhile }   from './src/takeWhile';
 export { default as trace }       from './src/trace';
