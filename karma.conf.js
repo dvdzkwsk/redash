@@ -12,21 +12,19 @@ const config = {
   },
   singleRun  : !WATCH_MODE,
   frameworks : ['mocha', 'sinon-chai', 'chai'],
-  reporters  : ['spec'],
+  reporters  : ['spec', 'coverage'],
   browsers   : ['PhantomJS'],
   coverageReporter : {
     reporters : [
-      { type : 'text-summary' },
-      { type : IS_CI ? 'lcov' : 'html', dir : 'coverage' }
+      { type : 'text-summary' }
     ]
   }
 };
 
 if (!WATCH_MODE) {
-  config.reporters.push('coverage');
-  if (IS_CI) {
-    config.reporters.push('coveralls');
-  }
+  config.coverageReporter.reporters.push(
+    { type : IS_CI ? 'lcov' : 'html', dir : 'coverage' }
+  )
 }
 
 module.exports = function (karma) {
