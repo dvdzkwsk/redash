@@ -5,6 +5,7 @@ export { default as curryN }      from './src/curryN';
 export { default as filter }      from './src/filter';
 export { default as forEach }     from './src/forEach';
 export { default as head }        from './src/head';
+export { default as indexOf }     from './src/indexOf';
 export { default as keys }        from './src/keys';
 export { default as last }        from './src/last';
 export { default as map }         from './src/map';
