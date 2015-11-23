@@ -1,6 +1,6 @@
 import _curryN from './internal/_curryN'
 
-var indexOf = _curryN(2, [], function (y, xs) {
+var indexOf = _curryN(2, [], function indexOf (y, xs) {
   var i   = 0
     , len = xs.length
       
