@@ -1,3 +1,3 @@
-var keys = Object.keys;
+var keys = Object.keys
 
-export default keys;
+export default keys

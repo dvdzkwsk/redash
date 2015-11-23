@@ -1,19 +1,19 @@
-import _slice  from './internal/_slice';
-import _curryN from './internal/_curryN';
+import _slice  from './internal/_slice'
+import _curryN from './internal/_curryN'
 
 var pipe = function pipe () {
-  var fns    = _slice.call(arguments),
-      maxIdx = fns.length - 1;
+  var fns = _slice.call(arguments)
+    , len = fns.length
 
   return _curryN(fns[0].length, [], function __pipe__ () {
-    var i = 0,
-        y = fns[i++].apply(null, _slice.call(arguments));
+    var i = 0
+      , y = fns[i++].apply(null, _slice.call(arguments))
 
-    for (; i <= maxIdx; i++) {
-      y = fns[i](y);
+    for (; i < len; i++) {
+      y = fns[i](y)
     }
-    return y;
-  });
-};
+    return y
+  })
+}
 
-export default pipe;
+export default pipe

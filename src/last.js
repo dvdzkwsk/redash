@@ -1,5 +1,5 @@
 var last = function last (xs) {
-  return xs[xs.length - 1];
-};
+  return xs[xs.length - 1]
+}
 
-export default last;
+export default last

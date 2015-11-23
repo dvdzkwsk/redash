@@ -1,14 +1,14 @@
-import _curryN from './internal/_curryN';
+import _curryN from './internal/_curryN'
 
-var props = _curryN(2, [], function props (ps, x) {
-  var i   = 0,
-      len = ps.length,
-      ys  = new Array(len);
+var props = _curryN(2, [], function props (ps, a) {
+  var i   = 0
+    , len = ps.length
+    , ys  = new Array(len)
 
   for (; i < len; i++) {
-    ys[i] = x[ps[i]];
+    ys[i] = a[ps[i]]
   }
-  return ys;
-});
+  return ys
+})
 
-export default props;
+export default props

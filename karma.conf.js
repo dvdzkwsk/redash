@@ -1,6 +1,6 @@
-const argv       = require('yargs').argv;
-const WATCH_MODE = !!argv.watch;
-const IS_CI      = process.env.NODE_ENV === 'CI';
+const argv       = require('yargs').argv
+const WATCH_MODE = !!argv.watch
+const IS_CI      = process.env.NODE_ENV === 'CI'
 
 const config = {
   files : [
@@ -19,7 +19,7 @@ const config = {
       { type : 'text-summary' }
     ]
   }
-};
+}
 
 if (!WATCH_MODE) {
   config.coverageReporter.reporters.push(
@@ -31,5 +31,5 @@ if (!WATCH_MODE) {
 }
 
 module.exports = function (karma) {
-  karma.set(config);
-};
+  karma.set(config)
+}

@@ -1,3 +1,1 @@
-var _slice = [].slice;
-
-export default _slice;
+export default [].slice

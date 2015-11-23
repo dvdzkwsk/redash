@@ -1,18 +1,18 @@
-import _curryN from './internal/_curryN';
+import _curryN from './internal/_curryN'
 
 var filter = _curryN(2, [], function filter (fn, xs) {
-  var i   = 0,
-      len = xs.length,
-      ys  = [],
-      x;
+  var i   = 0
+    , len = xs.length
+    , ys  = []
+    , x
 
   for (; i < len; i++) {
-    x = xs[i];
+    x = xs[i]
     if (fn(x, i)) {
-      ys.push(x);
+      ys.push(x)
     }
   }
-  return ys;
-});
+  return ys
+})
 
-export default filter;
+export default filter
