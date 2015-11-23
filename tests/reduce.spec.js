@@ -5,6 +5,10 @@ describe('(Function) reduce', function () {
     expect(reduce).to.be.a('function')
   })
   
+  it('Should have an alias "foldl".', function () {
+    expect(reduce).to.equal(Daedalus.foldl)
+  })
+  
   it('Should be curried (arity 3).', function () {
     expect(reduce()).to.be.a('function')
     expect(reduce()()).to.be.a('function')

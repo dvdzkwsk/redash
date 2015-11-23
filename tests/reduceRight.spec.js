@@ -5,6 +5,10 @@ describe('(Function) reduceRight', function () {
     expect(reduceRight).to.be.a('function')
   })
   
+  it('Should have an alias "foldr".', function () {
+    expect(reduceRight).to.equal(Daedalus.foldr)
+  })
+  
   it('Should be curried to an arity of 3.', function () {
     expect(reduceRight()).to.be.a('function')
     expect(reduceRight()()).to.be.a('function')
