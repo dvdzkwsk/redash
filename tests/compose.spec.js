@@ -1,4 +1,4 @@
-var compose = Daedalus.compose
+var compose = Redash.compose
 
 
 describe('(Function) compose', function () {

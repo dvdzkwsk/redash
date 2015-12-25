@@ -1,4 +1,4 @@
-var findIndex = Daedalus.findIndex
+var findIndex = Redash.findIndex
 
 describe('(Function) findIndex', function () {
   it('Should be a function.', function () {

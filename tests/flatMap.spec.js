@@ -1,4 +1,4 @@
-var flatMap = Daedalus.flatMap
+var flatMap = Redash.flatMap
 
 describe('(Function) flatMap', function () {
   it('Should be a function.', function () {

@@ -1,4 +1,4 @@
-var trace = Daedalus.trace
+var trace = Redash.trace
 
 describe('(Function) trace', function () {
   var _spies

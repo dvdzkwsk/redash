@@ -1,4 +1,4 @@
-var tail = Daedalus.tail
+var tail = Redash.tail
 
 describe('(Function) tail', function () {
   it('Should be a function.', function () {

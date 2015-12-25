@@ -1,4 +1,4 @@
-var pipe = Daedalus.pipe
+var pipe = Redash.pipe
 
 describe('(Function) pipe', function () {
   var _spies

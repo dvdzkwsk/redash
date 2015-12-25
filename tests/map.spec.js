@@ -1,4 +1,4 @@
-var map = Daedalus.map
+var map = Redash.map
 
 describe('(Function) map', function () {
   var _spies

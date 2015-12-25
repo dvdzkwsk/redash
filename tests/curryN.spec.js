@@ -1,4 +1,4 @@
-var curryN = Daedalus.curryN
+var curryN = Redash.curryN
 
 describe('(Function) curryN', function () {
   

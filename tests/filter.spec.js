@@ -1,4 +1,4 @@
-var filter = Daedalus.filter
+var filter = Redash.filter
 
 describe('(Function) filter', function () {
   it('Should be a function.', function () {

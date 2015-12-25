@@ -1,4 +1,4 @@
-var reduceRight = Daedalus.reduceRight
+var reduceRight = Redash.reduceRight
 
 describe('(Function) reduceRight', function () {
   it('Should be a function.', function () {
@@ -6,7 +6,7 @@ describe('(Function) reduceRight', function () {
   })
   
   it('Should have an alias "foldr".', function () {
-    expect(reduceRight).to.equal(Daedalus.foldr)
+    expect(reduceRight).to.equal(Redash.foldr)
   })
   
   it('Should be curried to an arity of 3.', function () {

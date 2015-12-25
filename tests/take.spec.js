@@ -1,4 +1,4 @@
-var take = Daedalus.take
+var take = Redash.take
 
 describe('(Function) take', function () {
   it('Should be a function.', function () {

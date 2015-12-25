@@ -1,4 +1,4 @@
-var reject = Daedalus.reject
+var reject = Redash.reject
 
 describe('(Function) reject', function () {
   it('Should be a function.', function () {

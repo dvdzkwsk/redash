@@ -2,14 +2,14 @@
   "name": "redash",
   "version": "0.1.0",
   "description": "",
-  "main": "daeadalus.js",
+  "main": "redash.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "lint": "eslint src/**/*.js",
-    "bundle": "rollup --format iife --name Daedalus -i daedalus.js -o dist/daedalus.js",
-    "minify": "uglifyjs dist/daedalus.js --compress --mangle -o dist/daedalus.min.js",
+    "bundle": "rollup --format iife --name Redash -i redash.js -o dist/redash.js",
+    "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
     "compile": "npm run bundle && npm run minify",
     "test": "node ./node_modules/karma/bin/karma start",
     "deploy": "npm run compile && npm run test"
@@ -28,6 +28,7 @@
     "karma-sinon-chai": "^1.1.0",
     "karma-spec-reporter": "0.0.22",
     "mocha": "^2.3.4",
+    "phantomjs": "^1.9.19",
     "rollup": "^0.21.0",
     "uglify-js": "^2.6.1",
     "yargs": "^3.30.0"

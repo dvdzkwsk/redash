@@ -1,4 +1,4 @@
-var reverse = Daedalus.reverse
+var reverse = Redash.reverse
 
 describe('(Function) reverse', function () {
   it('Should be a function.', function () {

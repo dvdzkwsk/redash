@@ -1,4 +1,4 @@
-var takeUntil = Daedalus.takeUntil
+var takeUntil = Redash.takeUntil
 
 describe('(Function) takeUntil', function () {
   var _spies

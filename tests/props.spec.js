@@ -1,4 +1,4 @@
-var props = Daedalus.props
+var props = Redash.props
 
 describe('(Function) props', function () {
   it('Should be a function.', function () {

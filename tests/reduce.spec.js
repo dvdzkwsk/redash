@@ -1,4 +1,4 @@
-var reduce = Daedalus.reduce
+var reduce = Redash.reduce
 
 describe('(Function) reduce', function () {
   it('Should be a function.', function () {
@@ -6,7 +6,7 @@ describe('(Function) reduce', function () {
   })
   
   it('Should have an alias "foldl".', function () {
-    expect(reduce).to.equal(Daedalus.foldl)
+    expect(reduce).to.equal(Redash.foldl)
   })
   
   it('Should be curried (arity 3).', function () {

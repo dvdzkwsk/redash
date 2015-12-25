@@ -1,4 +1,4 @@
-var head = Daedalus.head
+var head = Redash.head
 
 describe('(Function) head', function () {
   it('Should be a function.', function () {

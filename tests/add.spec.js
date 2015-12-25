@@ -1,4 +1,4 @@
-var add = Daedalus.add
+var add = Redash.add
 
 describe('(Function) add', function () {
   it('Should be a function.', function () {

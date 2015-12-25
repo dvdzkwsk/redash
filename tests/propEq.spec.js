@@ -1,4 +1,4 @@
-var propEq = Daedalus.propEq
+var propEq = Redash.propEq
 
 describe('(Function) propEq', function () {
   it('Should be a function.', function () {

@@ -1,4 +1,4 @@
-var flatten = Daedalus.flatten
+var flatten = Redash.flatten
 
 describe('(Function) flatten', function () {
   it('Should be a function.', function () {

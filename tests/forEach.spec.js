@@ -1,4 +1,4 @@
-var forEach = Daedalus.forEach
+var forEach = Redash.forEach
 
 describe('(Function) forEach', function () {
   var _spies

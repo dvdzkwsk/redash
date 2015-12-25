@@ -1,4 +1,4 @@
-var keys = Daedalus.keys
+var keys = Redash.keys
 
 describe('(Function) keys', function () {
   it('Should be a function.', function () {

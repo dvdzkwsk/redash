@@ -4,11 +4,11 @@ const IS_CI      = process.env.NODE_ENV === 'CI'
 
 const config = {
   files : [
-    'dist/daedalus.js',
+    'dist/redash.js',
     'tests/**/*.spec.js'
   ],
   preprocessors : {
-    'dist/daedalus.js' : ['coverage']
+    'dist/redash.js' : ['coverage']
   },
   singleRun  : !WATCH_MODE,
   frameworks : ['mocha', 'sinon-chai', 'chai'],

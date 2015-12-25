@@ -1,4 +1,4 @@
-var last = Daedalus.last
+var last = Redash.last
 
 describe('(Function) last', function () {
   it('Should be a function.', function () {

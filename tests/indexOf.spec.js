@@ -1,4 +1,4 @@
-var indexOf = Daedalus.indexOf
+var indexOf = Redash.indexOf
 
 describe('(Function) indexOf', function () {
   it('Should be a function.', function () {
