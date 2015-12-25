@@ -1,8 +1,8 @@
 {
-  "name": "daedalus",
-  "version": "0.0.0",
+  "name": "redash",
+  "version": "0.1.0",
   "description": "",
-  "main": "daedalus.js",
+  "main": "daeadalus.js",
   "directories": {
     "test": "tests"
   },
