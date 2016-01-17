@@ -160,17 +160,6 @@
     return x[p] === y
   })
 
-  var props = _curryN(2, [], function props (ps, a) {
-    var i   = 0
-      , len = ps.length
-      , ys  = new Array(len)
-
-    for (; i < len; i++) {
-      ys[i] = a[ps[i]]
-    }
-    return ys
-  })
-
   var reduce = _curryN(3, [], function reduce (fn, y, xs) {
     var i   = 0
       , len = xs.length
@@ -255,7 +244,6 @@
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;
-  exports.props = props;
   exports.reduce = reduce;
   exports.foldl = reduce;
   exports.reduceRight = reduceRight;
