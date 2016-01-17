@@ -38,10 +38,9 @@
     return _curryN(fn.length, [], fn)
   }
 
-  // TODO: should be curried
-  var curryN = function curryN (arity, fn) {
+  var curryN = _curryN(2, [], function curryN (arity, fn) {
     return _curryN(arity, [], fn)
-  }
+  })
 
   var filter = _curryN(2, [], function filter (fn, xs) {
     var i   = 0

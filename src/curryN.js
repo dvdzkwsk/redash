@@ -1,8 +1,7 @@
 import _curryN from './internal/_curryN'
 
-// TODO: should be curried
-var curryN = function curryN (arity, fn) {
+var curryN = _curryN(2, [], function curryN (arity, fn) {
   return _curryN(arity, [], fn)
-}
+})
 
 export default curryN
