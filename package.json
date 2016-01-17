@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint src/**/*.js",
-    "bundle": "rollup --format iife --name Redash -i src/redash.js -o dist/redash.js",
+    "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
     "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
     "compile": "npm run bundle && npm run minify",
     "test": "node ./node_modules/karma/bin/karma start",
