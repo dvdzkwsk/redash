@@ -1,7 +1,6 @@
 // Credit to Ramda for this idea for creating curried functions that
-// properly re
+// properly report their arity via function.length.
 // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
-/* eslint max-len:0 */
 var _arity = function _arity (arity, fn) {
   switch (arity) {
     case 0: return function __arity_0__ () { return fn.apply(this, arguments) }
