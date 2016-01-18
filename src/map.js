@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var map = _curryN(2, [], function map (fn, xs) {
+var map = _curry2(function map (fn, xs) {
   var i   = 0
     , len = xs.length
     , ys  = new Array(len)

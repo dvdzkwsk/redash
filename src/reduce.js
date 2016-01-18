@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry3 from './internal/_curry3'
 
-var reduce = _curryN(3, [], function reduce (fn, y, xs) {
+var reduce = _curry3(function reduce (fn, y, xs) {
   var i   = 0
     , len = xs.length
 

@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var forEach = _curryN(2, [], function forEach (fn, xs) {
+var forEach = _curry2(function forEach (fn, xs) {
   var i   = 0
     , len = xs.length
 

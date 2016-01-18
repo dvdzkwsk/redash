@@ -4,6 +4,28 @@
   factory((global.Redash = {}));
 }(this, function (exports) { 'use strict';
 
+  var _curry1 = function _curry1 (fn) {
+    return function __arity_1__ (a0) {
+      return arguments.length ? fn(a0) : __arity_1__
+    }
+  }
+
+  var _curry2 = function _curry2 (fn) {
+    return function __arity_2__ (a0, a1) {
+      switch (arguments.length) {
+        case 0: return __arity_2__
+        case 1: return _curry1(function __arity_1__ (b0) { return fn(a0, b0) })
+        default: return fn(a0, a1)
+      }
+    }
+  }
+
+  var add = _curry2(function add (a, b) {
+    return a + b
+  })
+
+  var _slice = [].slice
+
   // Credit to Ramda for this idea for creating curried functions that
   // properly report their arity via function.length.
   // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
@@ -24,8 +46,6 @@
     }
   }
 
-  var _slice = [].slice
-
   /**
    * @description something
    * @param {Number} arity - the target arity
@@ -43,10 +63,6 @@
     })
   }
 
-  var add = _curryN(2, [], function add (a, b) {
-    return a + b
-  })
-
   var compose = function compose () {
     var fns   = arguments
       , maxIdx = fns.length - 1
@@ -60,22 +76,6 @@
       }
       return y
     })
-  }
-
-  var _curry1 = function _curry1 (fn) {
-    return function __arity_1__ (a0) {
-      return arguments.length ? fn(a0) : __arity_1__
-    }
-  }
-
-  var _curry2 = function _curry2 (fn) {
-    return function __arity_2__ (a0, a1) {
-      switch (arguments.length) {
-        case 0: return __arity_2__
-        case 1: return _curry1(function __arity_1__ (b0) { return fn(a0, b0) })
-        default: return fn(a0, a1)
-      }
-    }
   }
 
   var _curry3 = function _curry3 (fn) {
@@ -136,7 +136,7 @@
     return -1
   })
 
-  var flatMap = _curryN(2, [], function flatMap (fn, xs) {
+  var flatMap = _curry2(function flatMap (fn, xs) {
     var i   = 0
       , len = xs.length
       , ys  = []
@@ -162,7 +162,7 @@
     return ys
   }
 
-  var forEach = _curryN(2, [], function forEach (fn, xs) {
+  var forEach = _curry2(function forEach (fn, xs) {
     var i   = 0
       , len = xs.length
 
@@ -175,7 +175,7 @@
     return xs[0]
   }
 
-  var indexOf = _curryN(2, [], function indexOf (y, xs) {
+  var indexOf = _curry2(function indexOf (y, xs) {
     var i   = 0
       , len = xs.length
         
@@ -193,7 +193,7 @@
     return xs[xs.length - 1]
   }
 
-  var map = _curryN(2, [], function map (fn, xs) {
+  var map = _curry2(function map (fn, xs) {
     var i   = 0
       , len = xs.length
       , ys  = new Array(len)
@@ -219,15 +219,15 @@
     })
   }
 
-  var prop = _curryN(2, [], function prop (p, x) {
+  var prop = _curry2(function prop (p, x) {
     return x[p]
   })
 
-  var propEq =  _curryN(3, [], function propEq (p, y, x) {
+  var propEq =  _curry3(function propEq (p, y, x) {
     return x[p] === y
   })
 
-  var reduce = _curryN(3, [], function reduce (fn, y, xs) {
+  var reduce = _curry3(function reduce (fn, y, xs) {
     var i   = 0
       , len = xs.length
 
@@ -237,7 +237,7 @@
     return y
   })
 
-  var reduceRight = _curryN(3, [], function reduceRight (fn, y, xs) {
+  var reduceRight = _curry3(function reduceRight (fn, y, xs) {
     var i = xs.length - 1
 
     for (; i >= 0; i--) {
@@ -271,11 +271,11 @@
     return xs.slice(1)
   }
 
-  var take = _curryN(2, [], function take (n, xs) {
+  var take = _curry2(function take (n, xs) {
     return xs.slice(0, n)
   })
 
-  var takeUntil = _curryN(2, [], function takeUntil (fn, xs) {
+  var takeUntil = _curry2(function takeUntil (fn, xs) {
     var i   = 0
       , len = xs.length
 

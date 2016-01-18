@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry3 from './internal/_curry3'
 
-var reduceRight = _curryN(3, [], function reduceRight (fn, y, xs) {
+var reduceRight = _curry3(function reduceRight (fn, y, xs) {
   var i = xs.length - 1
 
   for (; i >= 0; i--) {

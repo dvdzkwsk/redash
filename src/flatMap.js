@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var flatMap = _curryN(2, [], function flatMap (fn, xs) {
+var flatMap = _curry2(function flatMap (fn, xs) {
   var i   = 0
     , len = xs.length
     , ys  = []

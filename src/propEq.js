@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry3 from './internal/_curry3'
 
-var propEq =  _curryN(3, [], function propEq (p, y, x) {
+var propEq =  _curry3(function propEq (p, y, x) {
   return x[p] === y
 })
 

@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var indexOf = _curryN(2, [], function indexOf (y, xs) {
+var indexOf = _curry2(function indexOf (y, xs) {
   var i   = 0
     , len = xs.length
       

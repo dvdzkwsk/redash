@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var add = _curryN(2, [], function add (a, b) {
+var add = _curry2(function add (a, b) {
   return a + b
 })
 

@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var prop = _curryN(2, [], function prop (p, x) {
+var prop = _curry2(function prop (p, x) {
   return x[p]
 })
 

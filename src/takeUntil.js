@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var takeUntil = _curryN(2, [], function takeUntil (fn, xs) {
+var takeUntil = _curry2(function takeUntil (fn, xs) {
   var i   = 0
     , len = xs.length
 
