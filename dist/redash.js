@@ -5,9 +5,8 @@
 }(this, function (exports) { 'use strict';
 
   // Credit to Ramda for this idea for creating curried functions that
-  // properly re
+  // properly report their arity via function.length.
   // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
-  /* eslint max-len:0 */
   var _arity = function _arity (arity, fn) {
     switch (arity) {
       case 0: return function __arity_0__ () { return fn.apply(this, arguments) }
@@ -27,6 +26,13 @@
 
   var _slice = [].slice
 
+  /**
+   * @description something
+   * @param {Number} arity - the target arity
+   * @param {Number} applied - the array of already-applied arguments
+   * @param {Function} fn - the function to be called once all arguments are supplied
+   * @returns {Function}
+   */
   function _curryN (arity, applied, fn) {
     return _arity(arity, function () {
       var newApplied = applied.concat(_slice.call(arguments))
@@ -56,15 +62,54 @@
     })
   }
 
-  var curry = function curry (fn) {
-    return _curryN(fn.length, [], fn)
+  var _curry1 = function _curry1 (fn) {
+    return function __arity_1__ (a0) {
+      return arguments.length ? fn(a0) : __arity_1__
+    }
   }
 
-  var curryN = _curryN(2, [], function curryN (arity, fn) {
-    return _curryN(arity, [], fn)
+  var _curry2 = function _curry2 (fn) {
+    return function __arity_2__ (a0, a1) {
+      switch (arguments.length) {
+        case 0: return __arity_2__
+        case 1: return _curry1(function __arity_1__ (b0) { return fn(a0, b0) })
+        default: return fn(a0, a1)
+      }
+    }
+  }
+
+  var _curry3 = function _curry3 (fn) {
+    return function __arity_3__ (a0, a1, a2) {
+      switch (arguments.length) {
+        case 0: return __arity_3__
+        case 1: return _curry2(function __arity_2__ (_a1, _a2) { return fn(a0, _a1, _a2) })
+        case 2: return _curry1(function __arity_1__ (_a2) { return fn(a0, a1, _a2) })
+        default: return fn(a0, a1, a2)
+      }
+    }
+  }
+
+  var curry = function curry (fn) {
+    switch (fn.length) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(fn.length, [], fn) 
+    }
+  }
+
+  var curryN = _curry2(function curryN (arity, fn) {
+    switch (arity) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(fn.length, [], fn) 
+    }
   })
 
-  var filter = _curryN(2, [], function filter (fn, xs) {
+  var filter = _curry2(function filter (fn, xs) {
     var i   = 0
       , len = xs.length
       , ys  = []
@@ -79,7 +124,7 @@
     return ys
   })
 
-  var findIndex = _curryN(2, [], function findIndex (pred, xs) {
+  var findIndex = _curry2(function findIndex (pred, xs) {
     var i   = 0
       , len = xs.length
         
@@ -201,7 +246,7 @@
     return y
   })
 
-  var reject = _curryN(2, [], function reject (fn, xs) {
+  var reject = _curry2(function reject (fn, xs) {
     var i   = 0
       , len = xs.length
       , ys  = []

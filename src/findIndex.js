@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var findIndex = _curryN(2, [], function findIndex (pred, xs) {
+var findIndex = _curry2(function findIndex (pred, xs) {
   var i   = 0
     , len = xs.length
       

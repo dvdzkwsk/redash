@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN'
+import _curry2 from './internal/_curry2'
 
-var reject = _curryN(2, [], function reject (fn, xs) {
+var reject = _curry2(function reject (fn, xs) {
   var i   = 0
     , len = xs.length
     , ys  = []
