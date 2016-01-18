@@ -13,4 +13,4 @@ Immutable          | Yes    | Yes   | Yes    | Yes
 Functional First   | Yes    | Yes   | No     | No
 Reference Equality | Yes    | No    | Yes    | Yes
 Value Equality     | No     | Yes   | No     | No
-IE < 10            | No     | Yes   | Yes    | Yes
+IE 9+              | Yes    | Yes   | Yes    | Yes
