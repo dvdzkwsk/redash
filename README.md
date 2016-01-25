@@ -9,7 +9,7 @@ Redash is a lightweight, functional-first library meant to fill the gap between 
 Category           | Redash | Ramda | Lodash | Lodash-FP
 ------------------ | ------ | ----- | ------ | ---------
 Minified (kb)      | 3.65   | 39.1  | 60.8   | 66 
-Immutable          | Yes    | Yes   | Yes    | Yes
+Immutable          | Yes    | Yes   | No     | Yes
 Functional First   | Yes    | Yes   | No     | No
 Reference Equality | Yes    | No    | Yes    | Yes
 Value Equality     | No     | Yes   | No     | No
