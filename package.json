@@ -2,7 +2,7 @@
   "name": "redash",
   "version": "0.2.1",
   "description": "",
-  "main": "src/redash.js",
+  "main": "dist/redash.js",
   "directories": {
     "test": "tests"
   },
