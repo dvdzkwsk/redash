@@ -1,12 +1,12 @@
 import _curry2 from './internal/_curry2'
 
-var zipObj = _curry2(function zipObj (as, bs) {
+var zipObj = _curry2(function zipObj (keys, vals) {
   var i   = 0
-    , len = as.length < bs.length ? as.length: bs.length
+    , len = Math.min(keys.length, vals.length)
     , res = {}
 
   for (; i < len; i++) {
-    res[as[i]] = bs[i]
+    res[keys[i]] = vals[i]
   }
   return res
 })
