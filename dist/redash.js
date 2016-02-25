@@ -204,6 +204,35 @@
     return ys
   })
 
+  var mapValues = _curry2(function mapValues (fn, a) {
+    var y = {}
+      , prop
+
+    for (prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        y[prop] = fn(a[prop])
+      }
+    }
+    return y
+  })
+
+  var merge = _curry2(function merge (a, b) {
+    var y = {}
+      , prop
+
+    for (prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        y[prop] = a[prop]
+      }
+    }
+    for (prop in b) {
+      if (b.hasOwnProperty(prop)) {
+        y[prop] = b[prop]
+      }
+    }
+    return y
+  })
+
   var pipe = function pipe () {
     var fns = arguments
       , len = fns.length
@@ -287,6 +316,14 @@
     return xs.slice(0)
   })
 
+  var toLower = function toLower (a) {
+    return a.toLowerCase()
+  }
+
+  var toUpper = function toUpper (a) {
+    return a.toUpperCase()
+  }
+
   var trace = function trace (m) {
     return function __trace__ (x) {
       console.log(m, x)
@@ -342,6 +379,8 @@
   exports.keys = keys;
   exports.last = last;
   exports.map = map;
+  exports.mapValues = mapValues;
+  exports.merge = merge;
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;
@@ -354,6 +393,8 @@
   exports.tail = tail;
   exports.take = take;
   exports.takeUntil = takeUntil;
+  exports.toLower = toLower;
+  exports.toUpper = toUpper;
   exports.trace = trace;
   exports.unzipObj = unzipObj;
   exports.zip = zip;
