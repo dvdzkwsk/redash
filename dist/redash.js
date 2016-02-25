@@ -294,6 +294,40 @@
     }
   }
 
+  var unzipObj = function unzipObj (a) {
+    var res = []
+      , prop
+
+    for (prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        res.push([prop, a[prop]])
+      }
+    }
+    return res
+  }
+
+  var zip = _curry2(function zip (as, bs) {
+    var i   = 0
+      , len = as.length < bs.length ? as.length: bs.length
+      , ys  = new Array(len)
+
+    for (; i < len; i++) {
+      ys[i] = [as[i], bs[i]]
+    }
+    return ys
+  })
+
+  var zipObj = _curry2(function zipObj (as, bs) {
+    var i   = 0
+      , len = as.length < bs.length ? as.length: bs.length
+      , res = {}
+
+    for (; i < len; i++) {
+      res[as[i]] = bs[i]
+    }
+    return res
+  })
+
   exports.add = add;
   exports.compose = compose;
   exports.curry = curry;
@@ -321,5 +355,8 @@
   exports.take = take;
   exports.takeUntil = takeUntil;
   exports.trace = trace;
+  exports.unzipObj = unzipObj;
+  exports.zip = zip;
+  exports.zipObj = zipObj;
 
 }));
