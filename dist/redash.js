@@ -308,7 +308,7 @@
 
   var zip = _curry2(function zip (as, bs) {
     var i   = 0
-      , len = as.length < bs.length ? as.length: bs.length
+      , len = Math.min(as.length, bs.length)
       , ys  = new Array(len)
 
     for (; i < len; i++) {
@@ -317,13 +317,13 @@
     return ys
   })
 
-  var zipObj = _curry2(function zipObj (as, bs) {
+  var zipObj = _curry2(function zipObj (keys, vals) {
     var i   = 0
-      , len = as.length < bs.length ? as.length: bs.length
+      , len = Math.min(keys.length, vals.length)
       , res = {}
 
     for (; i < len; i++) {
-      res[as[i]] = bs[i]
+      res[keys[i]] = vals[i]
     }
     return res
   })
