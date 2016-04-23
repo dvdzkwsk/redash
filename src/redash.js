@@ -1,4 +1,5 @@
 export { default as add }         from './add'
+export { default as assoc }       from './merge'
 export { default as compose }     from './compose'
 export { default as curry }       from './curry'
 export { default as curryN }      from './curryN'
