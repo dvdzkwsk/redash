@@ -1,12 +1,13 @@
-import _curryN from './internal/_curryN' 
+import _curryN from './internal/_curryN'
 
 var compose = function compose () {
-  var fns   = arguments
-    , maxIdx = fns.length - 1
+  var fns = arguments
+    , _i  = fns.length - 1
+    , fn  = fns[_i--]
 
-  return _curryN(fns[maxIdx].length, [], function __composition__ () {
-    var i = maxIdx
-      , y = fns[i--].apply(null, arguments)
+  return _curryN(fn.length, [], function __composition__ () {
+    var i = _i
+      , y = fn.apply(null, arguments)
 
     for (; i >= 0; i--) {
       y = fns[i](y)
