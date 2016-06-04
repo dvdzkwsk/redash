@@ -5,7 +5,7 @@ var reduce = _curry3(function reduce (fn, y, xs) {
     , len = xs.length
 
   for (; i < len; i++) {
-    y = fn(y, xs[i], i)
+    y = fn(y, xs[i])
   }
   return y
 })
