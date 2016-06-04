@@ -151,7 +151,7 @@
 
     for (; i < len; i++) {
       x = xs[i]
-      if (fn(x, i)) {
+      if (fn(x)) {
         ys.push(x)
       }
     }
@@ -319,7 +319,7 @@
       , len = xs.length
 
     for (; i < len; i++) {
-      y = fn(y, xs[i], i)
+      y = fn(y, xs[i])
     }
     return y
   })
@@ -328,7 +328,7 @@
     var i = xs.length - 1
 
     for (; i >= 0; i--) {
-      y = fn(y, xs[i], i)
+      y = fn(y, xs[i])
     }
     return y
   })
@@ -341,7 +341,7 @@
 
     for (; i < len; i++) {
       x = xs[i]
-      if (!fn(x, i)) {
+      if (!fn(x)) {
         ys.push(x)
       }
     }
@@ -367,7 +367,7 @@
       , len = xs.length
 
     for (; i < len; i++) {
-      if (fn(xs[i], i)) {
+      if (fn(xs[i])) {
         return xs.slice(0, i)
       }
     }
