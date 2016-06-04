@@ -8,7 +8,7 @@ var reject = _curry2(function reject (fn, xs) {
 
   for (; i < len; i++) {
     x = xs[i]
-    if (!fn(x, i)) {
+    if (!fn(x)) {
       ys.push(x)
     }
   }
