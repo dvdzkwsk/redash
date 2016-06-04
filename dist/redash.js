@@ -173,13 +173,22 @@
   var flatMap = _curry2(function flatMap (fn, xs) {
     var i   = 0
       , len = xs.length
-      , ys  = []
-    
-    for (; i < len; i++) { 
-      ys = ys.concat(fn(xs[i], i))
+      , bs  = []
+      , _i
+      , b
+
+    for (; i < len; i++) {
+      b = fn(xs[i])
+      if (Array.isArray(b)) {
+        for (_i = 0; _i < b.length; _i++) {
+          bs.push(b[_i])
+        }
+      } else {
+        bs.push(b)
+      }
     }
-    
-    return ys
+
+    return bs
   })
 
   var flatten = function flatten (xs) {
@@ -187,12 +196,33 @@
       , len = xs.length
       , ys  = []
       , x
-    
+      , _i
+
     for (; i < len; i++) {
-      x  = Array.isArray(xs[i]) ? flatten(xs[i]) : xs[i] 
+      x = xs[i]
+      if (Array.isArray(x)) {
+        for (_i = 0; _i < x.length; _i++) {
+          ys.push(x[_i])
+        }
+      } else {
+        ys.push(x)
+      }
+    }
+
+    return ys
+  }
+
+  var flattenDeep = function flattenDeep (xs) {
+    var i   = 0
+      , len = xs.length
+      , ys  = []
+      , x
+
+    for (; i < len; i++) {
+      x  = Array.isArray(xs[i]) ? flattenDeep(xs[i]) : xs[i]
       ys = ys.concat(x)
     }
-    
+
     return ys
   }
 
@@ -201,7 +231,7 @@
       , len = xs.length
 
     for (; i < len; i++) {
-      fn(xs[i], i);
+      fn(xs[i])
     }
   })
 
@@ -256,7 +286,7 @@
       , ys  = new Array(len)
 
     for (; i < len; i++) {
-      ys[i] = fn(xs[i], i)
+      ys[i] = fn(xs[i])
     }
     return ys
   })
@@ -344,6 +374,16 @@
     return xs.slice(0)
   })
 
+  var times = _curry2(function times (fn, n) {
+    var i  = 0
+      , bs = []
+
+    for (; i < n; i++) {
+      bs.push(fn(i))
+    }
+    return bs
+  })
+
   var toLower = function toLower (a) {
     return a.toLowerCase()
   }
@@ -403,6 +443,7 @@
   exports.findIndex = findIndex;
   exports.flatMap = flatMap;
   exports.flatten = flatten;
+  exports.flattenDeep = flattenDeep;
   exports.forEach = forEach;
   exports.head = head;
   exports.indexOf = indexOf;
@@ -421,6 +462,7 @@
   exports.tail = tail;
   exports.take = take;
   exports.takeUntil = takeUntil;
+  exports.times = times;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.trace = trace;
