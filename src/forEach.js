@@ -5,7 +5,7 @@ var forEach = _curry2(function forEach (fn, xs) {
     , len = xs.length
 
   for (; i < len; i++) {
-    fn(xs[i], i);
+    fn(xs[i], i)
   }
 })
 
