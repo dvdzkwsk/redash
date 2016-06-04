@@ -158,6 +158,19 @@
     return ys
   })
 
+  var find = _curry2(function find (pred, xs) {
+    var i   = 0
+      , len = xs.length
+      , x
+
+    for (; i < len; i++) {
+      x = xs[i]
+      if (pred(x)) {
+        return x
+      }
+    }
+  })
+
   var findIndex = _curry2(function findIndex (pred, xs) {
     var i   = 0
       , len = xs.length
@@ -440,6 +453,7 @@
   exports.curry = curry;
   exports.curryN = curryN;
   exports.filter = filter;
+  exports.find = find;
   exports.findIndex = findIndex;
   exports.flatMap = flatMap;
   exports.flatten = flatten;
