@@ -3,12 +3,19 @@ var flatten = function flatten (xs) {
     , len = xs.length
     , ys  = []
     , x
-  
+    , _i
+
   for (; i < len; i++) {
-    x  = Array.isArray(xs[i]) ? flatten(xs[i]) : xs[i] 
-    ys = ys.concat(x)
+    x = xs[i]
+    if (Array.isArray(x)) {
+      for (_i = 0; _i < x.length; _i++) {
+        ys.push(x[_i])
+      }
+    } else {
+      ys.push(x)
+    }
   }
-  
+
   return ys
 }
 
