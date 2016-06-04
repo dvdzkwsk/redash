@@ -29,7 +29,7 @@ var map = _curry2(function map (fn, xs) {
     , ys  = new Array(len)
 
   for (; i < len; i++) {
-    ys[i] = fn(xs[i], i)
+    ys[i] = fn(xs[i])
   }
   return ys
 })
