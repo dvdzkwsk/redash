@@ -5,7 +5,7 @@ var takeUntil = _curry2(function takeUntil (fn, xs) {
     , len = xs.length
 
   for (; i < len; i++) {
-    if (fn(xs[i], i)) {
+    if (fn(xs[i])) {
       return xs.slice(0, i)
     }
   }
