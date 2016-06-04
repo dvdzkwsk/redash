@@ -20,8 +20,41 @@
     }
   }
 
+  /**
+   * add : Number -> Number -> Number
+   *
+   * @description
+   * Returns the sum of two numbers.
+   *
+   * @when
+   * You should use this function when you wish to add two numbers together.
+   *
+   * @example
+   * _.add(5)(2) // 7
+   *
+   * @example
+   * const add3 = _.add(3)
+   * add3(5) // 8
+   */
   var add = _curry2(function add (a, b) {
     return a + b
+  })
+
+  var assoc = _curry2(function assoc (a, b) {
+    var y = {}
+      , prop
+
+    for (prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        y[prop] = a[prop]
+      }
+    }
+    for (prop in b) {
+      if (b.hasOwnProperty(prop)) {
+        y[prop] = b[prop]
+      }
+    }
+    return y
   })
 
   var _slice = [].slice
@@ -64,12 +97,13 @@
   }
 
   var compose = function compose () {
-    var fns   = arguments
-      , maxIdx = fns.length - 1
+    var fns = arguments
+      , _i  = fns.length - 1
+      , fn  = fns[_i--]
 
-    return _curryN(fns[maxIdx].length, [], function __composition__ () {
-      var i = maxIdx
-        , y = fns[i--].apply(null, arguments)
+    return _curryN(fn.length, [], function __composition__ () {
+      var i = _i
+        , y = fn.apply(null, arguments)
 
       for (; i >= 0; i--) {
         y = fns[i](y)
@@ -193,6 +227,29 @@
     return xs[xs.length - 1]
   }
 
+  /**
+   * add : (a -> b) -> [a] -> [b]
+   *
+   * @description
+   * Applies a transformation to every item in an array, returning a new
+   * array of the same size where each item has been transformed.
+   *
+   * @when
+   * You should use this function when you wish to apply a common transformation
+   * to every item in an array. For example, if you have an array of objects
+   * and want a new array containing only a certain property from each object.
+   *
+   * @example
+   * _.map((a) => a + 5, [1,2,3,4,5]) // [6,7,8,9,10]
+   *
+   * @example
+   * _.map((a) => a.id, [{ id: 1 }, { id: 2 }, { id: 3 }]) // [1,2,3]
+   *
+   * @example
+   * const add5 = _.add(5)
+   * const mapAdd5 = _.map(add5)
+   * mapAdd5([1,2,3,4]) // [6,7,8,9]
+   */
   var map = _curry2(function map (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -202,35 +259,6 @@
       ys[i] = fn(xs[i], i)
     }
     return ys
-  })
-
-  var mapValues = _curry2(function mapValues (fn, a) {
-    var y = {}
-      , prop
-
-    for (prop in a) {
-      if (a.hasOwnProperty(prop)) {
-        y[prop] = fn(a[prop])
-      }
-    }
-    return y
-  })
-
-  var merge = _curry2(function merge (a, b) {
-    var y = {}
-      , prop
-
-    for (prop in a) {
-      if (a.hasOwnProperty(prop)) {
-        y[prop] = a[prop]
-      }
-    }
-    for (prop in b) {
-      if (b.hasOwnProperty(prop)) {
-        y[prop] = b[prop]
-      }
-    }
-    return y
   })
 
   var pipe = function pipe () {
@@ -366,6 +394,8 @@
   })
 
   exports.add = add;
+  exports.assoc = assoc;
+  exports.merge = assoc;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -379,8 +409,6 @@
   exports.keys = keys;
   exports.last = last;
   exports.map = map;
-  exports.mapValues = mapValues;
-  exports.merge = merge;
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;

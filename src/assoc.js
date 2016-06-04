@@ -1,6 +1,6 @@
 import _curry2 from './internal/_curry2'
 
-var merge = _curry2(function merge (a, b) {
+var assoc = _curry2(function assoc (a, b) {
   var y = {}
     , prop
 
@@ -17,4 +17,4 @@ var merge = _curry2(function merge (a, b) {
   return y
 })
 
-export default merge
+export default assoc
