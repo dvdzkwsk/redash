@@ -1,20 +1,14 @@
-import _curry2 from './internal/_curry2'
+import _curry3 from './internal/_curry3'
 
-var assoc = _curry2(function assoc (a, b) {
-  var y = {}
+var assoc = _curry3(function assoc (p, v, o) {
+  var b = {}
     , prop
 
-  for (prop in a) {
-    if (a.hasOwnProperty(prop)) {
-      y[prop] = a[prop]
-    }
+  for (prop in o) {
+    b[prop] = o[prop]
   }
-  for (prop in b) {
-    if (b.hasOwnProperty(prop)) {
-      y[prop] = b[prop]
-    }
-  }
-  return y
+  b[p] = v
+  return b
 })
 
 export default assoc
