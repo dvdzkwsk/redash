@@ -1,6 +1,5 @@
-const argv       = require('yargs').argv
-const WATCH_MODE = !!argv.watch
-const IS_CI      = process.env.NODE_ENV === 'CI'
+const IS_CI = process.env.NODE_ENV === 'CI'
+const WATCH_MODE = false
 
 const config = {
   files : [
