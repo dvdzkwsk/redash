@@ -40,21 +40,26 @@
     return a + b
   })
 
-  var assoc = _curry2(function assoc (a, b) {
-    var y = {}
+  var _curry3 = function _curry3 (fn) {
+    return function __arity_3__ (a0, a1, a2) {
+      switch (arguments.length) {
+        case 0: return __arity_3__
+        case 1: return _curry2(function __arity_2__ (_a1, _a2) { return fn(a0, _a1, _a2) })
+        case 2: return _curry1(function __arity_1__ (_a2) { return fn(a0, a1, _a2) })
+        default: return fn(a0, a1, a2)
+      }
+    }
+  }
+
+  var assoc = _curry3(function assoc (p, v, o) {
+    var b = {}
       , prop
 
-    for (prop in a) {
-      if (a.hasOwnProperty(prop)) {
-        y[prop] = a[prop]
-      }
+    for (prop in o) {
+      b[prop] = o[prop]
     }
-    for (prop in b) {
-      if (b.hasOwnProperty(prop)) {
-        y[prop] = b[prop]
-      }
-    }
-    return y
+    b[p] = v
+    return b
   })
 
   var _slice = [].slice
@@ -112,17 +117,6 @@
     })
   }
 
-  var _curry3 = function _curry3 (fn) {
-    return function __arity_3__ (a0, a1, a2) {
-      switch (arguments.length) {
-        case 0: return __arity_3__
-        case 1: return _curry2(function __arity_2__ (_a1, _a2) { return fn(a0, _a1, _a2) })
-        case 2: return _curry1(function __arity_1__ (_a2) { return fn(a0, a1, _a2) })
-        default: return fn(a0, a1, a2)
-      }
-    }
-  }
-
   var curry = function curry (fn) {
     switch (fn.length) {
       case 0: return fn
@@ -142,6 +136,10 @@
       default: return _curryN(fn.length, [], fn) 
     }
   })
+
+  var dec = function dec (a) {
+    return a - 1
+  }
 
   var filter = _curry2(function filter (fn, xs) {
     var i   = 0
@@ -252,6 +250,14 @@
     return xs[0]
   }
 
+  var identity = function (a) {
+    return a
+  }
+
+  var inc = function inc (a) {
+    return a + 1
+  }
+
   var indexOf = _curry2(function indexOf (y, xs) {
     var i   = 0
       , len = xs.length
@@ -303,6 +309,27 @@
     }
     return ys
   })
+
+  var merge = _curry2(function merge (a, b) {
+    var y = {}
+      , prop
+
+    for (prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        y[prop] = a[prop]
+      }
+    }
+    for (prop in b) {
+      if (b.hasOwnProperty(prop)) {
+        y[prop] = b[prop]
+      }
+    }
+    return y
+  })
+
+  var not = function not (a) {
+    return !a
+  }
 
   var pipe = function pipe () {
     var fns = arguments
@@ -448,10 +475,10 @@
 
   exports.add = add;
   exports.assoc = assoc;
-  exports.merge = assoc;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
+  exports.dec = dec;
   exports.filter = filter;
   exports.find = find;
   exports.findIndex = findIndex;
@@ -460,10 +487,14 @@
   exports.flattenDeep = flattenDeep;
   exports.forEach = forEach;
   exports.head = head;
+  exports.identity = identity;
+  exports.inc = inc;
   exports.indexOf = indexOf;
   exports.keys = keys;
   exports.last = last;
   exports.map = map;
+  exports.merge = merge;
+  exports.not = not;
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;
