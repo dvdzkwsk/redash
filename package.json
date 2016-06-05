@@ -6,6 +6,9 @@
   "directories": {
     "test": "tests"
   },
+  "files": [
+    "dist/redash.js"
+  ],
   "scripts": {
     "lint": "eslint src/**/*.js",
     "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
