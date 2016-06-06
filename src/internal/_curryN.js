@@ -18,7 +18,15 @@ import _arity from './_arity'
  */
 var _curryN = function _curryN (arity, applied, fn) {
   return _arity(arity, function () {
-    var newApplied = applied.concat(_slice.call(arguments))
+    var newApplied = applied
+      , i
+
+    if (arguments.length) {
+      newApplied = _slice.call(applied)
+      for (i = 0; i < arguments.length; i++) {
+        newApplied.push(arguments[i])
+      }
+    }
 
     return newApplied.length >= arity
       ? fn.apply(null, newApplied)
