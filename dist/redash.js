@@ -431,10 +431,10 @@
     return a.toUpperCase()
   }
 
-  var trace = function trace (m) {
-    return function __trace__ (x) {
-      console.log(m, x)
-      return x
+  var tap = function (fn) {
+    return function tapped (a) {
+      fn(a)
+      return a
     }
   }
 
@@ -509,7 +509,7 @@
   exports.times = times;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
-  exports.trace = trace;
+  exports.tap = tap;
   exports.unzipObj = unzipObj;
   exports.zip = zip;
   exports.zipObj = zipObj;
