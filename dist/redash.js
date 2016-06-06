@@ -101,14 +101,23 @@
     })
   }
 
+  var curryN = _curry2(function curryN (arity, fn) {
+    switch (arity) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(fn.length, [], fn) 
+    }
+  })
+
   var compose = function compose () {
     var fns = arguments
-      , _i  = fns.length - 1
-      , fn  = fns[_i--]
+      , i   = fns.length - 1
+      , fn  = fns[i--]
 
-    return _curryN(fn.length, [], function __composition__ () {
-      var i = _i
-        , y = fn.apply(null, arguments)
+    return curryN(fn.length, function __composition__ () {
+      var y = fn.apply(null, arguments)
 
       for (; i >= 0; i--) {
         y = fns[i](y)
@@ -126,16 +135,6 @@
       default: return _curryN(fn.length, [], fn) 
     }
   }
-
-  var curryN = _curry2(function curryN (arity, fn) {
-    switch (arity) {
-      case 0: return fn
-      case 1: return _curry1(fn)
-      case 2: return _curry2(fn)
-      case 3: return _curry3(fn)
-      default: return _curryN(fn.length, [], fn) 
-    }
-  })
 
   var dec = function dec (a) {
     return a - 1

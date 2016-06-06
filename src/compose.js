@@ -1,13 +1,12 @@
-import _curryN from './internal/_curryN'
+import curryN from './curryN'
 
 var compose = function compose () {
   var fns = arguments
-    , _i  = fns.length - 1
-    , fn  = fns[_i--]
+    , i   = fns.length - 1
+    , fn  = fns[i--]
 
-  return _curryN(fn.length, [], function __composition__ () {
-    var i = _i
-      , y = fn.apply(null, arguments)
+  return curryN(fn.length, function __composition__ () {
+    var y = fn.apply(null, arguments)
 
     for (; i >= 0; i--) {
       y = fns[i](y)
