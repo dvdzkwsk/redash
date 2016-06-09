@@ -40,6 +40,30 @@
     return a + b
   })
 
+  var all = _curry2(function all (fn, xs) {
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      if (!fn(xs[i])) {
+        return false
+      }
+    }
+    return true
+  })
+
+  var any = _curry2(function any (fn, xs) {
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      if (fn(xs[i])) {
+        return true
+      }
+    }
+    return false
+  })
+
   var _curry3 = function _curry3 (fn) {
     return function __arity_3__ (a0, a1, a2) {
       switch (arguments.length) {
@@ -60,6 +84,12 @@
     }
     b[p] = v
     return b
+  })
+
+  var _concat = [].concat
+
+  var concat = _curry2(function concat (as, bs) {
+    return _concat.call(as, bs)
   })
 
   var _slice = [].slice
@@ -85,15 +115,31 @@
   }
 
   /**
-   * @description something
+   * @description
+   * Curries a function to the specified arity. Receives an array of arguments
+   * to treat as as already-supplied (meaning they count toward fulfilling
+   * the target arity). The resulting function will combine the existing
+   * arguments with those from the latest call, and if the resulting length
+   * is greater than or equal to the target arity, the original function will
+   * be called with those arguments. If the number of arguments is still
+   * smaller than the required amount, the function will be curried again.
+   *
    * @param {Number} arity - the target arity
    * @param {Number} applied - the array of already-applied arguments
    * @param {Function} fn - the function to be called once all arguments are supplied
    * @returns {Function}
    */
-  function _curryN (arity, applied, fn) {
+  var _curryN = function _curryN (arity, applied, fn) {
     return _arity(arity, function () {
-      var newApplied = applied.concat(_slice.call(arguments))
+      var newApplied = applied
+        , i
+
+      if (arguments.length) {
+        newApplied = _slice.call(applied)
+        for (i = 0; i < arguments.length; i++) {
+          newApplied.push(arguments[i])
+        }
+      }
 
       return newApplied.length >= arity
         ? fn.apply(null, newApplied)
@@ -139,6 +185,14 @@
   var dec = function dec (a) {
     return a - 1
   }
+
+  var _equals = function _equals (a, b) {
+    return a === b
+  }
+
+  var equals = _curry2(function equals (a, b) {
+    return _equals(a, b)
+  })
 
   var filter = _curry2(function filter (fn, xs) {
     var i   = 0
@@ -245,6 +299,20 @@
     }
   })
 
+  var fromPairs = function fromPairs (xs) {
+    var y   = {}
+      , i   = 0
+      , len = xs.length
+      , x
+
+    for (; i < len; i++) {
+      x = xs[i]
+      y[x[0]] = x[1]
+    }
+
+    return y
+  }
+
   var head = function head (xs) {
     return xs[0]
   }
@@ -330,6 +398,10 @@
     return !a
   }
 
+  var of = function of (x) {
+    return [x]
+  }
+
   var pipe = function pipe () {
     var fns = arguments
       , len = fns.length
@@ -352,6 +424,17 @@
   var propEq =  _curry3(function propEq (p, y, x) {
     return x[p] === y
   })
+
+  var rangeBy = _curry3(function rangeBy (inc, i, end) {
+    var ys = []
+
+    for (; i < end; i += inc) {
+      ys.push(i)
+    }
+    return ys
+  })
+
+  var range = rangeBy(1)
 
   var reduce = _curry3(function reduce (fn, y, xs) {
     var i   = 0
@@ -438,17 +521,42 @@
     }
   }
 
-  var unzipObj = function unzipObj (a) {
-    var res = []
-      , prop
+  var toPairs = function toPairs (a) {
+    var ys = []
+      , p
 
-    for (prop in a) {
-      if (a.hasOwnProperty(prop)) {
-        res.push([prop, a[prop]])
+    for (p in a) {
+      if (a.hasOwnProperty(p)) {
+        ys.push([p, a[p]])
       }
     }
-    return res
+    return ys
   }
+
+  var without = _curry2(function without (as, bs) {
+    var ys    = []
+      , bi    = 0
+      , aslen = as.length
+      , bslen = bs.length
+      , ai
+      , b
+      , discard
+
+    for (; bi < bslen; bi++) {
+      b = bs[bi]
+      discard = false
+      for (ai = 0; ai < aslen; ai++) {
+        if (b == as[ai]) {
+          discard = true
+          break
+        }
+      }
+      if (!discard) {
+        ys.push(b)
+      }
+    }
+    return ys
+  })
 
   var zip = _curry2(function zip (as, bs) {
     var i   = 0
@@ -473,11 +581,15 @@
   })
 
   exports.add = add;
+  exports.all = all;
+  exports.any = any;
   exports.assoc = assoc;
+  exports.concat = concat;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
   exports.dec = dec;
+  exports.equals = equals;
   exports.filter = filter;
   exports.find = find;
   exports.findIndex = findIndex;
@@ -485,6 +597,7 @@
   exports.flatten = flatten;
   exports.flattenDeep = flattenDeep;
   exports.forEach = forEach;
+  exports.fromPairs = fromPairs;
   exports.head = head;
   exports.identity = identity;
   exports.inc = inc;
@@ -494,9 +607,12 @@
   exports.map = map;
   exports.merge = merge;
   exports.not = not;
+  exports.of = of;
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;
+  exports.range = range;
+  exports.rangeBy = rangeBy;
   exports.reduce = reduce;
   exports.foldl = reduce;
   exports.reduceRight = reduceRight;
@@ -510,7 +626,8 @@
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.tap = tap;
-  exports.unzipObj = unzipObj;
+  exports.toPairs = toPairs;
+  exports.without = without;
   exports.zip = zip;
   exports.zipObj = zipObj;
 
