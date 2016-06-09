@@ -8,9 +8,9 @@ Redash is a lightweight library meant to fill the gap between Ramda (functional)
 
 Category           | Redash | Ramda | Lodash | Lodash-FP
 ------------------ | ------ | ----- | ------ | ---------
-Minified (kb)      | 3.65   | 39.1  | 60.8   | 66
+Minified (kb)      | 5.65   | 41.1  | 66.8   | 76.6
 Immutable          | Yes    | Yes   | No     | Yes
-Functional         | Yes    | Yes   | No     | Yes
+Auto-Curry         | Yes    | Yes   | No     | Yes
 Reference Equality | Yes    | No    | Yes    | Yes
 Value Equality     | No     | Yes   | No     | No
 IE 9+              | Yes    | Yes   | Yes    | Yes
