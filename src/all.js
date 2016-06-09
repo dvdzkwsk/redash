@@ -1,5 +1,8 @@
 import _curry2 from './internal/_curry2'
 
+/**
+ * @since v0.7.0
+ */
 var all = _curry2(function all (fn, xs) {
   var i   = 0
     , len = xs.length

@@ -1,7 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * add : (a -> b) -> [a] -> [b]
+ * map : (a -> b) -> [a] -> [b]
  *
  * @description
  * Applies a transformation to every item in an array, returning a new
@@ -12,6 +12,7 @@ import _curry2 from './internal/_curry2'
  * to every item in an array. For example, if you have an array of objects
  * and want a new array containing only a certain property from each object.
  *
+ * @since v0.1.0
  * @example
  * _.map((a) => a + 5, [1,2,3,4,5]) // [6,7,8,9,10]
  *

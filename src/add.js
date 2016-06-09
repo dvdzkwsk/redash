@@ -6,8 +6,7 @@ import _curry2 from './internal/_curry2'
  * @description
  * Returns the sum of two numbers.
  *
- * @when
- * You should use this function when you wish to add two numbers together.
+ * @since v0.1.0
  *
  * @example
  * _.add(5)(2) // 7

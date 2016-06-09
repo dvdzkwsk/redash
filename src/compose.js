@@ -1,5 +1,8 @@
 import curryN from './curryN'
 
+/**
+ * @since v0.1.0
+ */
 var compose = function compose () {
   var fns = arguments
     , i   = fns.length - 1

@@ -1,5 +1,8 @@
 import _curry3 from './internal/_curry3'
 
+/**
+ * @since v0.1.0
+ */
 var reduceRight = _curry3(function reduceRight (fn, y, xs) {
   var i = xs.length - 1
 

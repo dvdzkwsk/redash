@@ -1,3 +1,6 @@
+/**
+ * @since v0.7.0
+ */
 var toPairs = function toPairs (a) {
   var ys = []
     , p

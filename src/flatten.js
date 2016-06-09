@@ -1,3 +1,6 @@
+/**
+ * @since v0.1.0
+ */
 var flatten = function flatten (xs) {
   var i   = 0
     , len = xs.length

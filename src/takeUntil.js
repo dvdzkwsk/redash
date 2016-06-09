@@ -1,5 +1,8 @@
 import _curry2 from './internal/_curry2'
 
+/**
+ * @since v0.1.0
+ */
 var takeUntil = _curry2(function takeUntil (fn, xs) {
   var i   = 0
     , len = xs.length

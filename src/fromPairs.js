@@ -1,3 +1,6 @@
+/**
+ * @since v0.7.0
+ */
 var fromPairs = function fromPairs (xs) {
   var y   = {}
     , i   = 0

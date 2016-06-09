@@ -1,5 +1,8 @@
 import _curry2 from './internal/_curry2'
 
+/**
+ * @since v0.3.0
+ */
 var zip = _curry2(function zip (as, bs) {
   var i   = 0
     , len = Math.min(as.length, bs.length)

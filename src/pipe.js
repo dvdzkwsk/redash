@@ -1,5 +1,8 @@
 import _curryN from './internal/_curryN'
 
+/**
+ * @since v0.1.0
+ */
 var pipe = function pipe () {
   var fns = arguments
     , len = fns.length
