@@ -26,8 +26,7 @@
    * @description
    * Returns the sum of two numbers.
    *
-   * @when
-   * You should use this function when you wish to add two numbers together.
+   * @since v0.1.0
    *
    * @example
    * _.add(5)(2) // 7
@@ -40,6 +39,9 @@
     return a + b
   })
 
+  /**
+   * @since v0.7.0
+   */
   var all = _curry2(function all (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -52,6 +54,18 @@
     return true
   })
 
+  /**
+   * @since v0.9.0
+   */
+  var always = function always (x) {
+    return function __redash_always__ () {
+      return x
+    }
+  }
+
+  /**
+   * @since v0.7.0
+   */
   var any = _curry2(function any (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -75,6 +89,9 @@
     }
   }
 
+  /**
+   * @since v0.6.0
+   */
   var assoc = _curry3(function assoc (p, v, o) {
     var b = {}
       , prop
@@ -88,9 +105,21 @@
 
   var _concat = [].concat
 
+  /**
+   * @since v0.7.0
+   */
   var concat = _curry2(function concat (as, bs) {
     return _concat.call(as, bs)
   })
+
+  /**
+   * @since v0.9.0
+   */
+  var complement = function complement (fn) {
+    return function () {
+      return !fn.call(this, arguments)
+    }
+  }
 
   var _slice = [].slice
 
@@ -147,16 +176,22 @@
     })
   }
 
+  /**
+   * @since v0.1.0
+   */
   var curryN = _curry2(function curryN (arity, fn) {
     switch (arity) {
       case 0: return fn
       case 1: return _curry1(fn)
       case 2: return _curry2(fn)
       case 3: return _curry3(fn)
-      default: return _curryN(fn.length, [], fn) 
+      default: return _curryN(fn.length, [], fn)
     }
   })
 
+  /**
+   * @since v0.1.0
+   */
   var compose = function compose () {
     var fns = arguments
       , i   = fns.length - 1
@@ -172,16 +207,22 @@
     })
   }
 
+  /**
+   * @since v0.1.0
+   */
   var curry = function curry (fn) {
     switch (fn.length) {
       case 0: return fn
       case 1: return _curry1(fn)
       case 2: return _curry2(fn)
       case 3: return _curry3(fn)
-      default: return _curryN(fn.length, [], fn) 
+      default: return _curryN(fn.length, [], fn)
     }
   }
 
+  /**
+   * @since v0.6.0
+   */
   var dec = function dec (a) {
     return a - 1
   }
@@ -190,10 +231,16 @@
     return a === b
   }
 
+  /**
+   * @since v0.7.0
+   */
   var equals = _curry2(function equals (a, b) {
     return _equals(a, b)
   })
 
+  /**
+   * @since v0.1.0
+   */
   var filter = _curry2(function filter (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -209,6 +256,9 @@
     return ys
   })
 
+  /**
+   * @since v0.6.0
+   */
   var find = _curry2(function find (pred, xs) {
     var i   = 0
       , len = xs.length
@@ -222,10 +272,13 @@
     }
   })
 
+  /**
+   * @since v0.1.0
+   */
   var findIndex = _curry2(function findIndex (pred, xs) {
     var i   = 0
       , len = xs.length
-        
+
     for (; i < len; i++) {
       if (pred(xs[i])) {
         return i
@@ -234,6 +287,9 @@
     return -1
   })
 
+  /**
+   * @since v0.1.0
+   */
   var flatMap = _curry2(function flatMap (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -255,6 +311,9 @@
     return bs
   })
 
+  /**
+   * @since v0.1.0
+   */
   var flatten = function flatten (xs) {
     var i   = 0
       , len = xs.length
@@ -276,6 +335,9 @@
     return ys
   }
 
+  /**
+   * @since v0.5.0
+   */
   var flattenDeep = function flattenDeep (xs) {
     var i   = 0
       , len = xs.length
@@ -290,6 +352,9 @@
     return ys
   }
 
+  /**
+   * @since v0.1.0
+   */
   var forEach = _curry2(function forEach (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -299,6 +364,9 @@
     }
   })
 
+  /**
+   * @since v0.7.0
+   */
   var fromPairs = function fromPairs (xs) {
     var y   = {}
       , i   = 0
@@ -313,22 +381,34 @@
     return y
   }
 
+  /**
+   * @since v0.1.0
+   */
   var head = function head (xs) {
     return xs[0]
   }
 
+  /**
+   * @since v0.6.0
+   */
   var identity = function (a) {
     return a
   }
 
+  /**
+   * @since v0.6.0
+   */
   var inc = function inc (a) {
     return a + 1
   }
 
+  /**
+   * @since v0.1.0
+   */
   var indexOf = _curry2(function indexOf (y, xs) {
     var i   = 0
       , len = xs.length
-        
+
     for (; i < len; i++) {
       if (xs[i] === y) {
         return i
@@ -339,12 +419,15 @@
 
   var keys = Object.keys
 
+  /**
+   * @since v0.1.0
+   */
   var last = function last (xs) {
     return xs[xs.length - 1]
   }
 
   /**
-   * add : (a -> b) -> [a] -> [b]
+   * map : (a -> b) -> [a] -> [b]
    *
    * @description
    * Applies a transformation to every item in an array, returning a new
@@ -355,6 +438,7 @@
    * to every item in an array. For example, if you have an array of objects
    * and want a new array containing only a certain property from each object.
    *
+   * @since v0.1.0
    * @example
    * _.map((a) => a + 5, [1,2,3,4,5]) // [6,7,8,9,10]
    *
@@ -379,6 +463,8 @@
 
   /**
    * Merges all own properties of the first object into the second.
+   *
+   * @since v0.4.0
    */
   var merge = _curry2(function merge (a, b) {
     var y = {}
@@ -397,14 +483,23 @@
     return y
   })
 
+  /**
+   * @since v0.6.0
+   */
   var not = function not (a) {
     return !a
   }
 
+  /**
+   * @since v0.7.0
+   */
   var of = function of (x) {
     return [x]
   }
 
+  /**
+   * @since v0.1.0
+   */
   var pipe = function pipe () {
     var fns = arguments
       , len = fns.length
@@ -420,14 +515,23 @@
     })
   }
 
+  /**
+   * @since v0.1.0
+   */
   var prop = _curry2(function prop (p, x) {
     return x[p]
   })
 
+  /**
+   * @since v0.1.0
+   */
   var propEq =  _curry3(function propEq (p, y, x) {
     return x[p] === y
   })
 
+  /**
+   * @since v0.7.0
+   */
   var rangeBy = _curry3(function rangeBy (inc, i, end) {
     var ys = []
 
@@ -437,8 +541,14 @@
     return ys
   })
 
+  /**
+   * @since v0.7.0
+   */
   var range = rangeBy(1)
 
+  /**
+   * @since v0.1.0
+   */
   var reduce = _curry3(function reduce (fn, y, xs) {
     var i   = 0
       , len = xs.length
@@ -449,6 +559,9 @@
     return y
   })
 
+  /**
+   * @since v0.1.0
+   */
   var reduceRight = _curry3(function reduceRight (fn, y, xs) {
     var i = xs.length - 1
 
@@ -458,6 +571,9 @@
     return y
   })
 
+  /**
+   * @since v0.1.0
+   */
   var reject = _curry2(function reject (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -475,18 +591,30 @@
 
   var _reverse = [].reverse
 
+  /**
+   * @since v0.1.0
+   */
   var reverse = function reverse (xs) {
     return _reverse.call(xs.slice(0))
   }
 
+  /**
+   * @since v0.1.0
+   */
   var tail = function tail (xs) {
     return xs.slice(1)
   }
 
+  /**
+   * @since v0.1.0
+   */
   var take = _curry2(function take (n, xs) {
     return xs.slice(0, n)
   })
 
+  /**
+   * @since v0.1.0
+   */
   var takeUntil = _curry2(function takeUntil (fn, xs) {
     var i   = 0
       , len = xs.length
@@ -499,6 +627,9 @@
     return xs.slice(0)
   })
 
+  /**
+   * @since v0.5.0
+   */
   var times = _curry2(function times (fn, n) {
     var i  = 0
       , bs = []
@@ -509,14 +640,23 @@
     return bs
   })
 
+  /**
+   * @since v0.4.0
+   */
   var toLower = function toLower (a) {
     return a.toLowerCase()
   }
 
+  /**
+   * @since v0.4.0
+   */
   var toUpper = function toUpper (a) {
     return a.toUpperCase()
   }
 
+  /**
+   * @since v0.7.0
+   */
   var tap = function (fn) {
     return function tapped (a) {
       fn(a)
@@ -524,6 +664,9 @@
     }
   }
 
+  /**
+   * @since v0.7.0
+   */
   var toPairs = function toPairs (a) {
     var ys = []
       , p
@@ -536,6 +679,9 @@
     return ys
   }
 
+  /**
+   * @since v0.7.0
+   */
   var without = _curry2(function without (as, bs) {
     var ys    = []
       , bi    = 0
@@ -561,6 +707,9 @@
     return ys
   })
 
+  /**
+   * @since v0.3.0
+   */
   var zip = _curry2(function zip (as, bs) {
     var i   = 0
       , len = Math.min(as.length, bs.length)
@@ -572,6 +721,9 @@
     return ys
   })
 
+  /**
+   * @since v0.3.0
+   */
   var zipObj = _curry2(function zipObj (keys, vals) {
     var i   = 0
       , len = Math.min(keys.length, vals.length)
@@ -585,9 +737,11 @@
 
   exports.add = add;
   exports.all = all;
+  exports.always = always;
   exports.any = any;
   exports.assoc = assoc;
   exports.concat = concat;
+  exports.complement = complement;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
