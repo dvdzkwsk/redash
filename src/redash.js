@@ -1,5 +1,6 @@
 export { default as add }         from './add'
 export { default as all }         from './all'
+export { default as any }         from './any'
 export { default as assoc }       from './assoc'
 export { default as concat }      from './concat'
 export { default as compose }     from './compose'
