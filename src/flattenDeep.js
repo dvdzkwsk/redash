@@ -14,5 +14,8 @@ var flattenDeep = function flattenDeep (xs) {
 
   return ys
 }
+flattenDeep.toString = function toString () {
+  return 'flattenDeep : [[a]] -> [a]'
+}
 
 export default flattenDeep

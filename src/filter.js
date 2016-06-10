@@ -16,6 +16,6 @@ var filter = _curry2(function filter (fn, xs) {
     }
   }
   return ys
-})
+}, 'filter : (a -> Boolean) -> [a] -> [a]')
 
 export default filter

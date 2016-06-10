@@ -6,5 +6,8 @@ var always = function always (x) {
     return x
   }
 }
+always.toString = function toString () {
+  return 'always : a -> * -> a'
+}
 
 export default always

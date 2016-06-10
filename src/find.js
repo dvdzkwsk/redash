@@ -14,6 +14,6 @@ var find = _curry2(function find (pred, xs) {
       return x
     }
   }
-})
+}, 'find : (a -> Boolean) -> [a] -> a | undefined')
 
 export default find

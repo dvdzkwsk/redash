@@ -13,6 +13,6 @@ var findIndex = _curry2(function findIndex (pred, xs) {
     }
   }
   return -1
-})
+}, 'findIndex : (a -> Boolean) -> [a] -> Number')
 
 export default findIndex

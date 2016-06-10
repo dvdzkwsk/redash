@@ -6,6 +6,6 @@ import _concat from './internal/_concat'
  */
 var concat = _curry2(function concat (as, bs) {
   return _concat.call(as, bs)
-})
+}, 'concat : [a] -> [a] -> [a]')
 
 export default concat

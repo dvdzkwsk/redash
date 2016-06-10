@@ -10,5 +10,8 @@ var flip = function (fn) {
     return fn.apply(this, _reverse.call(arguments))
   })
 }
+flip.toString = function toString () {
+  return '(a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)'
+}
 
 export default flip

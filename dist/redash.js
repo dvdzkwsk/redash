@@ -4,20 +4,34 @@
   factory((global.Redash = {}));
 }(this, function (exports) { 'use strict';
 
-  var _curry1 = function _curry1 (fn) {
-    return function __arity_1__ (a0) {
-      return arguments.length ? fn(a0) : __arity_1__
+  var _curry1 = function _curry1 (fn, signature) {
+    var curried = function __redash_arity_1__ (a0) {
+      return arguments.length ? fn(a0) : __redash_arity_1__
     }
+    if (signature) {
+      curried.toString = function toString () {
+        return signature
+      }
+    }
+    return curried
   }
 
-  var _curry2 = function _curry2 (fn) {
-    return function __arity_2__ (a0, a1) {
+  var _curry2 = function _curry2 (fn, signature) {
+    var curried = function __redash_arity_2__ (a0, a1) {
       switch (arguments.length) {
-        case 0: return __arity_2__
-        case 1: return _curry1(function __arity_1__ (b0) { return fn(a0, b0) })
+        case 0: return __redash_arity_2__
+        case 1: return _curry1(function __redash_arity_1__ (b0) {
+          return fn(a0, b0)
+        })
         default: return fn(a0, a1)
       }
     }
+    if (signature) {
+      curried.toString = function toString () {
+        return signature
+      }
+    }
+    return curried
   }
 
   /**
@@ -37,7 +51,7 @@
    */
   var add = _curry2(function add (a, b) {
     return a + b
-  })
+  }, 'add : Number -> Number -> Number')
 
   /**
    * @since v0.7.0
@@ -52,7 +66,7 @@
       }
     }
     return true
-  })
+  }, 'all : (a -> Boolean) -> [a] -> Boolean')
 
   /**
    * @since v0.9.0
@@ -61,6 +75,9 @@
     return function __redash_always__ () {
       return x
     }
+  }
+  always.toString = function toString () {
+    return 'always : a -> * -> a'
   }
 
   /**
@@ -76,17 +93,27 @@
       }
     }
     return false
-  })
+  }, 'any : (a -> Boolean) -> [a] -> Boolean')
 
-  var _curry3 = function _curry3 (fn) {
-    return function __arity_3__ (a0, a1, a2) {
+  var _curry3 = function _curry3 (fn, signature) {
+    var curried = function __redash_arity_3__ (a0, a1, a2) {
       switch (arguments.length) {
-        case 0: return __arity_3__
-        case 1: return _curry2(function __arity_2__ (_a1, _a2) { return fn(a0, _a1, _a2) })
-        case 2: return _curry1(function __arity_1__ (_a2) { return fn(a0, a1, _a2) })
+        case 0: return __redash_arity_3__
+        case 1: return _curry2(function __redash_arity_2__ (_a1, _a2) {
+          return fn(a0, _a1, _a2)
+        })
+        case 2: return _curry1(function __redash_arity_1__ (_a2) {
+          return fn(a0, a1, _a2)
+        })
         default: return fn(a0, a1, a2)
       }
     }
+    if (signature) {
+      curried.toString = function toString () {
+        return signature
+      }
+    }
+    return curried
   }
 
   /**
@@ -101,7 +128,7 @@
     }
     b[p] = v
     return b
-  })
+  }, 'asso : String -> * -> Object -> Object')
 
   var _concat = [].concat
 
@@ -110,7 +137,7 @@
    */
   var concat = _curry2(function concat (as, bs) {
     return _concat.call(as, bs)
-  })
+  }, 'concat : [a] -> [a] -> [a]')
 
   /**
    * @since v0.9.0
@@ -119,6 +146,9 @@
     return function () {
       return !fn.call(this, arguments)
     }
+  }
+  complement.toString = function toString () {
+    return 'complement : (*... -> Boolean) -> (*... -> Boolean)'
   }
 
   var _slice = [].slice
@@ -226,6 +256,9 @@
   var dec = function dec (a) {
     return a - 1
   }
+  dec.toString = function toString () {
+    return 'dec : Number -> Number'
+  }
 
   var _equals = function _equals (a, b) {
     return a === b
@@ -236,7 +269,7 @@
    */
   var equals = _curry2(function equals (a, b) {
     return _equals(a, b)
-  })
+  }, 'equals : a -> a -> Boolean')
 
   /**
    * @since v0.1.0
@@ -254,7 +287,7 @@
       }
     }
     return ys
-  })
+  }, 'filter : (a -> Boolean) -> [a] -> [a]')
 
   /**
    * @since v0.6.0
@@ -270,7 +303,7 @@
         return x
       }
     }
-  })
+  }, 'find : (a -> Boolean) -> [a] -> a | undefined')
 
   /**
    * @since v0.1.0
@@ -285,7 +318,7 @@
       }
     }
     return -1
-  })
+  }, 'findIndex : (a -> Boolean) -> [a] -> Number')
 
   /**
    * @since v0.1.0
@@ -309,7 +342,7 @@
     }
 
     return bs
-  })
+  }, 'flatMap : (a -> b | [b]) -> [a] -> [b]')
 
   /**
    * @since v0.1.0
@@ -334,6 +367,9 @@
 
     return ys
   }
+  flatten.toString = function toString () {
+    return 'flatten : [[a]] -> [a]'
+  }
 
   /**
    * @since v0.5.0
@@ -351,6 +387,23 @@
 
     return ys
   }
+  flattenDeep.toString = function toString () {
+    return 'flattenDeep : [[a]] -> [a]'
+  }
+
+  var _reverse = [].reverse
+
+  /**
+   * @since v0.10.0
+   */
+  var flip = function (fn) {
+    return curryN(fn.length, function flipped () {
+      return fn.apply(this, _reverse.call(arguments))
+    })
+  }
+  flip.toString = function toString () {
+    return '(a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)'
+  }
 
   /**
    * @since v0.1.0
@@ -362,7 +415,7 @@
     for (; i < len; i++) {
       fn(xs[i])
     }
-  })
+  }, '(a -> *) -> [a] -> undefined')
 
   /**
    * @since v0.7.0
@@ -459,7 +512,7 @@
       ys[i] = fn(xs[i])
     }
     return ys
-  })
+  }, 'map : (a -> b) -> [a] -> [b]')
 
   /**
    * Merges all own properties of the first object into the second.
@@ -588,8 +641,6 @@
     }
     return ys
   })
-
-  var _reverse = [].reverse
 
   /**
    * @since v0.1.0
@@ -753,6 +804,7 @@
   exports.flatMap = flatMap;
   exports.flatten = flatten;
   exports.flattenDeep = flattenDeep;
+  exports.flip = flip;
   exports.forEach = forEach;
   exports.fromPairs = fromPairs;
   exports.head = head;

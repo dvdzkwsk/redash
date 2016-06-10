@@ -21,5 +21,8 @@ var flatten = function flatten (xs) {
 
   return ys
 }
+flatten.toString = function toString () {
+  return 'flatten : [[a]] -> [a]'
+}
 
 export default flatten

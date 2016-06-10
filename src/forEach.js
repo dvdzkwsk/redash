@@ -10,6 +10,6 @@ var forEach = _curry2(function forEach (fn, xs) {
   for (; i < len; i++) {
     fn(xs[i])
   }
-})
+}, '(a -> *) -> [a] -> undefined')
 
 export default forEach

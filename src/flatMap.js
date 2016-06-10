@@ -22,6 +22,6 @@ var flatMap = _curry2(function flatMap (fn, xs) {
   }
 
   return bs
-})
+}, 'flatMap : (a -> b | [b]) -> [a] -> [b]')
 
 export default flatMap

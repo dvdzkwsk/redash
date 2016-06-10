@@ -33,6 +33,6 @@ var map = _curry2(function map (fn, xs) {
     ys[i] = fn(xs[i])
   }
   return ys
-})
+}, 'map : (a -> b) -> [a] -> [b]')
 
 export default map

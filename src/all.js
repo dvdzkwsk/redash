@@ -13,6 +13,6 @@ var all = _curry2(function all (fn, xs) {
     }
   }
   return true
-})
+}, 'all : (a -> Boolean) -> [a] -> Boolean')
 
 export default all
