@@ -17,5 +17,8 @@ var compose = function compose () {
     return y
   })
 }
+compose.toString = function toString () {
+  return 'compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)'
+}
 
 export default compose

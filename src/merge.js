@@ -20,6 +20,6 @@ var merge = _curry2(function merge (a, b) {
     }
   }
   return y
-})
+}, 'merge : {k:v} -> {k:v} -> {k:v}')
 
 export default merge

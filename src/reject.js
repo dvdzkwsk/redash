@@ -16,6 +16,6 @@ var reject = _curry2(function reject (fn, xs) {
     }
   }
   return ys
-})
+}, 'reject : (a -> Boolean) -> [a] -> [a]')
 
 export default reject

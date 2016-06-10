@@ -11,6 +11,6 @@ var reduce = _curry3(function reduce (fn, y, xs) {
     y = fn(y, xs[i])
   }
   return y
-})
+}, 'reduce : ((b, a) -> b) -> b -> [a]')
 
 export default reduce

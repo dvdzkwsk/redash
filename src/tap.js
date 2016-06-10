@@ -7,5 +7,8 @@ var tap = function (fn) {
     return a
   }
 }
+tap.toString = function toString () {
+  return '(a -> *) -> a -> a'
+}
 
 export default tap

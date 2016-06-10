@@ -128,7 +128,7 @@
     }
     b[p] = v
     return b
-  }, 'asso : String -> * -> Object -> Object')
+  }, 'assoc : String -> * -> Object -> Object')
 
   var _concat = [].concat
 
@@ -217,7 +217,7 @@
       case 3: return _curry3(fn)
       default: return _curryN(fn.length, [], fn)
     }
-  })
+  }, 'curryN : Number -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v')
 
   /**
    * @since v0.1.0
@@ -236,6 +236,9 @@
       return y
     })
   }
+  compose.toString = function toString () {
+    return 'compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)'
+  }
 
   /**
    * @since v0.1.0
@@ -248,6 +251,9 @@
       case 3: return _curry3(fn)
       default: return _curryN(fn.length, [], fn)
     }
+  }
+  curry.toString = function toString () {
+    return 'curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v'
   }
 
   /**
@@ -433,12 +439,18 @@
 
     return y
   }
+  fromPairs.toString = function toString () {
+    return 'fromPairs : [[k, v]] -> {k:v}'
+  }
 
   /**
    * @since v0.1.0
    */
   var head = function head (xs) {
     return xs[0]
+  }
+  head.toString = function toString () {
+    return 'head : [a] -> a'
   }
 
   /**
@@ -447,12 +459,18 @@
   var identity = function (a) {
     return a
   }
+  identity.toString = function toString () {
+    return 'identity : a -> a'
+  }
 
   /**
    * @since v0.6.0
    */
   var inc = function inc (a) {
     return a + 1
+  }
+  inc.toString = function toString () {
+    return 'inc : Number -> Number'
   }
 
   /**
@@ -468,15 +486,23 @@
       }
     }
     return -1
-  })
+  }, 'indexOf : a -> [a] -> Number')
 
-  var keys = Object.keys
+  var keys = function (object) {
+    return Object.keys(object)
+  }
+  keys.toString = function toString () {
+    return 'keys : {k:v} -> [k]'
+  }
 
   /**
    * @since v0.1.0
    */
   var last = function last (xs) {
     return xs[xs.length - 1]
+  }
+  last.toString = function toString () {
+    return 'last : [a] -> a'
   }
 
   /**
@@ -534,7 +560,7 @@
       }
     }
     return y
-  })
+  }, 'merge : {k:v} -> {k:v} -> {k:v}')
 
   /**
    * @since v0.6.0
@@ -542,12 +568,18 @@
   var not = function not (a) {
     return !a
   }
+  not.toString = function toString () {
+    return 'not : Boolean -> Boolean'
+  }
 
   /**
    * @since v0.7.0
    */
   var of = function of (x) {
     return [x]
+  }
+  of.toString = function toString () {
+    return 'of : a -> [a]'
   }
 
   /**
@@ -567,20 +599,23 @@
       return y
     })
   }
+  pipe.toString = function toString () {
+    return 'pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z)'
+  }
 
   /**
    * @since v0.1.0
    */
   var prop = _curry2(function prop (p, x) {
     return x[p]
-  })
+  }, 'prop : String -> {k:v} -> v')
 
   /**
    * @since v0.1.0
    */
   var propEq =  _curry3(function propEq (p, y, x) {
     return x[p] === y
-  })
+  }, 'propEq : String -> * -> {k:v} -> Boolean')
 
   /**
    * @since v0.7.0
@@ -592,12 +627,15 @@
       ys.push(i)
     }
     return ys
-  })
+  }, 'rangeBy : Number -> Number -> Number -> [Number]')
 
   /**
    * @since v0.7.0
    */
   var range = rangeBy(1)
+  range.toString = function toString () {
+    return 'range : Number -> [Number]'
+  }
 
   /**
    * @since v0.1.0
@@ -610,7 +648,7 @@
       y = fn(y, xs[i])
     }
     return y
-  })
+  }, 'reduce : ((b, a) -> b) -> b -> [a]')
 
   /**
    * @since v0.1.0
@@ -622,7 +660,7 @@
       y = fn(y, xs[i])
     }
     return y
-  })
+  }, 'reduceRight : ((b, a) -> b) -> b -> [a]')
 
   /**
    * @since v0.1.0
@@ -640,13 +678,16 @@
       }
     }
     return ys
-  })
+  }, 'reject : (a -> Boolean) -> [a] -> [a]')
 
   /**
    * @since v0.1.0
    */
   var reverse = function reverse (xs) {
     return _reverse.call(xs.slice(0))
+  }
+  reverse.toString = function toString () {
+    return 'reverse : [a] -> [a]'
   }
 
   /**
@@ -655,13 +696,16 @@
   var tail = function tail (xs) {
     return xs.slice(1)
   }
+  tail.toString = function toString () {
+    return 'tail : [a] -> [a]'
+  }
 
   /**
    * @since v0.1.0
    */
   var take = _curry2(function take (n, xs) {
     return xs.slice(0, n)
-  })
+  }, 'take : Number -> [a] -> [a]')
 
   /**
    * @since v0.1.0
@@ -676,7 +720,7 @@
       }
     }
     return xs.slice(0)
-  })
+  }, 'takeUntil : (a -> Boolean) -> [a] -> [a]')
 
   /**
    * @since v0.5.0
@@ -690,6 +734,9 @@
     }
     return bs
   })
+  times.toString = function toString () {
+    return 'times : (Number -> a) -> Number -> [a]'
+  }
 
   /**
    * @since v0.4.0
@@ -697,12 +744,18 @@
   var toLower = function toLower (a) {
     return a.toLowerCase()
   }
+  toLower.toString = function toString () {
+    return 'toLower : String -> String'
+  }
 
   /**
    * @since v0.4.0
    */
   var toUpper = function toUpper (a) {
     return a.toUpperCase()
+  }
+  toUpper.toString = function toString () {
+    return 'toUpper : String -> String'
   }
 
   /**
@@ -713,6 +766,9 @@
       fn(a)
       return a
     }
+  }
+  tap.toString = function toString () {
+    return '(a -> *) -> a -> a'
   }
 
   /**
@@ -728,6 +784,9 @@
       }
     }
     return ys
+  }
+  toPairs.toString = function toString () {
+    return 'toPairs : {k:v} -> [[k, v]]'
   }
 
   /**
@@ -756,7 +815,7 @@
       }
     }
     return ys
-  })
+  }, 'without : [a] -> [a] -> [a]')
 
   /**
    * @since v0.3.0
@@ -770,7 +829,7 @@
       ys[i] = [as[i], bs[i]]
     }
     return ys
-  })
+  }, 'zip : [a] -> [b] -> [[a, b]]')
 
   /**
    * @since v0.3.0
@@ -784,7 +843,7 @@
       res[keys[i]] = vals[i]
     }
     return res
-  })
+  }, 'zipObj : [k] -> [v] -> {k:v}')
 
   exports.add = add;
   exports.all = all;

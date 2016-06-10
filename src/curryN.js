@@ -14,6 +14,6 @@ var curryN = _curry2(function curryN (arity, fn) {
     case 3: return _curry3(fn)
     default: return _curryN(fn.length, [], fn)
   }
-})
+}, 'curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v')
 
 export default curryN

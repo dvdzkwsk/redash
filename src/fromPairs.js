@@ -14,5 +14,8 @@ var fromPairs = function fromPairs (xs) {
 
   return y
 }
+fromPairs.toString = function toString () {
+  return 'fromPairs : [[k, v]] -> {k:v}'
+}
 
 export default fromPairs

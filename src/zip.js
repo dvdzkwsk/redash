@@ -12,6 +12,6 @@ var zip = _curry2(function zip (as, bs) {
     ys[i] = [as[i], bs[i]]
   }
   return ys
-})
+}, 'zip : [a] -> [b] -> [[a, b]]')
 
 export default zip

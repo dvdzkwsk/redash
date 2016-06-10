@@ -12,6 +12,6 @@ var zipObj = _curry2(function zipObj (keys, vals) {
     res[keys[i]] = vals[i]
   }
   return res
-})
+}, 'zipObj : [k] -> [v] -> {k:v}')
 
 export default zipObj

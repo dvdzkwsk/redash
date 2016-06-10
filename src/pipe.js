@@ -17,5 +17,8 @@ var pipe = function pipe () {
     return y
   })
 }
+pipe.toString = function toString () {
+  return 'pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z)'
+}
 
 export default pipe

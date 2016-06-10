@@ -4,5 +4,8 @@
 var not = function not (a) {
   return !a
 }
+not.toString = function toString () {
+  return 'not : Boolean -> Boolean'
+}
 
 export default not

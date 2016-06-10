@@ -26,6 +26,6 @@ var without = _curry2(function without (as, bs) {
     }
   }
   return ys
-})
+}, 'without : [a] -> [a] -> [a]')
 
 export default without

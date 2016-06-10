@@ -12,5 +12,8 @@ var times = _curry2(function times (fn, n) {
   }
   return bs
 })
+times.toString = function toString () {
+  return 'times : (Number -> a) -> Number -> [a]'
+}
 
 export default times

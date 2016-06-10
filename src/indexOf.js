@@ -13,6 +13,6 @@ var indexOf = _curry2(function indexOf (y, xs) {
     }
   }
   return -1
-})
+}, 'indexOf : a -> [a] -> Number')
 
 export default indexOf

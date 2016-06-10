@@ -15,5 +15,8 @@ var curry = function curry (fn) {
     default: return _curryN(fn.length, [], fn)
   }
 }
+curry.toString = function toString () {
+  return 'curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v'
+}
 
 export default curry

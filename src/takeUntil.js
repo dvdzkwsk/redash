@@ -13,6 +13,6 @@ var takeUntil = _curry2(function takeUntil (fn, xs) {
     }
   }
   return xs.slice(0)
-})
+}, 'takeUntil : (a -> Boolean) -> [a] -> [a]')
 
 export default takeUntil

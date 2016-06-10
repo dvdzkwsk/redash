@@ -10,6 +10,6 @@ var reduceRight = _curry3(function reduceRight (fn, y, xs) {
     y = fn(y, xs[i])
   }
   return y
-})
+}, 'reduceRight : ((b, a) -> b) -> b -> [a]')
 
 export default reduceRight

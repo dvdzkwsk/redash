@@ -10,6 +10,6 @@ var rangeBy = _curry3(function rangeBy (inc, i, end) {
     ys.push(i)
   }
   return ys
-})
+}, 'rangeBy : Number -> Number -> Number -> [Number]')
 
 export default rangeBy

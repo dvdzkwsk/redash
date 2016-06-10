@@ -12,5 +12,8 @@ var toPairs = function toPairs (a) {
   }
   return ys
 }
+toPairs.toString = function toString () {
+  return 'toPairs : {k:v} -> [[k, v]]'
+}
 
 export default toPairs
