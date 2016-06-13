@@ -41,21 +41,32 @@
     return a + b
   })
 
+  function _arrayEach (f, xs) {
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      if (f(xs[i], i)) {
+        return
+      }
+    }
+  }
+
   /**
    * all : (a -> Boolean) -> [a] -> Boolean
    *
    * @since v0.7.0
    */
   var all = _curry2(function all (fn, xs) {
-    var i   = 0
-      , len = xs.length
+    var all = true
 
-    for (; i < len; i++) {
-      if (!fn(xs[i])) {
-        return false
+    _arrayEach(function (x) {
+      if (fn(x)) {
+        all = false
+        return true
       }
-    }
-    return true
+    }, xs)
+    return all
   })
 
   /**
@@ -75,15 +86,14 @@
    * @since v0.7.0
    */
   var any = _curry2(function any (fn, xs) {
-    var i   = 0
-      , len = xs.length
+    var found = false
 
-    for (; i < len; i++) {
-      if (fn(xs[i])) {
-        return true
+    _arrayEach(function (x) {
+      if (fn(x)) {
+        return found = true
       }
-    }
-    return false
+    }, xs)
+    return found
   })
 
   var _concat = [].concat
@@ -312,17 +322,13 @@
    * @since v0.1.0
    */
   var filter = _curry2(function filter (fn, xs) {
-    var i   = 0
-      , len = xs.length
-      , ys  = []
-      , x
+    var ys = []
 
-    for (; i < len; i++) {
-      x = xs[i]
+    _arrayEach(function (x) {
       if (fn(x)) {
         ys.push(x)
       }
-    }
+    }, xs)
     return ys
   })
 
@@ -332,16 +338,15 @@
    * @since v0.6.0
    */
   var find = _curry2(function find (pred, xs) {
-    var i   = 0
-      , len = xs.length
-      , x
+    var y
 
-    for (; i < len; i++) {
-      x = xs[i]
+    _arrayEach(function (x) {
       if (pred(x)) {
-        return x
+        y = x
+        return true
       }
-    }
+    }, xs)
+    return y
   })
 
   /**
@@ -350,15 +355,16 @@
    * @since v0.1.0
    */
   var findIndex = _curry2(function findIndex (pred, xs) {
-    var i   = 0
-      , len = xs.length
+    var _i = -1
 
-    for (; i < len; i++) {
-      if (pred(xs[i])) {
-        return i
+    _arrayEach(function (x, i) {
+      if (pred(x)) {
+        _i = i
+        return true
       }
-    }
-    return -1
+    }, xs)
+
+    return _i
   })
 
   /**
@@ -366,23 +372,19 @@
    *
    * @since v0.1.0
    */
-  var flatMap = _curry2(function flatMap (fn, xs) {
-    var i   = 0
-      , len = xs.length
-      , bs  = []
-      , _i
-      , b
+  var flatMap = _curry2(function flatMap (fn, as) {
+    var bs = []
 
-    for (; i < len; i++) {
-      b = fn(xs[i])
-      if (Array.isArray(b)) {
-        for (_i = 0; _i < b.length; _i++) {
-          bs.push(b[_i])
-        }
+    _arrayEach(function (a) {
+      var x = fn(a)
+      if (Array.isArray(x)) {
+        _arrayEach(function (x_) {
+          bs.push(x_)
+        }, x)
       } else {
-        bs.push(b)
+        bs.push(x)
       }
-    }
+    }, as)
 
     return bs
   })
@@ -393,23 +395,17 @@
    * @since v0.1.0
    */
   function flatten (xs) {
-    var i   = 0
-      , len = xs.length
-      , ys  = []
-      , x
-      , _i
+    var ys = []
 
-    for (; i < len; i++) {
-      x = xs[i]
+    _arrayEach(function (x) {
       if (Array.isArray(x)) {
-        for (_i = 0; _i < x.length; _i++) {
-          ys.push(x[_i])
-        }
+        _arrayEach(function (x_) {
+          ys.push(x_)
+        }, x)
       } else {
         ys.push(x)
       }
-    }
-
+    }, xs)
     return ys
   }
 
@@ -419,15 +415,15 @@
    * @since v0.5.0
    */
   function flattenDeep (xs) {
-    var i   = 0
-      , len = xs.length
-      , ys  = []
-      , x
+    var ys = []
 
-    for (; i < len; i++) {
-      x  = Array.isArray(xs[i]) ? flattenDeep(xs[i]) : xs[i]
-      ys = ys.concat(x)
-    }
+    _arrayEach(function (x) {
+      if (Array.isArray(x)) {
+        ys = _concat.call(ys, flattenDeep(x))
+      } else {
+        ys.push(x)
+      }
+    }, xs)
 
     return ys
   }
@@ -448,12 +444,9 @@
    * @since v0.1.0
    */
   var forEach = _curry2(function forEach (fn, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      fn(xs[i])
-    }
+    _arrayEach(function (x) {
+      fn(x)
+    }, xs)
   })
 
   /**
@@ -462,16 +455,11 @@
    * @since v0.7.0
    */
   function fromPairs (xs) {
-    var y   = {}
-      , i   = 0
-      , len = xs.length
-      , x
+    var y = {}
 
-    for (; i < len; i++) {
-      x = xs[i]
+    _arrayEach(function (x) {
       y[x[0]] = x[1]
-    }
-
+    }, xs)
     return y
   }
 
@@ -508,15 +496,15 @@
    * @since v0.1.0
    */
   var indexOf = _curry2(function indexOf (y, xs) {
-    var i   = 0
-      , len = xs.length
+    var _i = -1
 
-    for (; i < len; i++) {
-      if (xs[i] === y) {
-        return i
+    _arrayEach(function (x, i) {
+      if (x === y) {
+        _i = i
+        return true
       }
-    }
-    return -1
+    }, xs)
+    return _i
   })
 
   /**
@@ -562,13 +550,11 @@
    * mapAdd5([1,2,3,4]) // [6,7,8,9]
    */
   var map = _curry2(function map (fn, xs) {
-    var i   = 0
-      , len = xs.length
-      , ys  = new Array(len)
+    var ys = new Array(xs.length)
 
-    for (; i < len; i++) {
-      ys[i] = fn(xs[i])
-    }
+    _arrayEach(function (x, i) {
+      ys[i] = fn(x)
+    }, xs)
     return ys
   })
 
@@ -659,12 +645,9 @@
    * @since v0.1.0
    */
   var reduce = _curry3(function reduce (fn, y, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      y = fn(y, xs[i])
-    }
+    _arrayEach(function (x) {
+      y = fn(y, x)
+    }, xs)
     return y
   })
 
@@ -726,15 +709,14 @@
    * @since v0.1.0
    */
   var takeUntil = _curry2(function takeUntil (fn, xs) {
-    var i   = 0
-      , len = xs.length
+    var ys
 
-    for (; i < len; i++) {
-      if (fn(xs[i])) {
-        return _slice.call(xs, 0, i)
+    _arrayEach(function (x, i) {
+      if (fn(x)) {
+        ys = _slice.call(xs, 0, i)
       }
-    }
-    return _slice.call(xs)
+    }, xs)
+    return ys || _slice.call(xs)
   })
 
   /**
@@ -805,27 +787,20 @@
    * @since v0.7.0
    */
   var without = _curry2(function without (as, bs) {
-    var ys    = []
-      , bi    = 0
-      , aslen = as.length
-      , bslen = bs.length
-      , ai
-      , b
-      , discard
+    var ys = []
 
-    for (; bi < bslen; bi++) {
-      b = bs[bi]
-      discard = false
-      for (ai = 0; ai < aslen; ai++) {
-        if (b == as[ai]) {
-          discard = true
-          break
+    _arrayEach(function (b) {
+      var discard = false
+      _arrayEach(function (a) {
+        if (b === a) {
+          return discard = true
         }
-      }
+      }, as)
       if (!discard) {
         ys.push(b)
       }
-    }
+    }, bs)
+
     return ys
   })
 

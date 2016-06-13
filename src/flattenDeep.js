@@ -1,18 +1,21 @@
+import _concat from './internal/_concat'
+import _arrayEach from './internal/_arrayEach'
+
 /**
  * flattenDeep : [[a]] -> [a]
  *
  * @since v0.5.0
  */
 export default function flattenDeep (xs) {
-  var i   = 0
-    , len = xs.length
-    , ys  = []
-    , x
+  var ys = []
 
-  for (; i < len; i++) {
-    x  = Array.isArray(xs[i]) ? flattenDeep(xs[i]) : xs[i]
-    ys = ys.concat(x)
-  }
+  _arrayEach(function (x) {
+    if (Array.isArray(x)) {
+      ys = _concat.call(ys, flattenDeep(x))
+    } else {
+      ys.push(x)
+    }
+  }, xs)
 
   return ys
 }

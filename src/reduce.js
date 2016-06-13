@@ -1,3 +1,4 @@
+import _arrayEach from './internal/_arrayEach'
 import _curry3 from './internal/_curry3'
 
 /**
@@ -6,11 +7,8 @@ import _curry3 from './internal/_curry3'
  * @since v0.1.0
  */
 export default _curry3(function reduce (fn, y, xs) {
-  var i   = 0
-    , len = xs.length
-
-  for (; i < len; i++) {
-    y = fn(y, xs[i])
-  }
+  _arrayEach(function (x) {
+    y = fn(y, x)
+  }, xs)
   return y
 })

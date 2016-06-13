@@ -1,3 +1,4 @@
+import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -6,13 +7,14 @@ import _curry2 from './internal/_curry2'
  * @since v0.1.0
  */
 export default _curry2(function findIndex (pred, xs) {
-  var i   = 0
-    , len = xs.length
+  var _i = -1
 
-  for (; i < len; i++) {
-    if (pred(xs[i])) {
-      return i
+  _arrayEach(function (x, i) {
+    if (pred(x)) {
+      _i = i
+      return true
     }
-  }
-  return -1
+  }, xs)
+
+  return _i
 })

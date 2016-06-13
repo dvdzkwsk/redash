@@ -1,5 +1,6 @@
-import _slice from './internal/_slice'
+import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
+import _slice from './internal/_slice'
 
 /**
  * takeUntil : (a -> Boolean) -> [a] -> [a]
@@ -7,13 +8,12 @@ import _curry2 from './internal/_curry2'
  * @since v0.1.0
  */
 export default _curry2(function takeUntil (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var ys
 
-  for (; i < len; i++) {
-    if (fn(xs[i])) {
-      return _slice.call(xs, 0, i)
+  _arrayEach(function (x, i) {
+    if (fn(x)) {
+      ys = _slice.call(xs, 0, i)
     }
-  }
-  return _slice.call(xs)
+  }, xs)
+  return ys || _slice.call(xs)
 })

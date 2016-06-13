@@ -1,3 +1,4 @@
+import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -5,23 +6,19 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.1.0
  */
-export default _curry2(function flatMap (fn, xs) {
-  var i   = 0
-    , len = xs.length
-    , bs  = []
-    , _i
-    , b
+export default _curry2(function flatMap (fn, as) {
+  var bs = []
 
-  for (; i < len; i++) {
-    b = fn(xs[i])
-    if (Array.isArray(b)) {
-      for (_i = 0; _i < b.length; _i++) {
-        bs.push(b[_i])
-      }
+  _arrayEach(function (a) {
+    var x = fn(a)
+    if (Array.isArray(x)) {
+      _arrayEach(function (x_) {
+        bs.push(x_)
+      }, x)
     } else {
-      bs.push(b)
+      bs.push(x)
     }
-  }
+  }, as)
 
   return bs
 })

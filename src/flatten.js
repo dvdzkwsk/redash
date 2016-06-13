@@ -1,25 +1,21 @@
+import _arrayEach from './internal/_arrayEach'
+
 /**
  * flatten : [[a]] -> [a]
  *
  * @since v0.1.0
  */
 export default function flatten (xs) {
-  var i   = 0
-    , len = xs.length
-    , ys  = []
-    , x
-    , _i
+  var ys = []
 
-  for (; i < len; i++) {
-    x = xs[i]
+  _arrayEach(function (x) {
     if (Array.isArray(x)) {
-      for (_i = 0; _i < x.length; _i++) {
-        ys.push(x[_i])
-      }
+      _arrayEach(function (x_) {
+        ys.push(x_)
+      }, x)
     } else {
       ys.push(x)
     }
-  }
-
+  }, xs)
   return ys
 }
