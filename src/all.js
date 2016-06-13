@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * all : (a -> Boolean) -> [a] -> Boolean
+ *
  * @since v0.7.0
  */
 var all = _curry2(function all (fn, xs) {
@@ -13,6 +15,6 @@ var all = _curry2(function all (fn, xs) {
     }
   }
   return true
-}, 'all : (a -> Boolean) -> [a] -> Boolean')
+})
 
 export default all

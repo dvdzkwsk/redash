@@ -1,10 +1,12 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * take : Number -> [a] -> [a]
+ *
  * @since v0.1.0
  */
 var take = _curry2(function take (n, xs) {
   return xs.slice(0, n)
-}, 'take : Number -> [a] -> [a]')
+})
 
 export default take

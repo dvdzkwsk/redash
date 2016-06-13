@@ -1,11 +1,10 @@
 /**
+ * keys : {k:v} -> [k]
+ *
  * @since v0.1.0
  */
-var keys = function (object) {
+var keys = function keys (object) {
   return Object.keys(object)
-}
-keys.toString = function toString () {
-  return 'keys : {k:v} -> [k]'
 }
 
 export default keys

@@ -4,6 +4,8 @@ import _curry3 from './internal/_curry3'
 import _curryN from './internal/_curryN'
 
 /**
+ * curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
+ *
  * @since v0.1.0
  */
 var curry = function curry (fn) {
@@ -14,9 +16,6 @@ var curry = function curry (fn) {
     case 3: return _curry3(fn)
     default: return _curryN(fn.length, [], fn)
   }
-}
-curry.toString = function toString () {
-  return 'curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v'
 }
 
 export default curry

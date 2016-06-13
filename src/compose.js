@@ -1,6 +1,8 @@
 import curryN from './curryN'
 
 /**
+ * compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)
+ *
  * @since v0.1.0
  */
 var compose = function compose () {
@@ -16,9 +18,6 @@ var compose = function compose () {
     }
     return y
   })
-}
-compose.toString = function toString () {
-  return 'compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)'
 }
 
 export default compose

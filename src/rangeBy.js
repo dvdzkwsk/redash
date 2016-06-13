@@ -1,6 +1,8 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * rangeBy : Number -> Number -> Number -> [Number]
+ *
  * @since v0.7.0
  */
 var rangeBy = _curry3(function rangeBy (inc, i, end) {
@@ -10,6 +12,6 @@ var rangeBy = _curry3(function rangeBy (inc, i, end) {
     ys.push(i)
   }
   return ys
-}, 'rangeBy : Number -> Number -> Number -> [Number]')
+})
 
 export default rangeBy

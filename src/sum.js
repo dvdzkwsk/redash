@@ -1,4 +1,6 @@
 /**
+ * sum : [Number] -> Number
+ *
  * @since v0.10.0
  */
 var sum = function sum (xs) {
@@ -10,9 +12,6 @@ var sum = function sum (xs) {
     y += xs[i]
   }
   return y
-}
-sum.toString = function toString () {
-  return 'sum : [Number] -> Number'
 }
 
 export default sum

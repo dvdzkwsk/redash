@@ -1,4 +1,6 @@
 /**
+ * flatten : [[a]] -> [a]
+ *
  * @since v0.1.0
  */
 var flatten = function flatten (xs) {
@@ -20,9 +22,6 @@ var flatten = function flatten (xs) {
   }
 
   return ys
-}
-flatten.toString = function toString () {
-  return 'flatten : [[a]] -> [a]'
 }
 
 export default flatten

@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * without : [a] -> [a] -> [a]
+ *
  * @since v0.7.0
  */
 var without = _curry2(function without (as, bs) {
@@ -26,6 +28,6 @@ var without = _curry2(function without (as, bs) {
     }
   }
   return ys
-}, 'without : [a] -> [a] -> [a]')
+})
 
 export default without

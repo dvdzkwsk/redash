@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * forEach : (a -> *) -> [a] -> undefined
  * @since v0.1.0
  */
 var forEach = _curry2(function forEach (fn, xs) {
@@ -10,6 +11,6 @@ var forEach = _curry2(function forEach (fn, xs) {
   for (; i < len; i++) {
     fn(xs[i])
   }
-}, '(a -> *) -> [a] -> undefined')
+})
 
 export default forEach

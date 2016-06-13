@@ -1,6 +1,8 @@
 import _curryN from './internal/_curryN'
 
 /**
+ * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
+ *
  * @since v0.1.0
  */
 var pipe = function pipe () {
@@ -16,9 +18,6 @@ var pipe = function pipe () {
     }
     return y
   })
-}
-pipe.toString = function toString () {
-  return 'pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z)'
 }
 
 export default pipe

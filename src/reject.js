@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * reject : (a -> Boolean) -> [a] -> [a]
+ *
  * @since v0.1.0
  */
 var reject = _curry2(function reject (fn, xs) {
@@ -16,6 +18,6 @@ var reject = _curry2(function reject (fn, xs) {
     }
   }
   return ys
-}, 'reject : (a -> Boolean) -> [a] -> [a]')
+})
 
 export default reject

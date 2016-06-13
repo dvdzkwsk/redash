@@ -1,7 +1,7 @@
 import _curry1 from './_curry1'
 import _curry2 from './_curry2'
 
-var _curry3 = function _curry3 (fn, signature) {
+var _curry3 = function _curry3 (fn) {
   var curried = function __redash_arity_3__ (a0, a1, a2) {
     switch (arguments.length) {
       case 0: return __redash_arity_3__
@@ -12,11 +12,6 @@ var _curry3 = function _curry3 (fn, signature) {
         return fn(a0, a1, _a2)
       })
       default: return fn(a0, a1, a2)
-    }
-  }
-  if (signature) {
-    curried.toString = function toString () {
-      return signature
     }
   }
   return curried

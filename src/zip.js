@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * zip : [a] -> [b] -> [[a, b]]
+ *
  * @since v0.3.0
  */
 var zip = _curry2(function zip (as, bs) {
@@ -12,6 +14,6 @@ var zip = _curry2(function zip (as, bs) {
     ys[i] = [as[i], bs[i]]
   }
   return ys
-}, 'zip : [a] -> [b] -> [[a, b]]')
+})
 
 export default zip

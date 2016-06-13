@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * dissoc : String -> {k:v} -> {k:v}
+ *
  * @since v0.10.0
  */
 var dissoc = _curry2(function dissoc (prop, obj) {
@@ -13,6 +15,6 @@ var dissoc = _curry2(function dissoc (prop, obj) {
     }
   }
   return y
-}, 'dissoc : String -> {k:v} -> {k:v}')
+})
 
 export default dissoc

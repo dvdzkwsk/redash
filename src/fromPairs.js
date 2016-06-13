@@ -1,4 +1,6 @@
 /**
+ * fromPairs : [[k, v]] -> {k:v}
+ *
  * @since v0.7.0
  */
 var fromPairs = function fromPairs (xs) {
@@ -13,9 +15,6 @@ var fromPairs = function fromPairs (xs) {
   }
 
   return y
-}
-fromPairs.toString = function toString () {
-  return 'fromPairs : [[k, v]] -> {k:v}'
 }
 
 export default fromPairs

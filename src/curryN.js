@@ -4,6 +4,8 @@ import _curry3 from './internal/_curry3'
 import _curryN from './internal/_curryN'
 
 /**
+ * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
+ *
  * @since v0.1.0
  */
 var curryN = _curry2(function curryN (arity, fn) {
@@ -14,6 +16,6 @@ var curryN = _curry2(function curryN (arity, fn) {
     case 3: return _curry3(fn)
     default: return _curryN(fn.length, [], fn)
   }
-}, 'curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v')
+})
 
 export default curryN

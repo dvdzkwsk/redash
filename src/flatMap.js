@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * flatMap : (a -> b | [b]) -> [a] -> [b]
+ *
  * @since v0.1.0
  */
 var flatMap = _curry2(function flatMap (fn, xs) {
@@ -22,6 +24,6 @@ var flatMap = _curry2(function flatMap (fn, xs) {
   }
 
   return bs
-}, 'flatMap : (a -> b | [b]) -> [a] -> [b]')
+})
 
 export default flatMap

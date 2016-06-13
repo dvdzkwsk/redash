@@ -1,6 +1,8 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * reduce : ((b, a) -> b) -> b -> [a]
+ *
  * @since v0.1.0
  */
 var reduce = _curry3(function reduce (fn, y, xs) {
@@ -11,6 +13,6 @@ var reduce = _curry3(function reduce (fn, y, xs) {
     y = fn(y, xs[i])
   }
   return y
-}, 'reduce : ((b, a) -> b) -> b -> [a]')
+})
 
 export default reduce

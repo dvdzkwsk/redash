@@ -1,4 +1,6 @@
 /**
+ * tap : (a -> b) -> a -> a
+ *
  * @since v0.7.0
  */
 var tap = function (fn) {
@@ -6,9 +8,6 @@ var tap = function (fn) {
     fn(a)
     return a
   }
-}
-tap.toString = function toString () {
-  return '(a -> *) -> a -> a'
 }
 
 export default tap

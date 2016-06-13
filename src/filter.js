@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * filter : (a -> Boolean) -> [a] -> [a]
+ *
  * @since v0.1.0
  */
 var filter = _curry2(function filter (fn, xs) {
@@ -16,6 +18,6 @@ var filter = _curry2(function filter (fn, xs) {
     }
   }
   return ys
-}, 'filter : (a -> Boolean) -> [a] -> [a]')
+})
 
 export default filter

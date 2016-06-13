@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * zipObj : [k] -> [v] -> {k:v}
+ *
  * @since v0.3.0
  */
 var zipObj = _curry2(function zipObj (keys, vals) {
@@ -12,6 +14,6 @@ var zipObj = _curry2(function zipObj (keys, vals) {
     res[keys[i]] = vals[i]
   }
   return res
-}, 'zipObj : [k] -> [v] -> {k:v}')
+})
 
 export default zipObj

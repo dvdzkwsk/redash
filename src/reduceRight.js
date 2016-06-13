@@ -1,6 +1,8 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * reduceRight : ((b, a) -> b) -> b -> [a]
+ *
  * @since v0.1.0
  */
 var reduceRight = _curry3(function reduceRight (fn, y, xs) {
@@ -10,6 +12,6 @@ var reduceRight = _curry3(function reduceRight (fn, y, xs) {
     y = fn(y, xs[i])
   }
   return y
-}, 'reduceRight : ((b, a) -> b) -> b -> [a]')
+})
 
 export default reduceRight

@@ -1,6 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * times : (Number -> a) -> Number -> [a]
+ *
  * @since v0.5.0
  */
 var times = _curry2(function times (fn, n) {
@@ -12,8 +14,5 @@ var times = _curry2(function times (fn, n) {
   }
   return bs
 })
-times.toString = function toString () {
-  return 'times : (Number -> a) -> Number -> [a]'
-}
 
 export default times
