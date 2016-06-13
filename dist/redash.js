@@ -147,7 +147,7 @@
    */
   var complement = function complement (fn) {
     return function () {
-      return !fn.call(this, arguments)
+      return !fn.apply(this, arguments)
     }
   }
 
@@ -330,23 +330,6 @@
   })
 
   /**
-   * findIndex : (a -> Boolean) -> [a] -> Number
-   *
-   * @since v0.1.0
-   */
-  var findIndex = _curry2(function findIndex (pred, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      if (pred(xs[i])) {
-        return i
-      }
-    }
-    return -1
-  })
-
-  /**
    * find : (a -> Boolean) -> [a] -> a | undefined
    *
    * @since v0.6.0
@@ -362,6 +345,23 @@
         return x
       }
     }
+  })
+
+  /**
+   * findIndex : (a -> Boolean) -> [a] -> Number
+   *
+   * @since v0.1.0
+   */
+  var findIndex = _curry2(function findIndex (pred, xs) {
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      if (pred(xs[i])) {
+        return i
+      }
+    }
+    return -1
   })
 
   /**
@@ -437,15 +437,13 @@
 
   /**
    * flip : (a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)
+   *
    * @since v0.10.0
    */
   var flip = function (fn) {
-    return curryN(fn.length, function flipped () {
+    return curryN(fn.length, function () {
       return fn.apply(this, _reverse.call(arguments))
     })
-  }
-  flip.toString = function toString () {
-    return '(a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)'
   }
 
   /**
