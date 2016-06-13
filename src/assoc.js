@@ -5,13 +5,13 @@ import _curry3 from './internal/_curry3'
  *
  * @since v0.6.0
  */
-export default _curry3(function assoc (p, v, o) {
-  var b = {}
-    , prop
+export default _curry3(function assoc (k, v, o) {
+  var y = {}
+    , p
 
-  for (prop in o) {
-    b[prop] = o[prop]
+  for (p in o) {
+    b[p] = o[p]
   }
-  b[p] = v
+  b[k] = v
   return b
 })
