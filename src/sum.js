@@ -1,17 +1,11 @@
+import add from './add'
+import reduce from './reduce'
+
 /**
  * sum : [Number] -> Number
  *
  * @since v0.10.0
  */
-var sum = function sum (xs) {
-  var i   = 0
-    , len = xs.length
-    , y
-
-  for (; i < len; i++) {
-    y += xs[i]
-  }
-  return y
-}
+var sum = reduce(add, 0)
 
 export default sum
