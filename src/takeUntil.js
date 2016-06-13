@@ -1,3 +1,4 @@
+import _slice from './internal/_slice'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -11,10 +12,10 @@ var takeUntil = _curry2(function takeUntil (fn, xs) {
 
   for (; i < len; i++) {
     if (fn(xs[i])) {
-      return xs.slice(0, i)
+      return _slice.call(xs, 0, i)
     }
   }
-  return xs.slice(0)
+  return _slice.call(xs)
 })
 
 export default takeUntil
