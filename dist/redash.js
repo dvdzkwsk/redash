@@ -95,6 +95,15 @@
     return false
   }, 'any : (a -> Boolean) -> [a] -> Boolean')
 
+  var _concat = [].concat
+
+  /**
+   * @since v0.10.0
+   */
+  var append = _curry2(function append (x, xs) {
+    return _concat.call(xs, [x])
+  }, 'append : a -> [a] -> [a]')
+
   var _curry3 = function _curry3 (fn, signature) {
     var curried = function __redash_arity_3__ (a0, a1, a2) {
       switch (arguments.length) {
@@ -128,9 +137,7 @@
     }
     b[p] = v
     return b
-  }, 'assoc : String -> * -> Object -> Object')
-
-  var _concat = [].concat
+  }, 'assoc : String -> * -> {k:v} -> {k:v}')
 
   /**
    * @since v0.7.0
@@ -217,7 +224,7 @@
       case 3: return _curry3(fn)
       default: return _curryN(fn.length, [], fn)
     }
-  }, 'curryN : Number -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v')
+  }, 'curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v')
 
   /**
    * @since v0.1.0
@@ -265,6 +272,28 @@
   dec.toString = function toString () {
     return 'dec : Number -> Number'
   }
+
+  /**
+   * @since v0.10.0
+   */
+  var dissoc = _curry2(function dissoc (prop, obj) {
+    var y = {}
+      , p
+
+    for (p in obj) {
+      if (p !== prop) {
+        y[p] = obj[p]
+      }
+    }
+    return y
+  }, 'dissoc : String -> {k:v} -> {k:v}')
+
+  /**
+   * @since v0.10.0
+   */
+  var drop = _curry2(function drop (n, xs) {
+    return _slice.call(xs, n)
+  }, 'drop : Number -> Array -> Array')
 
   var _equals = function _equals (a, b) {
     return a === b
@@ -488,6 +517,9 @@
     return -1
   }, 'indexOf : a -> [a] -> Number')
 
+  /**
+   * @since v0.1.0
+   */
   var keys = function (object) {
     return Object.keys(object)
   }
@@ -691,6 +723,23 @@
   }
 
   /**
+   * @since v0.10.0
+   */
+  var sum = function sum (xs) {
+    var i   = 0
+      , len = xs.length
+      , y
+
+    for (; i < len; i++) {
+      y += xs[i]
+    }
+    return y
+  }
+  sum.toString = function toString () {
+    return 'sum : [Number] -> Number'
+  }
+
+  /**
    * @since v0.1.0
    */
   var tail = function tail (xs) {
@@ -849,6 +898,7 @@
   exports.all = all;
   exports.always = always;
   exports.any = any;
+  exports.append = append;
   exports.assoc = assoc;
   exports.concat = concat;
   exports.complement = complement;
@@ -856,6 +906,8 @@
   exports.curry = curry;
   exports.curryN = curryN;
   exports.dec = dec;
+  exports.dissoc = dissoc;
+  exports.drop = drop;
   exports.equals = equals;
   exports.filter = filter;
   exports.find = find;
@@ -887,6 +939,7 @@
   exports.foldr = reduceRight;
   exports.reject = reject;
   exports.reverse = reverse;
+  exports.sum = sum;
   exports.tail = tail;
   exports.take = take;
   exports.takeUntil = takeUntil;
