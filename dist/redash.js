@@ -151,6 +151,8 @@
     }
   }
 
+  var _reverse = [].reverse
+
   var _slice = [].slice
 
   // Credit to Ramda for this idea for creating curried functions that
@@ -207,6 +209,35 @@
   }
 
   /**
+   * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
+   *
+   * @since v0.1.0
+   */
+  var pipe = function pipe () {
+    var fns = arguments
+      , len = fns.length
+
+    return _curryN(fns[0].length, [], function __pipe__ () {
+      var i = 0
+        , y = fns[i++].apply(null, arguments)
+
+      for (; i < len; i++) {
+        y = fns[i](y)
+      }
+      return y
+    })
+  }
+
+  /**
+   * compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)
+   *
+   * @since v0.1.0
+   */
+  var compose = function compose () {
+    return pipe.apply(this, _reverse.call(arguments))
+  }
+
+  /**
    * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
    *
    * @since v0.1.0
@@ -222,38 +253,12 @@
   })
 
   /**
-   * compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)
-   *
-   * @since v0.1.0
-   */
-  var compose = function compose () {
-    var fns = arguments
-      , i   = fns.length - 1
-      , fn  = fns[i--]
-
-    return curryN(fn.length, function __composition__ () {
-      var y = fn.apply(null, arguments)
-
-      for (; i >= 0; i--) {
-        y = fns[i](y)
-      }
-      return y
-    })
-  }
-
-  /**
    * curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
    *
    * @since v0.1.0
    */
   var curry = function curry (fn) {
-    switch (fn.length) {
-      case 0: return fn
-      case 1: return _curry1(fn)
-      case 2: return _curry2(fn)
-      case 3: return _curry3(fn)
-      default: return _curryN(fn.length, [], fn)
-    }
+    return curryN(fn.length, fn)
   }
 
   /**
@@ -325,6 +330,23 @@
   })
 
   /**
+   * findIndex : (a -> Boolean) -> [a] -> Number
+   *
+   * @since v0.1.0
+   */
+  var findIndex = _curry2(function findIndex (pred, xs) {
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      if (pred(xs[i])) {
+        return i
+      }
+    }
+    return -1
+  })
+
+  /**
    * find : (a -> Boolean) -> [a] -> a | undefined
    *
    * @since v0.6.0
@@ -340,23 +362,6 @@
         return x
       }
     }
-  })
-
-  /**
-   * findIndex : (a -> Boolean) -> [a] -> Number
-   *
-   * @since v0.1.0
-   */
-  var findIndex = _curry2(function findIndex (pred, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      if (pred(xs[i])) {
-        return i
-      }
-    }
-    return -1
   })
 
   /**
@@ -429,8 +434,6 @@
 
     return ys
   }
-
-  var _reverse = [].reverse
 
   /**
    * flip : (a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)
@@ -617,26 +620,6 @@
   }
 
   /**
-   * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
-   *
-   * @since v0.1.0
-   */
-  var pipe = function pipe () {
-    var fns = arguments
-      , len = fns.length
-
-    return _curryN(fns[0].length, [], function __pipe__ () {
-      var i = 0
-        , y = fns[i++].apply(null, arguments)
-
-      for (; i < len; i++) {
-        y = fns[i](y)
-      }
-      return y
-    })
-  }
-
-  /**
    * prop : String -> {k:v} -> v
    *
    * @since v0.1.0
@@ -676,7 +659,7 @@
   var range = rangeBy(1)
 
   /**
-   * reduce : ((b, a) -> b) -> b -> [a]')
+   * reduce : ((b, a) -> b) -> b -> [a]
    *
    * @since v0.1.0
    */
@@ -696,12 +679,7 @@
    * @since v0.1.0
    */
   var reduceRight = _curry3(function reduceRight (fn, y, xs) {
-    var i = xs.length - 1
-
-    for (; i >= 0; i--) {
-      y = fn(y, xs[i])
-    }
-    return y
+    return reduce.call(this, fn, y, _reverse.call(xs))
   })
 
   /**
@@ -710,18 +688,7 @@
    * @since v0.1.0
    */
   var reject = _curry2(function reject (fn, xs) {
-    var i   = 0
-      , len = xs.length
-      , ys  = []
-      , x
-
-    for (; i < len; i++) {
-      x = xs[i]
-      if (!fn(x)) {
-        ys.push(x)
-      }
-    }
-    return ys
+    return filter(complement(fn), xs)
   })
 
   /**
@@ -738,16 +705,7 @@
    *
    * @since v0.10.0
    */
-  var sum = function sum (xs) {
-    var i   = 0
-      , len = xs.length
-      , y
-
-    for (; i < len; i++) {
-      y += xs[i]
-    }
-    return y
-  }
+  var sum = reduce(add, 0)
 
   /**
    * tail : [a] -> [a]
@@ -755,7 +713,7 @@
    * @since v0.1.0
    */
   var tail = function tail (xs) {
-    return xs.slice(1)
+    return _slice.call(xs, 1)
   }
 
   /**
@@ -764,7 +722,7 @@
    * @since v0.1.0
    */
   var take = _curry2(function take (n, xs) {
-    return xs.slice(0, n)
+    return _slice.call(xs, 0, n)
   })
 
   /**
@@ -778,10 +736,10 @@
 
     for (; i < len; i++) {
       if (fn(xs[i])) {
-        return xs.slice(0, i)
+        return _slice.call(xs, 0, i)
       }
     }
-    return xs.slice(0)
+    return _slice.call(xs)
   })
 
   /**
@@ -823,7 +781,7 @@
    * @since v0.7.0
    */
   var tap = function (fn) {
-    return function tapped (a) {
+    return function (a) {
       fn(a)
       return a
     }
