@@ -12,8 +12,8 @@ export default _curry2(function takeUntil (fn, xs) {
 
   _arrayEach(function (x, i) {
     if (fn(x)) {
-      ys = _slice.call(xs, 0, i)
+      ys = _slice(xs, 0, i)
     }
   }, xs)
-  return ys || _slice.call(xs)
+  return ys || _slice(xs)
 })

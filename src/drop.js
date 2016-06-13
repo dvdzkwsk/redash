@@ -7,5 +7,5 @@ import _slice from './internal/_slice'
  * @since v0.10.0
  */
 export default _curry2(function drop (n, xs) {
-  return _slice.call(xs, n)
+  return _slice(xs, n)
 })

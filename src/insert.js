@@ -7,7 +7,7 @@ import _slice from './internal/_slice'
  * @since v0.11.0
  */
 export default _curry3(function insert (idx, x, xs) {
-  var ys = _slice.call(xs)
+  var ys = _slice(xs)
 
   ys[idx] = x
   return ys

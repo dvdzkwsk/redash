@@ -1,4 +1,4 @@
-import _slice from './_slice'
+import _arraySlice from './_arraySlice'
 import _arity from './_arity'
 
 /**
@@ -22,7 +22,7 @@ var _curryN = function _curryN (arity, applied, fn) {
       , i
 
     if (arguments.length) {
-      newApplied = _slice.call(applied)
+      newApplied = _arraySlice.call(applied)
       for (i = 0; i < arguments.length; i++) {
         newApplied.push(arguments[i])
       }

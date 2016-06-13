@@ -160,7 +160,7 @@
 
   var _reverse = [].reverse
 
-  var _slice = [].slice
+  var _arraySlice = [].slice
 
   // Credit to Ramda for this idea for creating curried functions that
   // properly report their arity via function.length.
@@ -203,7 +203,7 @@
         , i
 
       if (arguments.length) {
-        newApplied = _slice.call(applied)
+        newApplied = _arraySlice.call(applied)
         for (i = 0; i < arguments.length; i++) {
           newApplied.push(arguments[i])
         }
@@ -294,13 +294,17 @@
     return y
   })
 
+  function _slice (xs, from, to) {
+    return _arraySlice.call(xs, from, to)
+  }
+
   /**
    * drop : Number -> Array -> Array
    *
    * @since v0.10.0
    */
   var drop = _curry2(function drop (n, xs) {
-    return _slice.call(xs, n)
+    return _slice(xs, n)
   })
 
   function _equals (a, b) {
@@ -508,6 +512,18 @@
   })
 
   /**
+   * insert : Number -> a -> [a] -> [a]
+   *
+   * @since v0.11.0
+   */
+  var insert = _curry3(function insert (idx, x, xs) {
+    var ys = _slice(xs)
+
+    ys[idx] = x
+    return ys
+  })
+
+  /**
    * keys : {k:v} -> [k]
    *
    * @since v0.1.0
@@ -691,7 +707,7 @@
    * @since v0.1.0
    */
   function tail (xs) {
-    return _slice.call(xs, 1)
+    return _slice(xs, 1)
   }
 
   /**
@@ -700,7 +716,7 @@
    * @since v0.1.0
    */
   var take = _curry2(function take (n, xs) {
-    return _slice.call(xs, 0, n)
+    return _slice(xs, 0, n)
   })
 
   /**
@@ -713,10 +729,10 @@
 
     _arrayEach(function (x, i) {
       if (fn(x)) {
-        ys = _slice.call(xs, 0, i)
+        ys = _slice(xs, 0, i)
       }
     }, xs)
-    return ys || _slice.call(xs)
+    return ys || _slice(xs)
   })
 
   /**
@@ -864,6 +880,7 @@
   exports.identity = identity;
   exports.inc = inc;
   exports.indexOf = indexOf;
+  exports.insert = insert;
   exports.keys = keys;
   exports.last = last;
   exports.map = map;
