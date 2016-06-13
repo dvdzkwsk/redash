@@ -167,18 +167,14 @@
   // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
   function _arity (arity, fn) {
     switch (arity) {
-      case 0: return function __arity_0__ () { return fn.apply(this, arguments) }
-      case 1: return function __arity_1__ (a0) { return fn.apply(this, arguments) }
-      case 2: return function __arity_2__ (a0, a1) { return fn.apply(this, arguments) }
-      case 3: return function __arity_3__ (a0, a1, a2) { return fn.apply(this, arguments) }
-      case 4: return function __arity_4__ (a0, a1, a2, a3) { return fn.apply(this, arguments) }
-      case 5: return function __arity_5__ (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) }
-      case 6: return function __arity_6__ (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) }
-      case 7: return function __arity_7__ (a0, a1, a2, a3, a4, a5, a6) { return fn.apply(this, arguments) }
-      case 8: return function __arity_8__ (a0, a1, a2, a3, a4, a5, a6, a7) { return fn.apply(this, arguments) }
-      case 9: return function __arity_9__ (a0, a1, a2, a3, a4, a5, a6, a7, a8) { return fn.apply(this, arguments) }
-      case 10: return function __arity_10__ (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) { return fn.apply(this, arguments) }
-      default: throw new Error('Arity must be less than or equal to 10.')
+      case 0: return function () { return fn.apply(this, arguments) }
+      case 1: return function (a0) { return fn.apply(this, arguments) }
+      case 2: return function (a0, a1) { return fn.apply(this, arguments) }
+      case 3: return function (a0, a1, a2) { return fn.apply(this, arguments) }
+      case 4: return function (a0, a1, a2, a3) { return fn.apply(this, arguments) }
+      case 5: return function (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) }
+      case 6: return function (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) }
+      default: throw new Error('Arity must be less than or equal to 6.')
     }
   }
 
@@ -222,11 +218,11 @@
    */
   function pipe () {
     var fns = arguments
-      , len = fns.length
 
     return _curryN(fns[0].length, [], function () {
-      var i = 0
-        , y = fns[i++].apply(null, arguments)
+      var i   = 0
+        , len = fns.length
+        , y   = fns[i++].apply(null, arguments)
 
       for (; i < len; i++) {
         y = fns[i](y)
@@ -282,13 +278,13 @@
    *
    * @since v0.10.0
    */
-  var dissoc = _curry2(function dissoc (prop, obj) {
+  var dissoc = _curry2(function dissoc (k, kv) {
     var y = {}
       , p
 
-    for (p in obj) {
-      if (p !== prop) {
-        y[p] = obj[p]
+    for (p in kv) {
+      if (p !== k) {
+        y[p] = kv[p]
       }
     }
     return y
@@ -367,7 +363,6 @@
         return true
       }
     }, xs)
-
     return _i
   })
 
@@ -574,6 +569,16 @@
     return ys
   })
 
+  var _hasOwn = Object.prototype.hasOwnProperty
+
+  function _eachOwn (f, o) {
+    for (var k in o) {
+      if (_hasOwn.call(o, k)) {
+        f(k, o[k])
+      }
+    }
+  }
+
   /**
    * merge : {k:v} -> {k:v} -> {k:v}
    *
@@ -583,18 +588,12 @@
    */
   var merge = _curry2(function merge (a, b) {
     var y = {}
-      , prop
+      , f = function (k, v) {
+        y[k] = v
+      }
 
-    for (prop in b) {
-      if (b.hasOwnProperty(prop)) {
-        y[prop] = b[prop]
-      }
-    }
-    for (prop in a) {
-      if (a.hasOwnProperty(prop)) {
-        y[prop] = a[prop]
-      }
-    }
+    _eachOwn(f, b)
+    _eachOwn(f, a)
     return y
   })
 
@@ -621,8 +620,8 @@
    *
    * @since v0.1.0
    */
-  var prop = _curry2(function prop (p, x) {
-    return x[p]
+  var prop = _curry2(function prop (k, o) {
+    return o[k]
   })
 
   /**
@@ -630,8 +629,8 @@
    *
    * @since v0.1.0
    */
-  var propEq = _curry3(function propEq (p, y, x) {
-    return x[p] === y
+  var propEq = _curry3(function propEq (k, v, o) {
+    return o[k] === v
   })
 
   /**
@@ -660,11 +659,11 @@
    *
    * @since v0.1.0
    */
-  var reduce = _curry3(function reduce (fn, y, xs) {
-    _arrayEach(function (x) {
-      y = fn(y, x)
-    }, xs)
-    return y
+  var reduce = _curry3(function reduce (fn, b, as) {
+    _arrayEach(function (a) {
+      b = fn(b, a)
+    }, as)
+    return b
   })
 
   /**
@@ -673,7 +672,7 @@
    * @since v0.1.0
    */
   var reduceRight = _curry3(function reduceRight (fn, y, xs) {
-    return reduce.call(this, fn, y, _reverse.call(xs))
+    return reduce(fn, y, _reverse.call(xs))
   })
 
   /**
@@ -691,7 +690,7 @@
    * @since v0.1.0
    */
   function reverse (xs) {
-    return _reverse.call(xs.slice(0))
+    return _reverse.call(_slice(xs, 0))
   }
 
   /**
@@ -730,6 +729,7 @@
     _arrayEach(function (x, i) {
       if (fn(x)) {
         ys = _slice(xs, 0, i)
+        return true
       }
     }, xs)
     return ys || _slice(xs)
@@ -785,15 +785,12 @@
    *
    * @since v0.7.0
    */
-  function toPairs (obj) {
-    var ys = []
-      , p
+  function toPairs (o) {
+    var kvs = []
 
-    for (p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        ys.push([p, obj[p]])
-      }
-    }
+    _eachOwn(function (k, v) {
+      kvs.push([k, v])
+    }, o)
     return ys
   }
 
@@ -828,12 +825,12 @@
   var zip = _curry2(function zip (as, bs) {
     var i   = 0
       , len = Math.min(as.length, bs.length)
-      , ys  = new Array(len)
+      , abs = new Array(len)
 
     for (; i < len; i++) {
-      ys[i] = [as[i], bs[i]]
+      abs[i] = [as[i], bs[i]]
     }
-    return ys
+    return abs
   })
 
   /**
@@ -841,15 +838,15 @@
    *
    * @since v0.3.0
    */
-  var zipObj = _curry2(function zipObj (keys, vals) {
+  var zipObj = _curry2(function zipObj (ks, vs) {
     var i   = 0
-      , len = Math.min(keys.length, vals.length)
-      , res = {}
+      , len = Math.min(ks.length, vs.length)
+      , kv  = {}
 
     for (; i < len; i++) {
-      res[keys[i]] = vals[i]
+      kv[ks[i]] = vs[i]
     }
-    return res
+    return kv
   })
 
   exports.add = add;

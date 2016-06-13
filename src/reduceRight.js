@@ -8,5 +8,5 @@ import reduce from './reduce'
  * @since v0.1.0
  */
 export default _curry3(function reduceRight (fn, y, xs) {
-  return reduce.call(this, fn, y, _reverse.call(xs))
+  return reduce(fn, y, _reverse.call(xs))
 })

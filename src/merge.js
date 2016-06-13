@@ -10,8 +10,8 @@ import _eachOwn from './internal/_eachOwn'
  */
 export default _curry2(function merge (a, b) {
   var y = {}
-    , f = function (k, o) {
-      y[k] = o[k]
+    , f = function (k, v) {
+      y[k] = v
     }
 
   _eachOwn(f, b)

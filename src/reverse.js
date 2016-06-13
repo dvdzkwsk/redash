@@ -1,3 +1,4 @@
+import _slice from './internal/_slice'
 import _reverse from './internal/_reverse'
 
 /**
@@ -6,5 +7,5 @@ import _reverse from './internal/_reverse'
  * @since v0.1.0
  */
 export default function reverse (xs) {
-  return _reverse.call(xs.slice(0))
+  return _reverse.call(_slice(xs, 0))
 }

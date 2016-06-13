@@ -66,10 +66,6 @@ describe('(Function) curry', function () {
     var curried4 = curry(function (a0, a1, a2, a3) {})
     var curried5 = curry(function (a0, a1, a2, a3, a4) {})
     var curried6 = curry(function (a0, a1, a2, a3, a4, a5) {})
-    var curried7 = curry(function (a0, a1, a2, a3, a4, a5, a6) {})
-    var curried8 = curry(function (a0, a1, a2, a3, a4, a5, a6, a7) {})
-    var curried9 = curry(function (a0, a1, a2, a3, a4, a5, a6, a7, a8) {})
-    var curried10 = curry(function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {})
 
     expect(curried0).to.have.length(0)
     expect(curried1).to.have.length(1)
@@ -78,17 +74,13 @@ describe('(Function) curry', function () {
     expect(curried4).to.have.length(4)
     expect(curried5).to.have.length(5)
     expect(curried6).to.have.length(6)
-    expect(curried7).to.have.length(7)
-    expect(curried8).to.have.length(8)
-    expect(curried9).to.have.length(9)
-    expect(curried10).to.have.length(10)
   })
 
-  it('Should throw if the target function has an arity > 10.', function () {
+  it('Should throw if the target function has an arity > 6.', function () {
     var test = function () {
-      curry(function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) {})
+      curry(function (a0, a1, a2, a3, a4, a5, a6, a7) {})
     }
 
-    expect(test).to.throw(/Arity must be less than or equal to 10/)
+    expect(test).to.throw(/Arity must be less than or equal to 6/)
   })
 })

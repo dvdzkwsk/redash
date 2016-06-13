@@ -15,6 +15,5 @@ export default _curry2(function findIndex (pred, xs) {
       return true
     }
   }, xs)
-
   return _i
 })

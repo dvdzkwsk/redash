@@ -7,11 +7,11 @@ import _curryN from './internal/_curryN'
  */
 export default function pipe () {
   var fns = arguments
-    , len = fns.length
 
   return _curryN(fns[0].length, [], function () {
-    var i = 0
-      , y = fns[i++].apply(null, arguments)
+    var i   = 0
+      , len = fns.length
+      , y   = fns[i++].apply(null, arguments)
 
     for (; i < len; i++) {
       y = fns[i](y)

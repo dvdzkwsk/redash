@@ -5,13 +5,13 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.3.0
  */
-export default _curry2(function zipObj (keys, vals) {
+export default _curry2(function zipObj (ks, vs) {
   var i   = 0
-    , len = Math.min(keys.length, vals.length)
-    , res = {}
+    , len = Math.min(ks.length, vs.length)
+    , kv  = {}
 
   for (; i < len; i++) {
-    res[keys[i]] = vals[i]
+    kv[ks[i]] = vs[i]
   }
-  return res
+  return kv
 })

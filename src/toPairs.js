@@ -5,11 +5,11 @@ import _eachOwn from './internal/_eachOwn'
  *
  * @since v0.7.0
  */
-export default function toPairs (obj) {
-  var ys = []
+export default function toPairs (o) {
+  var kvs = []
 
-  _eachOwn(function (k) {
-    ys.push([k, obj[k]])
-  }, obj)
+  _eachOwn(function (k, v) {
+    kvs.push([k, v])
+  }, o)
   return ys
 }

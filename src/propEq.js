@@ -5,6 +5,6 @@ import _curry3 from './internal/_curry3'
  *
  * @since v0.1.0
  */
-export default _curry3(function propEq (p, y, x) {
-  return x[p] === y
+export default _curry3(function propEq (k, v, o) {
+  return o[k] === v
 })

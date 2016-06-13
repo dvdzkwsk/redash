@@ -5,13 +5,13 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.10.0
  */
-export default _curry2(function dissoc (prop, obj) {
+export default _curry2(function dissoc (k, kv) {
   var y = {}
     , p
 
-  for (p in obj) {
-    if (p !== prop) {
-      y[p] = obj[p]
+  for (p in kv) {
+    if (p !== k) {
+      y[p] = kv[p]
     }
   }
   return y
