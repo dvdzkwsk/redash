@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.1.0
  */
-var flatMap = _curry2(function flatMap (fn, xs) {
+export default _curry2(function flatMap (fn, xs) {
   var i   = 0
     , len = xs.length
     , bs  = []
@@ -25,5 +25,3 @@ var flatMap = _curry2(function flatMap (fn, xs) {
 
   return bs
 })
-
-export default flatMap

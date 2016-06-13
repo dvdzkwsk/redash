@@ -5,7 +5,7 @@ import _curry3 from './internal/_curry3'
  *
  * @since v0.6.0
  */
-var assoc = _curry3(function assoc (p, v, o) {
+export default _curry3(function assoc (p, v, o) {
   var b = {}
     , prop
 
@@ -15,5 +15,3 @@ var assoc = _curry3(function assoc (p, v, o) {
   b[p] = v
   return b
 })
-
-export default assoc

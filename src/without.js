@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.7.0
  */
-var without = _curry2(function without (as, bs) {
+export default _curry2(function without (as, bs) {
   var ys    = []
     , bi    = 0
     , aslen = as.length
@@ -29,5 +29,3 @@ var without = _curry2(function without (as, bs) {
   }
   return ys
 })
-
-export default without

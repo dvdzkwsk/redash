@@ -5,7 +5,7 @@ import _curry3 from './internal/_curry3'
  *
  * @since v0.7.0
  */
-var rangeBy = _curry3(function rangeBy (inc, i, end) {
+export default _curry3(function rangeBy (inc, i, end) {
   var ys = []
 
   for (; i < end; i += inc) {
@@ -13,5 +13,3 @@ var rangeBy = _curry3(function rangeBy (inc, i, end) {
   }
   return ys
 })
-
-export default rangeBy

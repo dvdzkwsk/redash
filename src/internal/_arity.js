@@ -1,7 +1,7 @@
 // Credit to Ramda for this idea for creating curried functions that
 // properly report their arity via function.length.
 // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
-var _arity = function _arity (arity, fn) {
+export default function _arity (arity, fn) {
   switch (arity) {
     case 0: return function __arity_0__ () { return fn.apply(this, arguments) }
     case 1: return function __arity_1__ (a0) { return fn.apply(this, arguments) }
@@ -17,5 +17,3 @@ var _arity = function _arity (arity, fn) {
     default: throw new Error('Arity must be less than or equal to 10.')
   }
 }
-
-export default _arity

@@ -3,7 +3,7 @@
  *
  * @since v0.5.0
  */
-var flattenDeep = function flattenDeep (xs) {
+export default function flattenDeep (xs) {
   var i   = 0
     , len = xs.length
     , ys  = []
@@ -16,5 +16,3 @@ var flattenDeep = function flattenDeep (xs) {
 
   return ys
 }
-
-export default flattenDeep

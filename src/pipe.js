@@ -5,11 +5,11 @@ import _curryN from './internal/_curryN'
  *
  * @since v0.1.0
  */
-var pipe = function pipe () {
+export default function pipe () {
   var fns = arguments
     , len = fns.length
 
-  return _curryN(fns[0].length, [], function __pipe__ () {
+  return _curryN(fns[0].length, [], function () {
     var i = 0
       , y = fns[i++].apply(null, arguments)
 
@@ -19,5 +19,3 @@ var pipe = function pipe () {
     return y
   })
 }
-
-export default pipe

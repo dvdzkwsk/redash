@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.10.0
  */
-var dissoc = _curry2(function dissoc (prop, obj) {
+export default _curry2(function dissoc (prop, obj) {
   var y = {}
     , p
 
@@ -16,5 +16,3 @@ var dissoc = _curry2(function dissoc (prop, obj) {
   }
   return y
 })
-
-export default dissoc

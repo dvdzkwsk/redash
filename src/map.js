@@ -24,7 +24,7 @@ import _curry2 from './internal/_curry2'
  * const mapAdd5 = _.map(add5)
  * mapAdd5([1,2,3,4]) // [6,7,8,9]
  */
-var map = _curry2(function map (fn, xs) {
+export default _curry2(function map (fn, xs) {
   var i   = 0
     , len = xs.length
     , ys  = new Array(len)
@@ -34,5 +34,3 @@ var map = _curry2(function map (fn, xs) {
   }
   return ys
 })
-
-export default map

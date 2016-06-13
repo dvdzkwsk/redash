@@ -6,6 +6,4 @@ import reduce from './reduce'
  *
  * @since v0.10.0
  */
-var sum = reduce(add, 0)
-
-export default sum
+export default reduce(add, 0)

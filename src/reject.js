@@ -7,8 +7,6 @@ import filter from './filter'
  *
  * @since v0.1.0
  */
-var reject = _curry2(function reject (fn, xs) {
+export default _curry2(function reject (fn, xs) {
   return filter(complement(fn), xs)
 })
-
-export default reject

@@ -1,8 +1,5 @@
-var _curry1 = function _curry1 (fn) {
-  var curried = function __redash_arity_1__ (a0) {
-    return arguments.length ? fn(a0) : __redash_arity_1__
+export default function _curry1 (fn) {
+  return function __curried_unary__ (a0) {
+    return arguments.length ? fn(a0) : __curried_unary__
   }
-  return curried
 }
-
-export default _curry1

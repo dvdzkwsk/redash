@@ -3,7 +3,7 @@
  *
  * @since v0.7.0
  */
-var toPairs = function toPairs (obj) {
+export default function toPairs (obj) {
   var ys = []
     , p
 
@@ -14,5 +14,3 @@ var toPairs = function toPairs (obj) {
   }
   return ys
 }
-
-export default toPairs

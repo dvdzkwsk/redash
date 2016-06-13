@@ -5,6 +5,4 @@ import rangeBy from './rangeBy'
  *
  * @since v0.7.0
  */
-var range = rangeBy(1)
-
-export default range
+export default rangeBy(1)

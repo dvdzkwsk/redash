@@ -3,10 +3,8 @@
  *
  * @since v0.9.0
  */
-var always = function always (x) {
+export default function always (x) {
   return function () {
     return x
   }
 }
-
-export default always

@@ -3,11 +3,9 @@
  *
  * @since v0.7.0
  */
-var tap = function (fn) {
+export default function tap (fn) {
   return function (a) {
     fn(a)
     return a
   }
 }
-
-export default tap

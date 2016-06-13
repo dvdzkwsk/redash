@@ -3,7 +3,7 @@
  *
  * @since v0.1.0
  */
-var flatten = function flatten (xs) {
+export default function flatten (xs) {
   var i   = 0
     , len = xs.length
     , ys  = []
@@ -23,5 +23,3 @@ var flatten = function flatten (xs) {
 
   return ys
 }
-
-export default flatten

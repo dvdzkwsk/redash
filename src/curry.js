@@ -5,8 +5,6 @@ import curryN from './curryN'
  *
  * @since v0.1.0
  */
-var curry = function curry (fn) {
+export default function curry (fn) {
   return curryN(fn.length, fn)
 }
-
-export default curry

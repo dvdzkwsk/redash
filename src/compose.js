@@ -6,8 +6,6 @@ import pipe from './pipe'
  *
  * @since v0.1.0
  */
-var compose = function compose () {
+export default function compose () {
   return pipe.apply(this, _reverse.call(arguments))
 }
-
-export default compose

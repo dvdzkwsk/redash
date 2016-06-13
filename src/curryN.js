@@ -8,7 +8,7 @@ import _curryN from './internal/_curryN'
  *
  * @since v0.1.0
  */
-var curryN = _curry2(function curryN (arity, fn) {
+export default _curry2(function curryN (arity, fn) {
   switch (arity) {
     case 0: return fn
     case 1: return _curry1(fn)
@@ -17,5 +17,3 @@ var curryN = _curry2(function curryN (arity, fn) {
     default: return _curryN(fn.length, [], fn)
   }
 })
-
-export default curryN

@@ -15,8 +15,6 @@ import _curry2 from './internal/_curry2'
  * const add3 = _.add(3)
  * add3(5) // 8
  */
-var add = _curry2(function add (a, b) {
+export default _curry2(function add (a, b) {
   return a + b
 })
-
-export default add

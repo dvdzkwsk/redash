@@ -3,8 +3,6 @@
  *
  * @since v0.4.0
  */
-var toUpper = function toUpper (a) {
+export default function toUpper (a) {
   return a.toUpperCase()
 }
-
-export default toUpper

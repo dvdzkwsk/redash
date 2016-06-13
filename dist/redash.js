@@ -4,24 +4,22 @@
   factory((global.Redash = {}));
 }(this, function (exports) { 'use strict';
 
-  var _curry1 = function _curry1 (fn) {
-    var curried = function __redash_arity_1__ (a0) {
-      return arguments.length ? fn(a0) : __redash_arity_1__
+  function _curry1 (fn) {
+    return function __curried_unary__ (a0) {
+      return arguments.length ? fn(a0) : __curried_unary__
     }
-    return curried
   }
 
-  var _curry2 = function _curry2 (fn) {
-    var curried = function __redash_arity_2__ (a0, a1) {
+  function _curry2 (fn) {
+    return function __curried_binary__ (a0, a1) {
       switch (arguments.length) {
-        case 0: return __redash_arity_2__
-        case 1: return _curry1(function __redash_arity_1__ (b0) {
+        case 0: return __curried_binary__
+        case 1: return _curry1(function __curried_unary__ (b0) {
           return fn(a0, b0)
         })
         default: return fn(a0, a1)
       }
     }
-    return curried
   }
 
   /**
@@ -65,7 +63,7 @@
    *
    * @since v0.9.0
    */
-  var always = function always (x) {
+  function always (x) {
     return function () {
       return x
     }
@@ -99,20 +97,19 @@
     return _concat.call(xs, [x])
   })
 
-  var _curry3 = function _curry3 (fn) {
-    var curried = function __redash_arity_3__ (a0, a1, a2) {
+  function _curry3 (fn) {
+    return function _curried_ternary__ (a0, a1, a2) {
       switch (arguments.length) {
-        case 0: return __redash_arity_3__
-        case 1: return _curry2(function __redash_arity_2__ (_a1, _a2) {
+        case 0: return _curried_ternary__
+        case 1: return _curry2(function __curried_binary__ (_a1, _a2) {
           return fn(a0, _a1, _a2)
         })
-        case 2: return _curry1(function __redash_arity_1__ (_a2) {
+        case 2: return _curry1(function __curried_unary__ (_a2) {
           return fn(a0, a1, _a2)
         })
         default: return fn(a0, a1, a2)
       }
     }
-    return curried
   }
 
   /**
@@ -145,7 +142,7 @@
    *
    * @since v0.9.0
    */
-  var complement = function complement (fn) {
+  function complement (fn) {
     return function () {
       return !fn.apply(this, arguments)
     }
@@ -158,7 +155,7 @@
   // Credit to Ramda for this idea for creating curried functions that
   // properly report their arity via function.length.
   // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
-  var _arity = function _arity (arity, fn) {
+  function _arity (arity, fn) {
     switch (arity) {
       case 0: return function __arity_0__ () { return fn.apply(this, arguments) }
       case 1: return function __arity_1__ (a0) { return fn.apply(this, arguments) }
@@ -213,11 +210,11 @@
    *
    * @since v0.1.0
    */
-  var pipe = function pipe () {
+  function pipe () {
     var fns = arguments
       , len = fns.length
 
-    return _curryN(fns[0].length, [], function __pipe__ () {
+    return _curryN(fns[0].length, [], function () {
       var i = 0
         , y = fns[i++].apply(null, arguments)
 
@@ -233,7 +230,7 @@
    *
    * @since v0.1.0
    */
-  var compose = function compose () {
+  function compose () {
     return pipe.apply(this, _reverse.call(arguments))
   }
 
@@ -257,7 +254,7 @@
    *
    * @since v0.1.0
    */
-  var curry = function curry (fn) {
+  function curry (fn) {
     return curryN(fn.length, fn)
   }
 
@@ -266,7 +263,7 @@
    *
    * @since v0.6.0
    */
-  var dec = function dec (a) {
+  function dec (a) {
     return a - 1
   }
 
@@ -296,7 +293,7 @@
     return _slice.call(xs, n)
   })
 
-  var _equals = function _equals (a, b) {
+  function _equals (a, b) {
     return a === b
   }
 
@@ -395,7 +392,7 @@
    *
    * @since v0.1.0
    */
-  var flatten = function flatten (xs) {
+  function flatten (xs) {
     var i   = 0
       , len = xs.length
       , ys  = []
@@ -421,7 +418,7 @@
    *
    * @since v0.5.0
    */
-  var flattenDeep = function flattenDeep (xs) {
+  function flattenDeep (xs) {
     var i   = 0
       , len = xs.length
       , ys  = []
@@ -440,7 +437,7 @@
    *
    * @since v0.10.0
    */
-  var flip = function (fn) {
+  function flip (fn) {
     return curryN(fn.length, function () {
       return fn.apply(this, _reverse.call(arguments))
     })
@@ -464,7 +461,7 @@
    *
    * @since v0.7.0
    */
-  var fromPairs = function fromPairs (xs) {
+  function fromPairs (xs) {
     var y   = {}
       , i   = 0
       , len = xs.length
@@ -483,7 +480,7 @@
    *
    * @since v0.1.0
    */
-  var head = function head (xs) {
+  function head (xs) {
     return xs[0]
   }
 
@@ -492,7 +489,7 @@
    *
    * @since v0.6.0
    */
-  var identity = function identity (a) {
+  function identity (a) {
     return a
   }
 
@@ -501,7 +498,7 @@
    *
    * @since v0.6.0
    */
-  var inc = function inc (a) {
+  function inc (a) {
     return a + 1
   }
 
@@ -527,7 +524,7 @@
    *
    * @since v0.1.0
    */
-  var keys = function keys (object) {
+  function keys (object) {
     return Object.keys(object)
   }
 
@@ -536,7 +533,7 @@
    *
    * @since v0.1.0
    */
-  var last = function last (xs) {
+  function last (xs) {
     return xs[xs.length - 1]
   }
 
@@ -597,14 +594,14 @@
       }
     }
     return y
-  }, 'merge : {k:v} -> {k:v} -> {k:v}')
+  })
 
   /**
    * not : Boolean -> Boolean
    *
    * @since v0.6.0
    */
-  var not = function not (a) {
+  function not (a) {
     return !a
   }
 
@@ -613,7 +610,7 @@
    *
    * @since v0.7.0
    */
-  var of = function of (x) {
+  function of (x) {
     return [x]
   }
 
@@ -631,7 +628,7 @@
    *
    * @since v0.1.0
    */
-  var propEq =  _curry3(function propEq (p, y, x) {
+  var propEq = _curry3(function propEq (p, y, x) {
     return x[p] === y
   })
 
@@ -694,7 +691,7 @@
    *
    * @since v0.1.0
    */
-  var reverse = function reverse (xs) {
+  function reverse (xs) {
     return _reverse.call(xs.slice(0))
   }
 
@@ -710,7 +707,7 @@
    *
    * @since v0.1.0
    */
-  var tail = function tail (xs) {
+  function tail (xs) {
     return _slice.call(xs, 1)
   }
 
@@ -760,7 +757,7 @@
    *
    * @since v0.4.0
    */
-  var toLower = function toLower (a) {
+  function toLower (a) {
     return a.toLowerCase()
   }
 
@@ -769,7 +766,7 @@
    *
    * @since v0.4.0
    */
-  var toUpper = function toUpper (a) {
+  function toUpper (a) {
     return a.toUpperCase()
   }
 
@@ -778,7 +775,7 @@
    *
    * @since v0.7.0
    */
-  var tap = function (fn) {
+  function tap (fn) {
     return function (a) {
       fn(a)
       return a
@@ -790,7 +787,7 @@
    *
    * @since v0.7.0
    */
-  var toPairs = function toPairs (obj) {
+  function toPairs (obj) {
     var ys = []
       , p
 

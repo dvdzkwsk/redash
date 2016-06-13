@@ -7,8 +7,6 @@ import reduce from './reduce'
  *
  * @since v0.1.0
  */
-var reduceRight = _curry3(function reduceRight (fn, y, xs) {
+export default _curry3(function reduceRight (fn, y, xs) {
   return reduce.call(this, fn, y, _reverse.call(xs))
 })
-
-export default reduceRight

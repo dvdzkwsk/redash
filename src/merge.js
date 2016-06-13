@@ -7,7 +7,7 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.4.0
  */
-var merge = _curry2(function merge (a, b) {
+export default _curry2(function merge (a, b) {
   var y = {}
     , prop
 
@@ -22,6 +22,4 @@ var merge = _curry2(function merge (a, b) {
     }
   }
   return y
-}, 'merge : {k:v} -> {k:v} -> {k:v}')
-
-export default merge
+})

@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.1.0
  */
-var indexOf = _curry2(function indexOf (y, xs) {
+export default _curry2(function indexOf (y, xs) {
   var i   = 0
     , len = xs.length
 
@@ -16,5 +16,3 @@ var indexOf = _curry2(function indexOf (y, xs) {
   }
   return -1
 })
-
-export default indexOf

@@ -3,8 +3,6 @@
  *
  * @since v0.6.0
  */
-var identity = function identity (a) {
+export default function identity (a) {
   return a
 }
-
-export default identity

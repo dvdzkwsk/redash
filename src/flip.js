@@ -7,10 +7,8 @@ import _reverse from './internal/_reverse'
  *
  * @since v0.10.0
  */
-var flip = function (fn) {
+export default function flip (fn) {
   return curryN(fn.length, function () {
     return fn.apply(this, _reverse.call(arguments))
   })
 }
-
-export default flip

@@ -3,7 +3,7 @@
  *
  * @since v0.7.0
  */
-var fromPairs = function fromPairs (xs) {
+export default function fromPairs (xs) {
   var y   = {}
     , i   = 0
     , len = xs.length
@@ -16,5 +16,3 @@ var fromPairs = function fromPairs (xs) {
 
   return y
 }
-
-export default fromPairs
