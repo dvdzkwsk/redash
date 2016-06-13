@@ -1,4 +1,5 @@
 import _curry2 from './internal/_curry2'
+import _eachOwn from './internal/_eachOwn'
 
 /**
  * merge : {k:v} -> {k:v} -> {k:v}
@@ -9,17 +10,11 @@ import _curry2 from './internal/_curry2'
  */
 export default _curry2(function merge (a, b) {
   var y = {}
-    , prop
+    , f = function (k, o) {
+      y[k] = o[k]
+    }
 
-  for (prop in b) {
-    if (b.hasOwnProperty(prop)) {
-      y[prop] = b[prop]
-    }
-  }
-  for (prop in a) {
-    if (a.hasOwnProperty(prop)) {
-      y[prop] = a[prop]
-    }
-  }
+  _eachOwn(f, b)
+  _eachOwn(f, a)
   return y
 })

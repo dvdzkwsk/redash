@@ -1,3 +1,5 @@
+import _eachOwn from './internal/_eachOwn'
+
 /**
  * toPairs : {k:v} -> [[k, v]]
  *
@@ -5,12 +7,9 @@
  */
 export default function toPairs (obj) {
   var ys = []
-    , p
 
-  for (p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      ys.push([p, obj[p]])
-    }
-  }
+  _eachOwn(function (k) {
+    ys.push([k, obj[k]])
+  }, obj)
   return ys
 }
