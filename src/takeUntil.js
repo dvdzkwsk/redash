@@ -13,6 +13,7 @@ export default _curry2(function takeUntil (fn, xs) {
   _arrayEach(function (x, i) {
     if (fn(x)) {
       ys = _slice(xs, 0, i)
+      return true
     }
   }, xs)
   return ys || _slice(xs)
