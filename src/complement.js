@@ -5,7 +5,7 @@
  */
 var complement = function complement (fn) {
   return function () {
-    return !fn.call(this, arguments)
+    return !fn.apply(this, arguments)
   }
 }
 
