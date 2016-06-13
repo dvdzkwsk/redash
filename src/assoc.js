@@ -12,6 +12,6 @@ var assoc = _curry3(function assoc (p, v, o) {
   }
   b[p] = v
   return b
-}, 'assoc : String -> * -> Object -> Object')
+}, 'assoc : String -> * -> {k:v} -> {k:v}')
 
 export default assoc
