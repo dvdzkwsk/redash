@@ -1,4 +1,6 @@
 import _curry3 from './internal/_curry3'
+import _reverse from './internal/_reverse'
+import reduce from './reduce'
 
 /**
  * reduceRight : ((b, a) -> b) -> b -> [a]
@@ -6,12 +8,7 @@ import _curry3 from './internal/_curry3'
  * @since v0.1.0
  */
 var reduceRight = _curry3(function reduceRight (fn, y, xs) {
-  var i = xs.length - 1
-
-  for (; i >= 0; i--) {
-    y = fn(y, xs[i])
-  }
-  return y
+  return reduce.call(this, fn, y, _reverse.call(xs))
 })
 
 export default reduceRight
