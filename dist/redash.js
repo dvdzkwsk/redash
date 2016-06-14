@@ -127,14 +127,14 @@
    *
    * @since v0.6.0
    */
-  var assoc = _curry3(function assoc (p, v, o) {
-    var b = {}
-      , prop
+  var assoc = _curry3(function assoc (k, v, o) {
+    var y = {}
+      , p
 
-    for (prop in o) {
-      b[prop] = o[prop]
+    for (p in o) {
+      b[p] = o[p]
     }
-    b[p] = v
+    b[k] = v
     return b
   })
 
@@ -312,9 +312,7 @@
    *
    * @since v0.7.0
    */
-  var equals = _curry2(function equals (a, b) {
-    return _equals(a, b)
-  })
+  var equals = _curry2(_equals)
 
   /**
    * filter : (a -> Boolean) -> [a] -> [a]
@@ -388,44 +386,47 @@
     return bs
   })
 
+  function _reduce (fn, b, as) {
+    _arrayEach(function (a) {
+      b = fn(b, a)
+    }, as)
+    return b
+  }
+
+  /**
+   * reduce : ((b, a) -> b) -> b -> [a]
+   *
+   * @since v0.1.0
+   */
+  var reduce = _curry3(_reduce)
+
   /**
    * flatten : [[a]] -> [a]
    *
    * @since v0.1.0
    */
-  function flatten (xs) {
-    var ys = []
-
-    _arrayEach(function (x) {
-      if (Array.isArray(x)) {
-        _arrayEach(function (x_) {
-          ys.push(x_)
-        }, x)
-      } else {
-        ys.push(x)
-      }
-    }, xs)
-    return ys
-  }
+  var flatten = reduce(function flatten (acc, x) {
+    if (Array.isArray(x)) {
+      _arrayEach(function (x_) {
+        acc.push(x_)
+      }, x)
+    } else {
+      acc.push(x)
+    }
+    return acc
+  }, [])
 
   /**
    * flattenDeep : [[a]] -> [a]
    *
    * @since v0.5.0
    */
-  function flattenDeep (xs) {
-    var ys = []
-
-    _arrayEach(function (x) {
-      if (Array.isArray(x)) {
-        ys = _concat.call(ys, flattenDeep(x))
-      } else {
-        ys.push(x)
-      }
-    }, xs)
-
-    return ys
-  }
+  var _flattenDeep = reduce(function flattenDeep (acc, x) {
+    return _concat.call(
+      acc,
+      Array.isArray(x) ? _flattenDeep(x) : x
+    )
+  }, [])
 
   /**
    * flip : (a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)
@@ -453,14 +454,21 @@
    *
    * @since v0.7.0
    */
-  function fromPairs (xs) {
-    var y = {}
+  var fromPairs = reduce(function fromPairs (acc, x) {
+    acc[x[0]] = x[1]
+    return acc
+  }, {})
 
-    _arrayEach(function (x) {
-      y[x[0]] = x[1]
-    }, xs)
-    return y
-  }
+  var _hasOwn = Object.prototype.hasOwnProperty
+
+  /**
+   * has : String -> {k:v} -> Boolean
+   *
+   * @since v0.11.0
+   */
+  var has = _curry2(function as (k, o) {
+    return _hasOwn.call(o, k)
+  })
 
   /**
    * head : [a] -> a
@@ -569,8 +577,6 @@
     return ys
   })
 
-  var _hasOwn = Object.prototype.hasOwnProperty
-
   function _eachOwn (f, o) {
     for (var k in o) {
       if (_hasOwn.call(o, k)) {
@@ -655,24 +661,12 @@
   var range = rangeBy(1)
 
   /**
-   * reduce : ((b, a) -> b) -> b -> [a]
-   *
-   * @since v0.1.0
-   */
-  var reduce = _curry3(function reduce (fn, b, as) {
-    _arrayEach(function (a) {
-      b = fn(b, a)
-    }, as)
-    return b
-  })
-
-  /**
    * reduceRight : ((b, a) -> b) -> b -> [a]
    *
    * @since v0.1.0
    */
   var reduceRight = _curry3(function reduceRight (fn, y, xs) {
-    return reduce(fn, y, _reverse.call(xs))
+    return _reduce(fn, y, _reverse.call(xs))
   })
 
   /**
@@ -869,10 +863,11 @@
   exports.findIndex = findIndex;
   exports.flatMap = flatMap;
   exports.flatten = flatten;
-  exports.flattenDeep = flattenDeep;
+  exports.flattenDeep = _flattenDeep;
   exports.flip = flip;
   exports.forEach = forEach;
   exports.fromPairs = fromPairs;
+  exports.has = has;
   exports.head = head;
   exports.identity = identity;
   exports.inc = inc;
