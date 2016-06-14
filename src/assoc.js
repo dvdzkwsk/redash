@@ -10,8 +10,8 @@ export default _curry3(function assoc (k, v, o) {
     , p
 
   for (p in o) {
-    b[p] = o[p]
+    y[p] = o[p]
   }
-  b[k] = v
-  return b
+  y[k] = v
+  return y
 })
