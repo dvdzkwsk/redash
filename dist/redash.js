@@ -132,10 +132,10 @@
       , p
 
     for (p in o) {
-      b[p] = o[p]
+      y[p] = o[p]
     }
-    b[k] = v
-    return b
+    y[k] = v
+    return y
   })
 
   /**
