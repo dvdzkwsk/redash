@@ -6,6 +6,4 @@ import _equals from './internal/_equals'
  *
  * @since v0.7.0
  */
-export default _curry2(function equals (a, b) {
-  return _equals(a, b)
-})
+export default _curry2(_equals)
