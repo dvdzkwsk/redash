@@ -6,12 +6,11 @@ import reduce from './reduce'
  *
  * @since v0.5.0
  */
-var flattenDeep = reduce(function flattenDeep (acc, x) {
-  if (Array.isArray(x)) {
-    return _concat.call(acc, flattenDeep(x))
-  }
-  acc.push(x)
-  return acc
+var _flattenDeep = reduce(function flattenDeep (acc, x) {
+  return _concat.call(
+    acc,
+    Array.isArray(x) ? _flattenDeep(x) : x
+  )
 }, [])
 
-export default flattenDeep
+export default _flattenDeep
