@@ -1,13 +1,12 @@
 var last = Redash.last
 
 describe('(Function) last', function () {
-  it('Should be a function.', function () {
-    expect(last).to.be.a('function')
-  })
-  
   it('Should return the last item in an array.', function () {
-    expect(last([1,2,3])).to.equal(3)
-    expect(last([1])).to.equal(1)
+    last([1,2,3]).should.equal(3)
+    last([1]).should.equal(1)
+  })
+
+  it('Should return undefined for an empty array', function () {
     expect(last([])).to.equal(undefined)
   })
 })
