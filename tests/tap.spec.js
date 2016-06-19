@@ -8,12 +8,8 @@ describe('(Function) tap', function () {
     _spies.noop = sinon.spy()
   })
 
-  it('Should be a function.', function () {
-    expect(tap).to.be.a('function')
-  })
-
   it('Should return a function.', function () {
-    expect(tap()).to.be.a('function')
+    tap.should.be.a('function')
   })
 
   describe('The resulting function...', function () {
@@ -26,7 +22,7 @@ describe('(Function) tap', function () {
     })
 
     it('Should return the argument it receives.', function () {
-      expect(_tapped('a')).to.equal('a')
+      _tapped('a').should.equal('a')
     })
   })
 })
