@@ -14,6 +14,6 @@ export default _curry2(function curryN (arity, fn) {
     case 1: return _curry1(fn)
     case 2: return _curry2(fn)
     case 3: return _curry3(fn)
-    default: return _curryN(fn.length, [], fn)
+    default: return _curryN(arity, [], fn)
   }
 })
