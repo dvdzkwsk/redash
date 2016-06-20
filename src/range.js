@@ -1,7 +1,7 @@
 import rangeBy from './rangeBy'
 
 /**
- * range : Number -> [Number]
+ * range : Number -> Number -> [Number]
  *
  * @since v0.7.0
  */
