@@ -1,6 +1,6 @@
 {
   "name": "redash",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "",
   "main": "dist/redash.js",
   "directories": {

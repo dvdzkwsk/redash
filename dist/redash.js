@@ -147,19 +147,6 @@
     return _concat.call(as, bs)
   })
 
-  /**
-   * complement : (*... -> Boolean) -> (*... -> Boolean)
-   *
-   * @since v0.9.0
-   */
-  function complement (fn) {
-    return function () {
-      return !fn.apply(this, arguments)
-    }
-  }
-
-  var _reverse = [].reverse
-
   var _arraySlice = [].slice
 
   // Credit to Ramda for this idea for creating curried functions that
@@ -212,6 +199,19 @@
   }
 
   /**
+   * complement : (*... -> Boolean) -> (*... -> Boolean)
+   *
+   * @since v0.9.0
+   */
+  function complement (fn) {
+    return _curryN(fn.length, [], function () {
+      return !fn.apply(this, arguments)
+    })
+  }
+
+  var _reverse = [].reverse
+
+  /**
    * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
    *
    * @since v0.1.0
@@ -251,7 +251,8 @@
       case 1: return _curry1(fn)
       case 2: return _curry2(fn)
       case 3: return _curry3(fn)
-      default: return _curryN(fn.length, [], fn)
+      default:
+        return _curryN(arity, [], fn)
     }
   })
 
