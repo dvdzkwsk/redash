@@ -1,32 +1,35 @@
 var takeUntil = Redash.takeUntil
 
 describe('(Function) takeUntil', function () {
-  var _spies
-  
-  beforeEach(function () {
-    _spies = {}
-    _spies.not5 = sinon.stub()
-    _spies.not5.returns(false)
-    _spies.not5.withArgs(5).returns(true)  
+  it('Should be a binary function that reports its arity', function () {
+    takeUntil
+      .should.have.length(2)
   })
-  
-  it('Should be a function.', function () {
-    expect(takeUntil).to.be.a('function')
+
+  it('Should be curried', function () {
+    takeUntil(function () {})
+      .should.be.a('function')
   })
-  
-  it('Should be curried.', function () {
-    expect(takeUntil()).to.be.a('function')
+
+  it('Should return all items until the predicate matches (exclusive)', function () {
+    var is5 = function (x) { return x === 5 }
+
+    takeUntil(is5, [1,2,3,4,5,6,7,8])
+      .should.deep.equal([1,2,3,4])
   })
-  
-  it('Should return all items until the predicate matches (exclusive).', function () {
-    expect(takeUntil(_spies.not5)([1,2,3,4,5,6,7,8])).to.deep.equal([1,2,3,4])
+
+  it('Should short circuit', function () {
+    var is5 = sinon.spy(function (x) { return x === 5 })
+
+    takeUntil(is5, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    is5.callCount.should.equal(5)
   })
-  
-  it('Should return a new array even if it\'s identical to the input.', function () {
+
+  it('Should return a new array even if it\'s identical to the input', function () {
     var arr = [1,2,3,4]
-    var res = takeUntil(_spies.not5, [1,2,3,4])
-    
-    expect(res).to.deep.equal([1,2,3,4])
-    expect(res).to.not.equal(arr)
+    var res = takeUntil(function () { return false }, [1,2,3,4])
+
+    res.should.deep.equal([1,2,3,4])
+    res.should.not.equal(arr)
   })
 })
