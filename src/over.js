@@ -7,5 +7,5 @@ import _curry3 from './internal/_curry3'
  * @returns {*}
  */
 export default _curry3(function over (lens, fn, target) {
-  return lens.set(fn(lens.get(target)), target)
+  return set(lens, fn(lens.get(target)), target)
 })
