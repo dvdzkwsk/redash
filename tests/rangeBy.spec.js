@@ -1,6 +1,6 @@
 var rangeBy = Redash.rangeBy
 
-describe('(Function) rangeBy', function () {
+describe('(Function) rangeBy', function (aaa, bbb, ccc) {
   it('Should include the lower bound', function () {
     rangeBy(1, 1, 10)[0].should.equal(1)
   })
@@ -24,6 +24,14 @@ describe('(Function) rangeBy', function () {
     // make sure it excludes the upper limit when it exceeds it
     rangeBy(3, 1, 11)
       .should.deep.equal([1, 4, 7, 10])
+  })
+
+  it('Should handle negative ranges', function () {
+    rangeBy(-1, 0, -5)
+      .should.deep.equal([0, -1, -2, -3, -4])
+
+    rangeBy(-3, 0, -10)
+      .should.deep.equal([0, -3, -6, -9])
   })
 
   it('Should return an empty array if the incrementor is 0', function () {
