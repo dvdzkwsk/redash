@@ -199,12 +199,27 @@
   }
 
   /**
+   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
+   *
+   * @since v0.1.0
+   */
+  var curryN = _curry2(function curryN (arity, fn) {
+    switch (arity) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(arity, [], fn)
+    }
+  })
+
+  /**
    * complement : (*... -> Boolean) -> (*... -> Boolean)
    *
    * @since v0.9.0
    */
   function complement (fn) {
-    return _curryN(fn.length, [], function () {
+    return curryN(fn.length, function () {
       return !fn.apply(this, arguments)
     })
   }
@@ -239,22 +254,6 @@
   function compose () {
     return pipe.apply(this, _reverse.call(arguments))
   }
-
-  /**
-   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
-   *
-   * @since v0.1.0
-   */
-  var curryN = _curry2(function curryN (arity, fn) {
-    switch (arity) {
-      case 0: return fn
-      case 1: return _curry1(fn)
-      case 2: return _curry2(fn)
-      case 3: return _curry3(fn)
-      default:
-        return _curryN(arity, [], fn)
-    }
-  })
 
   /**
    * curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
@@ -546,6 +545,19 @@
   }
 
   /**
+   *
+   * @param {Function} get
+   * @param {Function} set
+   * @returns {Function}
+   */
+  var lens = _curry2(function lens (getter, setter) {
+    return {
+      get: getter,
+      set: setter,
+    }
+  })
+
+  /**
    * map : (a -> b) -> [a] -> [b]
    *
    * @description
@@ -623,6 +635,16 @@
   }
 
   /**
+   * @param {Lens} lens
+   * @param {Function} fn
+   * @param {Object|*} target
+   * @returns {*}
+   */
+  var over = _curry3(function over (lens, fn, target) {
+    return set(lens, fn(lens.get(target)), target)
+  })
+
+  /**
    * prop : String -> {k:v} -> v
    *
    * @since v0.1.0
@@ -645,17 +667,28 @@
    *
    * @since v0.7.0
    */
-  var rangeBy = _curry3(function rangeBy (inc, i, end) {
+  var rangeBy = _curry3(function rangeBy (inc, start, end) {
     var ys = []
+      , times
 
-    for (; i < end; i += inc) {
-      ys.push(i)
+    // TODO: should (some of) these throw? 
+    if (
+      inc === 0 || 
+      inc > 0 && start > end ||
+      inc < 0 && start < end
+    ) {
+      return []
+    }
+
+    times = Math.abs(Math.ceil((end - start) / inc))
+    for (var i = 0; i < times; i++) {
+      ys.push(start + (inc * i))
     }
     return ys
   })
 
   /**
-   * range : Number -> [Number]
+   * range : Number -> Number -> [Number]
    *
    * @since v0.7.0
    */
@@ -687,6 +720,16 @@
   function reverse (xs) {
     return _reverse.call(_slice(xs, 0))
   }
+
+  /**
+   * @param {Lens} lens
+   * @param {*} value
+   * @param {Object|*} target
+   * @returns {*}
+   */
+  var set$1 = _curry3(function set (lens, value, target) {
+    return lens.set(value, target)
+  })
 
   /**
    * sum : [Number] -> Number
@@ -790,6 +833,15 @@
   }
 
   /**
+   * @param {Lens} lens
+   * @param {Object|*} target
+   * @returns {*}
+   */
+  var view = _curry2(function view (lens, target) {
+    return lens.get(target)
+  })
+
+  /**
    * without : [a] -> [a] -> [a]
    *
    * @since v0.7.0
@@ -876,10 +928,12 @@
   exports.insert = insert;
   exports.keys = keys;
   exports.last = last;
+  exports.lens = lens;
   exports.map = map;
   exports.merge = merge;
   exports.not = not;
   exports.of = of;
+  exports.over = over;
   exports.pipe = pipe;
   exports.prop = prop;
   exports.propEq = propEq;
@@ -891,6 +945,7 @@
   exports.foldr = reduceRight;
   exports.reject = reject;
   exports.reverse = reverse;
+  exports.set = set$1;
   exports.sum = sum;
   exports.tail = tail;
   exports.take = take;
@@ -900,6 +955,7 @@
   exports.toUpper = toUpper;
   exports.tap = tap;
   exports.toPairs = toPairs;
+  exports.view = view;
   exports.without = without;
   exports.zip = zip;
   exports.zipObj = zipObj;
