@@ -147,6 +147,8 @@
     return _concat.call(as, bs)
   })
 
+  var _reverse = [].reverse
+
   var _arraySlice = [].slice
 
   // Credit to Ramda for this idea for creating curried functions that
@@ -199,34 +201,6 @@
   }
 
   /**
-   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
-   *
-   * @since v0.1.0
-   */
-  var curryN = _curry2(function curryN (arity, fn) {
-    switch (arity) {
-      case 0: return fn
-      case 1: return _curry1(fn)
-      case 2: return _curry2(fn)
-      case 3: return _curry3(fn)
-      default: return _curryN(arity, [], fn)
-    }
-  })
-
-  /**
-   * complement : (*... -> Boolean) -> (*... -> Boolean)
-   *
-   * @since v0.9.0
-   */
-  function complement (fn) {
-    return curryN(fn.length, function () {
-      return !fn.apply(this, arguments)
-    })
-  }
-
-  var _reverse = [].reverse
-
-  /**
    * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
    *
    * @since v0.1.0
@@ -254,6 +228,21 @@
   function compose () {
     return pipe.apply(this, _reverse.call(arguments))
   }
+
+  /**
+   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
+   *
+   * @since v0.1.0
+   */
+  var curryN = _curry2(function curryN (arity, fn) {
+    switch (arity) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(arity, [], fn)
+    }
+  })
 
   /**
    * curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
@@ -527,6 +516,16 @@
   })
 
   /**
+   * isNil : * -> Boolean
+   *
+   * @param {*} x
+   * @returns Boolean
+   */
+  function isNil (x) {
+    return x == null
+  }
+
+  /**
    * keys : {k:v} -> [k]
    *
    * @since v0.1.0
@@ -618,11 +617,18 @@
 
   /**
    * not : Boolean -> Boolean
+   * not : (*... -> Boolean) -> (*... -> Boolean)
    *
    * @since v0.6.0
    */
-  function not (a) {
-    return !a
+  function not (x) {
+    if (typeof x !== 'function') {
+      return !x
+    }
+
+    return curryN(x.length, function () {
+      return !x.apply(this, arguments)
+    })
   }
 
   /**
@@ -709,7 +715,7 @@
    * @since v0.1.0
    */
   var reject = _curry2(function reject (fn, xs) {
-    return filter(complement(fn), xs)
+    return filter(not(fn), xs)
   })
 
   /**
@@ -903,7 +909,6 @@
   exports.append = append;
   exports.assoc = assoc;
   exports.concat = concat;
-  exports.complement = complement;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -926,6 +931,7 @@
   exports.inc = inc;
   exports.indexOf = indexOf;
   exports.insert = insert;
+  exports.isNil = isNil;
   exports.keys = keys;
   exports.last = last;
   exports.lens = lens;

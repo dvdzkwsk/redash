@@ -1,6 +1,6 @@
 import _curry2 from './internal/_curry2'
-import complement from './complement'
 import filter from './filter'
+import not from './not'
 
 /**
  * reject : (a -> Boolean) -> [a] -> [a]
@@ -8,5 +8,5 @@ import filter from './filter'
  * @since v0.1.0
  */
 export default _curry2(function reject (fn, xs) {
-  return filter(complement(fn), xs)
+  return filter(not(fn), xs)
 })
