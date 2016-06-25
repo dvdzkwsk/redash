@@ -8,10 +8,11 @@ import _curry3 from './internal/_curry3'
 export default _curry3(function rangeBy (inc, start, end) {
   var ys = []
     , times
+    , i
 
-  // TODO: should (some of) these throw? 
+  // TODO: should (some of) these throw?
   if (
-    inc === 0 || 
+    inc === 0 ||
     inc > 0 && start > end ||
     inc < 0 && start < end
   ) {
@@ -19,7 +20,7 @@ export default _curry3(function rangeBy (inc, start, end) {
   }
 
   times = Math.abs(Math.ceil((end - start) / inc))
-  for (var i = 0; i < times; i++) {
+  for (i = 0; i < times; i++) {
     ys.push(start + (inc * i))
   }
   return ys

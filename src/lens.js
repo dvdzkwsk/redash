@@ -8,7 +8,7 @@ import _curry2 from './internal/_curry2'
  */
 export default _curry2(function lens (getter, setter) {
   return {
-    get: getter,
-    set: setter,
+    get: getter
+  , set: setter
   }
 })

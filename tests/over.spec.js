@@ -16,7 +16,7 @@ describe('(Function) over', function () {
     over(lens(noop), noop).should.be.a('function')
   })
 
-  it('Should call the getter exactly one', function () {
+  it('Should call the getter exactly once', function () {
     var getter = sinon.spy(prop('foo'))
 
     over(lens(getter, assoc('foo')), xform, { foo: 'bar' })

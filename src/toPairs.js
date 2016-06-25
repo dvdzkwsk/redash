@@ -11,5 +11,5 @@ export default function toPairs (o) {
   _eachOwn(function (k, v) {
     kvs.push([k, v])
   }, o)
-  return ys
+  return kvs
 }

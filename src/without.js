@@ -11,9 +11,10 @@ export default _curry2(function without (as, bs) {
 
   _arrayEach(function (b) {
     var discard = false
+
     _arrayEach(function (a) {
       if (b === a) {
-        return discard = true
+        return (discard = true)
       }
     }, as)
     if (!discard) {

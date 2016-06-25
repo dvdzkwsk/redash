@@ -1,5 +1,5 @@
 const IS_CI = process.env.NODE_ENV === 'CI'
-const WATCH_MODE = false
+const WATCH_MODE = true
 
 const config = {
   files : [

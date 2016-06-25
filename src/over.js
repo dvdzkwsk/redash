@@ -1,4 +1,5 @@
 import _curry3 from './internal/_curry3'
+import set from './set'
 
 /**
  * @param {Lens} lens

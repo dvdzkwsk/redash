@@ -1,4 +1,3 @@
-import _arrayEach from './internal/_arrayEach'
 import _curry3 from './internal/_curry3'
 import _reduce from './internal/_reduce'
 

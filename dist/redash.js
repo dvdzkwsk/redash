@@ -147,6 +147,26 @@
     return _concat.call(as, bs)
   })
 
+  /**
+   * cond : [[(a -> Boolean), (a -> *)]] -> a -> (a -> *)
+   */
+  var cond = _curry2(function cond (conditions, x) {
+    var _this = this
+      , _res
+
+    _arrayEach(function (condition) {
+      var pred = condition[0]
+        , fn   = condition[1]
+
+      console.log('x = ', x)
+      if (pred.apply(_this, [x])) {
+        _res = fn.apply(_this, [x])
+        return true
+      }
+    }, conditions)
+    return _res
+  })
+
   var _reverse = [].reverse
 
   var _arraySlice = [].slice
@@ -476,6 +496,21 @@
   function identity (a) {
     return a
   }
+
+  /**
+   * ifElse : (a -> Boolean) -> (a -> *) -> (a -> *) -> (a -> *)
+   *
+   * TODO: Should this curry the returned function to `cond` arity?
+   *
+   * @param {Function} cond
+   * @param {Function} ifTrue
+   * @param {Function} ifElse
+   */
+  var ifElse = _curry3(function ifElse (cond, whenTrue, whenElse) {
+    return function (x) {
+      return cond(x) ? whenTrue(x) : whenElse(x)
+    }
+  })
 
   /**
    * inc : Number -> Number
@@ -909,6 +944,7 @@
   exports.append = append;
   exports.assoc = assoc;
   exports.concat = concat;
+  exports.cond = cond;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -928,6 +964,7 @@
   exports.has = has;
   exports.head = head;
   exports.identity = identity;
+  exports.ifElse = ifElse;
   exports.inc = inc;
   exports.indexOf = indexOf;
   exports.insert = insert;

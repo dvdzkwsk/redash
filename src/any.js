@@ -7,12 +7,12 @@ import _curry2 from './internal/_curry2'
  * @since v0.7.0
  */
 export default _curry2(function any (fn, xs) {
-  var found = false
+  var res = false
 
   _arrayEach(function (x) {
     if (fn(x)) {
-      return found = true
+      return (res = true)
     }
   }, xs)
-  return found
+  return res
 })

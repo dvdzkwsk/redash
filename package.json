@@ -1,6 +1,6 @@
 {
   "name": "redash",
-  "version": "0.12.0",
+  "version": "0.11.1",
   "description": "Compact library for writing performant functional JavaScript",
   "main": "dist/redash.js",
   "directories": {
@@ -10,7 +10,7 @@
     "dist/redash.js"
   ],
   "scripts": {
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint src",
     "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
     "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
     "compile": "npm run bundle && npm run minify",
@@ -20,9 +20,7 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^1.9.0",
-    "eslint-config-standard": "^4.4.0",
-    "eslint-plugin-standard": "^1.3.1",
+    "eslint": "^2.13.1",
     "karma": "^0.13.15",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^0.5.3",
