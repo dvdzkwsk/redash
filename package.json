@@ -20,19 +20,23 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^2.13.1",
-    "karma": "^1.0.0",
+    "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^0.5.3",
     "karma-coveralls": "^1.1.2",
     "karma-mocha": "^0.2.1",
     "karma-phantomjs-launcher": "^0.2.1",
+    "karma-rollup-preprocessor": "^2.0.2",
+    "karma-sinon": "^1.0.5",
     "karma-sinon-chai": "^1.2.0",
     "karma-spec-reporter": "0.0.22",
-    "lolex": "^1.5.0",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
     "rollup": "^0.21.0",
+    "sinon": "~1.16.0",
+    "sinon-chai": "^2.8.0",
     "uglify-js": "^2.6.1"
   }
 }

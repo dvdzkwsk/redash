@@ -10,7 +10,7 @@ const config = {
     'dist/redash.js' : ['coverage']
   },
   singleRun  : !WATCH_MODE,
-  frameworks : ['mocha', 'sinon-chai', 'chai'],
+  frameworks : ['mocha', 'sinon', 'sinon-chai', 'chai'],
   reporters  : ['spec', 'coverage'],
   browsers   : ['PhantomJS'],
   coverageReporter : {
