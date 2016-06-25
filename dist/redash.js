@@ -5,16 +5,16 @@
 }(this, function (exports) { 'use strict';
 
   function _curry1 (fn) {
-    return function __curried_unary__ (a0) {
-      return arguments.length ? fn(a0) : __curried_unary__
+    return function curriedUnaryFunction (a0) {
+      return arguments.length ? fn(a0) : curriedUnaryFunction
     }
   }
 
   function _curry2 (fn) {
-    return function __curried_binary__ (a0, a1) {
+    return function curriedBinaryFunction (a0, a1) {
       switch (arguments.length) {
-        case 0: return __curried_binary__
-        case 1: return _curry1(function __curried_unary__ (b0) {
+        case 0: return curriedBinaryFunction
+        case 1: return _curry1(function curriedUnaryFunction (b0) {
           return fn(a0, b0)
         })
         default: return fn(a0, a1)
@@ -86,14 +86,14 @@
    * @since v0.7.0
    */
   var any = _curry2(function any (fn, xs) {
-    var found = false
+    var res = false
 
     _arrayEach(function (x) {
       if (fn(x)) {
-        return found = true
+        return (res = true)
       }
     }, xs)
-    return found
+    return res
   })
 
   var _concat = [].concat
@@ -108,13 +108,13 @@
   })
 
   function _curry3 (fn) {
-    return function _curried_ternary__ (a0, a1, a2) {
+    return function curriedTernaryFunction (a0, a1, a2) {
       switch (arguments.length) {
-        case 0: return _curried_ternary__
-        case 1: return _curry2(function __curried_binary__ (_a1, _a2) {
+        case 0: return curriedTernaryFunction
+        case 1: return _curry2(function curriedBinaryFunction (_a1, _a2) {
           return fn(a0, _a1, _a2)
         })
-        case 2: return _curry1(function __curried_unary__ (_a2) {
+        case 2: return _curry1(function curriedUnaryFunction (_a2) {
           return fn(a0, a1, _a2)
         })
         default: return fn(a0, a1, a2)
@@ -158,7 +158,6 @@
       var pred = condition[0]
         , fn   = condition[1]
 
-      console.log('x = ', x)
       if (pred.apply(_this, [x])) {
         _res = fn.apply(_this, [x])
         return true
@@ -586,8 +585,8 @@
    */
   var lens = _curry2(function lens (getter, setter) {
     return {
-      get: getter,
-      set: setter,
+      get: getter
+    , set: setter
     }
   })
 
@@ -677,6 +676,16 @@
 
   /**
    * @param {Lens} lens
+   * @param {*} value
+   * @param {Object|*} target
+   * @returns {*}
+   */
+  var set = _curry3(function set (lens, value, target) {
+    return lens.set(value, target)
+  })
+
+  /**
+   * @param {Lens} lens
    * @param {Function} fn
    * @param {Object|*} target
    * @returns {*}
@@ -711,10 +720,11 @@
   var rangeBy = _curry3(function rangeBy (inc, start, end) {
     var ys = []
       , times
+      , i
 
-    // TODO: should (some of) these throw? 
+    // TODO: should (some of) these throw?
     if (
-      inc === 0 || 
+      inc === 0 ||
       inc > 0 && start > end ||
       inc < 0 && start < end
     ) {
@@ -722,7 +732,7 @@
     }
 
     times = Math.abs(Math.ceil((end - start) / inc))
-    for (var i = 0; i < times; i++) {
+    for (i = 0; i < times; i++) {
       ys.push(start + (inc * i))
     }
     return ys
@@ -761,16 +771,6 @@
   function reverse (xs) {
     return _reverse.call(_slice(xs, 0))
   }
-
-  /**
-   * @param {Lens} lens
-   * @param {*} value
-   * @param {Object|*} target
-   * @returns {*}
-   */
-  var set$1 = _curry3(function set (lens, value, target) {
-    return lens.set(value, target)
-  })
 
   /**
    * sum : [Number] -> Number
@@ -870,7 +870,7 @@
     _eachOwn(function (k, v) {
       kvs.push([k, v])
     }, o)
-    return ys
+    return kvs
   }
 
   /**
@@ -892,9 +892,10 @@
 
     _arrayEach(function (b) {
       var discard = false
+
       _arrayEach(function (a) {
         if (b === a) {
-          return discard = true
+          return (discard = true)
         }
       }, as)
       if (!discard) {
@@ -988,7 +989,7 @@
   exports.foldr = reduceRight;
   exports.reject = reject;
   exports.reverse = reverse;
-  exports.set = set$1;
+  exports.set = set;
   exports.sum = sum;
   exports.tail = tail;
   exports.take = take;
