@@ -1,4 +1,5 @@
 import _arrayEach from './internal/_arrayEach'
+import _arrayEachShortCircuitable from './internal/_arrayEachShortCircuitable'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -12,7 +13,7 @@ export default _curry2(function without (as, bs) {
   _arrayEach(function (b) {
     var discard = false
 
-    _arrayEach(function (a) {
+    _arrayEachShortCircuitable(function (a) {
       if (b === a) {
         return (discard = true)
       }

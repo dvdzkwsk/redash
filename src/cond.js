@@ -1,4 +1,4 @@
-import _arrayEach from './internal/_arrayEach'
+import _arrayEachShortCircuitable from './internal/_arrayEachShortCircuitable'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -8,7 +8,7 @@ export default _curry2(function cond (conditions, x) {
   var _this = this
     , _res
 
-  _arrayEach(function (condition) {
+  _arrayEachShortCircuitable(function (condition) {
     var pred = condition[0]
       , fn   = condition[1]
 

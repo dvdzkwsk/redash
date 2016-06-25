@@ -1,4 +1,4 @@
-import _arrayEach from './internal/_arrayEach'
+import _arrayEachShortCircuitable from './internal/_arrayEachShortCircuitable'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -9,7 +9,7 @@ import _curry2 from './internal/_curry2'
 export default _curry2(function findIndex (pred, xs) {
   var _i = -1
 
-  _arrayEach(function (x, i) {
+  _arrayEachShortCircuitable(function (x, i) {
     if (pred(x)) {
       _i = i
       return true

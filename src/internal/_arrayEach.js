@@ -3,8 +3,6 @@ export default function _arrayEach (f, xs) {
     , len = xs.length
 
   for (; i < len; i++) {
-    if (f(xs[i], i)) {
-      return
-    }
+    f(xs[i], i)
   }
 }
