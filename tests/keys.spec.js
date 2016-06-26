@@ -3,9 +3,9 @@ var keys = Redash.keys
 describe('(Function) keys', function () {
   it('Should return all own properties of an object.', function () {
     keys({
-      foo: true,
-      bar: function () {},
-      baz: [],
+      foo: true
+    , bar: function () {}
+    , baz: []
     }).should.deep.equal(['foo', 'bar', 'baz'])
   })
 

@@ -10,7 +10,7 @@
     "dist/redash.js"
   ],
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src tests",
     "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
     "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
     "compile": "npm run bundle && npm run minify",

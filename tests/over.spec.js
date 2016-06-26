@@ -2,10 +2,9 @@ var lens  = Redash.lens
   , over  = Redash.over
   , assoc = Redash.assoc
   , prop  = Redash.prop
-
-var xform = function (x) {
-  return x.toUpperCase()
-}
+  , xform = function (x) {
+    return x.toUpperCase()
+  }
 
 describe('(Function) over', function () {
   it('Should be a curried ternary function', function () {

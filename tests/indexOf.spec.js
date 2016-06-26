@@ -18,9 +18,9 @@ describe('(Function) indexOf', function () {
   })
 
   it('Should only compare by reference', function () {
-    var foo = { foo : 'foo' }
+    var foo = { foo: 'foo' }
 
-    indexOf(foo, [{ foo : 'foo' }]).should.equal(-1)
+    indexOf(foo, [{ foo: 'foo' }]).should.equal(-1)
     indexOf(foo, [foo]).should.equal(0)
   })
 })

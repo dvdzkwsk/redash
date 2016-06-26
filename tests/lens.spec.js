@@ -9,13 +9,13 @@ describe('(Function) lens', function () {
   })
 
   it('Should return an object with `get` and `set`', function () {
-    const get = prop('foo')
-    const set = assoc('foo')
+    var get = prop('foo')
+      , set = assoc('foo')
 
     lens(get, set)
       .should.deep.equal({
-        get: get,
-        set: set
+        get: get
+      , set: set
       })
   })
 })

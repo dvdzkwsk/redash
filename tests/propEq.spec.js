@@ -7,7 +7,7 @@ describe('(Function) propEq', function () {
   })
 
   it('Should return true if the target property matches the target value.', function () {
-    propEq('foo')('bar')({ foo : 'bar' }).should.equal(true)
-    propEq('foo', 'bar')({ foo : 'bar' }).should.equal(true)
+    propEq('foo')('bar')({ foo: 'bar' }).should.equal(true)
+    propEq('foo', 'bar')({ foo: 'bar' }).should.equal(true)
   })
 })

@@ -2,7 +2,7 @@ var sum = Redash.sum
 
 describe('(Function) sum', function () {
   it('Should return the sum of all numbers in a list', function () {
-    sum([1,2,3,4,5,6])
+    sum([1, 2, 3, 4, 5, 6])
       .should.equal(21)
   })
 

@@ -2,7 +2,7 @@ var tail = Redash.tail
 
 describe('(Function) tail', function () {
   it('Should return all but the first item in a list.', function () {
-    expect(tail([1,2,3,4])).to.deep.equal([2,3,4])
+    expect(tail([1, 2, 3, 4])).to.deep.equal([2, 3, 4])
   })
 
   it('Should return an empty list if the provided list has 1 item.', function () {
@@ -12,7 +12,7 @@ describe('(Function) tail', function () {
     expect(res).to.have.length(0)
   })
 
-    it('Should return an empty list if the provided list has 0 items.', function () {
+  it('Should return an empty list if the provided list has 0 items.', function () {
     const res = tail([])
 
     expect(res).to.be.an('array')

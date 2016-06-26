@@ -30,7 +30,7 @@ describe('(Function) forEach', function () {
   it('Should call the provided function with each item in the list', function () {
     _spies.noop.should.not.have.been.called
 
-    forEach(_spies.noop, [1,2,3])
+    forEach(_spies.noop, [1, 2, 3])
 
     _spies.noop.should.have.been.calledThrice
     _spies.noop.getCall(0).should.have.been.calledWith(1)

@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "describe": false,
+    "expect": false,
+    "it": false,
+    "sinon": false,
+    "Redash": false
+  },
+  "rules": {
+    "max-depth": 0,
+    "max-nested-callbacks": 0
+  }
+}

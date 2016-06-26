@@ -14,8 +14,8 @@ describe('(Function) takeUntil', function () {
   it('Should return all items until the predicate matches (exclusive)', function () {
     var is5 = function (x) { return x === 5 }
 
-    takeUntil(is5, [1,2,3,4,5,6,7,8])
-      .should.deep.equal([1,2,3,4])
+    takeUntil(is5, [1, 2, 3, 4, 5, 6, 7, 8])
+      .should.deep.equal([1, 2, 3, 4])
   })
 
   it('Should short circuit', function () {
@@ -26,10 +26,10 @@ describe('(Function) takeUntil', function () {
   })
 
   it('Should return a new array even if it\'s identical to the input', function () {
-    var arr = [1,2,3,4]
-    var res = takeUntil(function () { return false }, [1,2,3,4])
+    var arr  = [1, 2, 3, 4]
+       , res = takeUntil(function () { return false }, [1, 2, 3, 4])
 
-    res.should.deep.equal([1,2,3,4])
+    res.should.deep.equal([1, 2, 3, 4])
     res.should.not.equal(arr)
   })
 })

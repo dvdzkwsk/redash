@@ -17,8 +17,8 @@ describe('(Function) assoc', function () {
   })
 
   it('Should not mutate the original object', function () {
-    const obj = { foo: 'bar' }
-    const res = assoc('foo', 'baz', obj)
+    var obj = { foo: 'bar' }
+      , res = assoc('foo', 'baz', obj)
 
     obj.should.deep.equal({ foo: 'bar' })
     res.should.deep.equal({ foo: 'baz' })
