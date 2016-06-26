@@ -12,8 +12,8 @@ export default _curry2(function cond (conditions, x) {
     var pred = condition[0]
       , fn   = condition[1]
 
-    if (pred.apply(_this, [x])) {
-      _res = fn.apply(_this, [x])
+    if (pred.call(_this, x)) {
+      _res = fn.call(_this, x)
       return true
     }
   }, conditions)
