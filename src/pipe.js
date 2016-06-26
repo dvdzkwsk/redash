@@ -11,11 +11,11 @@ export default function pipe () {
   return _curryN(fns[0].length, [], function () {
     var i   = 0
       , len = fns.length
-      , y   = fns[i++].apply(null, arguments)
+      , acc = fns[i++].apply(this, arguments)
 
     for (; i < len; i++) {
-      y = fns[i](y)
+      acc = fns[i].call(this, acc)
     }
-    return y
+    return acc
   })
 }

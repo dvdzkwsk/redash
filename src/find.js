@@ -7,13 +7,13 @@ import _curry2 from './internal/_curry2'
  * @since v0.6.0
  */
 export default _curry2(function find (pred, xs) {
-  var y
+  var res
 
   _arrayEachShortCircuitable(function (x) {
     if (pred(x)) {
-      y = x
+      res = x
       return true
     }
   }, xs)
-  return y
+  return res
 })

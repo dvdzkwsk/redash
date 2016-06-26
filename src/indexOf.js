@@ -6,11 +6,11 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.1.0
  */
-export default _curry2(function indexOf (y, xs) {
+export default _curry2(function indexOf (a, xs) {
   var _i = -1
 
   _arrayEachShortCircuitable(function (x, i) {
-    if (x === y) {
+    if (x === a) {
       _i = i
       return true
     }
