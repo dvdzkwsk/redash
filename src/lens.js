@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * lens : ((k -> v), (k, v, {k:v} -> {k:v})) -> Lens k
  *
  * @param {Function} get
  * @param {Function} set

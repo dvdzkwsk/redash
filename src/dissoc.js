@@ -1,7 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * dissoc : String -> {k:v} -> {k:v}
+ * dissoc : String k -> {k:v} -> {k:v}
  *
  * @since v0.10.0
  */
