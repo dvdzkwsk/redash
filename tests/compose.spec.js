@@ -1,34 +1,49 @@
 var compose = Redash.compose
 
-
 describe('(Function) compose', function () {
-  var _spies
-  
-  beforeEach(function () {
-    _spies = {}
-    _spies.add = function (a, b) { return a + b }
-    _spies.add5 = function (x) { return x + 5 }
-    _spies.double = function (x) { return x * 2 }
+  it('Should return a function', function () {
+    compose(function () {}, function () {}).should.be.a('function')
   })
-  
-  it('Should be a function.', function () {
-    expect(compose).to.be.a('function')
+
+  it('Should correctly report its arity to match the rightmost function', function () {
+    var unary   = function (a0) {}
+      , binary  = function (a0, a1) {}
+      , ternary = function (a0, a1, a2) {}
+
+    compose(unary, binary, ternary).should.have.length(3)
+    compose(ternary, binary, unary).should.have.length(1)
   })
-  
-  it('Should return a function.', function () {
-    expect(compose(_spies.add, _spies.double)).to.be.a('function')
+
+  it('Should be curried to the arity of the rightmost function', function () {
+    var unary   = sinon.spy(function (a0) {})
+      , binary  = sinon.spy(function (a0, a1) {})
+      , ternary = sinon.spy(function (a0, a1, a2) {})
+
+    compose(unary, binary, ternary)()
+    ternary.should.not.have.been.called()
+
+    compose(unary, binary, ternary)(1)
+    ternary.should.not.have.been.called()
+
+    compose(unary, binary, ternary)(1)()
+    compose(unary, binary, ternary)(1)(2)
+    ternary.should.not.have.been.called()
+
+    compose(unary, binary, ternary)(1)(2)()
+    ternary.should.not.have.been.called()
+
+    compose(unary, binary, ternary)(1)(2)(3)
+    ternary.should.have.been.calledOnce()
   })
-  
-  it('Should invoke the functions from R -> L.', function () {
-    expect(compose(_spies.double, _spies.add5)(0)).to.equal(10)
-  })
-  
-  it('Should be curried to the arity of the right-most function.', function () {
-    expect(compose(_spies.double, _spies.add5)()()).to.be.a('function')
-    expect(compose(_spies.double, _spies.add5)()(0)).to.equal(10)
-  
-    expect(compose(_spies.double, _spies.add)()()).to.be.a('function')
-    expect(compose(_spies.double, _spies.add)()(5, 5)).to.equal(20)
-    expect(compose(_spies.double, _spies.add)()(1)(3)).to.equal(8)
+
+  it('Should invoke the functions from right to left', function () {
+    var s1 = sinon.spy()
+      , s2 = sinon.spy()
+      , s3 = sinon.spy()
+
+    compose(s1, s2, s3)(0)
+    s3.should.have.been.calledBefore(s2)
+    s2.should.have.been.calledBefore(s1)
+    s1.should.have.been.calledOnce()
   })
 })
