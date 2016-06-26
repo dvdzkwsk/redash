@@ -29,7 +29,7 @@ var _curryN = function _curryN (arity, applied, fn) {
     }
 
     return newApplied.length >= arity
-      ? fn.apply(null, newApplied)
+      ? fn.apply(this, newApplied)
       : _curryN(arity, newApplied, fn)
   })
 }
