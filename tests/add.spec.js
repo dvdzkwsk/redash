@@ -1,8 +1,12 @@
 var add = Redash.add
 
 describe('(Function) add', function () {
-  it('Should be a curried binary function', function () {
-    expect(add()).to.be.a('function')
+  it('Should properly report its arity (is binary)', function () {
+    add.should.have.length(2)
+  })
+
+  it('Should be curried', function () {
+    add(5).should.be.a('function')
   })
 
   it('Should add two numbers', function () {
@@ -10,6 +14,6 @@ describe('(Function) add', function () {
   })
 
   it('Should concatenate two strings', function () {
-    add('hello')('goodbye').should.match(/hellogoodbye/)
+    add('hello')('goodbye').should.equal('hellogoodbye')
   })
 })

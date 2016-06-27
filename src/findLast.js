@@ -1,4 +1,3 @@
-import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -6,13 +5,17 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.12.0
  */
-export default _curry2(function find (pred, xs) {
-  var res
+export default _curry2(function findLast (pred, xs) {
+  var i   = 0
+    , len = xs.length
+    , x
+    , res
 
-  _arrayEach(function (x) {
+  for (; i < len; i++) {
+    x = xs[i]
     if (pred(x)) {
       res = x
     }
-  }, xs)
+  }
   return res
 })

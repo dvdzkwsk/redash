@@ -1,4 +1,3 @@
-import _arrayEachShortCircuitable from './internal/_arrayEachShortCircuitable'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -7,13 +6,13 @@ import _curry2 from './internal/_curry2'
  * @since v0.1.0
  */
 export default _curry2(function indexOf (a, xs) {
-  var _i = -1
+  var i   = 0
+    , len = xs.length
 
-  _arrayEachShortCircuitable(function (x, i) {
-    if (x === a) {
-      _i = i
-      return true
+  for (; i < len; i++) {
+    if (xs[i] === a) {
+      return i
     }
-  }, xs)
-  return _i
+  }
+  return -1
 })

@@ -8,6 +8,6 @@ import _reverse from './internal/_reverse'
  */
 export default function flip (fn) {
   return curryN(fn.length, function () {
-    return fn.apply(this, _reverse.call(arguments))
+    return fn.apply(null, _reverse.call(arguments))
   })
 }

@@ -1,4 +1,3 @@
-import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -25,11 +24,13 @@ import _curry2 from './internal/_curry2'
  * const mapAdd5 = _.map(add5)
  * mapAdd5([1,2,3,4]) // [6,7,8,9]
  */
-export default _curry2(function map (fn, xs) {
-  var ys = new Array(xs.length)
+export default _curry2(function map (fn, as) {
+  var bs  = new Array(as.length)
+    , i   = 0
+    , len = as.length
 
-  _arrayEach(function (x, i) {
-    ys[i] = fn(x)
-  }, xs)
-  return ys
+  for (; i < len; i++) {
+    bs[i] = fn(as[i])
+  }
+  return bs
 })

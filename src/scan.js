@@ -1,5 +1,4 @@
 import _curry3 from './internal/_curry3'
-import _arrayEach from './internal/_arrayEach'
 
 /**
  * scan : (b, a -> b) -> b -> [a] -> [b]
@@ -7,11 +6,13 @@ import _arrayEach from './internal/_arrayEach'
  * @since v0.12.0
  */
 export default _curry3(function scan (fn, acc, as) {
-  var bs = [acc]
+  var i   = 0
+    , len = as.length
+    , bs  = [acc]
 
-  _arrayEach(function (a) {
-    acc = fn(acc, a)
+  for (; i < len; i++) {
+    acc = fn(acc, as[i])
     bs.push(acc)
-  }, as)
+  }
   return bs
 })

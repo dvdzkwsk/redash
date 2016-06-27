@@ -1,4 +1,3 @@
-import _arrayEachShortCircuitable from './internal/_arrayEachShortCircuitable'
 import _curry2 from './internal/_curry2'
 import _slice from './internal/_slice'
 
@@ -8,13 +7,13 @@ import _slice from './internal/_slice'
  * @since v0.1.0
  */
 export default _curry2(function takeUntil (fn, xs) {
-  var ys
+  var i   = 0
+    , len = xs.length
 
-  _arrayEachShortCircuitable(function (x, i) {
-    if (fn(x)) {
-      ys = _slice(xs, 0, i)
-      return true
+  for (; i < len; i++) {
+    if (fn(xs[i])) {
+      return _slice(xs, 0, i)
     }
-  }, xs)
-  return ys || _slice(xs)
+  }
+  return _slice(xs)
 })

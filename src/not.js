@@ -12,6 +12,6 @@ export default function not (x) {
   }
 
   return curryN(x.length, function () {
-    return !x.apply(this, arguments)
+    return !x.apply(null, arguments)
   })
 }

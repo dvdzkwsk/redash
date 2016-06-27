@@ -7,5 +7,5 @@ import pipe from './pipe'
  * @since v0.1.0
  */
 export default function compose () {
-  return pipe.apply(this, _reverse.call(arguments))
+  return pipe.apply(null, _reverse.call(arguments))
 }

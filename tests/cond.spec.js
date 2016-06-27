@@ -54,26 +54,6 @@ describe('(Function) cond', function () {
     val.should.have.been.calledOnce
   })
 
-  it('Should call the condition predicate with the correct `this` binding', function () {
-    var ctx  = {}
-      , ctxs = []
-      , pred = function () { ctxs.push(this); return false }
-      , val  = function () {}
-
-    cond.call(ctx, [ [pred, val] ], ['hello'])
-    ctxs.should.deep.equal([ctx])
-  })
-
-  it('Should call the matched condition executor with the correct `this` binding', function () {
-    var ctx  = {}
-      , ctxs = []
-      , pred = function () { return true }
-      , val = function () { ctxs.push(this) }
-
-    cond.call(ctx, [ [pred, val] ], ['hello'])
-    ctxs.should.deep.equal([ctx])
-  })
-
   it('Should return `undefined` when conditions is empty', function () {
     expect(cond([], null)).to.equal(undefined)
   })

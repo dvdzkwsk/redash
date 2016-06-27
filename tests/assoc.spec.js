@@ -1,8 +1,11 @@
 var assoc = Redash.assoc
 
 describe('(Function) assoc', function () {
-  it('Should be a curried ternary function', function () {
-    assoc('a').should.be.a('function')
+  it('Should properly report its arity (is ternary)', function () {
+    assoc.should.have.length(3)
+  })
+
+  it('Should be curried', function () {
     assoc('a')('b').should.be.a('function')
   })
 

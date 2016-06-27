@@ -1,8 +1,9 @@
-import _arrayEach from './_arrayEach'
+export default function _reduce (fn, acc, as) {
+  var i   = 0
+    , len = as.length
 
-export default function _reduce (fn, b, as) {
-  _arrayEach(function (a) {
-    b = fn(b, a)
-  }, as)
-  return b
+  for (; i < len; i++) {
+    acc = fn(acc, as[i])
+  }
+  return acc
 }

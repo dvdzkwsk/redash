@@ -41,32 +41,21 @@
     return a + b
   })
 
-  function _arrayEach (f, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      if (f(xs[i], i)) {
-        return
-      }
-    }
-  }
-
   /**
    * all : (a -> Boolean) -> [a] -> Boolean
    *
    * @since v0.7.0
    */
   var all = _curry2(function all (fn, xs) {
-    var all = true
+    var i   = 0
+      , len = xs.length
 
-    _arrayEach(function (x) {
-      if (fn(x)) {
-        all = false
-        return true
+    for (; i < len; i++) {
+      if (!fn(xs[i])) {
+        return false
       }
-    }, xs)
-    return all
+    }
+    return true
   })
 
   /**
@@ -86,14 +75,15 @@
    * @since v0.7.0
    */
   var any = _curry2(function any (fn, xs) {
-    var res = false
+    var i   = 0
+      , len = xs.length
 
-    _arrayEach(function (x) {
-      if (fn(x)) {
-        return (res = true)
+    for (; i < len; i++) {
+      if (fn(xs[i])) {
+        return true
       }
-    }, xs)
-    return res
+    }
+    return false
   })
 
   var _concat = [].concat
@@ -123,7 +113,7 @@
   }
 
   /**
-   * assoc : String -> * -> {k:v} -> {k:v}
+   * assoc : String k -> v -> {k:v} -> {k:v}
    *
    * @since v0.6.0
    */
@@ -151,19 +141,16 @@
    * cond : [[(a -> Boolean), (a -> *)]] -> a -> (a -> *)
    */
   var cond = _curry2(function cond (conditions, x) {
-    var _this = this
-      , _res
+    var i   = 0
+      , len = conditions.length
+      , cond
 
-    _arrayEach(function (condition) {
-      var pred = condition[0]
-        , fn   = condition[1]
-
-      if (pred.apply(_this, [x])) {
-        _res = fn.apply(_this, [x])
-        return true
+    for (; i < len; i++) {
+      cond = conditions[i]
+      if (cond[0](x)) {
+        return cond[1](x)
       }
-    }, conditions)
-    return _res
+    }
   })
 
   var _reverse = [].reverse
@@ -230,22 +217,22 @@
     return _curryN(fns[0].length, [], function () {
       var i   = 0
         , len = fns.length
-        , y   = fns[i++].apply(null, arguments)
+        , acc = fns[i++].apply(null, arguments)
 
       for (; i < len; i++) {
-        y = fns[i](y)
+        acc = fns[i](acc)
       }
-      return y
+      return acc
     })
   }
 
   /**
-   * compose : (y -> z), ..., (g -> h), (a, b, ..., f -> g) -> (a, b, ..., f -> z)
+   * compose : ((y -> z), ..., (g -> h), (a, b, ..., f -> g)) -> (a, b, ..., f -> z)
    *
    * @since v0.1.0
    */
   function compose () {
-    return pipe.apply(this, _reverse.call(arguments))
+    return pipe.apply(null, _reverse.call(arguments))
   }
 
   /**
@@ -282,7 +269,7 @@
   }
 
   /**
-   * dissoc : String -> {k:v} -> {k:v}
+   * dissoc : String k -> {k:v} -> {k:v}
    *
    * @since v0.10.0
    */
@@ -327,15 +314,19 @@
    *
    * @since v0.1.0
    */
-  var filter = _curry2(function filter (fn, xs) {
-    var ys = []
+  var filter = _curry2(function filter (pred, as) {
+    var i   = 0
+      , len = as.length
+      , res = []
+      , a
 
-    _arrayEach(function (x) {
-      if (fn(x)) {
-        ys.push(x)
+    for (; i < len; i++) {
+      a = as[i]
+      if (pred(a)) {
+        res.push(a)
       }
-    }, xs)
-    return ys
+    }
+    return res
   })
 
   /**
@@ -344,15 +335,16 @@
    * @since v0.6.0
    */
   var find = _curry2(function find (pred, xs) {
-    var y
+    var i   = 0
+      , len = xs.length
+      , x
 
-    _arrayEach(function (x) {
+    for (; i < len; i++) {
+      x = xs[i]
       if (pred(x)) {
-        y = x
-        return true
+        return x
       }
-    }, xs)
-    return y
+    }
   })
 
   /**
@@ -361,15 +353,35 @@
    * @since v0.1.0
    */
   var findIndex = _curry2(function findIndex (pred, xs) {
-    var _i = -1
+    var i   = 0
+      , len = xs.length
 
-    _arrayEach(function (x, i) {
-      if (pred(x)) {
-        _i = i
-        return true
+    for (; i < len; i++) {
+      if (pred(xs[i])) {
+        return i
       }
-    }, xs)
-    return _i
+    }
+    return -1
+  })
+
+  /**
+   * findLast : (a -> Boolean) -> [a] -> a | undefined
+   *
+   * @since v0.12.0
+   */
+  var findLast = _curry2(function findLast (pred, xs) {
+    var i   = 0
+      , len = xs.length
+      , x
+      , res
+
+    for (; i < len; i++) {
+      x = xs[i]
+      if (pred(x)) {
+        res = x
+      }
+    }
+    return res
   })
 
   /**
@@ -377,64 +389,74 @@
    *
    * @since v0.1.0
    */
-  var flatMap = _curry2(function flatMap (fn, as) {
-    var bs = []
+  var flatMap = _curry2(function flatMap (fn, xs) {
+    var i   = 0
+      , len = xs.length
+      , bs  = []
+      , _i
+      , b
 
-    _arrayEach(function (a) {
-      var x = fn(a)
-      if (Array.isArray(x)) {
-        _arrayEach(function (x_) {
-          bs.push(x_)
-        }, x)
+    for (; i < len; i++) {
+      b = fn(xs[i])
+      if (Array.isArray(b)) {
+        for (_i = 0; _i < b.length; _i++) {
+          bs.push(b[_i])
+        }
       } else {
-        bs.push(x)
+        bs.push(b)
       }
-    }, as)
+    }
 
     return bs
   })
-
-  function _reduce (fn, b, as) {
-    _arrayEach(function (a) {
-      b = fn(b, a)
-    }, as)
-    return b
-  }
-
-  /**
-   * reduce : ((b, a) -> b) -> b -> [a]
-   *
-   * @since v0.1.0
-   */
-  var reduce = _curry3(_reduce)
 
   /**
    * flatten : [[a]] -> [a]
    *
    * @since v0.1.0
    */
-  var flatten = reduce(function flatten (acc, x) {
-    if (Array.isArray(x)) {
-      _arrayEach(function (x_) {
-        acc.push(x_)
-      }, x)
-    } else {
-      acc.push(x)
+  function flatten (xs) {
+    var acc = []
+      , i   = 0
+      , len = xs.length
+      , x
+      , xi
+      , xlen
+
+    for (; i < len; i++) {
+      x = xs[i]
+      if (Array.isArray(x)) {
+        for (xi = 0, xlen = x.length; xi < xlen; xi++) {
+          acc.push(x[xi])
+        }
+      } else {
+        acc.push(x)
+      }
     }
     return acc
-  }, [])
+  }
 
   /**
    * flattenDeep : [[a]] -> [a]
    *
    * @since v0.5.0
    */
-  var _flattenDeep = reduce(function flattenDeep (acc, x) {
-    return _concat.call(
-      acc,
-      Array.isArray(x) ? _flattenDeep(x) : x
-    )
-  }, [])
+  function flattenDeep (xs) {
+    var acc = []
+      , i   = 0
+      , len = xs.length
+      , x
+
+    for (; i < len; i++) {
+      x = xs[i]
+      if (Array.isArray(x)) {
+        acc = _concat.call(acc, flattenDeep(x))
+      } else {
+        acc.push(x)
+      }
+    }
+    return acc
+  }
 
   /**
    * flip : (a -> b -> c -> ... -> z) -> (z -> ... -> c -> b -> a)
@@ -443,7 +465,7 @@
    */
   function flip (fn) {
     return curryN(fn.length, function () {
-      return fn.apply(this, _reverse.call(arguments))
+      return fn.apply(null, _reverse.call(arguments))
     })
   }
 
@@ -452,10 +474,30 @@
    * @since v0.1.0
    */
   var forEach = _curry2(function forEach (fn, xs) {
-    _arrayEach(function (x) {
-      fn(x)
-    }, xs)
+    var i   = 0
+      , len = xs.length
+
+    for (; i < len; i++) {
+      fn(xs[i])
+    }
   })
+
+  function _reduce (fn, acc, as) {
+    var i   = 0
+      , len = as.length
+
+    for (; i < len; i++) {
+      acc = fn(acc, as[i])
+    }
+    return acc
+  }
+
+  /**
+   * reduce : (b, a -> b) -> b -> [a] -> b
+   *
+   * @since v0.1.0
+   */
+  var reduce = _curry3(_reduce)
 
   /**
    * fromPairs : [[k, v]] -> {k:v}
@@ -525,16 +567,16 @@
    *
    * @since v0.1.0
    */
-  var indexOf = _curry2(function indexOf (y, xs) {
-    var _i = -1
+  var indexOf = _curry2(function indexOf (a, xs) {
+    var i   = 0
+      , len = xs.length
 
-    _arrayEach(function (x, i) {
-      if (x === y) {
-        _i = i
-        return true
+    for (; i < len; i++) {
+      if (xs[i] === a) {
+        return i
       }
-    }, xs)
-    return _i
+    }
+    return -1
   })
 
   /**
@@ -578,6 +620,7 @@
   }
 
   /**
+   * lens : ((k -> v), (k, v, {k:v} -> {k:v})) -> Lens k
    *
    * @param {Function} get
    * @param {Function} set
@@ -614,13 +657,15 @@
    * const mapAdd5 = _.map(add5)
    * mapAdd5([1,2,3,4]) // [6,7,8,9]
    */
-  var map = _curry2(function map (fn, xs) {
-    var ys = new Array(xs.length)
+  var map = _curry2(function map (fn, as) {
+    var bs  = new Array(as.length)
+      , i   = 0
+      , len = as.length
 
-    _arrayEach(function (x, i) {
-      ys[i] = fn(x)
-    }, xs)
-    return ys
+    for (; i < len; i++) {
+      bs[i] = fn(as[i])
+    }
+    return bs
   })
 
   function _eachOwn (f, o) {
@@ -661,7 +706,7 @@
     }
 
     return curryN(x.length, function () {
-      return !x.apply(this, arguments)
+      return !x.apply(null, arguments)
     })
   }
 
@@ -675,16 +720,20 @@
   }
 
   /**
+   * set : Lens k -> v -> {k:v} -> {k:v}
+   *
    * @param {Lens} lens
    * @param {*} value
-   * @param {Object|*} target
-   * @returns {*}
+   * @param {Object} target
+   * @returns {Object}
    */
   var set = _curry3(function set (lens, value, target) {
     return lens.set(value, target)
   })
 
   /**
+   * over : Lens k -> (v -> *) -> {k:v} -> {k:v}
+   *
    * @param {Lens} lens
    * @param {Function} fn
    * @param {Object|*} target
@@ -695,7 +744,7 @@
   })
 
   /**
-   * prop : String -> {k:v} -> v
+   * prop : String k -> {k:v} -> v
    *
    * @since v0.1.0
    */
@@ -704,7 +753,7 @@
   })
 
   /**
-   * propEq : String -> * -> {k:v} -> Boolean
+   * propEq : String k -> v -> {k:v} -> Boolean
    *
    * @since v0.1.0
    */
@@ -773,6 +822,23 @@
   }
 
   /**
+   * scan : (b, a -> b) -> b -> [a] -> [b]
+   *
+   * @since v0.12.0
+   */
+  var scan = _curry3(function scan (fn, acc, as) {
+    var i   = 0
+      , len = as.length
+      , bs  = [acc]
+
+    for (; i < len; i++) {
+      acc = fn(acc, as[i])
+      bs.push(acc)
+    }
+    return bs
+  })
+
+  /**
    * sum : [Number] -> Number
    *
    * @since v0.10.0
@@ -803,15 +869,15 @@
    * @since v0.1.0
    */
   var takeUntil = _curry2(function takeUntil (fn, xs) {
-    var ys
+    var i   = 0
+      , len = xs.length
 
-    _arrayEach(function (x, i) {
-      if (fn(x)) {
-        ys = _slice(xs, 0, i)
-        return true
+    for (; i < len; i++) {
+      if (fn(xs[i])) {
+        return _slice(xs, 0, i)
       }
-    }, xs)
-    return ys || _slice(xs)
+    }
+    return _slice(xs)
   })
 
   /**
@@ -848,7 +914,7 @@
   }
 
   /**
-   * tap : (a -> b) -> a -> a
+   * tap : (a -> *) -> a -> a
    *
    * @since v0.7.0
    */
@@ -874,8 +940,10 @@
   }
 
   /**
+   * view : Lens k -> {k:v} -> v
+   *
    * @param {Lens} lens
-   * @param {Object|*} target
+   * @param {Object} target
    * @returns {*}
    */
   var view = _curry2(function view (lens, target) {
@@ -885,24 +953,33 @@
   /**
    * without : [a] -> [a] -> [a]
    *
+   * TODO(zuko): if lists are hashable, create hash to improve lookup speed
+   * TODO(zuko): could we just use a Map?
+   *
    * @since v0.7.0
    */
   var without = _curry2(function without (as, bs) {
-    var ys = []
+    var ys    = []
+      , bi    = 0
+      , aslen = as.length
+      , bslen = bs.length
+      , ai
+      , b
+      , discard
 
-    _arrayEach(function (b) {
-      var discard = false
-
-      _arrayEach(function (a) {
-        if (b === a) {
-          return (discard = true)
+    for (; bi < bslen; bi++) {
+      b = bs[bi]
+      discard = false
+      for (ai = 0; ai < aslen; ai++) {
+        if (b === as[ai]) {
+          discard = true
+          break
         }
-      }, as)
+      }
       if (!discard) {
         ys.push(b)
       }
-    }, bs)
-
+    }
     return ys
   })
 
@@ -956,9 +1033,10 @@
   exports.filter = filter;
   exports.find = find;
   exports.findIndex = findIndex;
+  exports.findLast = findLast;
   exports.flatMap = flatMap;
   exports.flatten = flatten;
-  exports.flattenDeep = _flattenDeep;
+  exports.flattenDeep = flattenDeep;
   exports.flip = flip;
   exports.forEach = forEach;
   exports.fromPairs = fromPairs;
@@ -989,6 +1067,7 @@
   exports.foldr = reduceRight;
   exports.reject = reject;
   exports.reverse = reverse;
+  exports.scan = scan;
   exports.set = set;
   exports.sum = sum;
   exports.tail = tail;

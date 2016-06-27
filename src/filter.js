@@ -1,4 +1,3 @@
-import _arrayEach from './internal/_arrayEach'
 import _curry2 from './internal/_curry2'
 
 /**
@@ -6,13 +5,17 @@ import _curry2 from './internal/_curry2'
  *
  * @since v0.1.0
  */
-export default _curry2(function filter (fn, xs) {
-  var ys = []
+export default _curry2(function filter (pred, as) {
+  var i   = 0
+    , len = as.length
+    , res = []
+    , a
 
-  _arrayEach(function (x) {
-    if (fn(x)) {
-      ys.push(x)
+  for (; i < len; i++) {
+    a = as[i]
+    if (pred(a)) {
+      res.push(a)
     }
-  }, xs)
-  return ys
+  }
+  return res
 })
