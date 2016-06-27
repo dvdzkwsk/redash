@@ -34,8 +34,10 @@
     "karma-rollup-preprocessor": "^2.0.2",
     "karma-sinon": "^1.0.5",
     "karma-spec-reporter": "0.0.22",
+    "lodash": "^4.13.1",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
+    "ramda": "^0.21.0",
     "rollup": "^0.21.0",
     "sinon-chai": "^2.8.0",
     "uglify-js": "^2.6.1"

@@ -14,6 +14,19 @@ Auto-Curry     | Yes       | Yes   | No        | Yes
 Equality       | Reference | Value | Reference | Reference
 IE 9+          | Yes       | Yes   | Yes       | Yes
 
+## Benchmarks
+
+Each benchmark is measured by the tested operation being performed 10,000 times. The results are in `ms`. Take these with a grain of salt, they are currently just based off of results from a local Node v6 environment.
+
+Function       | Parameters   | Redash | Ramda | Lodash    | Lodash-FP
+-------------- | ------------ | ------ | ----- | --------- | ---------
+filter         | 10,000 items | 341    | 275   | 1405      | 1403
+find           | 10,000 items | 70     | 63    | 1333      | 4480
+map            | 10,000 items | 160    | 843   | 195       | 186
+reduce         | 10,000 items | 108    | 6357  | 135       | 150
+scan           | 10,000 items | 530    | 489   | --        | --
+sum            | 10,000 items | 1567   | 9073  | 979       | 980
+
 ## Comparisons
 
 ### Redash vs. Ramda
