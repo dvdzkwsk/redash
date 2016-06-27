@@ -20,12 +20,12 @@ Each benchmark is measured by the tested operation being performed 10,000 times.
 
 Function       | Parameters   | Redash | Ramda | Lodash    | Lodash-FP
 -------------- | ------------ | ------ | ----- | --------- | ---------
-filter         | 10,000 items | 341    | 275   | 1405      | 1403
+filter         | 10,000 items | 295    | 279   | 1369      | 1365
 find           | 10,000 items | 70     | 63    | 1333      | 4480
-map            | 10,000 items | 160    | 843   | 195       | 186
+map            | 10,000 items | 160    | 843   | 180       | 183
 reduce         | 10,000 items | 108    | 6357  | 135       | 150
 scan           | 10,000 items | 530    | 489   | --        | --
-sum            | 10,000 items | 1567   | 9073  | 979       | 980
+sum            | 10,000 items | 77     | 8524  | 882       | 884
 
 ## Comparisons
 
