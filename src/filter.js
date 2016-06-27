@@ -14,7 +14,7 @@ export default _curry2(function filter (pred, as) {
   for (; i < len; i++) {
     a = as[i]
     if (pred(a)) {
-      res.push(a)
+      res[res.length] = a
     }
   }
   return res
