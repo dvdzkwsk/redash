@@ -12,7 +12,7 @@ export default _curry3(function scan (fn, acc, as) {
 
   for (; i < len; i++) {
     acc = fn(acc, as[i])
-    bs.push(acc)
+    bs[bs.length] = acc
   }
   return bs
 })
