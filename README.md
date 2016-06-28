@@ -31,8 +31,28 @@ sum            | 10,000 items | 77     | 8524  | 882       | 884
 
 ### Redash vs. Ramda
 
-TBD
+Ramda is second to none when it comes to providing a suite of development tools for functional programming in JavaScript. It's not perfect, but that's mainly a result of JavaScript's design decisions and limitations.
+
+To be continued...
 
 ### Redash vs. Lodash
+Lodash is extremely popular for good reason; it is renowned for its incredibly performance and exceptionally ergonomic API. We'll touch on both of these separately as we compare it against Redash.
 
-TBD
+#### Graceful Null Checking
+Graceful null checking is the concept that you can provide a `null`, `undefined`, or otherwise bad value to a function and not cause it throw at runtime. This feature is beloved by many JavaScript developers since it eliminates one of the biggest sources of pain caused by the language's dynamic nature. Its ommission from Redash is not accidental; Lodash's null checking solution, in my opinion, the wrong solution to the problem.
+
+Lodash's graceful handling of null values serves to prevent runtime errors, but does so **silently** -- this is the key. I instead argue that users should be more explicit about edge cases and handle them opaquely (this is also where [Functors](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) start to shine since they essentially encapsulate this logic inside of a type).
+
+#### Function Shorthands
+Concerning shorthand syntax, in my experience I've found it to be more sane to keep API surface area as small as possible, and this means avoiding polymorphic and overloaded functions. By limiting the number of different ways a function can be applied, we implicitly standardize code styles and limit the amount of "magic" in the codebase.
+
+#### Design Philosophy
+Lodash's functional build, coined `lodash-fp`, does a great job at trying to pull Lodash back into the functional world. However, there are a few areas where it is lacking. First, it is simply a transformed version of lodash core. This makes sense, since it wouldn't be wise to rewrite Lodash in its entirity and maintain the two separately; however, what this means is that it is a second class citizen. It lacks sufficient [documentation](https://github.com/lodash/lodash/wiki/FP-Guide), instead opting to describe how lodash core is transformed to lodash-fp, which is lacking as a reference resource.
+
+#### Recommendations
+Lodash will always be a more comprehensive library than Redash. If you are looking for a full functional replacement, or a functional library that offers similar shorthand methods, Redash is not it.
+
+To be continued...
+
+
+
