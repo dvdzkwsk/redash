@@ -11,8 +11,8 @@ export default _curry2(function filter (pred, as) {
     , res = []
     , a
 
-  for (; i < len; i++) {
-    a = as[i]
+  while (i < len) {
+    a = as[i++]
     if (pred(a)) {
       res[res.length] = a
     }
