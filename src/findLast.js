@@ -6,16 +6,12 @@ import _curry2 from './internal/_curry2'
  * @since v0.12.0
  */
 export default _curry2(function findLast (pred, xs) {
-  var i   = 0
-    , len = xs.length
-    , x
-    , res
+  var i = xs.length - 1
 
-  for (; i < len; i++) {
-    x = xs[i]
-    if (pred(x)) {
-      res = x
+  while (i >= 0) {
+    if (pred(xs[i])) {
+      return xs[i]
     }
+    i--
   }
-  return res
 })
