@@ -1,5 +1,3 @@
-import _concat from './internal/_concat'
-
 /**
  * flattenDeep : [[a]] -> [a]
  *
@@ -10,13 +8,18 @@ export default function flattenDeep (xs) {
     , i   = 0
     , len = xs.length
     , x
+    , xi
+    , xlen
 
   for (; i < len; i++) {
     x = xs[i]
     if (Array.isArray(x)) {
-      acc = _concat.call(acc, flattenDeep(x))
+      x = flattenDeep(x)
+      for (xi = 0, xlen = x.length; xi < xlen; xi++) {
+        acc[acc.length] = x[xi]
+      }
     } else {
-      acc.push(x)
+      acc[acc.length] = x
     }
   }
   return acc
