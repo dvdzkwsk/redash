@@ -91,10 +91,13 @@
   /**
    * append : a -> [a] -> [a]
    *
+   * TODO(zuko): implement as conj?
+   * TODO(zuko): how should strings be handled?
+   *
    * @since v0.10.0
    */
   var append = _curry2(function append (x, xs) {
-    return _concat.call(xs, [x])
+    return _concat.call(xs, x)
   })
 
   function _curry3 (fn) {
@@ -155,7 +158,7 @@
 
   var _reverse = [].reverse
 
-  var _arraySlice = [].slice
+  var _slice = [].slice
 
   // Credit to Ramda for this idea for creating curried functions that
   // properly report their arity via function.length.
@@ -194,7 +197,7 @@
         , i
 
       if (arguments.length) {
-        newApplied = _arraySlice.call(applied)
+        newApplied = _slice.call(applied)
         for (i = 0; i < arguments.length; i++) {
           newApplied.push(arguments[i])
         }
@@ -285,17 +288,13 @@
     return y
   })
 
-  function _slice (xs, from, to) {
-    return _arraySlice.call(xs, from, to)
-  }
-
   /**
    * drop : Number -> Array -> Array
    *
    * @since v0.10.0
    */
   var drop = _curry2(function drop (n, xs) {
-    return _slice(xs, n)
+    return _slice.call(xs, n)
   })
 
   function _equals (a, b) {
@@ -320,10 +319,10 @@
       , res = []
       , a
 
-    for (; i < len; i++) {
-      a = as[i]
+    while (i < len) {
+      a = as[i++]
       if (pred(a)) {
-        res.push(a)
+        res[res.length] = a
       }
     }
     return res
@@ -585,7 +584,7 @@
    * @since v0.11.0
    */
   var insert = _curry3(function insert (idx, x, xs) {
-    var ys = _slice(xs)
+    var ys = _slice.call(xs)
 
     ys[idx] = x
     return ys
@@ -818,7 +817,7 @@
    * @since v0.1.0
    */
   function reverse (xs) {
-    return _reverse.call(_slice(xs, 0))
+    return _reverse.call(_slice.call(xs, 0))
   }
 
   /**
@@ -833,7 +832,7 @@
 
     for (; i < len; i++) {
       acc = fn(acc, as[i])
-      bs.push(acc)
+      bs[bs.length] = acc
     }
     return bs
   })
@@ -843,7 +842,16 @@
    *
    * @since v0.10.0
    */
-  var sum = reduce(add, 0)
+  function sum (xs) {
+    var i   = 0
+      , len = xs.length
+      , sum = 0
+
+    for (; i < len; i++) {
+      sum += xs[i]
+    }
+    return sum
+  }
 
   /**
    * tail : [a] -> [a]
@@ -851,7 +859,7 @@
    * @since v0.1.0
    */
   function tail (xs) {
-    return _slice(xs, 1)
+    return _slice.call(xs, 1)
   }
 
   /**
@@ -860,7 +868,7 @@
    * @since v0.1.0
    */
   var take = _curry2(function take (n, xs) {
-    return _slice(xs, 0, n)
+    return _slice.call(xs, 0, n)
   })
 
   /**
@@ -874,10 +882,10 @@
 
     for (; i < len; i++) {
       if (fn(xs[i])) {
-        return _slice(xs, 0, i)
+        return _slice.call(xs, 0, i)
       }
     }
-    return _slice(xs)
+    return _slice.call(xs)
   })
 
   /**
