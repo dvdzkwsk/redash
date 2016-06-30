@@ -5,7 +5,6 @@ describe('(Function) map', function () {
     map.should.have.length(2)
   })
 
-
   it('Should be curried', function () {
     expect(map(function () {})).to.be.a('function')
   })
