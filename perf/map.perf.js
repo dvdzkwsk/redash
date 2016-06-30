@@ -2,7 +2,7 @@ var Ramda     = require('ramda')
   , Redash    = require('../dist/redash.min')
   , Lodash    = require('lodash')
   , LodashFP  = require('lodash/fp')
-  , benchmark = require('./benchmark')
+  , benchmark = require('./utils/benchmark')
 
 var SAMPLE = Redash.range(0, 10000)
 var XFORM = (x) => x * 2

@@ -9,9 +9,9 @@ var FILTER = () => false
 
 module.exports = function () {
   return {
-    redash   : benchmark(() => Redash.find(FILTER, SAMPLE))
-  , ramda    : benchmark(() => Ramda.find(FILTER, SAMPLE))
-  , lodash   : benchmark(() => Lodash.find(SAMPLE, FILTER))
-  , lodashFP : benchmark(() => LodashFP.find(FILTER, SAMPLE))
+    redash   : benchmark(() => Redash.findLast(FILTER, SAMPLE))
+  , ramda    : benchmark(() => Ramda.findLast(FILTER, SAMPLE))
+  , lodash   : benchmark(() => Lodash.findLast(SAMPLE, FILTER))
+  , lodashFP : benchmark(() => LodashFP.findLast(FILTER, SAMPLE))
   }
 }
