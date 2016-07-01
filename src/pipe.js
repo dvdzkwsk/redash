@@ -1,4 +1,4 @@
-import _curryN from './internal/_curryN'
+import curryN from './curryN'
 
 /**
  * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
@@ -8,7 +8,7 @@ import _curryN from './internal/_curryN'
 export default function pipe () {
   var fns = arguments
 
-  return _curryN(fns[0].length, [], function () {
+  return curryN(fns[0].length, function () {
     var i   = 0
       , len = fns.length
       , acc = fns[i++].apply(null, arguments)
