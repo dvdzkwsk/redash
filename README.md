@@ -6,13 +6,13 @@ Redash is a lightweight library meant to fill the gap between Ramda (functional)
 
 ## Redash vs. Ramda vs. Lodash
 
-Category       | Redash    | Ramda | Lodash    | Lodash-FP
--------------- | --------- | ----- | --------- | ---------
-Minified (kb)  | 6.38      | 41.1  | 66.8      | 76.6
-100% Immutable | Yes       | Yes   | No        | Yes
-Auto-Curry     | Yes       | Yes   | No        | Yes
-Equality       | Reference | Value | Reference | Reference
-IE 9+          | Yes       | Yes   | Yes       | Yes
+Category        | Redash    | Ramda | Lodash    | Lodash-FP
+--------------- | --------- | ----- | --------- | ---------
+Minified (kb)   | 6.38      | 41.1  | 66.8      | 76.6
+100% Immutable  | Yes       | Yes   | No        | Yes
+Auto-Curry      | Yes       | Yes   | No        | Yes
+Object Equality | Reference | Value | Reference | Reference
+IE 9+           | Yes       | Yes   | Yes       | Yes
 
 ## Benchmarks
 
@@ -22,10 +22,12 @@ Function       | Parameters   | Redash | Ramda | Lodash    | Lodash-FP
 -------------- | ------------ | ------ | ----- | --------- | ---------
 filter         | 10,000 items | 295    | 279   | 1369      | 1365
 find           | 10,000 items | 70     | 63    | 1333      | 4480
+findLast       | 10,000 items | 62     | 62    | 1213      | 4155
 map            | 10,000 items | 160    | 843   | 180       | 183
 reduce         | 10,000 items | 108    | 6357  | 135       | 150
 scan           | 10,000 items | 524    | 577   | --        | --
 sum            | 10,000 items | 77     | 8524  | 882       | 884
+takeWhile      | 10,000 items | 138    | 743   | 407       | 392
 
 ## Comparisons
 
