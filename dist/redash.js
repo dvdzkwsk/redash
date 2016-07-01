@@ -141,17 +141,15 @@
   })
 
   /**
-   * cond : [[(a -> Boolean), (a -> *)]] -> a -> (a -> *)
+   * cond : [[(a -> Boolean), (a -> *)]] -> a -> *
    */
-  var cond = _curry2(function cond (conditions, x) {
+  var cond = _curry2(function cond (conditions, a) {
     var i   = 0
       , len = conditions.length
-      , cond
 
     for (; i < len; i++) {
-      cond = conditions[i]
-      if (cond[0](x)) {
-        return cond[1](x)
+      if (conditions[i][0](a)) {
+        return conditions[i][1](a)
       }
     }
   })
@@ -176,18 +174,18 @@
 
   var _slice = [].slice
 
-  // Credit to Ramda for this idea for creating curried functions that
+  // Credit to Ramda for null idea for creating curried functions that
   // properly report their arity via function.length.
   // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
   function _arity (arity, fn) {
     switch (arity) {
-      case 0: return function () { return fn.apply(this, arguments) }
-      case 1: return function (a0) { return fn.apply(this, arguments) }
-      case 2: return function (a0, a1) { return fn.apply(this, arguments) }
-      case 3: return function (a0, a1, a2) { return fn.apply(this, arguments) }
-      case 4: return function (a0, a1, a2, a3) { return fn.apply(this, arguments) }
-      case 5: return function (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) }
-      case 6: return function (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) }
+      case 0: return fn
+      case 1: return function (a0) { return fn(a0) }
+      case 2: return function (a0, a1) { return fn(a0, a1) }
+      case 3: return function (a0, a1, a2) { return fn(a0, a1, a2) }
+      case 4: return function (a0, a1, a2, a3) { return fn(a0, a1, a2, a3) }
+      case 5: return function (a0, a1, a2, a3, a4) { return fn(a0, a1, a2, a3, a4) }
+      case 6: return function (a0, a1, a2, a3, a4, a5) { return fn(a0, a1, a2, a3, a4, a5) }
       default: throw new Error('Arity must be less than or equal to 6.')
     }
   }
@@ -226,6 +224,21 @@
   }
 
   /**
+   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
+   *
+   * @since v0.1.0
+   */
+  var curryN = _curry2(function curryN (arity, fn) {
+    switch (arity) {
+      case 0: return fn
+      case 1: return _curry1(fn)
+      case 2: return _curry2(fn)
+      case 3: return _curry3(fn)
+      default: return _curryN(arity, [], fn)
+    }
+  })
+
+  /**
    * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
    *
    * @since v0.1.0
@@ -233,7 +246,7 @@
   function pipe () {
     var fns = arguments
 
-    return _curryN(fns[0].length, [], function () {
+    return curryN(fns[0].length, function () {
       var i   = 0
         , len = fns.length
         , acc = fns[i++].apply(null, arguments)
@@ -253,21 +266,6 @@
   function compose () {
     return pipe.apply(null, _reverse.call(arguments))
   }
-
-  /**
-   * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
-   *
-   * @since v0.1.0
-   */
-  var curryN = _curry2(function curryN (arity, fn) {
-    switch (arity) {
-      case 0: return fn
-      case 1: return _curry1(fn)
-      case 2: return _curry2(fn)
-      case 3: return _curry3(fn)
-      default: return _curryN(arity, [], fn)
-    }
-  })
 
   /**
    * curry : (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
@@ -569,23 +567,6 @@
   }
 
   /**
-   * indexOf : a -> [a] -> Number
-   *
-   * @since v0.1.0
-   */
-  var indexOf = _curry2(function indexOf (a, xs) {
-    var i   = 0
-      , len = xs.length
-
-    for (; i < len; i++) {
-      if (xs[i] === a) {
-        return i
-      }
-    }
-    return -1
-  })
-
-  /**
    * insert : Number -> a -> [a] -> [a]
    *
    * @since v0.11.0
@@ -640,6 +621,25 @@
   })
 
   /**
+   * prop : String k -> {k:v} -> v
+   *
+   * @since v0.1.0
+   */
+  var prop = _curry2(function prop (k, o) {
+    return o[k]
+  })
+
+  /**
+   * lensProp : String -> Lens
+   *
+   * @param {String} key - the key to focus on.
+   * @returns {Lens} a lens focused on the provided key.
+   */
+  function lensProp (key) {
+    return lens(prop(key), assoc(key))
+  }
+
+  /**
    * map : (a -> b) -> [a] -> [b]
    *
    * @description
@@ -685,7 +685,7 @@
   /**
    * merge : {k:v} -> {k:v} -> {k:v}
    *
-   * Merges all own properties of the first object into the second.
+   * Merges all own properties of the second object into the first.
    *
    * @since v0.4.0
    */
@@ -695,8 +695,8 @@
         y[k] = v
       }
 
-    _eachOwn(f, b)
     _eachOwn(f, a)
+    _eachOwn(f, b)
     return y
   })
 
@@ -747,15 +747,6 @@
    */
   var over = _curry3(function over (lens, fn, target) {
     return set(lens, fn(lens.get(target)), target)
-  })
-
-  /**
-   * prop : String k -> {k:v} -> v
-   *
-   * @since v0.1.0
-   */
-  var prop = _curry2(function prop (k, o) {
-    return o[k]
   })
 
   /**
@@ -1078,12 +1069,12 @@
   exports.identity = identity;
   exports.ifElse = ifElse;
   exports.inc = inc;
-  exports.indexOf = indexOf;
   exports.insert = insert;
   exports.isNil = isNil;
   exports.keys = keys;
   exports.last = last;
   exports.lens = lens;
+  exports.lensProp = lensProp;
   exports.map = map;
   exports.merge = merge;
   exports.not = not;
