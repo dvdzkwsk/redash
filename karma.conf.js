@@ -15,7 +15,8 @@ const config = {
   browsers   : ['PhantomJS'],
   coverageReporter : {
     reporters : [
-      { type : 'text-summary' }
+      { type : 'text-summary' },
+      { type: 'lcov', dir: 'coverage' }
     ]
   }
 }
