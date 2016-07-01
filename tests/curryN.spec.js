@@ -49,4 +49,87 @@ describe('(Function) curryN', function () {
 
     expect(curried()()(1)()(2)()(3)).to.equal(6)
   })
+
+  it('Should work for nullary functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(0, spy)
+
+    curried()
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for unary functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(1, spy)
+
+    curried().should.be.a('function')
+    curried(1)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for binnary functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(2, spy)
+
+    curried().should.be.a('function')
+    curried(1).should.be.a('function')
+    curried(1, 2)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for ternary functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(3, spy)
+
+    curried().should.be.a('function')
+    curried(1).should.be.a('function')
+    curried(1, 2).should.be.a('function')
+    curried(1, 2, 3)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for quarternary functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(4, spy)
+
+    curried().should.be.a('function')
+    curried(1).should.be.a('function')
+    curried(1, 2).should.be.a('function')
+    curried(1, 2, 3).should.be.a('function')
+    curried(1, 2, 3, 4)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for arity 5 functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(5, spy)
+
+    curried().should.be.a('function')
+    curried(1).should.be.a('function')
+    curried(1, 2).should.be.a('function')
+    curried(1, 2, 3).should.be.a('function')
+    curried(1, 2, 3, 4).should.be.a('function')
+    curried(1, 2, 3, 4, 5)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should work for arity 6 functions', function () {
+    var spy     = sinon.spy()
+      , curried = curryN(6, spy)
+
+    curried().should.be.a('function')
+    curried(1).should.be.a('function')
+    curried(1, 2).should.be.a('function')
+    curried(1, 2, 3).should.be.a('function')
+    curried(1, 2, 3, 4).should.be.a('function')
+    curried(1, 2, 3, 4, 5).should.be.a('function')
+    curried(1, 2, 3, 4, 5, 6)
+    spy.should.have.been.calledOnce()
+  })
+
+  it('Should throw if the arity is > 6', function () {
+    var fn = function () { curryN(7, sinon.spy()) }
+
+    fn.should.throw()
+  })
 })
