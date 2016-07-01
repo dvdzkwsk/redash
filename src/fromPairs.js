@@ -1,11 +1,17 @@
-import reduce from './reduce'
-
 /**
  * fromPairs : [[k, v]] -> {k:v}
  *
  * @since v0.7.0
  */
-export default reduce(function fromPairs (acc, x) {
-  acc[x[0]] = x[1]
+export default function fromPairs (kvs) {
+  var i   = 0
+    , len = kvs.length
+    , acc = {}
+
+  for (; i < len; i++) {
+    acc[kvs[i][0]] = kvs[i][1]
+  }
+
   return acc
-}, {})
+}
+
