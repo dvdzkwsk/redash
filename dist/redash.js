@@ -156,6 +156,22 @@
     }
   })
 
+  /**
+   * compact : [a] -> [a]
+   */
+  function compact (xs) {
+    var i   = 0
+      , len = xs.length
+      , res = []
+
+    for (; i < len; i++) {
+      if (xs[i]) {
+        res[res.length] = xs[i]
+      }
+    }
+    return res
+  }
+
   var _reverse = [].reverse
 
   var _slice = [].slice
@@ -369,18 +385,14 @@
    * @since v0.12.0
    */
   var findLast = _curry2(function findLast (pred, xs) {
-    var i   = 0
-      , len = xs.length
-      , x
-      , res
+    var i = xs.length - 1
 
-    for (; i < len; i++) {
-      x = xs[i]
-      if (pred(x)) {
-        res = x
+    while (i >= 0) {
+      if (pred(xs[i])) {
+        return xs[i]
       }
+      i--
     }
-    return res
   })
 
   /**
@@ -445,13 +457,18 @@
       , i   = 0
       , len = xs.length
       , x
+      , xi
+      , xlen
 
     for (; i < len; i++) {
       x = xs[i]
       if (Array.isArray(x)) {
-        acc = _concat.call(acc, flattenDeep(x))
+        x = flattenDeep(x)
+        for (xi = 0, xlen = x.length; xi < xlen; xi++) {
+          acc[acc.length] = x[xi]
+        }
       } else {
-        acc.push(x)
+        acc[acc.length] = x
       }
     }
     return acc
@@ -481,32 +498,22 @@
     }
   })
 
-  function _reduce (fn, acc, as) {
-    var i   = 0
-      , len = as.length
-
-    for (; i < len; i++) {
-      acc = fn(acc, as[i])
-    }
-    return acc
-  }
-
-  /**
-   * reduce : (b, a -> b) -> b -> [a] -> b
-   *
-   * @since v0.1.0
-   */
-  var reduce = _curry3(_reduce)
-
   /**
    * fromPairs : [[k, v]] -> {k:v}
    *
    * @since v0.7.0
    */
-  var fromPairs = reduce(function fromPairs (acc, x) {
-    acc[x[0]] = x[1]
+  function fromPairs (kvs) {
+    var i   = 0
+      , len = kvs.length
+      , acc = {}
+
+    for (; i < len; i++) {
+      acc[kvs[i][0]] = kvs[i][1]
+    }
+
     return acc
-  }, {})
+  }
 
   var _hasOwn = Object.prototype.hasOwnProperty
 
@@ -793,6 +800,23 @@
    */
   var range = rangeBy(1)
 
+  function _reduce (fn, acc, as) {
+    var i   = 0
+      , len = as.length
+
+    for (; i < len; i++) {
+      acc = fn(acc, as[i])
+    }
+    return acc
+  }
+
+  /**
+   * reduce : (b, a -> b) -> b -> [a] -> b
+   *
+   * @since v0.1.0
+   */
+  var reduce = _curry3(_reduce)
+
   /**
    * reduceRight : ((b, a) -> b) -> b -> [a]
    *
@@ -872,16 +896,16 @@
   })
 
   /**
-   * takeUntil : (a -> Boolean) -> [a] -> [a]
+   * takeWhile : (a -> Boolean) -> [a] -> [a]
    *
-   * @since v0.1.0
+   * @since v0.12.0
    */
-  var takeUntil = _curry2(function takeUntil (fn, xs) {
+  var takeWhile = _curry2(function takeWhile (fn, xs) {
     var i   = 0
       , len = xs.length
 
     for (; i < len; i++) {
-      if (fn(xs[i])) {
+      if (!fn(xs[i])) {
         return _slice.call(xs, 0, i)
       }
     }
@@ -1031,6 +1055,7 @@
   exports.assoc = assoc;
   exports.concat = concat;
   exports.cond = cond;
+  exports.compact = compact;
   exports.compose = compose;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -1080,7 +1105,7 @@
   exports.sum = sum;
   exports.tail = tail;
   exports.take = take;
-  exports.takeUntil = takeUntil;
+  exports.takeWhile = takeWhile;
   exports.times = times;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
