@@ -6,12 +6,10 @@ import _curry2 from './internal/_curry2'
 export default _curry2(function cond (conditions, a) {
   var i   = 0
     , len = conditions.length
-    , cond
 
   for (; i < len; i++) {
-    cond = conditions[i]
-    if (cond[0](a)) {
-      return cond[1](a)
+    if (conditions[i][0](a)) {
+      return conditions[i][1](a)
     }
   }
 })
