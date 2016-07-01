@@ -3,10 +3,7 @@
 // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
 export default function _arity (arity, fn) {
   switch (arity) {
-    case 0: return fn
-    case 1: return function (a0) { return fn.apply(this, arguments) }
-    case 2: return function (a0, a1) { return fn.apply(this, arguments) }
-    case 3: return function (a0, a1, a2) { return fn.apply(this, arguments) }
+    // Arities 0 -> 3 are automatically handled by curry, _curry1, _curry2, and _curry3
     case 4: return function (a0, a1, a2, a3) { return fn.apply(this, arguments) }
     case 5: return function (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) }
     case 6: return function (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) }
