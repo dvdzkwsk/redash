@@ -4,7 +4,7 @@ import _eachOwn from './internal/_eachOwn'
 /**
  * merge : {k:v} -> {k:v} -> {k:v}
  *
- * Merges all own properties of the first object into the second.
+ * Merges all own properties of the second object into the first.
  *
  * @since v0.4.0
  */
@@ -14,7 +14,7 @@ export default _curry2(function merge (a, b) {
       y[k] = v
     }
 
-  _eachOwn(f, b)
   _eachOwn(f, a)
+  _eachOwn(f, b)
   return y
 })
