@@ -1,48 +1,28 @@
 var reduce = Redash.reduce
 
 describe('(Function) reduce', function () {
-  it('Should be a function.', function () {
-    expect(reduce).to.be.a('function')
+  it('Should properly report its arity (is ternary)', function () {
+    reduce.should.have.length(3)
   })
 
-  it('Should have an alias "foldl".', function () {
-    expect(reduce).to.equal(Redash.foldl)
+  it('Should be curried', function () {
+    reduce(function () {}).should.be.a('function')
+    reduce(function () {}, 0).should.be.a('function')
   })
 
-  it('Should be curried (arity 3).', function () {
-    expect(reduce()).to.be.a('function')
-    expect(reduce()()).to.be.a('function')
-  })
-
-  it('Should pass the accumulator result through the list from L - R.', function () {
-    var _calls = []
-      , spy = function (acc, x) {
-        _calls.push([acc, x])
-        return acc + x
-      }
+  it('Should pass the accumulator result through the list from left to right', function () {
+    var spy = sinon.spy(function (acc, a) { return acc + a })
 
     reduce(spy, 0, [1, 2, 3])
-    expect(_calls[0]).to.deep.equal([0, 1])
-    expect(_calls[1]).to.deep.equal([1, 2])
-    expect(_calls[2]).to.deep.equal([3, 3])
-  })
-
-  it('Should provide arguments of (accumulator, item, index).', function () {
-    var _calls = []
-      , spy = function (acc, x) {
-        _calls.push([acc, x])
-        return acc + x
-      }
-
-    reduce(spy, 0, [1, 2, 3])
-    expect(_calls[0]).to.deep.equal([0, 1])
-    expect(_calls[1]).to.deep.equal([1, 2])
-    expect(_calls[2]).to.deep.equal([3, 3])
+    spy.firstCall.args.should.deep.equal([0, 1])
+    spy.secondCall.args.should.deep.equal([1, 2])
+    spy.thirdCall.args.should.deep.equal([3, 3])
   })
 
   it('Should return the accumulated result.', function () {
-    var res = reduce(function (acc, x) { return acc + x }, 0, [1, 2, 3])
+    var fn = function (acc, a) { return acc + a }
 
-    expect(res).to.equal(6)
+    reduce(fn, 0, [1, 2, 3])
+      .should.equal(6)
   })
 })
