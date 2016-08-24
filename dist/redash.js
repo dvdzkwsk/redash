@@ -868,6 +868,15 @@
   })
 
   /**
+   * sum : String -> [String]
+   *
+   * @since v0.10.0
+   */
+  function split (char, str) {
+    return str.split(char)
+  }
+
+  /**
    * sum : [Number] -> Number
    *
    * @since v0.10.0
@@ -1109,6 +1118,7 @@
   exports.reverse = reverse;
   exports.scan = scan;
   exports.set = set;
+  exports.split = split;
   exports.sum = sum;
   exports.tail = tail;
   exports.take = take;
