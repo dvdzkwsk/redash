@@ -671,6 +671,24 @@
     return bs
   })
 
+  /**
+   * map : ((a, Number) -> b) -> [a] -> [b]
+   *
+   * @description
+   * Applies a transformation to every item in an array, returning a new
+   * array of the same size where each item has been transformed.
+   */
+  var mapIndexed = _curry2(function mapIndexed (fn, as) {
+    var bs  = new Array(as.length)
+      , i   = 0
+      , len = as.length
+
+    for (; i < len; i++) {
+      bs[i] = fn(as[i], i)
+    }
+    return bs
+  })
+
   function _eachOwn (f, o) {
     for (var k in o) {
       if (_hasOwn.call(o, k)) {
@@ -1073,6 +1091,7 @@
   exports.lens = lens;
   exports.lensProp = lensProp;
   exports.map = map;
+  exports.mapIndexed = mapIndexed;
   exports.merge = merge;
   exports.not = not;
   exports.of = of;
