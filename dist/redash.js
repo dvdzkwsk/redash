@@ -868,13 +868,13 @@
   })
 
   /**
-   * sum : String -> [String]
+   * sum : String -> String -> [String]
    *
    * @since v0.10.0
    */
-  function split (char, str) {
+  var split = _curry2(function split (char, str) {
     return str.split(char)
-  }
+  })
 
   /**
    * sum : [Number] -> Number
