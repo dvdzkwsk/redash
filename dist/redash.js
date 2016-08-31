@@ -576,6 +576,15 @@
   })
 
   /**
+   * is : String | Function -> Boolean
+   */
+  var is = _curry2(function is (type, a) {
+    return typeof type === 'string'
+      ? typeof a === type
+      : a instanceof type || a.constructor === type
+  })
+
+  /**
    * isNil : * -> Boolean
    *
    * @param {*} x
@@ -1094,6 +1103,7 @@
   exports.ifElse = ifElse;
   exports.inc = inc;
   exports.insert = insert;
+  exports.is = is;
   exports.isNil = isNil;
   exports.keys = keys;
   exports.last = last;
