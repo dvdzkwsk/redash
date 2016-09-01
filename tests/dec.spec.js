@@ -1,9 +1,8 @@
-var dec = Redash.dec
+const test    = require('ava')
+    , { dec } = require('../dist/redash')
 
-describe('(Function) dec', function () {
-  it('Should decrement the provided number by 1.', function () {
-    dec(5).should.equal(4)
-    dec(1).should.equal(0)
-    dec(0).should.equal(-1)
-  })
+test('decrements the provided number by 1', (t) => {
+  t.is(dec(5), 4)
+  t.is(dec(1), 0)
+  t.is(dec(0), -1)
 })

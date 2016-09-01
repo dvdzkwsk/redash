@@ -1,58 +1,48 @@
-var compact = Redash.compact
+const test        = require('ava')
+    , { compact } = require('../dist/redash')
 
-describe('(Function) compact', function () {
-  it('Should properly report its arity (is unary)', function () {
-    compact
-      .should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(compact.length, 1)
+})
 
-  describe('It should exclude items that are...', function () {
-    it('`null`', function () {
-      compact([null])
-        .should.deep.equal([])
-    })
+test('omits `null` from the result', (t) => {
+  t.deepEqual(compact([null]), [])
+})
 
-    it('`undefined`', function () {
-      compact([undefined])
-        .should.deep.equal([])
-    })
+test('omits `undefined` from the result', (t) => {
+  t.deepEqual(compact([undefined]), [])
+})
 
-    it('`void 0`', function () {
-      compact([void 0])
-        .should.deep.equal([])
-    })
+test('omits `void 0` from the result', (t) => {
+  t.deepEqual(compact([void 0]), [])
+})
 
-    it('`0` (numerical)', function () {
-      compact([0])
-        .should.deep.equal([])
-    })
+test('omits `0` (numerical) from the result', (t) => {
+  t.deepEqual(compact([0]), [])
+})
 
-    it('empty strings', function () {
-      compact([''])
-        .should.deep.equal([])
-    })
-  })
+test('omits empty strings from the result', (t) => {
+  t.deepEqual(compact(['']), [])
+})
 
-  it('Should not exclude truthy values', function () {
-    var fn = function () {}
+test('does not exclude truthy values', (t) => {
+  const fn = () => {}
 
-    compact([{}, [], 'hello', 5, fn])
-      .should.deep.equal([{}, [], 'hello', 5, fn])
-  })
+  t.deepEqual(compact([{}, [], 'hello', 5, fn]), [{}, [], 'hello', 5, fn])
+})
 
-  it('Should not mutate the input list', function () {
-    var arr = [null, 2, 3, undefined, 5]
+test('does not mutate the input list', (t) => {
+  const arr = [null, 2, 3, undefined, 5]
       , cmp = compact(arr)
 
-    arr.should.deep.equal([null, 2, 3, undefined, 5])
-    cmp.should.deep.equal([2, 3, 5])
-  })
+  t.deepEqual(arr, [null, 2, 3, undefined, 5])
+  t.deepEqual(cmp, [2, 3, 5])
+})
 
-  it('Should not mutate the input list even if no items are excluded', function () {
-    var arr = [1, 2, 3, 4, 5]
+test('returns a new array even if no items are excluded', (t) => {
+  const arr = [1, 2, 3, 4, 5]
       , cmp = compact(arr)
 
-    cmp.should.not.equal(arr)  // compare references
-    cmp.should.deep.equal(arr) // compare values
-  })
+  t.not(cmp, arr)       // compare references
+  t.deepEqual(cmp, arr) // compare values
 })

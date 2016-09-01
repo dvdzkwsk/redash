@@ -1,29 +1,26 @@
-var assoc = Redash.assoc
+const test      = require('ava')
+    , { assoc } = require('../dist/redash')
 
-describe('(Function) assoc', function () {
-  it('Should properly report its arity (is ternary)', function () {
-    assoc.should.have.length(3)
-  })
+test('properly report its arity (is ternary)', (t) => {
+  t.is(assoc.length, 3)
+})
 
-  it('Should be curried', function () {
-    assoc('a')('b').should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof assoc('a')('b'), 'function')
+})
 
-  it('Should replace the property if it already exists', function () {
-    assoc('foo', 'baz', { foo: 'bar' })
-      .should.deep.equal({ foo: 'baz' })
-  })
+test('adds the property if it does not exist', (t) => {
+  t.deepEqual(assoc('foo', 'bar', {}), { foo: 'bar' })
+})
 
-  it('Should add the property if it does not exist', function () {
-    assoc('foo', 'bar', {})
-      .should.deep.equal({ foo: 'bar' })
-  })
+test('replaces the property if it already exists', (t) => {
+  t.deepEqual(assoc('foo', 'baz', { foo: 'bar' }), { foo: 'baz'})
+})
 
-  it('Should not mutate the original object', function () {
-    var obj = { foo: 'bar' }
+test('does not mutate the original object', (t) => {
+  const obj = { foo: 'bar' }
       , res = assoc('foo', 'baz', obj)
 
-    obj.should.deep.equal({ foo: 'bar' })
-    res.should.deep.equal({ foo: 'baz' })
-  })
+  t.deepEqual(obj, { foo: 'bar' })
+  t.deepEqual(res, { foo: 'baz' })
 })

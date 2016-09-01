@@ -1,40 +1,37 @@
-var dissoc = Redash.dissoc
+const test       = require('ava')
+    , { dissoc } = require('../dist/redash')
 
-describe('(Function) dissoc', function () {
-  it('Should properly report its arity (is binary)', function () {
-    dissoc.should.have.length(2)
+test('properly reports its arity (is binary)', (t) => {
+  t.is(dissoc.length, 2)
+})
+
+test('is curried', (t) => {
+  t.is(typeof dissoc('a'), 'function')
+})
+
+test('removes the target key from the object', (t) => {
+  t.deepEqual(dissoc('foo', { foo: true,  baz: true }), {
+    baz: true
   })
+})
 
-  it('Should be curried', function () {
-    dissoc('a').should.be.a('function')
-  })
+test('noops if the key does not exist', (t) => {
+  t.deepEqual(dissoc('foo', {}), {})
+})
 
-  it('Should remove the target key from the object', function () {
-    dissoc('foo', { foo: true,  baz: true })
-      .should.deep.equal({
-        baz: true
-      })
-  })
-
-  it('Should work if the key does not exist', function () {
-    dissoc('foo', {})
-      .should.deep.equal({})
-  })
-
-  it('Should not mutate the original object', function () {
-    var obj = { foo: true }
+test('does not mutate the original object', (t) => {
+  const obj = { foo: true }
       , res = dissoc('foo', obj)
 
-    obj.should.deep.equal({ foo: true })
-    res.should.deep.equal({})
-  })
+  t.deepEqual(obj, { foo: true })
+  t.deepEqual(res, {})
+})
 
-  it('Should produce a new object even if the operation is noop', function () {
-    var obj = {}
+test('produces a new object even if the operation is noop', (t) => {
+  const obj = {}
       , res = dissoc('foo', obj)
 
-    obj.should.deep.equal({})
-    res.should.deep.equal({})
-    res.should.not.equal(obj) // compare references
-  })
+  t.deepEqual(obj, {})
+  t.deepEqual(res, obj) // compare values
+  t.not(res, obj)       // compare references
 })

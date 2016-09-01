@@ -1,34 +1,27 @@
-var drop = Redash.drop
+const test     = require('ava')
+    , { drop } = require('../dist/redash')
 
-describe('(Function) drop', function () {
-  it('Should properly report its arity (is binary)', function () {
-    drop.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(drop.length, 2)
+})
 
-  it('Should be curried', function () {
-    drop(5).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof drop(5), 'function')
+})
 
-  it('Should return a new list with the first N items removed', function () {
-    drop(2, [1, 2, 3, 4])
-      .should.deep.equal([3, 4])
-  })
+test('returns a new list with the first N items removed', (t) => {
+  t.deepEqual(drop(2, [1, 2, 3, 4]), [3, 4])
+})
 
-  it('Should return an empty list if N exceeds the list length', function () {
-    drop(100, [1, 2, 3, 4])
-      .should.deep.equal([])
+test('returns an empty list if N exceeds the list length', (t) => {
+  t.deepEqual(drop(100, [1, 2, 3, 4]), [])
+})
 
-    drop(1, [])
-      .should.deep.equal([])
-  })
+test('returns a new list even if no items are removed', (t) => {
+  const arr = [1, 2, 3, 4, 5]
+      , res = drop(0, arr)
 
-  it('Should return a new list even if no items are removed', function () {
-    var arr = [1, 2, 3, 4, 5]
-      , res
-
-    res = drop(0, arr)
-    arr.should.deep.equal([1, 2, 3, 4, 5])
-    arr.should.not.equal(res)  // compare references
-    res.should.deep.equal(arr) // compare values
-  })
+  t.deepEqual(arr, [1, 2, 3, 4, 5])
+  t.not(res, arr)       // compare references
+  t.deepEqual(res, arr) // compare values
 })

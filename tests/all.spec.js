@@ -1,33 +1,30 @@
-var all = Redash.all
+const test    = require('ava')
+    , sinon   = require('sinon')
+    , { all } = require('../dist/redash')
 
-describe('(Function) all', function () {
-  it('Should properly report its arity (is binary)', function () {
-    all.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(all.length, 2)
+})
 
-  it('Should be curried', function () {
-    all(function () {}).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof all(() => {}), 'function')
+})
 
-  it('Should return true if all items in the list pass the predicate', function () {
-    all(function (x) { return x % 2 === 0 }, [2, 4, 6, 8, 10])
-      .should.equal(true)
-  })
+test('returns true if all items in the list pass the predicate', (t) => {
+  t.true(all(x => x % 2 === 0, [2, 4, 6, 8, 10]))
+})
 
-  it('Should return false if a single item does not pass the predicate', function () {
-    all(function (x) { return x % 2 === 0 }, [2, 3, 4, 6, 8, 10])
-      .should.equal(false)
-  })
+test('return false if a single item does not pass the predicate', (t) => {
+  t.false(all((x) => x % 2 === 0, [2, 3, 4, 6, 8, 10]))
+})
 
-  it('Should short circuit', function () {
-    const pred = sinon.spy(function (x) { return x % 2 === 0 })
-    all(pred, [2, 4, 6, 7, 8, 10, 12])
+test('short circuits', (t) => {
+  const pred = sinon.spy((x) => x % 2 === 0)
+  all(pred, [2, 4, 6, 7, 8, 10, 12])
 
-    pred.callCount.should.equal(4)
-  })
+  t.is(pred.callCount, 4)
+})
 
-  it('Should return true for an empty list', function () {
-    all(function () { return false }, [])
-      .should.equal(true)
-  })
+test('return true for an empty list', (t) => {
+  t.true(all(() => false, []))
 })

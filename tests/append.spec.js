@@ -1,27 +1,26 @@
-var append = Redash.append
+const test       = require('ava')
+    , { append } = require('../dist/redash')
 
-describe('(Function) append', function () {
-  it('Should properly report its arity (is binary)', function () {
-    append.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(append.length, 2)
+})
 
-  it('Should be curried', function () {
-    append(1).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof append(1), 'function')
+})
 
-  it('Should concatenate the first argument onto the end of the list', function () {
-    append(5, [1, 2, 3, 4]).should.deep.equal([1, 2, 3, 4, 5])
-  })
+test('concatenates the first argument onto the end of the list', (t) => {
+  t.deepEqual(append(5, [1, 2, 3, 4]), [1, 2, 3, 4, 5])
+})
 
-  it('Should work if the list is an empty array', function () {
-    append(5, []).should.deep.equal([5])
-  })
+test('works if the list is an empty array', (t) => {
+  t.deepEqual(append(5, []), [5])
+})
 
-  it('Should not mutate the list', function () {
-    var arr = [1, 2, 3, 4]
+test('does not mutate the original list', (t) => {
+  const arr = [1, 2, 3, 4]
       , res = append(5, arr)
 
-    arr.should.deep.equal([1, 2, 3, 4])
-    res.should.deep.equal([1, 2, 3, 4, 5])
-  })
+  t.deepEqual([1, 2, 3, 4], arr)
+  t.deepEqual(res, [1, 2, 3, 4, 5])
 })

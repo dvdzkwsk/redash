@@ -1,67 +1,63 @@
-var cond = Redash.cond
+const test     = require('ava')
+    , sinon    = require('sinon')
+    , { cond } = require('../dist/redash')
 
-describe('(Function) cond', function () {
-  it('Should properly report its arity (is binary)', function () {
-    cond.should.have.length(2)
-  })
+test('properly report its arity (is binary)', (t) => {
+  t.is(cond.length, 2)
+})
 
-  it('Should be curried', function () {
-    cond([]).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof cond([]), 'function')
+})
 
-  it('Should be able to be applied in a single invocation', function () {
-    expect(cond([], null)).to.equal(undefined)
-  })
+test('calls the matched function when its predicate is true', (t) => {
+  const pred = () => true
+      , spy  = sinon.spy()
 
-  it('Should call the matched function when its predicate is true', function () {
-    var pred = function (v) { return true }
+  cond([ [pred, spy] ])('HELLO')
+  t.true(spy.calledOnce)
+  t.true(spy.calledWithExactly('HELLO'))
+})
+
+test('returns the value of the handler function when its predicate is true', (t) => {
+  const pred = () => true
+      , val  = () => 'FOOBAR'
+
+  t.is(cond([ [pred, val] ])('HELLO'), 'FOOBAR')
+})
+
+test('treats each predicate and handler as unary', (t) => {
+  const pred = sinon.spy(() => true)
       , val  = sinon.spy()
 
-    cond([ [pred, val] ])('HELLO')
-    val.should.have.been.calledOnce
-    val.should.have.been.calledWithExactly('HELLO')
-  })
+  cond([ [pred, val] ])('a', 'b', 'c')
+  t.true(pred.calledWithExactly('a'))
+  t.true(val.calledWithExactly('a'))
+})
 
-  it('Should treat each condition predicate and executor as unary', function () {
-    var pred = sinon.spy(function () { return true })
-      , val  = sinon.spy()
 
-    cond([ [pred, val] ])('a', 'b', 'c')
-    pred.should.have.been.calledWithExactly('a')
-    val.should.have.been.calledWithExactly('a')
-  })
+test('treats truthy values from the predicates as true', (t) => {
+  const pred = () => []
+      , fn   = sinon.spy()
 
-  it('Should return the value of the executor function when its predicate is true', function () {
-    var pred = function (v) { return true }
-      , val  = function () { return 'FOOBAR' }
+  cond([[pred, fn]])(5)
+  t.true(fn.calledOnce)
+})
 
-    cond([ [pred, val] ])('HELLO').should.equal('FOOBAR')
-  })
+test('short circuits when a true condition is reached', (t) => {
+  const pred = () => true
+      , fn   = sinon.spy()
 
-  it('Should handle truthy values', function () {
-    var pred = function () { return {} }
-      , val  = sinon.spy()
+  cond([[pred, fn], [pred, fn]])(5)
+  t.true(fn.calledOnce)
+})
 
-    cond([ [pred, val] ])(5)
-    val.should.have.been.calledOnce
-  })
+test('returns `undefined` when conditions is empty', (t) => {
+  t.is(undefined, cond([], null))
+})
 
-  it('Should short circuit when a true condition is reached', function () {
-    var pred = function () { return true }
-      , val  = sinon.spy()
-
-    cond([ [pred, val], [pred, val] ])(5)
-    val.should.have.been.calledOnce
-  })
-
-  it('Should return `undefined` when conditions is empty', function () {
-    expect(cond([], null)).to.equal(undefined)
-  })
-
-  it('Should return `undefined` when no condition is matched', function () {
-    expect(cond([
-      [function () { return false }, function () { return 'value' }]
-    , [function () { return false }, function () { return 'value' }]
-    ], null)).to.equal(undefined)
-  })
+test('returns `undefined` when no condition is matched', (t) => {
+  t.is(undefined, cond([
+    [() => false, () => 'foo']
+  , [() => false, () => 'bar']], null))
 })

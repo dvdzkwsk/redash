@@ -1,19 +1,14 @@
-var add = Redash.add
+const test    = require('ava')
+    , { add } = require('../dist/redash')
 
-describe('(Function) add', function () {
-  it('Should properly report its arity (is binary)', function () {
-    add.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(add.length, 2)
+})
 
-  it('Should be curried', function () {
-    add(5).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof add(5), 'function')
+})
 
-  it('Should add two numbers', function () {
-    add(1, 2).should.equal(3)
-  })
-
-  it('Should concatenate two strings', function () {
-    add('hello')('goodbye').should.equal('hellogoodbye')
-  })
+test('correctly adds two numbers', (t) => {
+  t.is(add(1, 2), 3)
 })
