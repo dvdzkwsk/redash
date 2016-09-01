@@ -1,85 +1,52 @@
-var curry = Redash.curry
+const test      = require('ava')
+    , sinon     = require('sinon')
+    , { curry } = require('../dist/redash')
 
-describe('(Function) curry', function () {
-  var _add3 = function (a, b, c) { return a + b + c }
+test('properly report its arity (is unary)', (t) => {
+  t.is(curry.length, 1)
+})
 
-  it('Should properly report its arity (is unary)', function () {
-    curry.should.have.length(1)
-  })
+test('return a function', (t) => {
+  t.is(typeof curry(() => {}), 'function')
+})
 
-  it('Should return a function', function () {
-    curry(_add3).should.be.a('function')
-  })
+test('curries based off of function length', (t) => {
+  const curr0 = sinon.spy(curry(() => {}))
+      , curr1 = sinon.spy(curry((a) => {}))
+      , curr2 = sinon.spy(curry((a, b) => {}))
+      , curr3 = sinon.spy(curry((a, b, c) => {}))
 
-  it('Should curry based off of function length', function () {
-    var curr0 = curry(function () { return [].slice.call(arguments) })
-      , curr1 = curry(function (a) { return [].slice.call(arguments) })
-      , curr2 = curry(function (a, b) { return [].slice.call(arguments) })
-      , curr3 = curry(function (a, b, c) { return [].slice.call(arguments) })
+  t.is(typeof curr0, 'function')
+  t.is(typeof curr1, 'function')
+  t.is(typeof curr1(), 'function')
+  t.not(typeof curr1(1), 'function')
+  t.is(typeof curr2, 'function')
+  t.is(typeof curr2(), 'function')
+  t.is(typeof curr2(1), 'function')
+  t.not(typeof curr2(1, 2), 'function')
+  t.is(typeof curr3, 'function')
+  t.is(typeof curr3(), 'function')
+  t.is(typeof curr3(1), 'function')
+  t.is(typeof curr3(1, 2), 'function')
+  t.not(typeof curr3(1, 2, 3), 'function')
+})
 
-    curr0.should.be.a('function')
-    curr0().should.deep.equal([])
+test('only invokes the function once all arguments are supplied', (t) => {
+  const add3 = (a, b, c) => a + b + c
 
-    curr1.should.be.a('function')
-    curr1().should.be.a('function')
-    curr1(1).should.deep.equal([1])
+  t.is(6, curry(add3)()()(1)()(2)()(3))
+})
 
-    curr2.should.be.a('function')
-    curr2().should.be.a('function')
-    curr2(1).should.be.a('function')
-    curr2(1, 2).should.deep.equal([1, 2])
-    curr2(1)(2).should.deep.equal([1, 2])
+test('reports the correct arity via function.length', (t) => {
+  t.is(curry(() => {}).length, 0)
+  t.is(curry((a0) => {}).length, 1)
+  t.is(curry((a0, a1) => {}).length, 2)
+  t.is(curry((a0, a1, a2) => {}).length, 3)
+  t.is(curry((a0, a1, a2, a3) => {}).length, 4)
+  t.is(curry((a0, a1, a2, a3, a4) => {}).length, 5)
+  t.is(curry((a0, a1, a2, a3, a4, a5) => {}).length, 6)
+})
 
-    curr3.should.be.a('function')
-    curr3().should.be.a('function')
-    curr3(1).should.be.a('function')
-    curr3(1, 2).should.be.a('function')
-    curr3(1, 2, 3).should.deep.equal([1, 2, 3])
-    curr3(1)(2)(3).should.deep.equal([1, 2, 3])
-  })
-
-  it('Should not bind additional arguments', function () {
-    var curried = curry(_add3, 1, 2, 3)
-
-    curried.should.be.a('function')
-    curried(10, 100, 1000).should.equal(1110)
-  })
-
-  it('Should ignore invocations that don\'t supply arguments', function () {
-    var curried = curry(_add3)
-
-    curried()()()()()()().should.be.a('function')
-  })
-
-  it('Should only invoke the function once all arguments are supplied', function () {
-    var curried = curry(_add3)
-
-    curried()()(1)()(2)()(3).should.equal(6)
-  })
-
-  it('Should report the correct arity via function.length', function () {
-    var curried0 = curry(function () {})
-      , curried1 = curry(function (a0) {})
-      , curried2 = curry(function (a0, a1) {})
-      , curried3 = curry(function (a0, a1, a2) {})
-      , curried4 = curry(function (a0, a1, a2, a3) {})
-      , curried5 = curry(function (a0, a1, a2, a3, a4) {})
-      , curried6 = curry(function (a0, a1, a2, a3, a4, a5) {})
-
-    curried0.should.have.length(0)
-    curried1.should.have.length(1)
-    curried2.should.have.length(2)
-    curried3.should.have.length(3)
-    curried4.should.have.length(4)
-    curried5.should.have.length(5)
-    curried6.should.have.length(6)
-  })
-
-  it('Should throw if the target function has an arity > 6', function () {
-    var test = function () {
-      curry(function (a0, a1, a2, a3, a4, a5, a6, a7) {})
-    }
-
-    test.should.throw(/Arity must be less than or equal to 6/)
-  })
+test('throws if the target function has an arity > 6', (t) => {
+  t.throws(() => curry((a0, a1, a2, a3, a4, a5, a6, a7) => {}))
 })

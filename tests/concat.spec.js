@@ -1,47 +1,35 @@
-var concat = Redash.concat
+const test       = require('ava')
+    , { concat } = require('../dist/redash')
 
-describe('(Function) concat', function () {
-  it('Should properly report its arity (is binary)', function () {
-    concat.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(2, concat.length)
+})
 
-  it('Should be curried', function () {
-    concat([1, 2, 3]).should.be.a('function')
-  })
+test('be curried', (t) => {
+  t.is('function', typeof concat([1, 2, 3]))
+})
 
-  it('Should concatenate the second list onto the first', function () {
-    concat([1, 2, 3], [4, 5, 6])
-      .should.deep.equal([1, 2, 3, 4, 5, 6])
-  })
+test('concatenates the second list onto the first', (t) => {
+  t.deepEqual([1, 2, 3, 4, 5, 6], concat([1, 2, 3], [4, 5, 6]))
+})
 
-  it('Should work if the first list is empty', function () {
-    concat([], [1, 2, 3])
-      .should.deep.equal([1, 2, 3])
-  })
+test('works if the first list is empty', (t) => {
+  t.deepEqual([1, 2, 3], concat([], [1, 2, 3]))
+})
 
-  it('Should work if the second list is empty', function () {
-    concat([1, 2, 3], [])
-      .should.deep.equal([1, 2, 3])
-  })
+test('works if the second list is empty', (t) => {
+  t.deepEqual([1, 2, 3], concat([1, 2, 3], []))
+})
 
-  it('Should work if both lists are empty', function () {
-    concat([], [])
-      .should.deep.equal([])
-  })
+test('works if both lists are empty', (t) => {
+  t.deepEqual([], concat([], []))
+})
 
-  it('Should always return a new list', function () {
-    var as = [1, 2, 3]
+test('always returns a new list', (t) => {
+  const as = [1, 2, 3]
       , bs = []
-      , res
+      , res = concat(as, bs)
 
-    res = concat(as, bs)
-    as.should.deep.equal([1, 2, 3])
-    res.should.not.equal(as)  // compare references
-    res.should.deep.equal(as) // compare values
-
-    res = concat(bs, bs)
-    bs.should.deep.equal([])
-    res.should.not.equal(bs)  // compare references
-    res.should.deep.equal(bs) // compare values
-  })
+  t.not(res, as)       // compare references
+  t.deepEqual(res, as) // compare values
 })

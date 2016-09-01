@@ -579,6 +579,8 @@
    * is : String | Function -> Boolean
    */
   var is = _curry2(function is (type, a) {
+    if (a == null) return false
+
     return typeof type === 'string'
       ? typeof a === type
       : a instanceof type || a.constructor === type

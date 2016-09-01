@@ -1,23 +1,22 @@
-var always = Redash.always
+const test       = require('ava')
+    , { always } = require('../dist/redash')
 
-describe('(Function) always', function () {
-  it('Should properly report its arity (is unary)', function () {
-    always.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(1, always.length)
+})
 
-  it('Should return a function', function () {
-    always(5).should.be.a('function')
-  })
+test('return a function', (t) => {
+  t.is('function', typeof always(5))
+})
 
-  it('The returned function should return the initial value', function () {
-    always(5)().should.equal(5)
-  })
+test('returns the provided value from the produced function', (t) => {
+  t.is(5, always(5)())
+})
 
-  it('Should work for multiple invocations', function () {
-    var always5 = always(5)
+test('work for multiple invocations', (t) => {
+  const always5 = always(5)
 
-    always5().should.equal(5)
-    always5().should.equal(5)
-    always5().should.equal(5)
-  })
+  t.is(5, always5())
+  t.is(5, always5())
+  t.is(5, always5())
 })
