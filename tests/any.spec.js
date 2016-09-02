@@ -1,43 +1,40 @@
-var any = Redash.any
+const test    = require('ava')
+    , sinon   = require('sinon')
+    , { any } = require('../dist/redash')
 
-describe('(Function) any', function () {
-  it('Should properly report its arity (is binary)', function () {
-    any.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(2, any.length)
+})
 
-  it('Should be curried', function () {
-    any(function () {}).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is('function', typeof any(() => {}))
+})
 
-  it('Should provide each element in the list as the only argument to the predicate', function () {
-    var spy = sinon.spy(function () { return false })
+test('sequentially provides each element in the list to the predicate', (t) => {
+  const spy = sinon.spy(() => false)
 
-    any(spy, [1, 2, 3])
-    spy.firstCall.args.should.deep.equal([1])
-    spy.secondCall.args.should.deep.equal([2])
-    spy.thirdCall.args.should.deep.equal([3])
-  })
+  any(spy, [1, 2, 3])
+  t.deepEqual([1], spy.firstCall.args)
+  t.deepEqual([2], spy.secondCall.args)
+  t.deepEqual([3], spy.thirdCall.args)
+})
 
-  it('Should return true if any item matches the predicate', function () {
-    any(function (x) { return x === 3 }, [1, 2, 3])
-      .should.equal(true)
-  })
+test('returns true if any item matches the predicate', (t) => {
+  t.true(any((x) => x === 3, [1, 2, 3]))
+})
 
-  it('Should short circuit when an item matches the predicate', function () {
-    var spy = sinon.spy(function (x) { return x === 3 })
+test('short circuits when an item matches the predicate', (t) => {
+  const spy = sinon.spy((x) => x === 3)
 
-    any(spy, [1, 2, 3, 4, 5, 6, 7])
-    spy.callCount.should.equal(3)
-  })
+  any(spy, [1, 2, 3, 4, 5, 6, 7])
+  t.is(3, spy.callCount)
+})
 
-  it('Should return false if no item matches the predicate', function () {
-    any(function () { return false }, [1, 2, 3, 4, 5])
-      .should.equal(false)
-  })
+test('returns false if no item matches the predicate', (t) => {
+  t.false(any(() => false, [1, 2, 3, 4, 5]))
+})
 
-  // TODO(zuko): should this really be false?
-  it('Should return false if the list is empty', function () {
-    any(function () { return true }, [])
-      .should.equal(false)
-  })
+// TODO(zuko): should this really be false?
+test('returns false if the list is empty', (t) => {
+  t.false(any(() => true, []))
 })

@@ -14,32 +14,35 @@
     "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
     "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
     "compile": "npm run bundle && npm run minify",
-    "test": "node ./node_modules/karma/bin/karma start",
+    "test": "ava",
     "deploy": "npm run compile && npm run test"
   },
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "ISC",
+  "ava": {
+    "files": [
+      "tests/a*.js",
+      "tests/c*.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "match": [],
+    "concurrency": 5,
+    "failFast": true,
+    "tap": false,
+    "require": []
+  },
   "devDependencies": {
+    "ava": "^0.16.0",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "eslint": "^2.13.1",
-    "karma": "^0.13.22",
-    "karma-better-sinon-chai": "^0.1.1",
-    "karma-chai": "^0.1.0",
-    "karma-coverage": "^0.5.3",
-    "karma-coveralls": "^1.1.2",
-    "karma-dirty-chai": "^1.0.2",
-    "karma-mocha": "^0.2.1",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "karma-rollup-preprocessor": "^2.0.2",
-    "karma-sinon": "^1.0.5",
-    "karma-spec-reporter": "0.0.22",
     "lodash": "^4.13.1",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
     "ramda": "^0.21.0",
     "rollup": "^0.21.0",
-    "sinon-chai": "^2.8.0",
     "uglify-js": "^2.6.1"
   }
 }
