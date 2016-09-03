@@ -1,5 +1,5 @@
 {
-  "name": "stdlib.js",
+  "name": "fp-stdlib",
   "version": "0.13.0-beta.4",
   "description": "A better Standard Library for JavaScript",
   "main": "stdlib.js",
