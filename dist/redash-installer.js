@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  factory((global.Redash = {}));
-}(this, function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  global.Redash = factory();
+}(this, function () { 'use strict';
 
   function _curry1 (fn) {
     return function curriedUnaryFunction (a0) {
@@ -1073,76 +1073,93 @@
     return kv
   })
 
-  exports.add = add;
-  exports.all = all;
-  exports.always = always;
-  exports.any = any;
-  exports.append = append;
-  exports.assoc = assoc;
-  exports.concat = concat;
-  exports.cond = cond;
-  exports.compact = compact;
-  exports.compose = compose;
-  exports.curry = curry;
-  exports.curryN = curryN;
-  exports.dec = dec;
-  exports.dissoc = dissoc;
-  exports.drop = drop;
-  exports.equals = equals;
-  exports.filter = filter;
-  exports.find = find;
-  exports.findIndex = findIndex;
-  exports.findLast = findLast;
-  exports.flatMap = flatMap;
-  exports.flatten = flatten;
-  exports.flattenDeep = flattenDeep;
-  exports.flip = flip;
-  exports.forEach = forEach;
-  exports.fromPairs = fromPairs;
-  exports.has = has;
-  exports.head = head;
-  exports.identity = identity;
-  exports.ifElse = ifElse;
-  exports.inc = inc;
-  exports.insert = insert;
-  exports.is = is;
-  exports.isNil = isNil;
-  exports.keys = keys;
-  exports.last = last;
-  exports.lens = lens;
-  exports.lensProp = lensProp;
-  exports.map = map;
-  exports.mapIndexed = mapIndexed;
-  exports.merge = merge;
-  exports.not = not;
-  exports.of = of;
-  exports.over = over;
-  exports.pipe = pipe;
-  exports.prop = prop;
-  exports.propEq = propEq;
-  exports.range = range;
-  exports.rangeBy = rangeBy;
-  exports.reduce = reduce;
-  exports.foldl = reduce;
-  exports.reduceRight = reduceRight;
-  exports.foldr = reduceRight;
-  exports.reject = reject;
-  exports.reverse = reverse;
-  exports.scan = scan;
-  exports.set = set;
-  exports.split = split;
-  exports.sum = sum;
-  exports.tail = tail;
-  exports.take = take;
-  exports.takeWhile = takeWhile;
-  exports.times = times;
-  exports.toLower = toLower;
-  exports.toUpper = toUpper;
-  exports.tap = tap;
-  exports.toPairs = toPairs;
-  exports.view = view;
-  exports.without = without;
-  exports.zip = zip;
-  exports.zipObj = zipObj;
+  var stdlib = Object.freeze({
+  	add: add,
+  	all: all,
+  	always: always,
+  	any: any,
+  	append: append,
+  	assoc: assoc,
+  	concat: concat,
+  	cond: cond,
+  	compact: compact,
+  	compose: compose,
+  	curry: curry,
+  	curryN: curryN,
+  	dec: dec,
+  	dissoc: dissoc,
+  	drop: drop,
+  	equals: equals,
+  	filter: filter,
+  	find: find,
+  	findIndex: findIndex,
+  	findLast: findLast,
+  	flatMap: flatMap,
+  	flatten: flatten,
+  	flattenDeep: flattenDeep,
+  	flip: flip,
+  	forEach: forEach,
+  	fromPairs: fromPairs,
+  	has: has,
+  	head: head,
+  	identity: identity,
+  	ifElse: ifElse,
+  	inc: inc,
+  	insert: insert,
+  	is: is,
+  	isNil: isNil,
+  	keys: keys,
+  	last: last,
+  	lens: lens,
+  	lensProp: lensProp,
+  	map: map,
+  	mapIndexed: mapIndexed,
+  	merge: merge,
+  	not: not,
+  	of: of,
+  	over: over,
+  	pipe: pipe,
+  	prop: prop,
+  	propEq: propEq,
+  	range: range,
+  	rangeBy: rangeBy,
+  	reduce: reduce,
+  	foldl: reduce,
+  	reduceRight: reduceRight,
+  	foldr: reduceRight,
+  	reject: reject,
+  	reverse: reverse,
+  	scan: scan,
+  	set: set,
+  	split: split,
+  	sum: sum,
+  	tail: tail,
+  	take: take,
+  	takeWhile: takeWhile,
+  	times: times,
+  	toLower: toLower,
+  	toUpper: toUpper,
+  	tap: tap,
+  	toPairs: toPairs,
+  	view: view,
+  	without: without,
+  	zip: zip,
+  	zipObj: zipObj
+  });
+
+  function jsStandardLibInstaller (ctx) {
+    var keys = Object.keys(stdlib)
+      , len  = keys.length
+      , i    = 0
+      , key
+
+    while (i < len) {
+      key = keys[i]
+      ctx[key] = stdlib[key]
+      i += 1
+    }
+  }
+
+  return jsStandardLibInstaller;
 
 }));

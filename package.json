@@ -1,28 +1,34 @@
 {
   "name": "redash",
-  "version": "0.12.3",
+  "version": "0.13.0-beta.1",
   "description": "Compact library for writing performant functional JavaScript",
-  "main": "dist/redash.js",
+  "main": "redash.js",
   "directories": {
     "test": "tests"
   },
   "files": [
-    "dist/redash.js"
+    "./redash.js",
+    "./redash.min.js",
+    "./redash-installer.js",
+    "./redash-installer.min.js"
   ],
   "scripts": {
     "lint": "eslint src tests",
-    "bundle": "rollup --format umd --name Redash -i src/redash.js -o dist/redash.js",
-    "minify": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
+    "bundle": "npm run bundle:main && npm run bundle:installer",
+    "bundle:main": "rollup --format umd --name Redash -i src/bundles/index.js -o dist/redash.js",
+    "bundle:installer": "rollup --format umd --name Redash -i src/bundles/installer.js -o dist/redash-installer.js",
+    "minify": "npm run minify:main && npm run minify:installer",
+    "minify:main": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
+    "minify:installer": "uglifyjs dist/redash-installer.js --compress --mangle -o dist/redash-installer.min.js",
     "compile": "npm run bundle && npm run minify",
     "test": "ava",
-    "deploy": "npm run compile && npm run test"
+    "prepublish": "cp -r dist/. ."
   },
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "ISC",
   "ava": {
     "files": [
-      "tests/a*.js",
-      "tests/c*.js"
+      "tests/**/*.spec.js"
     ],
     "source": [
       "src/**/*.js"

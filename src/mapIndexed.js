@@ -1,7 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * map : ((a, Number) -> b) -> [a] -> [b]
+ * mapIndexed : ((a, Number) -> b) -> [a] -> [b]
  *
  * @description
  * Applies a transformation to every item in an array, returning a new
