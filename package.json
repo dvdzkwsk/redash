@@ -1,6 +1,6 @@
 {
   "name": "redash",
-  "version": "0.13.0-beta.1",
+  "version": "0.13.0-beta.2",
   "description": "Compact library for writing performant functional JavaScript",
   "main": "redash.js",
   "directories": {
