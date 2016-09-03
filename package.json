@@ -7,10 +7,10 @@
     "test": "tests"
   },
   "files": [
-    "./redash.js",
-    "./redash.min.js",
-    "./redash-installer.js",
-    "./redash-installer.min.js"
+    "redash.js",
+    "redash.min.js",
+    "redash-installer.js",
+    "redash-installer.min.js"
   ],
   "scripts": {
     "lint": "eslint src tests",
