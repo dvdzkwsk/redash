@@ -3,7 +3,7 @@
 node_modules
 coverage
 dist
-redash.js
-redash.min.js
-redash-installer.js
-redash-installer.min.js
+stdlib.js
+stdlib.min.js
+installer.js
+installer.min.js
