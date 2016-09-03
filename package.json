@@ -1,25 +1,25 @@
 {
-  "name": "redash",
+  "name": "stdlib.js",
   "version": "0.13.0-beta.3",
-  "description": "Compact library for writing performant functional JavaScript",
-  "main": "redash.js",
+  "description": "A better Standard Library for JavaScript",
+  "main": "stdlib.js",
   "directories": {
     "test": "tests"
   },
   "files": [
-    "redash.js",
-    "redash.min.js",
-    "redash-installer.js",
-    "redash-installer.min.js"
+    "stdlib.js",
+    "stdlib.min.js",
+    "installer.js",
+    "installer.min.js"
   ],
   "scripts": {
     "lint": "eslint src tests",
     "bundle": "npm run bundle:main && npm run bundle:installer",
-    "bundle:main": "rollup --format umd --name Redash -i src/bundles/index.js -o dist/redash.js",
-    "bundle:installer": "rollup --format umd --name Redash -i src/bundles/installer.js -o dist/redash-installer.js",
+    "bundle:main": "rollup --format umd --name stdlib -i src/bundles/index.js -o dist/stdlib.js",
+    "bundle:installer": "rollup --format umd --name stdlib -i src/bundles/installer.js -o dist/installer.js",
     "minify": "npm run minify:main && npm run minify:installer",
-    "minify:main": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",
-    "minify:installer": "uglifyjs dist/redash-installer.js --compress --mangle -o dist/redash-installer.min.js",
+    "minify:main": "uglifyjs dist/stdlib.js --compress --mangle -o dist/stdlib.min.js",
+    "minify:installer": "uglifyjs dist/installer.js --compress --mangle -o dist/installer.min.js",
     "compile": "npm run bundle && npm run minify",
     "test": "ava",
     "prepublish": "cp -r dist/. ."
@@ -41,13 +41,9 @@
   },
   "devDependencies": {
     "ava": "^0.16.0",
-    "chai": "^3.5.0",
-    "dirty-chai": "^1.2.2",
     "eslint": "^2.13.1",
-    "lodash": "^4.13.1",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
-    "ramda": "^0.21.0",
     "rollup": "^0.21.0",
     "uglify-js": "^2.6.1"
   }
