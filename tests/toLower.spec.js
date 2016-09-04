@@ -1,8 +1,10 @@
-var toLower = Redash.toLower
+const test        = require('ava')
+    , { toLower } = require('../dist/stdlib')
 
-describe('(Function) toLower', (t) => {
-  test('uppercase a string', (t) => {
-    toLower('A').should.equal('a')
-    toLower('A LONG STRING').should.equal('a long string')
-  })
+test('lowercases a single character', (t) => {
+  t.is(toLower('A'), 'a')
+})
+
+test('lowercases a string of multiple characters', (t) => {
+  t.is(toLower('A LONG STRING'), 'a long string')
 })

@@ -1,36 +1,26 @@
-var toPairs = Redash.toPairs
+const test        = require('ava')
+    , { toPairs } = require('../dist/stdlib')
 
-describe('(Function) toPairs', (t) => {
-  test('properly report its arity (is unary)', (t) => {
-    toPairs.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(toPairs.length, 1)
+})
 
-  test('return an array of key/value tuples', (t) => {
-    toPairs({
-      foo: 'bar'
-    , baz: 'biz'
-    }).should.deep.equal([
-      ['foo', 'bar']
-    , ['baz', 'biz']
-    ])
-  })
+test('returns an array of key/value tuples', (t) => {
+  t.deepEqual(
+    toPairs({ foo: 'bar', baz: 'biz' }),
+    [['foo', 'bar'], ['baz', 'biz']])
+})
 
-  test('return an empty list if the object is empty', (t) => {
-    toPairs({})
-      .should.deep.equal([])
-  })
+test('ignores inherited properties', (t) => {
+  function Foo () {}
+  Foo.prototype.foo = function () {}
 
-  test('ignore inherited properties', (t) => {
-    var foo
+  const foo = new Foo()
+  foo.bar = 'baz'
 
-    function Foo () {}
-    Foo.prototype.foo = function () {}
-    foo = new Foo()
-    foo.bar = function () {}
+  t.deepEqual(toPairs(foo), [['bar', 'baz']])
+})
 
-    toPairs(foo)
-      .should.deep.equal([
-        ['bar', foo.bar]
-      ])
-  })
+test('returns an empty array if the object is empty', (t) => {
+  t.deepEqual(toPairs({}), [])
 })

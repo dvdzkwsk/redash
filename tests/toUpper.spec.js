@@ -1,8 +1,10 @@
-var toUpper = Redash.toUpper
+const test        = require('ava')
+    , { toUpper } = require('../dist/stdlib')
 
-describe('(Function) toUpper', (t) => {
-  test('uppercase a string', (t) => {
-    toUpper('a').should.equal('A')
-    toUpper('a long string').should.equal('A LONG STRING')
-  })
+test('uppercases a single character', (t) => {
+  t.is(toUpper('a'), 'A')
+})
+
+test('uppercases a string of multiple characters', (t) => {
+  t.is(toUpper('a long string'), 'A LONG STRING')
 })

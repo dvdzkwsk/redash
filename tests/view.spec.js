@@ -1,20 +1,17 @@
-var lens  = Redash.lens
-  , view  = Redash.view
-  , assoc = Redash.assoc
-  , prop  = Redash.prop
+const test     = require('ava')
+    , { lens
+      , view
+      , assoc
+      , prop } = require('../dist/stdlib')
 
-describe('(Function) view', (t) => {
-  test('be a curried binary function', (t) => {
-    view.should.have.length(2)
+test('properly reports its arity (is binary)', (t) => {
+  t.is(view.length, 2)
+})
 
-    var noop = function () {}
-    view(lens(noop)).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof view(() => {}), 'function')
+})
 
-  test('properly apply the lens getter to the target', (t) => {
-    var fooLens = lens(prop('foo'), assoc('foo'))
-
-    view(fooLens, { foo: 'bar' })
-      .should.equal('bar')
-  })
+test('properly applies the lens getter to the target', (t) => {
+  t.is(view(lens(prop('foo'), assoc('foo')), { foo: 'bar' }), 'bar')
 })

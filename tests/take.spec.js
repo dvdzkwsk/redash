@@ -1,27 +1,27 @@
-var take = Redash.take
+const test     = require('ava')
+    , { take } = require('../dist/stdlib')
 
-describe('(Function) take', (t) => {
-  test('be a function.', (t) => {
-    expect(take).to.be.a('function')
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(take.length, 2)
+})
 
-  test('be curried.', (t) => {
-    expect(take()).to.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof take(5), 'function')
+})
 
-  test('return the n number of items from an array.', (t) => {
-    expect(take(2, [1, 2, 3, 4])).to.deep.equal([1, 2])
-  })
+test('returns an array containing `n` items from the provided array', (t) => {
+  t.deepEqual(take(2, [1, 2, 3, 4]), [1, 2])
+})
 
-  test('only take as many items as actually exist.', (t) => {
-    expect(take(15, [1, 2, 3, 4])).to.deep.equal([1, 2, 3, 4])
-  })
+test('only takes as many items as actually exist.', (t) => {
+  t.deepEqual(take(15, [1, 2, 3, 4]), [1, 2, 3, 4])
+})
 
-  test('produce a new object reference even if the result is identitical.', (t) => {
-    var arr = [1, 2, 3, 4, 5]
-      , res = take(100, arr)
+test('produces a new object reference even if the result is identitical.', (t) => {
+  const arr = [1, 2, 3, 4, 5]
+      , res = take(5, arr)
 
-    expect(res).to.deep.equal([1, 2, 3, 4, 5])
-    expect(res).to.not.equal(arr)
-  })
+  t.deepEqual(res, [1, 2, 3, 4, 5])
+  t.not(res, arr)       // compare references
+  t.deepEqual(res, arr) // compare values
 })
