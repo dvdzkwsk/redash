@@ -1,23 +1,23 @@
 var has = Redash.has
 
-describe('(Function) has', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) has', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     has.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     has(5).should.be.a('function')
   })
 
-  it('Should return `true` when the object has the property', function () {
+  test('return `true` when the object has the property', (t) => {
     has('hello', { hello: 'foo' }).should.equal(true)
   })
 
-  it('Should return `false` when the object does not have the property', function () {
+  test('return `false` when the object does not have the property', (t) => {
     has('hello', { notHello: 'foo' }).should.equal(false)
   })
 
-  it('Should should ignore inherited properties', function () {
+  test('should ignore inherited properties', (t) => {
     function Foo () {}
     Foo.prototype.bar = function () {}
     var foo = new Foo()

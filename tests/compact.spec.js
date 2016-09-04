@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { compact } = require('../dist/redash')
+    , { compact } = require('../dist/stdlib')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(compact.length, 1)

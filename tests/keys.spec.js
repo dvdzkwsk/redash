@@ -1,7 +1,7 @@
 var keys = Redash.keys
 
-describe('(Function) keys', function () {
-  it('Should return all own properties of an object.', function () {
+describe('(Function) keys', (t) => {
+  test('return all own properties of an object.', (t) => {
     keys({
       foo: true
     , bar: function () {}
@@ -9,7 +9,7 @@ describe('(Function) keys', function () {
     }).should.deep.equal(['foo', 'bar', 'baz'])
   })
 
-  it('Should exclude inherited properties', function () {
+  test('exclude inherited properties', (t) => {
     function SomeClass () {}
     SomeClass.prototype.foo = 'foo'
 

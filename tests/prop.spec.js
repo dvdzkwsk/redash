@@ -1,15 +1,15 @@
 var prop = Redash.prop
 
-describe('(Function) prop', function () {
-  it('Should be a curried binary function', function () {
+describe('(Function) prop', (t) => {
+  test('be a curried binary function', (t) => {
     prop('foo').should.be.a('function')
   })
 
-  it('Should return the requested property off of the object', function () {
+  test('return the requested property off of the object', (t) => {
     prop('foo', { foo: 'bar' }).should.equal('bar')
   })
 
-  it('Should return undefined when the property is not defined', function () {
+  test('return undefined when the property is not defined', (t) => {
     expect(prop('foo', {})).to.equal(undefined)
   })
 })

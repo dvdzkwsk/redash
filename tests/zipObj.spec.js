@@ -1,15 +1,15 @@
 var zipObj = Redash.zipObj
 
-describe('(Function) zipObj', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) zipObj', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     zipObj.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     zipObj([1, 2, 3]).should.be.a('function')
   })
 
-  it('Should create an object of key/value pairs', function () {
+  test('create an object of key/value pairs', (t) => {
     zipObj([1, 2, 3, 4, 5, 6, 7], ['a', 'b', 'c', 'd', 'e', 'f', 'g'])
       .should.deep.equal({
         1: 'a'
@@ -22,7 +22,7 @@ describe('(Function) zipObj', function () {
       })
   })
 
-  it('Should truncate to the shorter of the two lists', function () {
+  test('truncate to the shorter of the two lists', (t) => {
     zipObj([1, 2, 3], ['a', 'b', 'c', 'd', 'e', 'f', 'g'])
       .should.deep.equal({
         1: 'a'
@@ -31,7 +31,7 @@ describe('(Function) zipObj', function () {
       })
   })
 
-  it('Should return an empty object if either list is empty', function () {
+  test('return an empty object if either list is empty', (t) => {
     zipObj([], [1, 2, 3])
       .should.deep.equal({})
 

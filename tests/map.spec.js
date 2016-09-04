@@ -1,22 +1,22 @@
 var map = Redash.map
 
-describe('(Function) map', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) map', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     map.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     expect(map(function () {})).to.be.a('function')
   })
 
-  it('Should call the transform function for each array item', function () {
+  test('call the transform function for each array item', (t) => {
     var spy = sinon.spy()
 
     map(spy, [1, 2, 3])
     spy.should.have.been.calledThrice()
   })
 
-  it('Should provide a single argument, the current item, to the transformer', function () {
+  test('provide a single argument, the current item, to the transformer', (t) => {
     var spy = sinon.spy()
 
     map(spy, [1, 2, 3])
@@ -25,14 +25,14 @@ describe('(Function) map', function () {
     spy.thirdCall.args.should.deep.equal([3])
   })
 
-  it('Should return the transformation result for each item', function () {
+  test('return the transformation result for each item', (t) => {
     var double = function (x) { return x * 2 }
 
     map(double, [1, 2, 3])
       .should.deep.equal([2, 4, 6])
   })
 
-  it('Should return a new array even if the final array is unchanged', function () {
+  test('return a new array even if the final array is unchanged', (t) => {
     var arr = [1, 2, 3]
       , res = map(function (x) { return x }, arr)
 

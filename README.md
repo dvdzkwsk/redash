@@ -1,5 +1,5 @@
-Functional Javascript Stdlib
-============================
+fp-stdlib
+=========
 [![Build Status](https://travis-ci.org/davezuko/fp-stdlib.svg?branch=master)](https://travis-ci.org/davezuko/fp-stdlib)
 [![Coverage Status](https://coveralls.io/repos/github/davezuko/fp-stdlib/badge.svg?branch=master)](https://coveralls.io/github/davezuko/fp-stdlib?branch=master)
 

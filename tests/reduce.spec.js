@@ -1,16 +1,16 @@
 var reduce = Redash.reduce
 
-describe('(Function) reduce', function () {
-  it('Should properly report its arity (is ternary)', function () {
+describe('(Function) reduce', (t) => {
+  test('properly report its arity (is ternary)', (t) => {
     reduce.should.have.length(3)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     reduce(function () {}).should.be.a('function')
     reduce(function () {}, 0).should.be.a('function')
   })
 
-  it('Should pass the accumulator result through the list from left to right', function () {
+  test('pass the accumulator result through the list from left to right', (t) => {
     var spy = sinon.spy(function (acc, a) { return acc + a })
 
     reduce(spy, 0, [1, 2, 3])
@@ -19,7 +19,7 @@ describe('(Function) reduce', function () {
     spy.thirdCall.args.should.deep.equal([3, 3])
   })
 
-  it('Should return the accumulated result.', function () {
+  test('return the accumulated result.', (t) => {
     var fn = function (acc, a) { return acc + a }
 
     reduce(fn, 0, [1, 2, 3])

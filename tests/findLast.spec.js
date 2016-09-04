@@ -1,15 +1,15 @@
 var findLast = Redash.findLast
 
-describe('(Function) findLast', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) findLast', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     findLast.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     findLast(function () {}).should.be.a('function')
   })
 
-  it('Should return the last item in a list that matches the predicate', function () {
+  test('return the last item in a list that matches the predicate', (t) => {
     var a = { id: 1 }
       , b = { id: 1 }
       , c = { id: 1 }
@@ -18,7 +18,7 @@ describe('(Function) findLast', function () {
       .should.equal(c)
   })
 
-  it('Should short circuit', function () {
+  test('short circuit', (t) => {
     var spy = sinon.spy(function (x) { return x === 3 })
 
     findLast(spy, [1, 2, 3, 4, 5, 6, 7, 8, 3, 9, 10])

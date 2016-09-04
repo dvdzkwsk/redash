@@ -1,11 +1,11 @@
 var toPairs = Redash.toPairs
 
-describe('(Function) toPairs', function () {
-  it('Should properly report its arity (is unary)', function () {
+describe('(Function) toPairs', (t) => {
+  test('properly report its arity (is unary)', (t) => {
     toPairs.should.have.length(1)
   })
 
-  it('Should return an array of key/value tuples', function () {
+  test('return an array of key/value tuples', (t) => {
     toPairs({
       foo: 'bar'
     , baz: 'biz'
@@ -15,12 +15,12 @@ describe('(Function) toPairs', function () {
     ])
   })
 
-  it('Should return an empty list if the object is empty', function () {
+  test('return an empty list if the object is empty', (t) => {
     toPairs({})
       .should.deep.equal([])
   })
 
-  it('Should ignore inherited properties', function () {
+  test('ignore inherited properties', (t) => {
     var foo
 
     function Foo () {}

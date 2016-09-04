@@ -6,8 +6,8 @@ var lens  = Redash.lens
     return x.toUpperCase()
   }
 
-describe('(Function) over', function () {
-  it('Should be a curried ternary function', function () {
+describe('(Function) over', (t) => {
+  test('be a curried ternary function', (t) => {
     over.should.have.length(3)
 
     var noop = function () {}
@@ -15,28 +15,28 @@ describe('(Function) over', function () {
     over(lens(noop), noop).should.be.a('function')
   })
 
-  it('Should call the getter exactly once', function () {
+  test('call the getter exactly once', (t) => {
     var getter = sinon.spy(prop('foo'))
 
     over(lens(getter, assoc('foo')), xform, { foo: 'bar' })
     getter.should.have.been.calledOnce
   })
 
-  it('Should call the setter exactly once', function () {
+  test('call the setter exactly once', (t) => {
     var setter = sinon.spy(assoc('foo'))
 
     over(lens(prop('foo'), setter), xform, { foo: 'bar' })
     setter.should.have.been.calledOnce
   })
 
-  it('Should call the transformer exactly once', function () {
+  test('call the transformer exactly once', (t) => {
     var _xform = sinon.spy(xform)
 
     over(lens(prop('foo'), assoc('foo')), _xform, { foo: 'bar' })
     _xform.should.have.been.calledOnce
   })
 
-  it('Should return the result of the transformation', function () {
+  test('return the result of the transformation', (t) => {
     over(lens(prop('foo'), assoc('foo')), xform, { foo: 'bar' })
       .should.deep.equal({
         foo: 'BAR'

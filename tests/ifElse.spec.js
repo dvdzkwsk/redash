@@ -1,23 +1,23 @@
 var ifElse = Redash.ifElse
 
-describe('(Function) ifElse', function () {
-  it('Should properly report its arity (is ternary)', function () {
+describe('(Function) ifElse', (t) => {
+  test('properly report its arity (is ternary)', (t) => {
     ifElse.should.have.length(3)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     ifElse(function () {}).should.be.a('function')
     ifElse(function () {}, function () {}).should.be.a('function')
   })
 
-  it('Should return a unary function', function () {
+  test('return a unary function', (t) => {
     var fn = function () {}
 
     ifElse(fn, fn, fn).should.be.a('function')
     ifElse(fn, fn, fn).should.have.length(1)
   })
 
-  it('Should call the condition when the supplied argument', function () {
+  test('call the condition when the supplied argument', (t) => {
     var cond = sinon.spy()
       , noop = function () {}
 
@@ -25,8 +25,8 @@ describe('(Function) ifElse', function () {
     cond.should.have.been.calledWithExactly('hello')
   })
 
-  describe('When the predicate returns true...', function () {
-    it('Should only call the `whenTrue` function', function () {
+  describe('When the predicate returns true...', (t) => {
+    test('only call the `whenTrue` function', (t) => {
       var cond      = function () { return true }
         , whenTrue  = sinon.spy()
         , whenFalse = sinon.spy()
@@ -36,7 +36,7 @@ describe('(Function) ifElse', function () {
       whenTrue.should.have.been.calledOnce()
     })
 
-    it('Should pass the original argument to the `whenTrue` function', function () {
+    test('pass the original argument to the `whenTrue` function', (t) => {
       var cond      = function () { return true }
         , whenTrue  = sinon.spy()
         , whenFalse = sinon.spy()
@@ -45,7 +45,7 @@ describe('(Function) ifElse', function () {
       whenTrue.should.have.been.calledWithExactly('hello')
     })
 
-    it('Should return the result of the `whenTrue` function', function () {
+    test('return the result of the `whenTrue` function', (t) => {
       var cond      = function () { return true }
         , whenTrue  = function () { return 'foo' }
         , whenFalse = sinon.spy()
@@ -55,8 +55,8 @@ describe('(Function) ifElse', function () {
     })
   })
 
-  describe('When the predicate returns false...', function () {
-    it('Should only call the `whenFalse` function', function () {
+  describe('When the predicate returns false...', (t) => {
+    test('only call the `whenFalse` function', (t) => {
       var cond      = function () { return false }
         , whenTrue  = sinon.spy()
         , whenFalse = sinon.spy()
@@ -66,7 +66,7 @@ describe('(Function) ifElse', function () {
       whenFalse.should.have.been.calledOnce()
     })
 
-    it('Should pass the original argument to the `whenFalse` function', function () {
+    test('pass the original argument to the `whenFalse` function', (t) => {
       var cond      = function () { return false }
         , whenTrue  = sinon.spy()
         , whenFalse = sinon.spy()
@@ -75,7 +75,7 @@ describe('(Function) ifElse', function () {
       whenFalse.should.have.been.calledWithExactly('hello')
     })
 
-    it('Should return the result of the `whenFalse` function', function () {
+    test('return the result of the `whenFalse` function', (t) => {
       var cond      = function () { return false }
         , whenTrue  = sinon.spy()
         , whenFalse = function () { return 'foo' }

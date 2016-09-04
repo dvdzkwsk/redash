@@ -1,22 +1,22 @@
 var merge = Redash.merge
 
-describe('(Function) merge', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) merge', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     merge.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     expect(merge({})).to.be.a('function')
   })
 
-  it('Should merge all own properties of the second argument onto the first', function () {
+  test('merge all own properties of the second argument onto the first', (t) => {
     merge({ foo: 'bar' }, { foo: 'baz' })
       .should.deep.equal({
         foo: 'baz'
       })
   })
 
-  it('Should always return a new object', function () {
+  test('always return a new object', (t) => {
     var a = { foo: 'bar' }
     merge({}, a).should.not.equal(a) // compare references
     merge({}, a).should.deep.equal(a) // compare values
@@ -28,7 +28,7 @@ describe('(Function) merge', function () {
     a.should.deep.equal({ foo: 'bar' })
   })
 
-  it('Should ignore prototype/inherited properties', function () {
+  test('ignore prototype/inherited properties', (t) => {
     var foo
 
     function Foo () {}

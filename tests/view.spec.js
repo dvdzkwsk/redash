@@ -3,15 +3,15 @@ var lens  = Redash.lens
   , assoc = Redash.assoc
   , prop  = Redash.prop
 
-describe('(Function) view', function () {
-  it('Should be a curried binary function', function () {
+describe('(Function) view', (t) => {
+  test('be a curried binary function', (t) => {
     view.should.have.length(2)
 
     var noop = function () {}
     view(lens(noop)).should.be.a('function')
   })
 
-  it('Should properly apply the lens getter to the target', function () {
+  test('properly apply the lens getter to the target', (t) => {
     var fooLens = lens(prop('foo'), assoc('foo'))
 
     view(fooLens, { foo: 'bar' })

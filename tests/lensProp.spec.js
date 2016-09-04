@@ -3,31 +3,31 @@ var lensProp = Redash.lensProp
   , set      = Redash.set
   , view     = Redash.view
 
-describe('(Function) lensProp', function () {
-  it('Should properly report its arity', function () {
+describe('(Function) lensProp', (t) => {
+  test('properly report its arity', (t) => {
     lensProp.should.have.length(1)
   })
 
-  it('Should return a new lens', function () {
+  test('return a new lens', (t) => {
     var lens = lensProp('id')
 
     lens.should.have.property('get').which.is.a('function')
     lens.should.have.property('set').which.is.a('function')
   })
 
-  it('Should correctly get the target property using `view`', function () {
+  test('correctly get the target property using `view`', (t) => {
     view(lensProp('id'), { id: 5 })
       .should.equal(5)
   })
 
-  it('Should correctly `set` the target property', function () {
+  test('correctly `set` the target property', (t) => {
     set(lensProp('id'), 5, { id: 1 })
       .should.deep.equal({
         id: 5
       })
   })
 
-  it('Should correctly set the target property when used with `over`', function () {
+  test('correctly set the target property when used with `over`', (t) => {
     var double = function  (x) { return x * 2 }
 
     over(lensProp('id'), double, { id: 5 })
@@ -36,7 +36,7 @@ describe('(Function) lensProp', function () {
       })
   })
 
-  it('Should not mutate the object when setting the property', function () {
+  test('not mutate the object when setting the property', (t) => {
     var obj    = { id: 5 }
       , double = function  (x) { return x * 2 }
 

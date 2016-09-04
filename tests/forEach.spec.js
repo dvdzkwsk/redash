@@ -1,6 +1,6 @@
 var forEach = Redash.forEach
 
-describe('(Function) forEach', function () {
+describe('(Function) forEach', (t) => {
   var _spies
 
   beforeEach(function () {
@@ -8,11 +8,11 @@ describe('(Function) forEach', function () {
     _spies.noop = sinon.spy()
   })
 
-  it('Should be a function', function () {
+  test('be a function', (t) => {
     expect(forEach).to.be.a('function')
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     var _forEach = forEach(_spies.noop)
 
     _spies.noop.should.not.have.been.called
@@ -22,12 +22,12 @@ describe('(Function) forEach', function () {
     _spies.noop.should.have.been.calledOnce
   })
 
-  it('Should not call the provided function if the provided list is empty', function () {
+  test('not call the provided function if the provided list is empty', (t) => {
     forEach(_spies.noop, [])
     _spies.noop.should.not.have.been.called
   })
 
-  it('Should call the provided function with each item in the list', function () {
+  test('call the provided function with each item in the list', (t) => {
     _spies.noop.should.not.have.been.called
 
     forEach(_spies.noop, [1, 2, 3])

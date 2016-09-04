@@ -1,22 +1,22 @@
 var times = Redash.times
 
-describe('(Function) times', function () {
-  it('Should properly report its arity (is binary)', function () {
+describe('(Function) times', (t) => {
+  test('properly report its arity (is binary)', (t) => {
     times.should.have.length(2)
   })
 
-  it('Should be curried', function () {
+  test('be curried', (t) => {
     times(function () {}).should.be.a('function')
   })
 
-  it('Should call the provided function N times', function () {
+  test('call the provided function N times', (t) => {
     var spy = sinon.spy()
 
     times(spy, 5)
     spy.callCount.should.equal(5)
   })
 
-  it('Should provide the call index as the only argument', function () {
+  test('provide the call index as the only argument', (t) => {
     var spy = sinon.spy()
 
     times(spy, 3)
@@ -25,7 +25,7 @@ describe('(Function) times', function () {
     spy.thirdCall.args.should.deep.equal([2])
   })
 
-  it('Should return a list of the results of all N invocations', function () {
+  test('return a list of the results of all N invocations', (t) => {
     times(function (i) { return i % 2 === 0 }, 5)
       .should.deep.equal([true, false, true, false, true])
   })

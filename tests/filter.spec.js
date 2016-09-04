@@ -1,48 +1,42 @@
-var filter = Redash.filter
+const test       = require('ava')
+    , sinon      = require('sinon')
+    , { filter } = require('../dist/stdlib')
 
-describe('(Function) filter', function () {
-  it('Should properly report its arity (is binary)', function () {
-    filter.should.have.length(2)
-  })
+test('properlys report its arity (is binary)', (t) => {
+  t.is(filter.length, 2)
+})
 
-  it('Should be curried', function () {
-    filter(function () {}).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof filter(() => {}), 'function')
+})
 
-  it('Should include only items where the predicate returns true', function () {
-    var isEven = function (x) { return x % 2 === 0 }
+test('includes only items where the predicate is true', (t) => {
+  const even = x => x % 2 === 0
 
-    filter(isEven, [1, 2, 3, 4, 5]).should.deep.equal([2, 4])
-    filter(isEven, [1, 3, 5, 7]).should.deep.equal([])
-  })
+  t.deepEqual(filter(even, [1, 2, 3, 4, 5]), [2, 4])
+  t.deepEqual(filter(even, [1, 3, 5, 7]), [])
+})
 
-  it('Should return a new list even if no items are excluded', function () {
-    var evens  = [2, 4, 6, 8]
-      , isEven = function (x) { return x % 2 === 0 }
-      , filtered
+test('returns a new array even if no items are excluded', (t) => {
+  const evens    = [2, 4, 6, 8]
+      , even     = x => x % 2 === 0
+      , filtered = filter(even, evens)
 
-    filtered = filter(isEven, evens)
-    filtered.should.not.equal(evens)  // compare references
-    filtered.should.deep.equal(evens) // compare identity
-  })
+  t.not(filtered, evens)       // compare references
+  t.deepEqual(filtered, evens) // compare values
+})
 
-  it('Should handle empty lists', function () {
-    var spy = sinon.spy()
-      , filtered
+test('does not call the predicate for empty arrays', (t) => {
+  const pred = sinon.spy()
 
-    filtered = filter(spy, [])
-    spy.should.not.have.been.called()
-    filtered.should.deep.equal([])
-  })
+  filter(pred, [])
+  t.is(pred.callCount, 0)
+})
 
-  it('Should return a new array even if the supplied array is empty', function () {
-    var spy = sinon.spy()
-      , xs  = []
-      , filtered
+test('returns a new array even if the supplied array is empty', (t) => {
+  const xs  = []
+      , filtered = filter(() => true, xs)
 
-    filtered = filter(spy, xs)
-    spy.should.not.have.been.called()
-    filtered.should.not.equal(xs)  // compare references
-    filtered.should.deep.equal([]) // compare equality ([] for explicitness)
-  })
+  t.not(filtered, xs)       // compare references
+  t.deepEqual(filtered, xs) // compare values
 })

@@ -1,23 +1,27 @@
-var find = Redash.find
+const test     = require('ava')
+    , sinon    = require('sinon')
+    , { find } = require('../dist/stdlib')
 
-describe('(Function) find', function () {
-  it('Should be a function.', function () {
-    expect(find).to.be.a('function')
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(find.length, 2)
+})
 
-  it('Should be curried to an arity of 2.', function () {
-    expect(find()).to.be.a('function')
-  })
+test('returns the first item where the predicate evaluates to true', (t) => {
+  const pred = sinon.spy(x => x === 'c')
+      , res  = find(pred, ['a', 'b', 'c', 'd', 'c'])
 
-  it('Should return the first matching item.', function () {
-    var equalsC = function (x) { return x === 'c' }
+  t.is(res, 'c')
+})
 
-    expect(find(equalsC, ['a', 'b', 'c', 'd', 'c'])).to.equal('c')
-  })
+test('short circuits', (t) => {
+  const pred = sinon.spy(x => x === 'c')
 
-  it('Should return undefined if no match is found.', function () {
-    var noop = function () {}
+  find(pred, ['a', 'b', 'c', 'd', 'c'])
+  t.is(pred.callCount, 3)
+})
 
-    expect(find(noop, ['a', 'b', 'c', 'd', 'e'])).to.equal(undefined)
-  })
+test('returns undefined if no match is found.', (t) => {
+  const f = () => false
+
+  t.is(find(f, ['a', 'b', 'c', 'd', 'e']), undefined)
 })

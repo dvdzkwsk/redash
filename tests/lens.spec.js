@@ -2,13 +2,13 @@ var lens  = Redash.lens
   , assoc = Redash.assoc
   , prop  = Redash.prop
 
-describe('(Function) lens', function () {
-  it('Should be a curried binary function', function () {
+describe('(Function) lens', (t) => {
+  test('be a curried binary function', (t) => {
     lens.should.have.length(2)
     lens(function () {}).should.be.a('function')
   })
 
-  it('Should return an object with `get` and `set`', function () {
+  test('return an object with `get` and `set`', (t) => {
     var get = prop('foo')
       , set = assoc('foo')
 

@@ -1,12 +1,12 @@
 var of = Redash.of
 
-describe('(Function) of', function () {
-  it('Should wrap the value in an array', function () {
+describe('(Function) of', (t) => {
+  test('wrap the value in an array', (t) => {
     of('foo')
       .should.deep.equal(['foo'])
   })
 
-  it('Should still wrap an array', function () {
+  test('still wrap an array', (t) => {
     of(['foo', 'bar'])
       .should.deep.equal([ ['foo', 'bar'] ])
   })

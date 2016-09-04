@@ -1,11 +1,11 @@
 var pipe = Redash.pipe
 
-describe('(Function) pipe', function () {
-  it('Should return a function', function () {
+describe('(Function) pipe', (t) => {
+  test('return a function', (t) => {
     pipe(function () {}, function () {}).should.be.a('function')
   })
 
-  it('Should correctly report its arity to match the leftmost function', function () {
+  test('correctly report its arity to match the leftmost function', (t) => {
     var unary   = function (a0) {}
       , binary  = function (a0, a1) {}
       , ternary = function (a0, a1, a2) {}
@@ -14,7 +14,7 @@ describe('(Function) pipe', function () {
     pipe(ternary, binary, unary).should.have.length(3)
   })
 
-  it('Should be curried to the arity of the leftmost function', function () {
+  test('be curried to the arity of the leftmost function', (t) => {
     var unary   = sinon.spy(function (a0) {})
       , binary  = sinon.spy(function (a0, a1) {})
       , ternary = sinon.spy(function (a0, a1, a2) {})
@@ -36,7 +36,7 @@ describe('(Function) pipe', function () {
     ternary.should.have.been.calledOnce()
   })
 
-  it('Should invoke the functions from left to right', function () {
+  test('invoke the functions from left to right', (t) => {
     var s1 = sinon.spy()
       , s2 = sinon.spy()
       , s3 = sinon.spy()

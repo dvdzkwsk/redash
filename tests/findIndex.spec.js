@@ -1,29 +1,27 @@
-var findIndex = Redash.findIndex
+const test          = require('ava')
+    , sinon         = require('sinon')
+    , { findIndex } = require('../dist/stdlib')
 
-describe('(Function) findIndex', function () {
-  it('Should be a function.', function () {
-    expect(findIndex).to.be.a('function')
-  })
 
-  it('Should be curried to an arity of 2.', function () {
-    expect(findIndex()).to.be.a('function')
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(findIndex.length, 2)
+})
 
-  it('Should return the index of the first matching item.', function () {
-    var equalsC = function (x) { return x === 'c' }
+test('is curried', (t) => {
+  t.is(typeof findIndex(() => {}), 'function')
+})
 
-    expect(findIndex(equalsC, ['a', 'b', 'c', 'd', 'c'])).to.equal(2)
-  })
+test('return the index of the first matching item.', (t) => {
+  t.is(findIndex(x => x === 'c', ['a', 'b', 'c', 'd', 'c']), 2)
+})
 
-  it('Should work for the last item in a collection.', function () {
-    var equalsE = function (x) { return x === 'e' }
+test('short circuits', (t) => {
+  const pred = sinon.spy(x => x === 'c')
 
-    expect(findIndex(equalsE, ['a', 'b', 'c', 'd', 'e'])).to.equal(4)
-  })
+  findIndex(pred, ['a', 'b', 'c', 'd', 'c'])
+  t.is(pred.callCount, 3)
+})
 
-  it('Should return -1 if no match is found.', function () {
-    var noop = function () {}
-
-    expect(findIndex(noop, ['a', 'b', 'c', 'd', 'e'])).to.equal(-1)
-  })
+test('returns -1 if no match is found.', (t) => {
+  t.is(findIndex(() => false, ['a', 'b', 'c', 'd', 'e']), -1)
 })

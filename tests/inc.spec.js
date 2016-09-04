@@ -1,11 +1,11 @@
 var inc = Redash.inc
 
-describe('(Function) inc', function () {
-  it('Should properly report its arity (is unary)', function () {
+describe('(Function) inc', (t) => {
+  test('properly report its arity (is unary)', (t) => {
     inc.should.have.length(1)
   })
 
-  it('Should increment the provided number by 1', function () {
+  test('increment the provided number by 1', (t) => {
     inc(0).should.equal(1)
     inc(5).should.equal(6)
     inc(-1).should.equal(0)

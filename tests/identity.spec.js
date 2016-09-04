@@ -1,11 +1,11 @@
 var identity = Redash.identity
 
-describe('(Function) identity', function () {
-  it('Should properly report its arity (is unary)', function () {
+describe('(Function) identity', (t) => {
+  test('properly report its arity (is unary)', (t) => {
     identity.should.have.length(1)
   })
 
-  it('Should return the value it is given', function () {
+  test('return the value it is given', (t) => {
     var obj = {}
 
     identity(5).should.equal(5)

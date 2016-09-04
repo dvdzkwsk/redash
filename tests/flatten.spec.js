@@ -1,12 +1,8 @@
-var flatten = Redash.flatten
+const test        = require('ava')
+    , { flatten } = require('../dist/stdlib')
 
-describe('(Function) flatten', function () {
-  it('Should be a function.', function () {
-    expect(flatten).to.be.a('function')
-  })
-
-  it('Should shallowly flatten an array.', function () {
-    expect(flatten([1, 2, [3], [4, 5, [6, [7, 8, 9]]]]))
-      .to.deep.equal([1, 2, 3, 4, 5, [6, [7, 8, 9]]])
-  })
+test('flattens an array 1 level deep', (t) => {
+  t.deepEqual(
+    flatten([1, 2, [3], [4, 5, [6, [7, 8, 9]]]]),
+    [1, 2, 3, 4, 5, [6, [7, 8, 9]]])
 })

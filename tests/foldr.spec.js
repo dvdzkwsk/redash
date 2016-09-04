@@ -1,8 +1,7 @@
-var reduceRight = Redash.append
-  , foldr       = Redash.foldr
+const test            = require('ava')
+    , { foldr
+      , reduceRight } = require('../dist/stdlib')
 
-describe('(Alias) foldr', function () {
-  it('Should be an alias for `reduceRight`', function () {
-    foldr.should.equal(reduceRight)
-  })
+test('is an alias for `reduceRight`', (t) => {
+  t.is(foldr, reduceRight)
 })
