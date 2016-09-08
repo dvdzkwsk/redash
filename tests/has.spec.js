@@ -1,30 +1,33 @@
-var has = Redash.has
+const test    = require('ava')
+    , { has } = require('../dist/stdlib')
 
-describe('(Function) has', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    has.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(has.length, 2)
+})
 
-  test('be curried', (t) => {
-    has(5).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof has(5), 'function')
+})
 
-  test('return `true` when the object has the property', (t) => {
-    has('hello', { hello: 'foo' }).should.equal(true)
-  })
+test('returns `true` when the property exists as an own property on the target object', (t) => {
+  t.true(has('hello', { hello: 'foo' }))
+})
 
-  test('return `false` when the object does not have the property', (t) => {
-    has('hello', { notHello: 'foo' }).should.equal(false)
-  })
+test('returns `false` when the object does not have the property', (t) => {
+  t.false(has('hello', { notHello: 'foo' }))
+})
 
-  test('should ignore inherited properties', (t) => {
-    function Foo () {}
-    Foo.prototype.bar = function () {}
-    var foo = new Foo()
+test('does not dispatch to the target object\'s `hasOwnProperty` method', (t) => {
+  t.true(has('hello', { hello: 'foo', hasOwnProperty: () => false }))
+  t.false(has('hello', { notHello: 'foo', hasOwnProperty: () => true }))
+})
 
-    has('bar', foo).should.equal(false)
+test('ignores inherited properties', (t) => {
+  function Foo () {}
+  Foo.prototype.bar = () => {}
+  var foo = new Foo()
+  foo.baz = () => {}
 
-    foo.bar = function () {}
-    has('bar', foo).should.equal(true)
-  })
+  t.false(has('bar', foo))
+  t.true(has('baz', foo))
 })

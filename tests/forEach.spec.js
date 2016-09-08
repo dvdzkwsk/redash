@@ -1,40 +1,28 @@
-var forEach = Redash.forEach
+const test        = require('ava')
+    , sinon       = require('sinon')
+    , { forEach } = require('../dist/stdlib')
 
-describe('(Function) forEach', (t) => {
-  var _spies
+test('properly reports its arity (is binary)', (t) => {
+  t.is(forEach.length, 2)
+})
 
-  beforeEach(function () {
-    _spies = {}
-    _spies.noop = sinon.spy()
-  })
+test('is curried', (t) => {
+  t.is(typeof forEach(() => {}), 'function')
+})
 
-  test('be a function', (t) => {
-    expect(forEach).to.be.a('function')
-  })
+test('calls the provided function with each item in the list', (t) => {
+  const spy = sinon.spy()
 
-  test('be curried', (t) => {
-    var _forEach = forEach(_spies.noop)
+  forEach(spy, [1, 2, 3])
+  t.is(spy.callCount, 3)
+  t.true(spy.getCall(0).calledWithExactly(1))
+  t.true(spy.getCall(1).calledWithExactly(2))
+  t.true(spy.getCall(2).calledWithExactly(3))
+})
 
-    _spies.noop.should.not.have.been.called
-    expect(_forEach).to.be.a('function')
+test('does not call the provided function if the array is empty', (t) => {
+  const spy = sinon.spy()
 
-    expect(_forEach([1])).to.be.undefined
-    _spies.noop.should.have.been.calledOnce
-  })
-
-  test('not call the provided function if the provided list is empty', (t) => {
-    forEach(_spies.noop, [])
-    _spies.noop.should.not.have.been.called
-  })
-
-  test('call the provided function with each item in the list', (t) => {
-    _spies.noop.should.not.have.been.called
-
-    forEach(_spies.noop, [1, 2, 3])
-
-    _spies.noop.should.have.been.calledThrice
-    _spies.noop.getCall(0).should.have.been.calledWith(1)
-    _spies.noop.getCall(1).should.have.been.calledWith(2)
-    _spies.noop.getCall(2).should.have.been.calledWith(3)
-  })
+  forEach(spy, [])
+  t.is(spy.callCount, 0)
 })

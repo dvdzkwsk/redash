@@ -1,27 +1,26 @@
-var findLast = Redash.findLast
+const test         = require('ava')
+    , sinon        = require('sinon')
+    , { findLast } = require('../dist/stdlib')
 
-describe('(Function) findLast', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    findLast.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(findLast.length, 2)
+})
 
-  test('be curried', (t) => {
-    findLast(function () {}).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof findLast(() => {}), 'function')
+})
 
-  test('return the last item in a list that matches the predicate', (t) => {
-    var a = { id: 1 }
+test('returns the last item in a list that matches the predicate', (t) => {
+  const a = { id: 1 }
       , b = { id: 1 }
       , c = { id: 1 }
 
-    findLast(function (x) { return x.id === 1 }, [a, b, c])
-      .should.equal(c)
-  })
+  t.is(findLast((x) => x.id === 1, [a, b, c]), c)
+})
 
-  test('short circuit', (t) => {
-    var spy = sinon.spy(function (x) { return x === 3 })
+test('short circuits', (t) => {
+  const spy = sinon.spy((x) => x === 1)
 
-    findLast(spy, [1, 2, 3, 4, 5, 6, 7, 8, 3, 9, 10])
-    spy.callCount.should.equal(3)
-  })
+  findLast(spy, [1, 0, 0, 0, 0, 0, 1, 0, 0])
+  t.is(spy.callCount, 3)
 })

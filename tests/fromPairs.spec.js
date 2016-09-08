@@ -1,41 +1,30 @@
-var fromPairs = Redash.fromPairs
+const test          = require('ava')
+    , { fromPairs } = require('../dist/stdlib')
 
-describe('(Function) fromPairs', (t) => {
-  test('properly report its arity (is unary)', (t) => {
-    fromPairs.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(fromPairs.length, 1)
+})
 
-  test('return an object compromised of all the key value pairs', (t) => {
-    fromPairs([['foo', 'bar'], ['baz', 'biz']])
-      .should.deep.equal({
-        foo: 'bar'
-      , baz: 'biz'
-      })
-  })
+test('returns an object constructed from the [key, value] tuples', (t) => {
+  t.deepEqual(
+    fromPairs([['foo', 'bar'], ['baz', 'biz']]), {
+      foo: 'bar'
+    , baz: 'biz'
+    }
+  )
+})
 
-  test('prefer the last key/value pair when duplicate keys exist', (t) => {
-    fromPairs([['foo', 'bar'], ['foo', 'baz']])
-      .should.deep.equal({
-        foo: 'baz'
-      })
-  })
+test('prefers the last key/value pair when duplicate keys exist', (t) => {
+  t.deepEqual(fromPairs([['foo', 'bar'], ['foo', 'baz']]), { foo: 'baz' })
+})
 
-  test('return an empty object if no key value pairs are provided', (t) => {
-    fromPairs([])
-      .should.deep.equal({})
-  })
+test('returns an empty object if no pairs are provided', (t) => {
+  t.deepEqual(fromPairs([]), {})
+})
 
-  // NOTE: asserts that old bug does not exist, back when fromPairs was implemented
-  // as a `reduce` and the curried accumulator was mutated.
-  test('work properly for repeated invocations', (t) => {
-    fromPairs([['foo', 'bar']])
-      .should.deep.equal({
-        foo: 'bar'
-      })
-
-    fromPairs([['baz', 'biz']])
-      .should.deep.equal({
-        baz: 'biz'
-      })
-  })
+// NOTE: asserts that old regression does not exist, back when fromPairs was implemented
+// as a `reduce` and the accumulator was mutated.
+test('correctly produces independent results across different calls', (t) => {
+  t.deepEqual(fromPairs([['foo', 'bar']]), { foo: 'bar' })
+  t.deepEqual(fromPairs([['baz', 'biz']]), { baz: 'biz' })
 })
