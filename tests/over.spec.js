@@ -1,45 +1,29 @@
-var lens  = Redash.lens
-  , over  = Redash.over
-  , assoc = Redash.assoc
-  , prop  = Redash.prop
-  , xform = function (x) {
-    return x.toUpperCase()
-  }
+const test     = require('ava')
+    , sinon    = require('sinon')
+    , { lens
+      , assoc
+      , prop
+      , over } = require('../dist/stdlib')
 
-describe('(Function) over', (t) => {
-  test('be a curried ternary function', (t) => {
-    over.should.have.length(3)
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(over.length, 3)
+})
 
-    var noop = function () {}
-    over(lens(noop)).should.be.a('function')
-    over(lens(noop), noop).should.be.a('function')
-  })
+test('calls the getter, transformer, and setter exactly once', (t) => {
+  const getter = sinon.spy(prop('foo'))
+      , setter = sinon.spy(assoc('foo'))
+      , xform  = sinon.spy(x => x * 2)
 
-  test('call the getter exactly once', (t) => {
-    var getter = sinon.spy(prop('foo'))
+  over(lens(getter, setter), xform, { foo: 2 })
+  t.true(getter.calledBefore(xform))
+  t.true(xform.calledBefore(setter))
+  t.is(getter.callCount, 1)
+  t.is(xform.callCount, 1)
+  t.is(setter.callCount, 1)
+})
 
-    over(lens(getter, assoc('foo')), xform, { foo: 'bar' })
-    getter.should.have.been.calledOnce
-  })
 
-  test('call the setter exactly once', (t) => {
-    var setter = sinon.spy(assoc('foo'))
-
-    over(lens(prop('foo'), setter), xform, { foo: 'bar' })
-    setter.should.have.been.calledOnce
-  })
-
-  test('call the transformer exactly once', (t) => {
-    var _xform = sinon.spy(xform)
-
-    over(lens(prop('foo'), assoc('foo')), _xform, { foo: 'bar' })
-    _xform.should.have.been.calledOnce
-  })
-
-  test('return the result of the transformation', (t) => {
-    over(lens(prop('foo'), assoc('foo')), xform, { foo: 'bar' })
-      .should.deep.equal({
-        foo: 'BAR'
-      })
-  })
+test('returns the target object with its value transformed at the lens path', (t) => {
+  t.deepEqual(over(lens(prop('foo'), assoc('foo')), x => x * 2, { foo: 2 })
+            , { foo: 4 })
 })

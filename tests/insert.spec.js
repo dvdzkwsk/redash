@@ -1,25 +1,23 @@
-var insert = Redash.insert
+const test       = require('ava')
+    , { insert } = require('../dist/stdlib')
 
-describe('(Function) insert', (t) => {
-  test('properly report its arity (is ternary)', (t) => {
-    insert.should.have.length(3)
-  })
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(insert.length, 3)
+})
 
-  test('be curried', (t) => {
-    insert(1).should.be.a('function')
-    insert(1, 'hello').should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof insert(1), 'function')
+  t.is(typeof insert(1, 'hello'), 'function')
+})
 
-  test('replace the element at the target index with the new value', (t) => {
-    insert(4, 100, [1, 2, 3, 4, 5])
-      .should.deep.equal([1, 2, 3, 4, 100])
-  })
+test('replaces the element at the target index with the new value', (t) => {
+  t.deepEqual(insert(4, 100, [1, 2, 3, 4, 5]), [1, 2, 3, 4, 100])
+})
 
-  test('not mutate the original array', (t) => {
-    var arr = [1, 2, 3, 4, 5]
+test('does not mutate the original array', (t) => {
+  const arr = [1, 2, 3, 4, 5]
       , res = insert(2, 100, arr)
 
-    arr.should.deep.equal([1, 2, 3, 4, 5])
-    res.should.deep.equal([1, 2, 100, 4, 5])
-  })
+  t.deepEqual(arr, [1, 2, 3, 4, 5])
+  t.deepEqual(res, [1, 2, 100, 4, 5])
 })

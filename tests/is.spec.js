@@ -1,24 +1,24 @@
-var is = Redash.is
+const test  = require('ava')
+  ,  { is } = require('../dist/stdlib')
 
-describe('(Function) is', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    is.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(is.length, 2)
+})
 
-  test('be curried', (t) => {
-    is('string').should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof is('string'), 'function')
+})
 
-  test('perform typeof checks when the type is a string', (t) => {
-    is('string', 'hello').should.equal(true)
-    is('string', 1).should.equal(false)
-    is('number', 1).should.equal(true)
-    is('number', 'hello').should.equal(false)
-  })
+test('performs typeof checks when the type is a string', (t) => {
+  t.true(is('string', 'hello'))
+  t.false(is('number', 'hello'))
+  
+  t.true(is('number', 1))
+  t.false(is('string', 1))
+})
 
-  test('perform instanceof checks against a provided class function', (t) => {
-    function Person () {}
+test('performs instanceof checks if the type is a constructor', (t) => {
+  function Person () {}
 
-    is(Person, new Person()).should.equal(true)
-  })
+  t.true(is(Person, new Person()))
 })

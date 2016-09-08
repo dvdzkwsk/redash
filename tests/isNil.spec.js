@@ -1,27 +1,30 @@
-var isNil = Redash.isNil
+const test     = require('ava')
+  ,  { isNil } = require('../dist/stdlib')
 
-describe('(Function) isNil', (t) => {
-  test('properly report its arity (is unary)', (t) => {
-    isNil.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(isNil.length, 1)
+})
 
-  test('return true for `undefined`', (t) => {
-    isNil(undefined).should.equal(true)
-  })
+test('returns true for `undefined`', (t) => {
+  t.true(isNil(undefined))
+})
 
-  test('return true for `null', (t) => {
-    isNil(null).should.equal(true)
-  })
+test('returns true for `null', (t) => {
+  t.true(isNil(null))
+})
 
-  test('return true for `void 0', (t) => {
-    isNil(void 0).should.equal(true)
-  })
+test('returns true for `void 0', (t) => {
+  t.true(isNil(void 0))
+})
 
-  test('return false for all truthy values', (t) => {
-    isNil('hello').should.equal(false)
-    isNil(true).should.equal(false)
-    isNil({}).should.equal(false)
-    isNil([]).should.equal(false)
-    isNil(function () {}).should.equal(false)
-  })
+test('returns false for all truthy values', (t) => {
+  t.false(isNil('hello'))
+  t.false(isNil(true))
+  t.false(isNil({}))
+  t.false(isNil([]))
+  t.false(isNil(function () {}))
+})
+
+test('returns false for numerical 0', (t) => {
+  t.false(isNil(0))
 })

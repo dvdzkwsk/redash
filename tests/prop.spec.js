@@ -1,15 +1,18 @@
-var prop = Redash.prop
+const test     = require('ava')
+    , { prop } = require('../dist/stdlib')
 
-describe('(Function) prop', (t) => {
-  test('be a curried binary function', (t) => {
-    prop('foo').should.be.a('function')
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(prop.length, 2)
+})
 
-  test('return the requested property off of the object', (t) => {
-    prop('foo', { foo: 'bar' }).should.equal('bar')
-  })
+test('is curried', (t) => {
+  t.is(typeof prop('foo'), 'function')
+})
 
-  test('return undefined when the property is not defined', (t) => {
-    expect(prop('foo', {})).to.equal(undefined)
-  })
+test('returns the requested property off of the object', (t) => {
+  t.is(prop('foo', { foo: 'bar' }), 'bar')
+})
+
+test('returns undefined when the property is not defined', (t) => {
+  t.is(prop('foo', {}), undefined)
 })

@@ -1,14 +1,13 @@
-var identity = Redash.identity
+const test         = require('ava')
+    , { identity } = require('../dist/stdlib')
 
-describe('(Function) identity', (t) => {
-  test('properly report its arity (is unary)', (t) => {
-    identity.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(identity.length, 1)
+})
 
-  test('return the value it is given', (t) => {
-    var obj = {}
+test('returns the value it is given', (t) => {
+  const obj = {}
 
-    identity(5).should.equal(5)
-    identity(obj).should.equal(obj)
-  })
+  t.is(identity(5), 5)
+  t.is(identity(obj), obj)
 })

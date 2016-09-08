@@ -1,22 +1,25 @@
-var keys = Redash.keys
+const test     = require('ava')
+    , { keys } = require('../dist/stdlib')
 
-describe('(Function) keys', (t) => {
-  test('return all own properties of an object.', (t) => {
-    keys({
-      foo: true
-    , bar: function () {}
-    , baz: []
-    }).should.deep.equal(['foo', 'bar', 'baz'])
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(keys.length, 1)
+})
 
-  test('exclude inherited properties', (t) => {
-    function SomeClass () {}
-    SomeClass.prototype.foo = 'foo'
+test('returns all own properties of an object.', (t) => {
+  t.deepEqual(keys({
+    foo: true
+  , bar: function () {}
+  , baz: []
+  }), ['foo', 'bar', 'baz'])
+})
 
-    var obj = new SomeClass()
-    obj.baz = true
-    obj.bar = true
+test('excludes inherited properties', (t) => {
+  function SomeClass () {}
+  SomeClass.prototype.foo = 'foo'
 
-    keys(obj).should.deep.equal(['baz', 'bar'])
-  })
+  const obj = new SomeClass()
+  obj.baz = true
+  obj.bar = true
+
+  t.deepEqual(keys(obj), ['baz', 'bar'])
 })

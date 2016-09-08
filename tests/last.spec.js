@@ -1,12 +1,15 @@
-var last = Redash.last
+const test     = require('ava')
+    , { last } = require('../dist/stdlib')
 
-describe('(Function) last', (t) => {
-  test('return the last item in an array.', (t) => {
-    last([1, 2, 3]).should.equal(3)
-    last([1]).should.equal(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(last.length, 1)
+})
 
-  test('return undefined for an empty array', (t) => {
-    expect(last([])).to.equal(undefined)
-  })
+test('returns the last item in an array', (t) => {
+  t.is(last([1, 2, 3]), 3)
+  t.is(last([1]), 1)
+})
+
+test('returns undefined for an empty array', (t) => {
+  t.is(last([]), undefined)
 })

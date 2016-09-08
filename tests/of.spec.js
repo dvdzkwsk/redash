@@ -1,13 +1,14 @@
-var of = Redash.of
+const test   = require('ava')
+    , { of } = require('../dist/stdlib')
 
-describe('(Function) of', (t) => {
-  test('wrap the value in an array', (t) => {
-    of('foo')
-      .should.deep.equal(['foo'])
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(of.length, 1)
+})
 
-  test('still wrap an array', (t) => {
-    of(['foo', 'bar'])
-      .should.deep.equal([ ['foo', 'bar'] ])
-  })
+test('wrap the value in an array', (t) => {
+  t.deepEqual(of('foo'), ['foo'])
+})
+
+test('wraps arrays', (t) => {
+  t.deepEqual(of(['foo', 'bar']),  [['foo', 'bar']])
 })
