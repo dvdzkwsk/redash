@@ -1,14 +1,14 @@
-var reject = Redash.reject
+const test       = require('ava')
+    , { reject } = require('../dist/stdlib')
 
-describe('(Function) reject', (t) => {
-  test('be curried.', (t) => {
-    expect(reject()).to.be.a('function')
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(reject.length, 2)
+})
 
-  test('include only items where the predicate does _not_ match.', (t) => {
-    var isLessThan3 = function (x) { return x < 3 }
+test('is curried', (t) => {
+  t.is(typeof reject(() => {}), 'function')
+})
 
-    expect(reject(isLessThan3, [1, 2, 3, 4, 5])).to.deep.equal([3, 4, 5])
-    expect(reject(isLessThan3, [0, 1, 2])).to.deep.equal([])
-  })
+test('returns an array containing only the items where the predicate returned false', (t) => {
+  t.deepEqual(reject(x => x < 3, [1, 2, 3, 4, 5]), [3, 4, 5])
 })

@@ -1,32 +1,31 @@
-var times = Redash.times
+const test      = require('ava')
+    , sinon     = require('sinon')
+    , { times } = require('../dist/stdlib')
 
-describe('(Function) times', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    times.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(times.length, 2)
+})
 
-  test('be curried', (t) => {
-    times(function () {}).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof times(() => {}), 'function')
+})
 
-  test('call the provided function N times', (t) => {
-    var spy = sinon.spy()
+test('calls the provided function N times', (t) => {
+  const spy = sinon.spy()
 
-    times(spy, 5)
-    spy.callCount.should.equal(5)
-  })
+  times(spy, 5)
+  t.is(spy.callCount, 5)
+})
 
-  test('provide the call index as the only argument', (t) => {
-    var spy = sinon.spy()
+test('provide the call index as the only argument', (t) => {
+  const spy = sinon.spy()
 
-    times(spy, 3)
-    spy.firstCall.args.should.deep.equal([0])
-    spy.secondCall.args.should.deep.equal([1])
-    spy.thirdCall.args.should.deep.equal([2])
-  })
+  times(spy, 3)
+  t.deepEqual(spy.firstCall.args, [0])
+  t.deepEqual(spy.secondCall.args, [1])
+  t.deepEqual(spy.thirdCall.args, [2])
+})
 
-  test('return a list of the results of all N invocations', (t) => {
-    times(function (i) { return i % 2 === 0 }, 5)
-      .should.deep.equal([true, false, true, false, true])
-  })
+test('return an array of size N containing the results of each function application', (t) => {
+  t.deepEqual(times(i => i % 2 === 0, 5), [true, false, true, false, true])
 })

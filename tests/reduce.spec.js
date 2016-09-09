@@ -1,28 +1,24 @@
-var reduce = Redash.reduce
+const test       = require('ava')
+    , sinon      = require('sinon')
+    , { reduce } = require('../dist/stdlib')
 
-describe('(Function) reduce', (t) => {
-  test('properly report its arity (is ternary)', (t) => {
-    reduce.should.have.length(3)
-  })
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(reduce.length, 3)
+})
 
-  test('be curried', (t) => {
-    reduce(function () {}).should.be.a('function')
-    reduce(function () {}, 0).should.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof reduce(() => {}, 0), 'function')
+})
 
-  test('pass the accumulator result through the list from left to right', (t) => {
-    var spy = sinon.spy(function (acc, a) { return acc + a })
+test('runs the accumulator function through the array from L -> R', (t) => {
+  const spy = sinon.spy((acc, a) => acc + a)
 
-    reduce(spy, 0, [1, 2, 3])
-    spy.firstCall.args.should.deep.equal([0, 1])
-    spy.secondCall.args.should.deep.equal([1, 2])
-    spy.thirdCall.args.should.deep.equal([3, 3])
-  })
+  reduce(spy, 0, [1, 2, 3])
+  t.deepEqual(spy.firstCall.args, [0, 1])
+  t.deepEqual(spy.secondCall.args, [1, 2])
+  t.deepEqual(spy.thirdCall.args, [3, 3])
+})
 
-  test('return the accumulated result.', (t) => {
-    var fn = function (acc, a) { return acc + a }
-
-    reduce(fn, 0, [1, 2, 3])
-      .should.equal(6)
-  })
+test('returns the accumulated result', (t) => {
+  t.is(reduce((acc, a) => acc + a, 0, [1, 2, 3]), 6)
 })

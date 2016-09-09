@@ -1,41 +1,36 @@
-var takeWhile = Redash.takeWhile
+const test          = require('ava')
+    , sinon         = require('sinon')
+    , { takeWhile } = require('../dist/stdlib')
+  
+test('properly reports its arity (is binary)', (t) => {
+  t.is(takeWhile.length, 2)
+})
 
-describe('(Function) takeWhile', (t) => {
-  test('be a binary function that reports its arity', (t) => {
-    takeWhile
-      .should.have.length(2)
-  })
+test('is curried', (t) => {
+  t.is(typeof takeWhile(() => {}), 'function')
+})
 
-  test('be curried', (t) => {
-    takeWhile(function () {})
-      .should.be.a('function')
-  })
+test('returns a new array containing all the items up until the predicate returned false', (t) => {
+  t.deepEqual(takeWhile(x => x !== 5, [1, 2, 3, 4, 5, 6, 7]), [1, 2, 3, 4])
+})
 
-  test('return all items until the predicate returns false (exclusive)', (t) => {
-    var isNot5 = function (x) { return x !== 5 }
+test('short circuits', (t) => {
+  const spy = sinon.spy(x => x !== 5)
 
-    takeWhile(isNot5, [1, 2, 3, 4, 5, 6, 7, 8])
-      .should.deep.equal([1, 2, 3, 4])
-  })
+  takeWhile(spy, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+  t.is(spy.callCount, 5)
+})
 
-  test('short circuit', (t) => {
-    var isNot5 = sinon.spy(function (x) { return x !== 5 })
+test('return a new array even if it\'s identical to the input', (t) => {
+  const arr = [1, 2, 3, 4]
+      , res = takeWhile(() => true, [1, 2, 3, 4])
 
-    takeWhile(isNot5, [1, 2, 3, 4, 5, 6, 7, 8, 9])
-    isNot5.callCount.should.equal(5)
-  })
+  t.deepEqual(arr, [1, 2, 3, 4])
+  t.deepEqual(res, [1, 2, 3, 4])
+  t.not(arr, res)
+})
 
-  test('return a new array even if it\'s identical to the input', (t) => {
-    var arr = [1, 2, 3, 4]
-      , res = takeWhile(function () { return true }, [1, 2, 3, 4])
-
-    res.should.deep.equal([1, 2, 3, 4])
-    res.should.not.equal(arr)
-  })
-
-  // asserts that the slice does not slice back onto a negative index
-  test('return an empty list if the first item fails the predicate', (t) => {
-    takeWhile(function () { return false }, [1, 2, 3, 4])
-      .should.deep.equal([])
-  })
+// asserts that the slice does not slice back onto a negative index
+test('return an empty list if the first item fails the predicate', (t) => {
+  t.deepEqual(takeWhile(() => false, [1, 2, 3, 4]), [])
 })

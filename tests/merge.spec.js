@@ -1,44 +1,36 @@
-var merge = Redash.merge
+const test      = require('ava')
+    , { merge } = require('../dist/stdlib')
 
-describe('(Function) merge', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    merge.should.have.length(2)
-  })
+test('properly report its arity (is binary)', (t) => {
+  t.is(merge.length, 2)
+})
 
-  test('be curried', (t) => {
-    expect(merge({})).to.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof merge({}), 'function')
+})
 
-  test('merge all own properties of the second argument onto the first', (t) => {
-    merge({ foo: 'bar' }, { foo: 'baz' })
-      .should.deep.equal({
-        foo: 'baz'
-      })
-  })
+test('merges all own properties of the second argument onto the first', (t) => {
+  t.deepEqual(
+    merge({ foo: 'bar' }, { fiz: 'baz' })
+  , { foo: 'bar', fiz: 'baz' })
+})
 
-  test('always return a new object', (t) => {
-    var a = { foo: 'bar' }
-    merge({}, a).should.not.equal(a) // compare references
-    merge({}, a).should.deep.equal(a) // compare values
+test('does not mutate either object', (t) => {
+  const a = { foo: 'bar' }
+      , b = { fiz: 'baz' }
+      , c = merge(a, b)
 
-    merge(a, {}).should.not.equal(a)  // compare references
-    merge(a, {}).should.deep.equal(a) // compare values
+  t.deepEqual(a, { foo: 'bar' })
+  t.deepEqual(b, { fiz: 'baz' })
+  t.deepEqual(c, { foo: 'bar', fiz: 'baz' })
+})
 
-    // ensure `a` was not mutated
-    a.should.deep.equal({ foo: 'bar' })
-  })
+test('ignores inherited properties', (t) => {
+  function Foo () {}
+  Foo.prototype.bar = 'bar'
+  
+  const foo = new Foo()
+  foo.baz = 'baz'
 
-  test('ignore prototype/inherited properties', (t) => {
-    var foo
-
-    function Foo () {}
-    Foo.prototype.bar = 'bar'
-    foo = new Foo()
-    foo.baz = 'baz'
-
-    merge(foo, {})
-      .should.deep.equal({
-        baz: 'baz'
-      })
-  })
+  t.deepEqual(merge(foo, {}), { baz: 'baz' })
 })

@@ -1,48 +1,41 @@
-var rangeBy = Redash.rangeBy
+const test        = require('ava')
+    , { rangeBy } = require('../dist/stdlib')
 
-describe('(Function) rangeBy', function (aaa, bbb, ccc) {
-  test('include the lower bound', (t) => {
-    rangeBy(1, 1, 10)[0].should.equal(1)
-  })
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(rangeBy.length, 3)
+})
 
-  test('exclude the upper bound', (t) => {
-    var xs = rangeBy(1, 1, 10)
-    xs.should.have.length(9) // 1,2,3,4,5,6,7,8,9
-    xs[xs.length - 1].should.equal(9)
-  })
+test('is curried', (t) => {
+  t.is(typeof rangeBy(1, 1), 'function')
+})
 
-  test('properly reach the upper limit', (t) => {
-    rangeBy(2, 0, 10)
-      .should.deep.equal([0, 2, 4, 6, 8])
-  })
+test('includes the lower bound', (t) => {
+  t.is(rangeBy(1, 1, 3)[0], 1)
+})
 
-  test('properly handle cases when the incrementor overflows the upper limit', (t) => {
-    // make sure it excludes the upper limit when the nex
-    rangeBy(3, 1, 10)
-      .should.deep.equal([1, 4, 7])
+test('exclude the upper bound', (t) => {
+  const res = rangeBy(1, 1, 3)
 
-    // make sure it excludes the upper limit when it exceeds it
-    rangeBy(3, 1, 11)
-      .should.deep.equal([1, 4, 7, 10])
-  })
+  t.is(res.length, 2)
+  t.is(res[res.length - 1], 2)
+})
 
-  test('handle negative ranges', (t) => {
-    rangeBy(-1, 0, -5)
-      .should.deep.equal([0, -1, -2, -3, -4])
+test('does not exceed the upper limit', (t) => {
+  t.deepEqual(rangeBy(3, 0, 11), [0, 3, 6, 9])
+})
 
-    rangeBy(-3, 0, -10)
-      .should.deep.equal([0, -3, -6, -9])
-  })
+test('allows negative steps', (t) => {
+  t.deepEqual(rangeBy(-1, 0, -5), [0, -1, -2, -3, -4])
+})
 
-  test('return an empty array if the incrementor is 0', (t) => {
-    rangeBy(0, 0, 100).should.deep.equal([])
-  })
+test('returns an empty array if the incrementor is 0', (t) => {
+  t.deepEqual(rangeBy(0, 0, 100), [])
+})
 
-  test('return an empty array if the incrementor is positive but start > end', (t) => {
-    rangeBy(1, 10, 0).should.deep.equal([])
-  })
+test('returns an empty array if the incrementor is positive but start > end', (t) => {
+  t.deepEqual(rangeBy(1, 10, 0), [])
+})
 
-  test('return an empty array if the incrementor is negative but start < end', (t) => {
-    rangeBy(-1, 0, 10).should.deep.equal([])
-  })
+test('returns an empty array if the incrementor is negative but start < end', (t) => {
+  t.deepEqual(rangeBy(-1, 0, 10), [])
 })

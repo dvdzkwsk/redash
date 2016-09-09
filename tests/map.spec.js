@@ -1,42 +1,35 @@
-var map = Redash.map
+const test    = require('ava')
+    , sinon   = require('sinon')
+    , { map } = require('../dist/stdlib')
 
-describe('(Function) map', (t) => {
-  test('properly report its arity (is binary)', (t) => {
-    map.should.have.length(2)
-  })
+test('properly reports its arity (is binary)', (t) => {
+  t.is(map.length, 2)
+})
 
-  test('be curried', (t) => {
-    expect(map(function () {})).to.be.a('function')
-  })
+test('is curried', (t) => {
+  t.is(typeof map(() => {}), 'function')
+})
 
-  test('call the transform function for each array item', (t) => {
-    var spy = sinon.spy()
+test('returns a new array where each element has been transformed in place', (t) => {
+  t.deepEqual(map(x => x * 2, [1, 2, 3, 4, 5]), [2, 4, 6, 8, 10])
+})
 
-    map(spy, [1, 2, 3])
-    spy.should.have.been.calledThrice()
-  })
 
-  test('provide a single argument, the current item, to the transformer', (t) => {
-    var spy = sinon.spy()
+test('provides a single argument (the element) to the transformer', (t) => {
+  const spy = sinon.spy()
 
-    map(spy, [1, 2, 3])
-    spy.firstCall.args.should.deep.equal([1])
-    spy.secondCall.args.should.deep.equal([2])
-    spy.thirdCall.args.should.deep.equal([3])
-  })
+  map(spy, [1, 2, 3])
+  t.deepEqual(spy.firstCall.args, [1])
+  t.deepEqual(spy.secondCall.args, [2])
+  t.deepEqual(spy.thirdCall.args, [3])
+})
 
-  test('return the transformation result for each item', (t) => {
-    var double = function (x) { return x * 2 }
 
-    map(double, [1, 2, 3])
-      .should.deep.equal([2, 4, 6])
-  })
+test('returns a new array even if the result is identical', (t) => {
+  const arr = [1, 2, 3]
+      , res = map(x => x, arr)
 
-  test('return a new array even if the final array is unchanged', (t) => {
-    var arr = [1, 2, 3]
-      , res = map(function (x) { return x }, arr)
-
-    expect(res).to.not.equal(arr)         // compare references
-    expect(res).to.deep.equal([1, 2, 3])  // compare values
-  })
+  t.deepEqual(arr, [1, 2, 3])
+  t.deepEqual(res, [1, 2, 3])
+  t.not(arr, res)
 })

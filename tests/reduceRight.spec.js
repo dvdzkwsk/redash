@@ -1,48 +1,24 @@
-var reduceRight = Redash.reduceRight
+const test            = require('ava')
+    , sinon           = require('sinon')
+    , { reduceRight } = require('../dist/stdlib')
 
-describe('(Function) reduceRight', (t) => {
-  test('be a function.', (t) => {
-    expect(reduceRight).to.be.a('function')
-  })
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(reduceRight.length, 3)
+})
 
-  test('have an alias "foldr".', (t) => {
-    expect(reduceRight).to.equal(Redash.foldr)
-  })
+test('is curried', (t) => {
+  t.is(typeof reduceRight(() => {}, 0), 'function')
+})
 
-  test('be curried to an arity of 3.', (t) => {
-    expect(reduceRight()).to.be.a('function')
-    expect(reduceRight()()).to.be.a('function')
-  })
+test('runs the accumulator function through the array from R -> L', (t) => {
+  const spy = sinon.spy((acc, a) => acc + a)
 
-  test('pass the accumulator result through the list from R -> L.', (t) => {
-    var _calls = []
-      , spy = function (acc, x) {
-        _calls.push([acc, x])
-        return acc + x
-      }
+  reduceRight(spy, 0, [1, 2, 3])
+  t.deepEqual(spy.firstCall.args, [0, 3])
+  t.deepEqual(spy.secondCall.args, [3, 2])
+  t.deepEqual(spy.thirdCall.args, [5, 1])
+})
 
-    reduceRight(spy, 0, [1, 2, 3])
-    expect(_calls[0]).to.deep.equal([0, 3])
-    expect(_calls[1]).to.deep.equal([3, 2])
-    expect(_calls[2]).to.deep.equal([5, 1])
-  })
-
-  test('provide arguments of (accumulator, item, index).', (t) => {
-    var _calls = []
-      , spy = function (acc, x) {
-        _calls.push([acc, x])
-        return acc + x
-      }
-
-    reduceRight(spy, 0, [1, 2, 3])
-    expect(_calls[0]).to.deep.equal([0, 3])
-    expect(_calls[1]).to.deep.equal([3, 2])
-    expect(_calls[2]).to.deep.equal([5, 1])
-  })
-
-  test('return the accumulated result.', (t) => {
-    var res = reduceRight(function (acc, x) { return acc + x }, 0, [1, 2, 3])
-
-    expect(res).to.equal(6)
-  })
+test('returns the accumulated result', (t) => {
+  t.is(reduceRight((acc, a) => acc + a, 0, [1, 2, 3, 4]), 10)
 })

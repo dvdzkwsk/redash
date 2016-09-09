@@ -1,13 +1,18 @@
-var propEq = Redash.propEq
+const test       = require('ava')
+    , { propEq } = require('../dist/stdlib')
 
-describe('(Function) propEq', (t) => {
-  test('be a curried ternary function.', (t) => {
-    propEq('foo').should.be.a('function')
-    propEq('foo')('bar').should.be.a('function')
-  })
+test('properly reports its arity (is ternary)', (t) => {
+  t.is(propEq.length, 3)
+})
 
-  test('return true if the target property matches the target value.', (t) => {
-    propEq('foo')('bar')({ foo: 'bar' }).should.equal(true)
-    propEq('foo', 'bar')({ foo: 'bar' }).should.equal(true)
-  })
+test('is curried', (t) => {
+  t.is(typeof propEq('foo'), 'function')
+})
+
+test('returns true if the property on the object equals the target value', (t) => {
+  t.true(propEq('foo', 'bar', { foo: 'bar' }))
+})
+
+test('judges equality by reference', (t) => {
+  t.false(propEq('foo', { baz: 'biz' }, { foo: { baz: 'biz' }}))
 })

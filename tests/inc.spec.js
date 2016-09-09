@@ -1,13 +1,12 @@
-var inc = Redash.inc
+const test    = require('ava')
+    , { inc } = require('../dist/stdlib')
 
-describe('(Function) inc', (t) => {
-  test('properly report its arity (is unary)', (t) => {
-    inc.should.have.length(1)
-  })
+test('properly reports its arity (is unary)', (t) => {
+  t.is(inc.length, 1)
+})
 
-  test('increment the provided number by 1', (t) => {
-    inc(0).should.equal(1)
-    inc(5).should.equal(6)
-    inc(-1).should.equal(0)
-  })
+test('increments the provided number by 1', (t) => {
+  t.is(inc(0), 1)
+  t.is(inc(5), 6)
+  t.is(inc(-1), 0)
 })
