@@ -5,6 +5,8 @@ import _curry3 from './internal/_curry3'
  *
  * TODO: Should this curry the returned function to `cond` arity?
  *
+ * @since v0.12.0
+ *
  * @param {Function} cond
  * @param {Function} ifTrue
  * @param {Function} ifElse

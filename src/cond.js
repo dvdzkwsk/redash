@@ -2,6 +2,8 @@ import _curry2 from './internal/_curry2'
 
 /**
  * cond : [[(a -> Boolean), (a -> *)]] -> a -> *
+ *
+ * @since v0.12.0
  */
 export default _curry2(function cond (conditions, a) {
   var i   = 0

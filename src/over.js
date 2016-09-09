@@ -4,6 +4,8 @@ import set from './set'
 /**
  * over : Lens k -> (v -> *) -> {k:v} -> {k:v}
  *
+ * @since v0.11.0
+ *
  * @param {Lens} lens
  * @param {Function} fn
  * @param {Object|*} target

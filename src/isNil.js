@@ -1,6 +1,8 @@
 /**
  * isNil : * -> Boolean
  *
+ * @since v0.11.0
+ *
  * @param {*} x
  * @returns Boolean
  */
