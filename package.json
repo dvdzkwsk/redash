@@ -22,7 +22,7 @@
     "minify:installer": "uglifyjs dist/installer.js --compress --mangle -o dist/installer.min.js",
     "compile": "npm run bundle && npm run minify",
     "test": "ava",
-    "prepublish": "cp -r dist/. ."
+    "prepublish": "rm -rf dist && npm run compile && cp -r dist/. ."
   },
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "ISC",
