@@ -27,9 +27,9 @@ test('invokes the functions from left to right and returns the result of the las
       , res = pipe(s1, s2, s3)(4)
 
   t.true(s1.calledWithExactly(4))
-  t.true(s1.calledBefore(s2)) 
+  t.true(s1.calledBefore(s2))
   t.true(s2.calledWithExactly(8))
-  t.true(s2.calledBefore(s3)) 
+  t.true(s2.calledBefore(s3))
   t.true(s3.calledWithExactly(10))
   t.is(res, 5)
 })

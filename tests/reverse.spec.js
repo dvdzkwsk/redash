@@ -1,7 +1,6 @@
 const test        = require('ava')
     , { reverse } = require('../dist/stdlib')
 
-
 test('properly reports its arity (is unary)', (t) => {
   t.is(reverse.length, 1)
 })

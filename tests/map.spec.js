@@ -14,7 +14,6 @@ test('returns a new array where each element has been transformed in place', (t)
   t.deepEqual(map(x => x * 2, [1, 2, 3, 4, 5]), [2, 4, 6, 8, 10])
 })
 
-
 test('provides a single argument (the element) to the transformer', (t) => {
   const spy = sinon.spy()
 
@@ -23,7 +22,6 @@ test('provides a single argument (the element) to the transformer', (t) => {
   t.deepEqual(spy.secondCall.args, [2])
   t.deepEqual(spy.thirdCall.args, [3])
 })
-
 
 test('returns a new array even if the result is identical', (t) => {
   const arr = [1, 2, 3]

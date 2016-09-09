@@ -22,7 +22,6 @@ test('calls the getter, transformer, and setter exactly once', (t) => {
   t.is(setter.callCount, 1)
 })
 
-
 test('returns the target object with its value transformed at the lens path', (t) => {
   t.deepEqual(over(lens(prop('foo'), assoc('foo')), x => x * 2, { foo: 2 })
             , { foo: 4 })

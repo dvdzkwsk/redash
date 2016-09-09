@@ -2,7 +2,6 @@ const test          = require('ava')
     , sinon         = require('sinon')
     , { findIndex } = require('../dist/stdlib')
 
-
 test('properly reports its arity (is binary)', (t) => {
   t.is(findIndex.length, 2)
 })

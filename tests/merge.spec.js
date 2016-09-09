@@ -28,7 +28,7 @@ test('does not mutate either object', (t) => {
 test('ignores inherited properties', (t) => {
   function Foo () {}
   Foo.prototype.bar = 'bar'
-  
+
   const foo = new Foo()
   foo.baz = 'baz'
 

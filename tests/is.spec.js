@@ -12,7 +12,7 @@ test('is curried', (t) => {
 test('performs typeof checks when the type is a string', (t) => {
   t.true(is('string', 'hello'))
   t.false(is('number', 'hello'))
-  
+
   t.true(is('number', 1))
   t.false(is('string', 1))
 })

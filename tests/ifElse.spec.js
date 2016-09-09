@@ -12,7 +12,7 @@ test('is curried', (t) => {
 })
 
 test('returns a unary function', (t) => {
-  const fn = ifElse(() => {}, () => {}, () => {}) 
+  const fn = ifElse(() => {}, () => {}, () => {})
 
   t.is(typeof fn, 'function')
   t.is(fn.length, 1)
