@@ -7,3 +7,4 @@ stdlib.js
 stdlib.min.js
 installer.js
 installer.min.js
+sandbox.js
