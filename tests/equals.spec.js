@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { equals } = require('../dist/stdlib')
+    , { equals } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(equals.length, 2)
@@ -7,6 +7,38 @@ test('properly reports its arity (is binary)', (t) => {
 
 test('is curried', (t) => {
   t.is(typeof equals(5), 'function')
+})
+
+// ========================================================
+// Coercion
+// ========================================================
+test('does not coerce values', (t) => {
+  t.false(equals(1, '1'))
+  t.false(equals(false, 0))
+  t.false(equals(true, 'true'))
+  t.false(equals([], ''))
+})
+
+// ========================================================
+// Primitives
+// ========================================================
+// Numbers
+// ------------------------------------
+test('correctly handles number literals', (t) => {
+  t.true(equals(5, 5))
+})
+
+// TODO(zuko): should treat +0 and -0 as different
+
+// Strings
+// ------------------------------------
+
+// Booleans
+// ------------------------------------
+test('correctly handles boolean literals', (t) => {
+  t.true(equals(true, true))
+  t.true(equals(false, false))
+  t.false(equals(true, false))
 })
 
 test('correctly handles primitives', (t) => {

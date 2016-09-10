@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { flatten } = require('../dist/stdlib')
+    , { flatten } = require('../dist/fp-standard')
 
 test('flattens an array 1 level deep', (t) => {
   t.deepEqual(

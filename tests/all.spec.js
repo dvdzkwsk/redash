@@ -1,6 +1,6 @@
 const test    = require('ava')
     , sinon   = require('sinon')
-    , { all } = require('../dist/stdlib')
+    , { all } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(all.length, 2)

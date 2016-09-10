@@ -2,7 +2,7 @@ const test         = require('ava')
     , { lensProp
       , over
       , set
-      , view     } = require('../dist/stdlib')
+      , view     } = require('../dist/fp-standard')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(lensProp.length, 1)

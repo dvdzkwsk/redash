@@ -3,7 +3,7 @@ const test     = require('ava')
     , { lens
       , assoc
       , prop
-      , over } = require('../dist/stdlib')
+      , over } = require('../dist/fp-standard')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(over.length, 3)

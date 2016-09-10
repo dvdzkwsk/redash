@@ -1,5 +1,5 @@
 const test     = require('ava')
-    , { head } = require('../dist/stdlib')
+    , { head } = require('../dist/fp-standard')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(head.length, 1)

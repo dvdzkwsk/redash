@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { flatMap } = require('../dist/stdlib')
+    , { flatMap } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(flatMap.length, 2)

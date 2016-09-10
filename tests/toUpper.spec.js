@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { toUpper } = require('../dist/stdlib')
+    , { toUpper } = require('../dist/fp-standard')
 
 test('uppercases a single character', (t) => {
   t.is(toUpper('a'), 'A')

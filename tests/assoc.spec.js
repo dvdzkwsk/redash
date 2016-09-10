@@ -1,5 +1,5 @@
 const test      = require('ava')
-    , { assoc } = require('../dist/stdlib')
+    , { assoc } = require('../dist/fp-standard')
 
 test('properly report its arity (is ternary)', (t) => {
   t.is(assoc.length, 3)

@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { toPairs } = require('../dist/stdlib')
+    , { toPairs } = require('../dist/fp-standard')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(toPairs.length, 1)

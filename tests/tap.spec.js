@@ -1,6 +1,6 @@
 const test    = require('ava')
     , sinon   = require('sinon')
-    , { tap } = require('../dist/stdlib')
+    , { tap } = require('../dist/fp-standard')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(tap.length, 1)
