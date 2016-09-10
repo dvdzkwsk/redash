@@ -1,4 +1,5 @@
 import _curry3 from './internal/_curry3'
+import _equals from './internal/_equals'
 
 /**
  * propEq : String k -> v -> {k:v} -> Boolean
@@ -6,5 +7,5 @@ import _curry3 from './internal/_curry3'
  * @since v0.1.0
  */
 export default _curry3(function propEq (k, v, o) {
-  return o[k] === v
+  return _equals(o[k], v)
 })
