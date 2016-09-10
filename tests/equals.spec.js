@@ -10,8 +10,22 @@ test('is curried', (t) => {
 })
 
 test('correctly handles primitives', (t) => {
+  t.true(equals(false, false))
+  t.true(equals(true, true))
   t.true(equals(5, 5))
   t.true(equals('hello', 'hello'))
+})
+
+test('returns true when both values are undefined', (t) => {
+  t.true(equals(undefined, undefined))
+})
+
+test('returns true when both values are null', (t) => {
+  t.true(equals(null, null))
+})
+
+test('treats undefined and null as unequal', (t) => {
+  t.false(equals(undefined, null))
 })
 
 test('returns true when values are referentially equal', (t) => {
@@ -20,10 +34,32 @@ test('returns true when values are referentially equal', (t) => {
   t.true(equals(obj, obj))
 })
 
-test('returns false when values are not referentially equal', (t) => {
-  const a = {}
-      , b = {}
+test('deeply compares objects', (t) => {
+  t.true(equals({ foo: true }, { foo: true }))
+  t.false(equals({ foo: true }, { foo: false  }))
+})
 
-  t.false(equals(a, b))
+test('correctly compares empty objects', (t) => {
+  t.true(equals({}, {}))
+})
+
+test('deeply compares arrays', (t) => {
+  t.true(equals([1, 2, 3, 4], [1, 2, 3, 4]))
+  t.false(equals([1, 2, 3, 4], [1, 2, 3, 4, 5]))
+})
+
+test('correctly compares empty arrays', (t) => {
+  t.true(equals([], []))
+})
+
+test('deeply compares objects in arrays', (t) => {
+  t.true(equals(
+    [{ foo: true }, { foo: true }, { foo: true }]
+  , [{ foo: true }, { foo: true }, { foo: true }]
+  ))
+  t.false(equals(
+    [{ foo: true }, { foo: true }, { foo: true }]
+  , [{ foo: true }, { foo: true }, { foo: false }]
+  ))
 })
 
