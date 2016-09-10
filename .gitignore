@@ -3,8 +3,8 @@
 node_modules
 coverage
 dist
-stdlib.js
-stdlib.min.js
+fp-standard.js
+fp-standard.min.js
 installer.js
 installer.min.js
 sandbox.js
