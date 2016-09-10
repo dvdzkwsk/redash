@@ -1,4 +1,5 @@
 import _curry2 from './internal/_curry2'
+import _equals from './internal/_equals'
 
 /**
  * without : [a] -> [a] -> [a]
@@ -21,7 +22,7 @@ export default _curry2(function without (as, bs) {
     b = bs[bi]
     discard = false
     for (ai = 0; ai < aslen; ai++) {
-      if (b === as[ai]) {
+      if (_equals(b, as[ai])) {
         discard = true
         break
       }
