@@ -18,7 +18,7 @@ test('returns "Boolean" for boolean literals', (t) => {
 })
 
 test('returns "Boolean" for instances of Boolean', (t) => {
-  t.is(type(new Boolean()), 'Boolean')
+  t.is(type(new Boolean()), 'Boolean') // eslint-disable-line
 })
 
 test('returns "String" for string literals', (t) => {
@@ -26,7 +26,7 @@ test('returns "String" for string literals', (t) => {
 })
 
 test('returns "String" for instances of String', (t) => {
-  t.is(type(new String()), 'String')
+  t.is(type(new String()), 'String') // eslint-disable-line
 })
 
 test('returns "Number" for number literals', (t) => {
@@ -34,7 +34,7 @@ test('returns "Number" for number literals', (t) => {
 })
 
 test('returns "Number" for instances of Number', (t) => {
-  t.is(type(new Number()), 'Number')
+  t.is(type(new Number()), 'Number') // eslint-disable-line
 })
 
 test('returns "Array" for array literals', (t) => {
@@ -42,7 +42,7 @@ test('returns "Array" for array literals', (t) => {
 })
 
 test('returns "Array" for instances of Array', (t) => {
-  t.is(type(new Array()), 'Array')
+  t.is(type(new Array()), 'Array') // eslint-disable-line
 })
 
 test('returns "Function" for function literals', (t) => {
@@ -50,7 +50,7 @@ test('returns "Function" for function literals', (t) => {
 })
 
 test('returns "Function" for instances of Function', (t) => {
-  t.is(type(new Function()), 'Function')
+  t.is(type(new Function()), 'Function') // eslint-disable-line
 })
 
 test('returns "Function" for function literals', (t) => {
@@ -62,10 +62,10 @@ test('returns "Object" for object literals', (t) => {
 })
 
 test('returns "Object" for instances of Object', (t) => {
-  t.is(type(new Object()), 'Object')
+  t.is(type(new Object()), 'Object') // eslint-disable-line
 })
 
 test('returns "Promise" for instances of Promise', (t) => {
-  t.is(type(new Promise(res => res())), 'Promise')
+  t.is(type(new Promise(res => res())), 'Promise') // eslint-disable-line
 })
 
