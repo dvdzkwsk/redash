@@ -53,10 +53,6 @@ test('returns "Function" for instances of Function', (t) => {
   t.is(type(new Function()), 'Function') // eslint-disable-line
 })
 
-test('returns "Function" for function literals', (t) => {
-  t.is(type(() => {}), 'Function')
-})
-
 test('returns "Object" for object literals', (t) => {
   t.is(type({}), 'Object')
 })
