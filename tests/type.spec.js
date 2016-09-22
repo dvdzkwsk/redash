@@ -64,4 +64,3 @@ test('returns "Object" for instances of Object', (t) => {
 test('returns "Promise" for instances of Promise', (t) => {
   t.is(type(new Promise(res => res())), 'Promise') // eslint-disable-line
 })
-

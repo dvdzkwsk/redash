@@ -94,4 +94,3 @@ test('deeply compares objects in arrays', (t) => {
   , [{ foo: true }, { foo: true }, { foo: false }]
   ))
 })
-

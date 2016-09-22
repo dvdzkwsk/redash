@@ -15,4 +15,3 @@ test('returns an object with `get` and `set` properties matching the provided ge
 
   t.deepEqual(lens(get, set), { get, set })
 })
-
