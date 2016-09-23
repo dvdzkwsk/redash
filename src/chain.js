@@ -1,11 +1,11 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * flatMap : (a -> b | [b]) -> [a] -> [b]
+ * chain : (a -> b | [b]) -> [a] -> [b]
  *
  * @since v0.1.0
  */
-export default _curry2(function flatMap (fn, xs) {
+export default _curry2(function chain (fn, xs) {
   var i   = 0
     , len = xs.length
     , bs  = []

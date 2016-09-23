@@ -1,26 +1,26 @@
-const test        = require('ava')
-    , { flatMap } = require('../dist/fp-standard')
+const test      = require('ava')
+    , { chain } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
-  t.is(flatMap.length, 2)
+  t.is(chain.length, 2)
 })
 
 test('is curried', (t) => {
-  t.is(typeof flatMap(() => {}), 'function')
+  t.is(typeof chain(() => {}), 'function')
 })
 
 test('transforms each item in the collection.', (t) => {
-  t.deepEqual(flatMap(x => x * 2, [1, 2, 3, 4]), [2, 4, 6, 8])
+  t.deepEqual(chain(x => x * 2, [1, 2, 3, 4]), [2, 4, 6, 8])
 })
 
 test('concatenates the results', (t) => {
   t.deepEqual(
-    flatMap(x => ([x * 2, x * 3]), [1, 2, 3, 4]),
+    chain(x => ([x * 2, x * 3]), [1, 2, 3, 4]),
     [2, 3, 4, 6, 6, 9, 8, 12])
 })
 
 test('flattens results 1 level deep', (t) => {
   t.deepEqual(
-    flatMap(x => ([x * 2, [x * 3]]), [1, 2, 3, 4]),
+    chain(x => ([x * 2, [x * 3]]), [1, 2, 3, 4]),
     [2, [3], 4, [6], 6, [9], 8, [12]])
 })
