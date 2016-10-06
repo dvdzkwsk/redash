@@ -39,7 +39,7 @@ prop('name', { name: 'Bob' }) // => Bob
 
 Category        | fp-standard | Ramda | Lodash    | Lodash-FP
 --------------- | ----------- | ----- | --------- | ---------
-Minified (kb)   | 7.5         | 41.1  | 66.8      | 76.6
+Minified (kb)   | 7.9         | 41.1  | 70.1      | 81.2
 100% Immutable  | Yes         | Yes   | No        | Yes
 Auto-Curry      | Yes         | Yes   | No        | Yes
 Object Equality | Value       | Value | Reference | Reference
