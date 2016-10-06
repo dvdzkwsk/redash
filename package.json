@@ -1,6 +1,6 @@
 {
   "name": "fp-standard",
-  "version": "0.13.0-beta.8",
+  "version": "0.13.0",
   "description": "A better Standard Library for JavaScript",
   "main": "fp-standard.js",
   "directories": {
