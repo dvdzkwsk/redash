@@ -10,8 +10,8 @@ test('is curried', (t) => {
   t.is(typeof insert(1, 'hello'), 'function')
 })
 
-test('replaces the element at the target index with the new value', (t) => {
-  t.deepEqual(insert(4, 100, [1, 2, 3, 4, 5]), [1, 2, 3, 4, 100])
+test('inserts the element at the target index with the new value', (t) => {
+  t.deepEqual(insert(4, 100, [1, 2, 3, 4, 5]), [1, 2, 3, 4, 100, 5])
 })
 
 test('does not mutate the original array', (t) => {
@@ -19,5 +19,5 @@ test('does not mutate the original array', (t) => {
       , res = insert(2, 100, arr)
 
   t.deepEqual(arr, [1, 2, 3, 4, 5])
-  t.deepEqual(res, [1, 2, 100, 4, 5])
+  t.deepEqual(res, [1, 2, 100, 3, 4, 5])
 })
