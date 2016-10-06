@@ -47,16 +47,41 @@ IE 9+           | Yes         | Yes   | Yes       | Yes
 
 ## Benchmarks
 
-Each benchmark is measured by the tested operation being performed 10,000 times. The results are in `ms`. Take these with a grain of salt, they are currently just based off of results from a local Node v6 environment.
+Improved formatting to come soon!
 
-Function       | Parameters   | fp-standard | ramda | lodash    | lodash-fp
--------------- | ------------ | ----------- | ----- | --------- | ---------
-filter         | 10,000 items | 295         | 279   | 1369      | 1365
-find           | 10,000 items | 70          | 63    | 1333      | 4480
-findLast       | 10,000 items | 62          | 62    | 1213      | 4155
-map            | 10,000 items | 160         | 843   | 180       | 183
-reduce         | 10,000 items | 108         | 6357  | 135       | 150
-scan           | 10,000 items | 524         | 577   | --        | --
-sum            | 10,000 items | 77          | 8524  | 882       | 884
-takeWhile      | 10,000 items | 138         | 743   | 407       | 392
-
+```js
+[
+  // Reduce
+  // -------------------------
+  [
+    "fp-standard | 1,007,237  ops/sec ±1.84%   (82 runs sampled)",
+    "ramda       | 16,457     ops/sec ±2.01%   (88 runs sampled)",
+    "lodash      | 81,662     ops/sec ±1.56%   (82 runs sampled)",
+    "lodash/fp   | 339,761    ops/sec ±1.47%   (79 runs sampled)"
+  ],
+  // Map
+  // -------------------------
+  [
+    "fp-standard | 586,940    ops/sec ±2.18%   (83 runs sampled)",
+    "ramda       | 447,594    ops/sec ±2.03%   (88 runs sampled)",
+    "lodash      | 70,825     ops/sec ±2.01%   (81 runs sampled)",
+    "lodash/fp   | 380,222    ops/sec ±1.58%   (83 runs sampled)"
+  ],
+  // Filter
+  // -------------------------
+  [
+    "fp-standard | 317,629    ops/sec ±0.71%   (95 runs sampled)",
+    "ramda       | 326,238    ops/sec ±1.12%   (89 runs sampled)",
+    "lodash      | 72,329     ops/sec ±0.86%   (93 runs sampled)",
+    "lodash/fp   | 266,918    ops/sec ±1.97%   (87 runs sampled)"
+  ],
+  // Reject
+  // -------------------------
+  [
+    "fp-standard | 324,369    ops/sec ±1.35%   (78 runs sampled)",
+    "ramda       | 45,971     ops/sec ±1.49%   (80 runs sampled)",
+    "lodash      | 38,072     ops/sec ±2.10%   (84 runs sampled)",
+    "lodash/fp   | 34,872     ops/sec ±1.49%   (81 runs sampled)"
+  ]
+]
+```
