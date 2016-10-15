@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * is : String | Function -> Boolean
- *
+ * @signature (String | Function) -> Boolean
  * @since v0.13.0
  */
 export default _curry2(function is (type, a) {

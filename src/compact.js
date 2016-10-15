@@ -1,5 +1,5 @@
 /**
- * compact : [a] -> [a]
+ * @signature [a] -> [a]
  */
 export default function compact (xs) {
   var i   = 0

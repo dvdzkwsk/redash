@@ -1,8 +1,7 @@
 import curryN from './curryN'
 
 /**
- * complement : (*... -> Boolean) -> (*... -> Boolean)
- *
+ * @signature (*... -> Boolean) -> (*... -> Boolean)
  * @since v0.13.0
  */
 export default function complement (x) {

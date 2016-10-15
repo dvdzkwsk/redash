@@ -4,8 +4,7 @@ import _curry3 from './internal/_curry3'
 import _curryN from './internal/_curryN'
 
 /**
- * curryN : Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
- *
+ * @signature Number n -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
  * @since v0.1.0
  */
 export default _curry2(function curryN (arity, fn) {

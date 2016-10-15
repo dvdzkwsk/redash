@@ -1,6 +1,5 @@
 /**
- * sum : [Number] -> Number
- *
+ * @signature [Number] -> Number
  * @since v0.10.0
  */
 export default function sum (xs) {

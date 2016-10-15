@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * zip : [a] -> [b] -> [[a, b]]
- *
+ * @signature [a] -> [b] -> [[a, b]]
  * @since v0.3.0
  */
 export default _curry2(function zip (as, bs) {

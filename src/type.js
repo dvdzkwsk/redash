@@ -1,5 +1,8 @@
 var _toString = Object.prototype.toString
 
+/**
+ * @signature a -> String
+ */
 export default function type (a) {
   var _type = a == null ? 'Nil' : _toString.call(a).slice(8, -1)
 

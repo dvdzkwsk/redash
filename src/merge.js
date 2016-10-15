@@ -2,10 +2,7 @@ import _curry2 from './internal/_curry2'
 import _eachOwn from './internal/_eachOwn'
 
 /**
- * merge : {k:v} -> {k:v} -> {k:v}
- *
- * Merges all own properties of the second object into the first.
- *
+ * @signature {k:v} -> {k:v} -> {k:v}
  * @since v0.4.0
  */
 export default _curry2(function merge (a, b) {

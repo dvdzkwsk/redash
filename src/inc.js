@@ -1,6 +1,5 @@
 /**
- * inc : Number -> Number
- *
+ * @signature Number -> Number
  * @since v0.6.0
  */
 export default function inc (a) {

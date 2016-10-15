@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * zipObj : [k] -> [v] -> {k:v}
- *
+ * @signature [k] -> [v] -> {k:v}
  * @since v0.3.0
  */
 export default _curry2(function zipObj (ks, vs) {

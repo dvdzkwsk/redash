@@ -2,8 +2,7 @@ import _curry3 from './internal/_curry3'
 import _equals from './internal/_equals'
 
 /**
- * propEq : String k -> v -> {k:v} -> Boolean
- *
+ * @signature String k -> v -> {k:v} -> Boolean
  * @since v0.1.0
  */
 export default _curry3(function propEq (k, v, o) {

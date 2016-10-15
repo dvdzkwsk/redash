@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * findIndex : (a -> Boolean) -> [a] -> Number
- *
+ * @signature (a -> Boolean) -> [a] -> Number
  * @since v0.1.0
  */
 export default _curry2(function findIndex (pred, xs) {

@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * chain : (a -> b | [b]) -> [a] -> [b]
- *
+ * @signature (a -> [b]) -> [a] -> [b]
  * @since v0.1.0
  */
 export default _curry2(function chain (fn, xs) {

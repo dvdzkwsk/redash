@@ -1,10 +1,8 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * lens : ((k -> v), (k, v, {k:v} -> {k:v})) -> Lens k
- *
+ * @signature ((k -> v), (k, v, {k:v} -> {k:v})) -> Lens k
  * @since v0.11.0
- *
  * @param {Function} get
  * @param {Function} set
  * @returns {Function}

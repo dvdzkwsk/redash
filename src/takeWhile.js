@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2'
 import _slice from './internal/_slice'
 
 /**
- * takeWhile : (a -> Boolean) -> [a] -> [a]
- *
+ * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.12.0
  */
 export default _curry2(function takeWhile (fn, xs) {

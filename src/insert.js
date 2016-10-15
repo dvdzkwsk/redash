@@ -3,8 +3,7 @@ import _push from './internal/_push'
 import _slice from './internal/_slice'
 
 /**
- * insert : Number -> a -> [a] -> [a]
- *
+ * @signature Number -> a -> [a] -> [a]
  * @since v0.11.0
  */
 export default _curry3(function insert (idx, x, xs) {

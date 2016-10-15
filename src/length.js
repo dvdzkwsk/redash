@@ -1,6 +1,5 @@
 /**
- * length : [a] -> Number
- *
+ * @signature [a] -> Number
  * @since v0.13.0
  */
 export default function length (xs) {

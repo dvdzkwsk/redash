@@ -1,8 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * reject : (a -> Boolean) -> [a] -> [a]
- *
+ * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.1.0
  */
 export default _curry2(function reject (pred, as) {

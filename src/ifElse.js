@@ -1,12 +1,8 @@
 import _curry3 from './internal/_curry3'
 
 /**
- * ifElse : (a -> Boolean) -> (a -> *) -> (a -> *) -> (a -> *)
- *
- * TODO: Should this curry the returned function to `cond` arity?
- *
+ * @signature (a -> Boolean) -> (a -> *) -> (a -> *) -> (a -> *)
  * @since v0.12.0
- *
  * @param {Function} cond
  * @param {Function} ifTrue
  * @param {Function} ifElse

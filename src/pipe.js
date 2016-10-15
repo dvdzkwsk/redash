@@ -1,8 +1,7 @@
 import curryN from './curryN'
 
 /**
- * pipe : ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
- *
+ * @signature ((a, b, ..., f -> g), (g -> h), ..., (y -> z)) -> ((a, b, ..., f) -> z
  * @since v0.1.0
  */
 export default function pipe () {

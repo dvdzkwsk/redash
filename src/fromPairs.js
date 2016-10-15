@@ -1,6 +1,5 @@
 /**
- * fromPairs : [[k, v]] -> {k:v}
- *
+ * @signature [[k, v]] -> {k:v}
  * @since v0.7.0
  */
 export default function fromPairs (kvs) {

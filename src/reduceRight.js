@@ -3,8 +3,7 @@ import _reduce from './internal/_reduce'
 import _reverse from './internal/_reverse'
 
 /**
- * reduceRight : ((b, a) -> b) -> b -> [a]
- *
+ * @signature ((b, a) -> b) -> b -> [a]
  * @since v0.1.0
  */
 export default _curry3(function reduceRight (fn, y, xs) {

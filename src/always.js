@@ -1,6 +1,5 @@
 /**
- * always : a -> * -> a
- *
+ * @signature a -> * -> a
  * @since v0.9.0
  */
 export default function always (x) {

@@ -2,11 +2,7 @@ import _curry2 from './internal/_curry2'
 import _equals from './internal/_equals'
 
 /**
- * without : [a] -> [a] -> [a]
- *
- * TODO(zuko): if lists are hashable, create hash to improve lookup speed
- * TODO(zuko): could we just use a Map?
- *
+ * @signature [a] -> [a] -> [a]
  * @since v0.7.0
  */
 export default _curry2(function without (as, bs) {
