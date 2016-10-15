@@ -1,4 +1,5 @@
 /**
+ * @name fromPairs
  * @signature [[k, v]] -> {k:v}
  * @since v0.7.0
  */

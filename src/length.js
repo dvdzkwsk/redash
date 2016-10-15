@@ -1,4 +1,5 @@
 /**
+ * @name length
  * @signature [a] -> Number
  * @since v0.13.0
  */

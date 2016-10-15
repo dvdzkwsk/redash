@@ -1,4 +1,5 @@
 /**
+ * @name compact
  * @signature [a] -> [a]
  */
 export default function compact (xs) {

@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name zipObj
  * @signature [k] -> [v] -> {k:v}
  * @since v0.3.0
  */

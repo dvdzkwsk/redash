@@ -3,6 +3,7 @@ import _reduce from './internal/_reduce'
 import _reverse from './internal/_reverse'
 
 /**
+ * @name reduceRight
  * @signature ((b, a) -> b) -> b -> [a]
  * @since v0.1.0
  */

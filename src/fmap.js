@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name fmap
  * @signature Functor f => (a -> b) -> f a -> f b
  * @since v0.13.0
  * @param {Function} fn - transformation function

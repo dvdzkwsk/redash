@@ -1,6 +1,7 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * @name set
  * @signature Lens k -> v -> {k:v} -> {k:v}
  * @since v0.11.0
  * @param {Lens} lens

@@ -2,6 +2,7 @@ import _curry2 from './internal/_curry2'
 import _slice from './internal/_slice'
 
 /**
+ * @name drop
  * @signature Number -> Array -> Array
  * @since v0.10.0
  */

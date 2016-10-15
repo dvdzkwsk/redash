@@ -1,4 +1,5 @@
 /**
+ * @name flatten
  * @signature [[a]] -> [a]
  * @since v0.1.0
  */

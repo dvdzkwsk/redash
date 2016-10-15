@@ -2,6 +2,7 @@ import _curry3 from './internal/_curry3'
 import _reduce from './internal/_reduce'
 
 /**
+ * @name reduce
  * @signature (b, a -> b) -> b -> [a] -> b
  * @since v0.1.0
  */

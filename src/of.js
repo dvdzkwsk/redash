@@ -1,4 +1,5 @@
 /**
+ * @name of
  * @signature a -> [a]
  * @since v0.7.0
  */

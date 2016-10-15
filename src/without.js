@@ -2,6 +2,7 @@ import _curry2 from './internal/_curry2'
 import _equals from './internal/_equals'
 
 /**
+ * @name without
  * @signature [a] -> [a] -> [a]
  * @since v0.7.0
  */

@@ -2,6 +2,7 @@ import _curry3 from './internal/_curry3'
 import _equals from './internal/_equals'
 
 /**
+ * @name propEq
  * @signature String k -> v -> {k:v} -> Boolean
  * @since v0.1.0
  */

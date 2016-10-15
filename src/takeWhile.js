@@ -2,6 +2,7 @@ import _curry2 from './internal/_curry2'
 import _slice from './internal/_slice'
 
 /**
+ * @name takeWhile
  * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.12.0
  */

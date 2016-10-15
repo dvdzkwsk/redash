@@ -1,6 +1,7 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * @name ifElse
  * @signature (a -> Boolean) -> (a -> *) -> (a -> *) -> (a -> *)
  * @since v0.12.0
  * @param {Function} cond

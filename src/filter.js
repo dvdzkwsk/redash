@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name filter
  * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.1.0
  */

@@ -2,6 +2,7 @@ import _curry2 from './internal/_curry2'
 import _hasOwn from './internal/_hasOwn'
 
 /**
+ * @name has
  * @signature String k -> {k:v} -> Boolean
  * @since v0.11.0
  */

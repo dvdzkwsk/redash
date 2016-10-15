@@ -2,6 +2,7 @@ import _concat from './internal/_concat'
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name append
  * @signature a -> [a] -> [a]
  * @since v0.10.0
  */

@@ -1,6 +1,7 @@
 import _slice from './internal/_slice'
 
 /**
+ * @name tail
  * @signature [a] -> [a]
  * @since v0.1.0
  */

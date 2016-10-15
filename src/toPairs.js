@@ -1,6 +1,7 @@
 import _eachOwn from './internal/_eachOwn'
 
 /**
+ * @name toPairs
  * @signature {k:v} -> [[k, v]]
  * @since v0.7.0
  */

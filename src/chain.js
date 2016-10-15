@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name chain
  * @signature (a -> [b]) -> [a] -> [b]
  * @since v0.1.0
  */

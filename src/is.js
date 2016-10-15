@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name is
  * @signature (String | Function) -> Boolean
  * @since v0.13.0
  */

@@ -1,4 +1,5 @@
 /**
+ * @name trim
  * @signature String -> String
  * @since v0.13.0
  * @param {String} a - the string to trim

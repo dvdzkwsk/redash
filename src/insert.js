@@ -3,6 +3,7 @@ import _push from './internal/_push'
 import _slice from './internal/_slice'
 
 /**
+ * @name insert
  * @signature Number -> a -> [a] -> [a]
  * @since v0.11.0
  */

@@ -1,4 +1,5 @@
 /**
+ * @name toUpper
  * @signature String -> String
  * @since v0.4.0
  */

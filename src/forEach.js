@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name forEach
  * @signature (a -> *) -> [a] -> undefined
  * @since v0.1.0
  */

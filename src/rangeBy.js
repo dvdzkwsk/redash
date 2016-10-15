@@ -1,6 +1,7 @@
 import _curry3 from './internal/_curry3'
 
 /**
+ * @name rangeBy
  * @signature Number -> Number -> Number -> [Number]
  * @since v0.7.0
  */

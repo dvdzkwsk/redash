@@ -1,4 +1,5 @@
 /**
+ * @name flattenDeep
  * @signature [[a]] -> [a]
  * @since v0.5.0
  */

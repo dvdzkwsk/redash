@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name find
  * @signature (a -> Boolean) -> [a] -> a | undefined
  * @since v0.6.0
  */

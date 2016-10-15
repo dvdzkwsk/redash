@@ -2,6 +2,7 @@ import _reverse from './internal/_reverse'
 import pipe from './pipe'
 
 /**
+ * @name compose
  * @signature ((y -> z), ..., (g -> h), (a, b, ..., f -> g)) -> (a, b, ..., f -> z)
  * @since v0.1.0
  */

@@ -1,6 +1,7 @@
 import _curry2 from './internal/_curry2'
 
 /**
+ * @name findIndex
  * @signature (a -> Boolean) -> [a] -> Number
  * @since v0.1.0
  */
