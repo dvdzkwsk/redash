@@ -7,8 +7,9 @@ import _slice from './internal/_slice'
  * @since v0.14.0
  * @description
  * Runs a predicate function sequentially through an array, dropping
- * all elements until the predicate returns true. Once the predicate
- * returns true, the remainder of the array is returned.
+ * all elements until the predicate returns `true`. Once the predicate
+ * returns `true`, the remainder of the array is returned.
+ * @see dropWhile
  *
  * @example
  * const isEven = x => x % 2 === 0

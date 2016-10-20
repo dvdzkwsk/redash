@@ -2,6 +2,24 @@
  * @name values
  * @signature {k:v} -> [v]
  * @since v0.14.0
+ * @description
+ * Returns an array containing the values of an object's own enumerable properties.
+ * Note that this ignores all inherited properties, and does not guarantee
+ * order due to discrepencies between JavaScript engines.
+ *
+ * @example
+ * values({ a: 1, b: 2, c: 3 }) // => [1, 2, 3]
+ * values({})                   // => []
+ *
+ * // Inherited properties are ignored
+ * class A {
+ *   foo() {}
+ * }
+ * const a = new A()
+ * values(a) // => [] (foo is inherited from A's protoype and is ignored)
+ *
+ * a.bar = 'BAR'
+ * values(a) // => ['BAR']
  */
 export default function values (obj) {
   var keys   = Object.keys(obj)
@@ -9,6 +27,9 @@ export default function values (obj) {
     , len    = keys.length
     , values = new Array(keys.length)
 
-  for (; i < len; i++) values[i] = obj[keys[i]]
+  while (i < len) {
+    values[i] = obj[keys[i]]
+    i += 1
+  }
   return values
 }

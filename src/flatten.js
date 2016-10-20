@@ -2,6 +2,13 @@
  * @name flatten
  * @signature [[a]] -> [a]
  * @since v0.1.0
+ * @description
+ * Shallowly flattens an array (i.e. 1 level deep).
+ * @see flattenDeep
+ *
+ * @example
+ * flatten([1, 2, [3, 4]])   // => [1, 2, 3, 4]
+ * flatten([1, 2, [3, [4]]]) // => [1, 2, 3, [4]]
  */
 export default function flatten (xs) {
   var acc = []

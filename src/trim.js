@@ -2,8 +2,11 @@
  * @name trim
  * @signature String -> String
  * @since v0.13.0
- * @param {String} a - the string to trim
- * @returns {String} the trimmed string
+ * @description
+ * Returns the string with all leading and trailing whitespace removed.
+ *
+ * @example
+ * trim('  hello  ') // => 'hello'
  */
 export default function trim (a) {
   return a.trim()
