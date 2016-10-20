@@ -1,11 +1,11 @@
 import _curry2 from './internal/_curry2'
 
 /**
- * @name is
+ * @name isType
  * @signature (String | Function) -> Boolean
  * @since v0.13.0
  */
-export default _curry2(function is (type, a) {
+export default _curry2(function isType (type, a) {
   if (a == null) return false
 
   return typeof type === 'string'
