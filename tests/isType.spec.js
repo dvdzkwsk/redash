@@ -2,11 +2,11 @@ const test      = require('ava')
   ,  { isType } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
-  t.isType(isType.length, 2)
+  t.is(isType.length, 2)
 })
 
 test('is curried', (t) => {
-  t.isType(typeof isType('string'), 'function')
+  t.is(typeof isType('string'), 'function')
 })
 
 test('performs typeof checks when the type is a string', (t) => {
