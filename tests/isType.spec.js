@@ -6,19 +6,63 @@ test('properly reports its arity (is binary)', (t) => {
 })
 
 test('is curried', (t) => {
-  t.is(typeof isType('string'), 'function')
+  t.is(typeof isType('String'), 'function')
 })
 
-test('performs typeof checks when the type is a string', (t) => {
-  t.true(isType('string', 'hello'))
-  t.false(isType('number', 'hello'))
-
-  t.true(isType('number', 1))
-  t.false(isType('string', 1))
+test('correctly checks string types', (t) => {
+  t.true(isType('String', 'hello'))
+  t.true(isType('String', new String('hello')))
+  t.true(isType(String, 'hello'))
+  t.true(isType(String, new String('hello')))
 })
 
-test('performs instanceof checks if the type is a constructor', (t) => {
+test('correctly checks number types', (t) => {
+  t.true(isType('Number', 123))
+  t.true(isType('Number', new Number(123)))
+  t.true(isType(Number, 123))
+  t.true(isType(Number, new Number(123)))
+})
+
+test('correctly checks object types', (t) => {
+  t.true(isType('Object', {}))
+})
+
+test('correctly checks array types', (t) => {
+  t.true(isType('Array', []))
+})
+
+test('treats `undefined` values as `Nil`', (t) => {
+  t.true(isType('Nil', undefined))
+})
+
+test('treats `null` values as `Nil`', (t) => {
+  t.true(isType('Nil', null))
+})
+
+test('uses internal `type` function when `type` is a string', (t) => {
+  t.true(isType('Promise', Promise.resolve()))
+})
+
+test('correctly compares userland classes', (t) => {
   function Person () {}
 
   t.true(isType(Person, new Person()))
+  t.false(isType(Person, {}))
+})
+
+test('normalizes string type capitalization', (t) => {
+  t.true(isType('ObJeCt', {}))
+})
+
+test('correctly compares `undefined` by value when used as the type', (t) => {
+  t.true(isType(undefined, undefined))
+})
+
+test('correctly compares `null` by value when used as the type', (t) => {
+  t.true(isType(null, null))
+})
+
+test('treats `null` and `undefined` as different when used as the type', (t) => {
+  t.false(isType(null, undefined))
+  t.false(isType(undefined, null))
 })
