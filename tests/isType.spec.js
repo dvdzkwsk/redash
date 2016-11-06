@@ -1,3 +1,4 @@
+/* eslint-disable no-new-wrappers */
 const test            = require('ava')
   ,  { isType, type } = require('../dist/fp-standard')
 
@@ -44,7 +45,7 @@ test('treats `null` values as `Nil`', (t) => {
 })
 
 test('uses internal `type` function when `type` is a string', (t) => {
-  t.true(isType('Promise', Promise.resolve()))
+  t.true(isType('Promise', Promise.resolve())) // eslint-disable-line
 })
 
 test('correctly compares userland classes', (t) => {
@@ -97,6 +98,6 @@ test('works with our `type` function for functions', (t) => {
 })
 
 test('works with our `type` function for promises', (t) => {
-  t.true(isType(type(Promise.resolve()), Promise.resolve()))
+  t.true(isType(type(Promise.resolve()), Promise.resolve())) // eslint-disable-line
 })
 
