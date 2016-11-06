@@ -1,5 +1,5 @@
-const test      = require('ava')
-  ,  { isType } = require('../dist/fp-standard')
+const test            = require('ava')
+  ,  { isType, type } = require('../dist/fp-standard')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(isType.length, 2)
@@ -29,6 +29,10 @@ test('correctly checks object types', (t) => {
 
 test('correctly checks array types', (t) => {
   t.true(isType('Array', []))
+})
+
+test('correctly checks functions', (t) => {
+  t.true(isType('Function', () => {}))
 })
 
 test('treats `undefined` values as `Nil`', (t) => {
@@ -66,3 +70,33 @@ test('treats `null` and `undefined` as different when used as the type', (t) => 
   t.false(isType(null, undefined))
   t.false(isType(undefined, null))
 })
+
+test('works with our `type` function for strings', (t) => {
+  t.true(isType(type('hello'), 'hello'))
+})
+
+test('works with our `type` function for numbers', (t) => {
+  t.true(isType(type(123), 123))
+})
+
+test('works with our `type` function for booleans', (t) => {
+  t.true(isType(type(true), true))
+  t.true(isType(type(false), false))
+})
+
+test('works with our `type` function for objects', (t) => {
+  t.true(isType(type({}), ({})))
+})
+
+test('works with our `type` function for arrays', (t) => {
+  t.true(isType(type([]), []))
+})
+
+test('works with our `type` function for functions', (t) => {
+  t.true(isType(type(() => {}), () => {}))
+})
+
+test('works with our `type` function for promises', (t) => {
+  t.true(isType(type(Promise.resolve()), Promise.resolve()))
+})
+
