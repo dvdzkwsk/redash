@@ -28,14 +28,43 @@ test('allows negative steps', (t) => {
   t.deepEqual(rangeBy(-1, 0, -5), [0, -1, -2, -3, -4])
 })
 
-test('returns an empty array if the incrementor is 0', (t) => {
-  t.deepEqual(rangeBy(0, 0, 100), [])
+test('throws when end === start', (t) => {
+  t.throws(
+    () => rangeBy(5, 2, 2),
+    'The `start` value provided to `rangeBy` must be greater than or less than ' +
+    'the `end` value. Received the same value for both: 2.'
+  )
 })
 
-test('returns an empty array if the incrementor is positive but start > end', (t) => {
-  t.deepEqual(rangeBy(1, 10, 0), [])
+test('throws when the incrementor is 0', (t) => {
+  t.throws(
+    () => rangeBy(0, 0, 100),
+    'The `increment` value provided to `rangeBy` must be a non-zero number.'
+  )
 })
 
-test('returns an empty array if the incrementor is negative but start < end', (t) => {
-  t.deepEqual(rangeBy(-1, 0, 10), [])
+test('throws when the incrementor is positive and start is greater than end', (t) => {
+  const start = 10
+      , end   = 5
+      , inc   = 1
+
+  t.throws(
+    () => rangeBy(inc, start, end),
+    'The `increment` value provided to `rangeBy` must be negative when ' +
+    'the start value (' + start + ') is greater than the end value (' +
+    end + '). Received: ' + inc + '.'
+  )
+})
+
+test('throws when the incrementor is negative and start is less than end', (t) => {
+  const start = 1
+      , end   = 5
+      , inc   = -1
+
+  t.throws(
+    () => rangeBy(inc, start, end),
+    'The `increment` value provided to `rangeBy` must be positive when ' +
+    'the start value (' + start + ') is less than the end value (' +
+    end + '). Received: ' + inc + '.'
+  )
 })

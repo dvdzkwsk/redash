@@ -18,13 +18,27 @@ export default _curry3(function rangeBy (inc, start, end) {
     , times
     , i
 
-  // TODO: should (some of) these throw?
-  if (
-    inc === 0 ||
-    inc > 0 && start > end ||
-    inc < 0 && start < end
-  ) {
-    return []
+  if (inc === 0) {
+    throw new Error(
+      'The `increment` value provided to `rangeBy` must be a non-zero number.'
+    )
+  } else if (start === end) {
+    throw new Error(
+      'The `start` value provided to `rangeBy` must be greater than or less than ' +
+      'the `end` value. Received the same value for both: ' + start + '.'
+    )
+  } else if (inc > 0 && start > end) {
+    throw new Error(
+      'The `increment` value provided to `rangeBy` must be negative when ' +
+      'the start value (' + start + ') is greater than the end value (' +
+      end + '). Received: ' + inc + '.'
+    )
+  } else if (inc < 0 && start < end) {
+    throw new Error(
+      'The `increment` value provided to `rangeBy` must be positive when ' +
+      'the start value (' + start + ') is less than the end value (' +
+      end + '). Received: ' + inc + '.'
+    )
   }
 
   times = Math.abs(Math.ceil((end - start) / inc))
