@@ -7,5 +7,8 @@ import _concat from './internal/_concat'
  * @since v0.14.0
  */
 export default _curry2(function prepend (a, as) {
+  if (typeof as === 'string') {
+    return a + as
+  }
   return _concat.call([a], as)
 })
