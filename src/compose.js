@@ -10,6 +10,7 @@ import pipe from './pipe'
  * invokes the original functions from right to left, passing the result of
  * each function call as the arguments to the next. The result of the leftmost
  * function call is the final return value.
+ * This is the same concept as `pipe`, but runs the functions from right -> left.
  * @see pipe
  *
  * @example

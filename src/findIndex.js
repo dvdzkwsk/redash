@@ -6,7 +6,7 @@ import _curry2 from './internal/_curry2'
  * @since v0.1.0
  * @description
  * Tests a predicate against an array, returning the index of the first
- * element that matches that predicate. If no element is found, `-1` is
+ * vakye that matches that predicate. If no matching value is found, `-1` is
  * returned.
  * @see find
  * @see findLast

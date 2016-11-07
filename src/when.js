@@ -9,6 +9,9 @@ import _curry2 from './internal/_curry2'
  * function, and, if it is met, calls the transformation function and returns
  * its result. If the predicate is not matched, the original argument is
  * returned.
+ * You can think of `when` as shorthand for `ifElse(predicate, xform, identity)`,
+ * though keep in mind that it only supports unary functions.
+ * @see ifElse
  *
  * @example
  * const doubleIfEven = when(isEven, multiply(2))

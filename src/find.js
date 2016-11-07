@@ -5,8 +5,9 @@ import _curry2 from './internal/_curry2'
  * @signature (a -> Boolean) -> [a] -> a | undefined
  * @since v0.6.0
  * @description
- * Tests a predicate against an array, returning the first element that
- * matches that predicate. If no element is found, `undefined` is returned.
+ * Tests a predicate against an array, returning the first value that
+ * matches that predicate. If no matching value is found, `undefined` is
+ * returned.
  *
  * @example
  * find(isEven, [1, 3, 4, 6]) // => 4

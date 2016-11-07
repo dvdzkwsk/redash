@@ -5,6 +5,11 @@ import _equals from './internal/_equals'
  * @name without
  * @signature [a] -> [a] -> [a]
  * @since v0.7.0
+ * @description
+ * Excludes all elements of the first array from the second array.
+ *
+ * @example
+ * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) => [3, 4, 7]
  */
 export default _curry2(function without (as, bs) {
   var ys    = []
