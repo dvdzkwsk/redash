@@ -10,8 +10,10 @@ test('is curried', (t) => {
 })
 
 test('returns an object with `get` and `set` properties matching the provided getter and setter', (t) => {
-  const get = () => {}
-      , set = () => {}
+  const get    = () => {}
+      , set    = () => {}
+      , myLens = lens(get, set)
 
-  t.deepEqual(lens(get, set), { get, set })
+  t.is(myLens.get, get)
+  t.is(myLens.set, set)
 })
