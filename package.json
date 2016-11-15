@@ -3,19 +3,23 @@
   "version": "0.13.0",
   "description": "A better Standard Library for JavaScript",
   "main": "redash.js",
+  "module": "redash.next.js",
+  "jsnext:main": "redash.next.js",
   "directories": {
     "test": "tests"
   },
   "files": [
     "redash.js",
     "redash.min.js",
+    "redash.next.js",
     "installer.js",
     "installer.min.js"
   ],
   "scripts": {
     "lint": "eslint src tests",
-    "bundle": "npm run bundle:main && npm run bundle:installer",
+    "bundle": "npm run bundle:main && npm run bundle:next && npm run bundle:installer",
     "bundle:main": "rollup --format umd --name fp -i src/bundles/index.js -o dist/redash.js",
+    "bundle:next": "rollup --format es6 --name fp -i src/bundles/index.js -o dist/redash.next.js",
     "bundle:installer": "rollup --format umd --name fp -i src/bundles/installer.js -o dist/installer.js",
     "minify": "npm run minify:main && npm run minify:installer",
     "minify:main": "uglifyjs dist/redash.js --compress --mangle -o dist/redash.min.js",

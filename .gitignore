@@ -4,6 +4,7 @@ node_modules
 coverage
 dist
 redash.js
+redash.next.js
 redash.min.js
 installer.js
 installer.min.js
