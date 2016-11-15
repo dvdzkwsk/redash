@@ -1,6 +1,6 @@
 const test         = require('ava')
     , { lensProp
-    , set        } = require('../dist/fp-standard')
+    , set        } = require('../dist/redash')
 
 test('property reports its arity (is ternary)', (t) => {
   t.is(set.length, 3)

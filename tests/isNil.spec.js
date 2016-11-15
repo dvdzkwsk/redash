@@ -1,5 +1,5 @@
 const test     = require('ava')
-  ,  { isNil } = require('../dist/fp-standard')
+  ,  { isNil } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(isNil.length, 1)

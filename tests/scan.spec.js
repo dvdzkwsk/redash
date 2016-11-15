@@ -1,5 +1,5 @@
 const test     = require('ava')
-    , { scan } = require('../dist/fp-standard')
+    , { scan } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(scan.length, 3)

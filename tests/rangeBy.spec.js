@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { rangeBy } = require('../dist/fp-standard')
+    , { rangeBy } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(rangeBy.length, 3)

@@ -1,5 +1,5 @@
 const test      = require('ava')
-    , { chain } = require('../dist/fp-standard')
+    , { chain } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(chain.length, 2)

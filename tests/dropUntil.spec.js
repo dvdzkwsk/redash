@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { dropUntil } = require('../dist/fp-standard')
+    , { dropUntil } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(dropUntil.length, 2)

@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { toLower } = require('../dist/fp-standard')
+    , { toLower } = require('../dist/redash')
 
 test('lowercases a single character', (t) => {
   t.is(toLower('A'), 'a')

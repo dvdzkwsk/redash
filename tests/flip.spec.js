@@ -1,6 +1,6 @@
 const test     = require('ava')
     , sinon    = require('sinon')
-    , { flip } = require('../dist/fp-standard')
+    , { flip } = require('../dist/redash')
 
 test('reverses the arguments before applying them to the original function', (t) => {
   const fn = sinon.spy((a0, a1, a2) => {})

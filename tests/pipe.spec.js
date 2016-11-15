@@ -1,6 +1,6 @@
 const test     = require('ava')
     , sinon    = require('sinon')
-    , { pipe } = require('../dist/fp-standard')
+    , { pipe } = require('../dist/redash')
 
 test('properly reports its arity (is variadic)', (t) => {
   t.is(pipe.length, 0)

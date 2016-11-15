@@ -1,6 +1,6 @@
 const test        = require('ava')
     , sinon       = require('sinon')
-    , { compose } = require('../dist/fp-standard')
+    , { compose } = require('../dist/redash')
 
 test('returns a function', (t) => {
   const fn = () => {}

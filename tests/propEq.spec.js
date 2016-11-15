@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { propEq } = require('../dist/fp-standard')
+    , { propEq } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(propEq.length, 3)

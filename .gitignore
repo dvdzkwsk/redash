@@ -3,8 +3,8 @@
 node_modules
 coverage
 dist
-fp-standard.js
-fp-standard.min.js
+redash.js
+redash.min.js
 installer.js
 installer.min.js
 sandbox.js

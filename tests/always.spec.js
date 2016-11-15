@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { always } = require('../dist/fp-standard')
+    , { always } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(always.length, 1)
