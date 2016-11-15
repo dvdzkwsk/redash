@@ -12,6 +12,7 @@ import _toString from './internal/_toString'
  * @example
  * type(1)                 // => 'Number'
  * type('hello')           // => 'String'
+ * type(true)              // => 'Boolean'
  * type({})                // => 'Object'
  * type([])                // => 'Array'
  * type(Promise.resolve()) // => 'Promise'
@@ -19,8 +20,7 @@ import _toString from './internal/_toString'
  * type(null)              // => 'Nil'
  */
 export default function type (a) {
-  var _type = a == null ? 'Nil' : _toString.call(a).slice(8, -1)
+  if (a == null) return 'Nil'
 
-  if (_type !== 'Object') return _type
-  return _type.constructor.name === 'Promise' ? 'Promise' : _type
+  return _toString.call(a).slice(8, -1)
 }
