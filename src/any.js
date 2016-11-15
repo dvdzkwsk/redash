@@ -10,8 +10,6 @@ import _curry2 from './internal/_curry2'
  * a true condition is found. If the list is empty it will return false.
  *
  * @example
- * const isEven = x => x % 2 === 0
- *
  * any(isEven, [1, 2, 3, 4, 5]) // => true, 2 is an even number
  * any(isEven, [1, 3, 5])       // => false, no numbers are even
  * any(isEven, [])              // => false

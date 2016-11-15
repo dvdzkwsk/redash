@@ -10,8 +10,6 @@ import _curry2 from './internal/_curry2'
  * is empty it will return true.
  *
  * @example
- * const isEven = x => x % 2 === 0
- *
  * all(isEven, [2, 4, 6, 8])  // => true
  * all(isEven, [2, 4, 6, 3])  // => false, 3 is not an even number
  * all(isEven, [])            // => true

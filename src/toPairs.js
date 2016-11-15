@@ -7,6 +7,7 @@ import _eachOwn from './internal/_eachOwn'
  * @description
  * Converts all own enumerable keys in an object into an array of tuples, each
  * with the key and its value.
+ * @see fromPairs
  *
  * @example
  * toPairs({ a: 'foo', b: 'bar' }) // => [['a', 'foo'], ['b', 'bar']]

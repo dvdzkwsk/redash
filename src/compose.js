@@ -6,11 +6,14 @@ import pipe from './pipe'
  * @signature ((y -> z), ..., (g -> h), (a, b, ..., f -> g)) -> (a, b, ..., f -> z)
  * @since v0.1.0
  * @description
- * Takes a series of functions and wraps them in a single function that
- * invokes the original functions from right to left, passing the result of
- * each function call as the arguments to the next. The result of the leftmost
- * function call is the final return value.
+ * Takes a series of functions and wraps them in a single, curried function
+ * that, when called, invokes the original functions from right to left,
+ * passing the result of each function call as the arguments to the next. The
+ * result of the leftmost function call is the final return value.
  * This is the same concept as `pipe`, but runs the functions from right -> left.
+ * Note that all functions except for the first (rightmost) must be unary
+ * (accept only a single argument), because functions can only return a single
+ * value.
  * @see pipe
  *
  * @example

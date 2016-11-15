@@ -11,7 +11,6 @@ import _curry2 from './internal/_curry2'
  * @example
  * add(1, 2) // => 3
  *
- * @example
  * const add5 = add(5)
  * add5(10) // => 15
  * add5(15) // => 20

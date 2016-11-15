@@ -15,6 +15,7 @@ import _reduce from './internal/_reduce'
  * value is returned.
  * If you wish to reduce the list from right -> left, use `reduceRight`.
  * @see reduceRight
+ * @see scan
  * @alias foldl
  * @example
  * const sum = reduce((acc, n) => acc + n, 0)
