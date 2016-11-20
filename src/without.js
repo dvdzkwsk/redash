@@ -1,5 +1,5 @@
 import _curry2 from './internal/_curry2'
-import _equals from './internal/_equals'
+import _contains from './internal/_contains'
 
 /**
  * @name without
@@ -12,26 +12,15 @@ import _equals from './internal/_equals'
  * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) => [3, 4, 7]
  */
 export default _curry2(function without (as, bs) {
-  var ys    = []
-    , bi    = 0
-    , aslen = as.length
-    , bslen = bs.length
-    , ai
-    , b
-    , discard
+  var i   = 0
+    , len = bs.length
+    , res = []
 
-  for (; bi < bslen; bi++) {
-    b = bs[bi]
-    discard = false
-    for (ai = 0; ai < aslen; ai++) {
-      if (_equals(b, as[ai])) {
-        discard = true
-        break
-      }
+  while (i < len) {
+    if (!_contains(bs[i], as)) {
+      res[res.length] = bs[i]
     }
-    if (!discard) {
-      ys.push(b)
-    }
+    i++
   }
-  return ys
+  return res
 })
