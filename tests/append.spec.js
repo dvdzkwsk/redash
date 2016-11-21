@@ -17,6 +17,10 @@ test('works if the list is an empty array', (t) => {
   t.deepEqual(append(5, []), [5])
 })
 
+test('does not concatenate lists', (t) => {
+  t.deepEqual(append([4, 5], [1, 2, 3]), [1, 2, 3, [4, 5]])
+})
+
 test('does not mutate the original list', (t) => {
   const arr = [1, 2, 3, 4]
       , res = append(5, arr)
