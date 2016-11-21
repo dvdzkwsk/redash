@@ -1,3 +1,9 @@
+## v0.14.1
+
+### Fixes
+* Removes usage of `const` in `juxt`.
+* Removes usage of `const` in `lensProp`.
+
 ## v0.14.0
 
 ### Features
