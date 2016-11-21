@@ -9,7 +9,7 @@ test('is curried', (t) => {
   t.is(typeof append(1), 'function')
 })
 
-test('concatenates the first argument onto the end of the list', (t) => {
+test('appends the first argument onto the end of the list', (t) => {
   t.deepEqual(append(5, [1, 2, 3, 4]), [1, 2, 3, 4, 5])
 })
 
@@ -27,4 +27,8 @@ test('does not mutate the original list', (t) => {
 
   t.deepEqual([1, 2, 3, 4], arr)
   t.deepEqual(res, [1, 2, 3, 4, 5])
+})
+
+test('works for strings', (t) => {
+  t.is(append('d', 'abc'), 'abcd')
 })

@@ -15,5 +15,8 @@ import _curry2 from './internal/_curry2'
  * append([4, 5], [1, 2, 3]) // => [1, 2, 3, [4, 5]]
  */
 export default _curry2(function append (x, xs) {
+  if (typeof xs === 'string') {
+    return xs + x
+  }
   return _concat.call(xs, [x])
 })
