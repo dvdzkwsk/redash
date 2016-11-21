@@ -22,9 +22,5 @@ import prop from './prop'
  * console.log(bob)         // => { name: 'Bob' }
  */
 export default function lensProp (key) {
-  const res = lens(prop(key), assoc(key))
-  res.toString = function () {
-    return 'Lens(' + key + ')'
-  }
-  return res
+  return lens(prop(key), assoc(key))
 }

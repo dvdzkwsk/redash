@@ -14,7 +14,7 @@ import map from './map'
  */
 export default function juxt (fns) {
   return function () {
-    const args = _slice.call(arguments)
+    var args = _slice.call(arguments)
     return map(function (fn) {
       return fn.apply(null, args)
     }, fns)
