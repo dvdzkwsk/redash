@@ -27,9 +27,9 @@ test('returns false if the number is not finite', (t) => {
 })
 
 test('returns false for non-integers', (t) => {
-  t.false(isOdd(2.1))
+  t.false(isOdd(2.2))
   t.false(isOdd(4.5))
-  t.false(isOdd(6.1))
+  t.false(isOdd(7.1))
 })
 
 test('returns false for 0', (t) => {

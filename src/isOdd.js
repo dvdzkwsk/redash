@@ -13,5 +13,5 @@
  * isOdd(Infinity) // => false
  */
 export default function isOdd (a) {
-  return !isNaN(a) && isFinite(a) && !!a && Math.floor(a) % 2 !== 0
+  return !isNaN(a) && isFinite(a) && !!a && a === Math.floor(a) && a % 2 !== 0
 }
