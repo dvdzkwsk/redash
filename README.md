@@ -2,13 +2,21 @@
 [![Build Status](https://travis-ci.org/davezuko/redash.svg?branch=master)](https://travis-ci.org/davezuko/redash)
 [![dependencies Status](https://david-dm.org/davezuko/redash/status.svg)](https://david-dm.org/davezuko/redash)
 
-The missing standard library for JavaScript. This lightweight library is meant to fill the gap between Ramda (functional) and Lodash (performance) while providing you with the tools you need to write sane JavaScript. All functions are auto-curried and expect data as the last argument to encourage composition.
+[Check out the API docs!](https://davezuko.gitbooks.io/redash/content/api_docs.html)
 
-## Rationale
+The missing standard library for JavaScript. This lightweight library is meant to fill the gap between Ramda (functional) and Lodash (performance) while providing you with the tools you need to write sane JavaScript. This means that all functions are immutable, curried, and encourage composition by expecting data as the last argument.
 
-### vs. Lodash
+1. [Why](#Why?)
+1. [Usage](#Usage)
+1. [Comparisons](#Comparisons)
 
-### vs. Ramda
+## Why?
+
+### Built for the Next Generation of JavaScript
+The redash codebase is written with ES2015 modules and packaged with rollup, allowing you to take advantage of tree shaking to produce slimmer bundles without the need for extra tooling.
+
+### A Focus on Functional Programming
+Every function in the redash library is immutable, which means none of your data ever gets modified. Function signatures encourage composition by placing the data to act on last. Redash also compares objects by value, not reference; this allows you to start working with data in a meaningful way without concerning yourself with how it's stored in memory.
 
 ## Usage
 
@@ -16,7 +24,7 @@ The missing standard library for JavaScript. This lightweight library is meant t
 npm i --save redash
 ```
 
-After installing the dependency, there are a few ways to use this library:
+After that's done, just import it in your code and get on to building awesome stuff. If you haven't already done so, you should check out the [API documentation](https://davezuko.gitbooks.io/redash/content/api_docs.html) to see what functions are available and learn how to use them. With that out of the way, here are two of the most common ways to use redash:
 
 ### ES6 Module
 ```js
@@ -27,9 +35,9 @@ const name = _.prop('name')
 name({ name: 'Bob' }) // => Bob
 ```
 
-Or, if you have full control over your code base and don't want to continually import/prefix all of the functions, you can install the library to a context.
-
 ### Installer
+If you have full control over your codebase and don't want to continually import/prefix all of the functions, you can install the library to a context.
+
 ```js
 import install from 'redash/installer'
 
@@ -43,7 +51,7 @@ install(window)
 prop('name', { name: 'Bob' }) // => Bob
 ```
 
-## Redash vs. Ramda vs. Lodash
+## Comparisons
 
 Category        | Redash  | Ramda | Lodash    | Lodash-FP
 --------------- | ------- | ----- | --------- | ---------
@@ -52,44 +60,3 @@ Minified (kb)   | 7.9     | 41.1  | 70.1      | 81.2
 Auto-Curry      | Yes     | Yes   | No        | Yes
 Object Equality | Value   | Value | Reference | Reference
 IE 9+           | Yes     | Yes   | Yes       | Yes
-
-## Benchmarks
-
-Improved formatting to come soon!
-
-```js
-[
-  // Reduce
-  // -------------------------
-  [
-    "redash      | 1,007,237  ops/sec ±1.84%   (82 runs sampled)",
-    "ramda       | 16,457     ops/sec ±2.01%   (88 runs sampled)",
-    "lodash      | 81,662     ops/sec ±1.56%   (82 runs sampled)",
-    "lodash/fp   | 339,761    ops/sec ±1.47%   (79 runs sampled)"
-  ],
-  // Map
-  // -------------------------
-  [
-    "redash      | 586,940    ops/sec ±2.18%   (83 runs sampled)",
-    "ramda       | 447,594    ops/sec ±2.03%   (88 runs sampled)",
-    "lodash      | 70,825     ops/sec ±2.01%   (81 runs sampled)",
-    "lodash/fp   | 380,222    ops/sec ±1.58%   (83 runs sampled)"
-  ],
-  // Filter
-  // -------------------------
-  [
-    "redash      | 317,629    ops/sec ±0.71%   (95 runs sampled)",
-    "ramda       | 326,238    ops/sec ±1.12%   (89 runs sampled)",
-    "lodash      | 72,329     ops/sec ±0.86%   (93 runs sampled)",
-    "lodash/fp   | 266,918    ops/sec ±1.97%   (87 runs sampled)"
-  ],
-  // Reject
-  // -------------------------
-  [
-    "redash      | 324,369    ops/sec ±1.35%   (78 runs sampled)",
-    "ramda       | 45,971     ops/sec ±1.49%   (80 runs sampled)",
-    "lodash      | 38,072     ops/sec ±2.10%   (84 runs sampled)",
-    "lodash/fp   | 34,872     ops/sec ±1.49%   (81 runs sampled)"
-  ]
-]
-```
