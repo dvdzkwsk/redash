@@ -1,3 +1,17 @@
+## v0.14.2
+
+### Features
+* Added `mapKeys`.
+* Added `mapValues`.
+* Added `where`.
+
+### Fixes
+* `append` now appends a list correctly rather than concatenating.
+* `isOdd` now correctly returns false for all non-integers.
+
+### Improvements
+* `append` can now handle strings, making it a correct mirror of `prepend`.
+
 ## v0.14.1
 
 ### Fixes
