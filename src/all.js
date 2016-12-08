@@ -7,7 +7,8 @@ import _curry2 from './internal/_curry2'
  * @description
  * Tests a predicate against all items in a list. Returns true if the predicate
  * returns true for all items in the list, otherwise returns false. If the list
- * is empty it will return true.
+ * is empty it will return true ([vacuous truth](https://en.wikipedia.org/wiki/Vacuous_truth)).
+ * @see any
  *
  * @example
  * all(isEven, [2, 4, 6, 8])  // => true

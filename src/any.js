@@ -8,6 +8,7 @@ import _curry2 from './internal/_curry2'
  * Tests a predicate against all items in a list. Returns true if the predicate
  * returns true for any item, otherwise returns false. Short circuits once
  * a true condition is found. If the list is empty it will return false.
+ * @see all
  *
  * @example
  * any(isEven, [1, 2, 3, 4, 5]) // => true, 2 is an even number

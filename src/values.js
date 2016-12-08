@@ -1,6 +1,6 @@
 /**
  * @name values
- * @signature {k:v} -> [v]
+ * @signature String k, Any v => {k:v} -> [v]
  * @since v0.14.0
  * @description
  * Returns an array containing the values of an object's own enumerable properties.
@@ -16,10 +16,8 @@
  *   foo() {}
  * }
  * const a = new A()
- * values(a) // => [] (foo is inherited from A's protoype and is ignored)
- *
  * a.bar = 'BAR'
- * values(a) // => ['BAR']
+ * values(a) // => ['BAR'] (foo is inherited from A's protoype and is ignored)
  */
 export default function values (obj) {
   var keys   = Object.keys(obj)

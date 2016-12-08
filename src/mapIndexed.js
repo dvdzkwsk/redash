@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2'
 
 /**
  * @name mapIndexed
- * @signature ((a, Integeer) -> b) -> [a] -> [b]
+ * @signature ((a, Integer) -> b) -> [a] -> [b]
  * @since v0.12.0
  * @description
  * Applies a transformation function to all elements in an array, returning

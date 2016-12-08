@@ -2,11 +2,12 @@ import _eachOwn from './internal/_eachOwn'
 
 /**
  * @name toPairs
- * @signature {k:v} -> [[k, v]]
+ * @signature String k, Any v => {k:v} -> [[k, v]]
  * @since v0.7.0
  * @description
- * Converts all own enumerable keys in an object into an array of tuples, each
- * with the key and its value.
+ * Converts all own enumerable keys in an object into a list of [key, value] pairs.
+ * If you have a list of these pairs and wish to conver them back into an object,
+ * use `fromPairs`.
  * @see fromPairs
  *
  * @example

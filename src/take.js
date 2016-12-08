@@ -3,7 +3,7 @@ import _curry2 from './internal/_curry2'
 
 /**
  * @name take
- * @signature Number -> [a] -> [a]
+ * @signature Integer -> [a] -> [a]
  * @since v0.1.0
  * @description
  * Returns an array containing the first N elements of the target array.

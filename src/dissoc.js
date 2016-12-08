@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2'
 
 /**
  * @name dissoc
- * @signature String k -> {k:v} -> {k:v}
+ * @signature String k, Any v => k -> {k:v} -> {k:v}
  * @since v0.10.0
  * @description
  * Removes a given key from an object. You can think of `dissoc` as the

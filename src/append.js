@@ -3,16 +3,18 @@ import _curry2 from './internal/_curry2'
 
 /**
  * @name append
- * @signature a -> [a] -> [a]
+ * @signature a -> [a] -> [a] | String -> String -> String
  * @since v0.10.0
  * @description
- * Appends a single element to an array.
+ * Appends a single element to a list. If the second argument is a string,
+ * string concatenation will be used instead.
  * @see prepend
  * @see concat
  *
  * @example
  * append(4, [1, 2, 3])      // => [1, 2, 3, 4]
  * append([4, 5], [1, 2, 3]) // => [1, 2, 3, [4, 5]]
+ * append('bar', 'foo')      // => 'foobar'
  */
 export default _curry2(function append (x, xs) {
   if (typeof xs === 'string') {
