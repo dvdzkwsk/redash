@@ -1,3 +1,8 @@
+## v0.15.1
+
+### Features
+* `pipe` and `compose` now throw early if they receive arguments that are not functions.
+
 ## v0.15.0
 
 ### Features
