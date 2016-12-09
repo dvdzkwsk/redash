@@ -39,4 +39,5 @@ test('throws early if a non-function is passed', (t) => {
     () => pipe(() => {}, undefined),
     'Invalid argument supplied to `pipe`. The argument at index [1] was not a function; ' +
     'what was received was of type: Nil.')
- })
+})
+
