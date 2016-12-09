@@ -1,3 +1,9 @@
+## v0.15.0
+
+### Features
+* Added `pick`.
+* Added `omit`.
+
 ## v0.14.2
 
 ### Features
