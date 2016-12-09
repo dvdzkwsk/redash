@@ -1,4 +1,6 @@
 import curryN from './curryN'
+import isType from './isType'
+import type from './type'
 
 /**
  * @name pipe
@@ -25,7 +27,18 @@ import curryN from './curryN'
  */
 export default function pipe () {
   var fns = arguments
+    , fni = 0
 
+  // TODO(zuko): abstract for use in other functions and disable in production.
+  for (; fni < fns.length; fni++) {
+    if (!isType('function', fns[fni])) {
+      throw new TypeError(
+        'Invalid argument supplied to `pipe`. The argument at index ' +
+        '[' + fni + '] was not a function; what was received was of type: ' +
+        type(fns[fni]) + '.'
+      )
+    }
+  }
   return curryN(fns[0].length, function () {
     var i   = 0
       , len = fns.length
