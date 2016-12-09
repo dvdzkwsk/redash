@@ -1,4 +1,6 @@
 import _reverse from './internal/_reverse'
+import isType from './isType'
+import type from './type'
 import pipe from './pipe'
 
 /**
@@ -32,5 +34,17 @@ import pipe from './pipe'
  * compose(equals(4), sqrt, double)(8) // => true
  */
 export default function compose () {
+  var i = 0
+
+  // TODO(zuko): abstract for use in other functions and disable in production.
+  for (; i < arguments.length; i++) {
+    if (!isType('function', arguments[i])) {
+      throw new TypeError(
+        'Invalid argument supplied to `compose`. The argument at index ' +
+        '[' + i + '] was not a function; what was received was of type: ' +
+        type(arguments[i]) + '.'
+      )
+    }
+  }
   return pipe.apply(null, _reverse.call(arguments))
 }
