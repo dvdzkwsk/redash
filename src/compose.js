@@ -10,7 +10,7 @@ import pipe from './pipe'
  * @description
  * Takes a series of functions and wraps them in a single, curried function
  * that, when called, invokes the original functions from right to left,
- * passing the result of each function call as the arguments to the next. The
+ * passing the result of each function call as the argument to the next. The
  * result of the leftmost function call is the final return value.
  * This is the same concept as `pipe`, but runs the functions from right -> left.
  * Note that all functions except for the first (rightmost) must be unary

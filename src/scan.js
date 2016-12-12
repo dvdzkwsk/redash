@@ -5,10 +5,10 @@ import _curry3 from './internal/_curry3'
  * @signature (b, a -> b) -> b -> [a] -> [b]
  * @since v0.12.0
  * @description
- * Similar to reduce, but returns a list containing the accumulator value from
- * each step in the reducing function.
- *
+ * Similar to reduce, but, instead of returning the final accumulator value,
+ * returns a list containing each iteration of the accumulator.
  * @see reduce
+ *
  * @example
  * // initial accumulator  --> 0
  * // first step:  0 + 1   --> 1
