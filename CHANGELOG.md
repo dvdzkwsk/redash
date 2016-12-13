@@ -1,3 +1,13 @@
+## v0.16.0
+
+### Features
+* Added `F`.
+* Added `T`.
+* Added `partition`.
+
+### Deprecations
+* `mapIndexed` is now `mapi`.
+
 ## v0.15.1
 
 ### Features
