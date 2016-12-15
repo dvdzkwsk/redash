@@ -27,6 +27,7 @@
     "compile": "npm run bundle && npm run minify",
     "deploy": "rm -rf dist && npm run compile && cp -r dist/. .",
     "test": "ava",
+    "build:docs": "node scripts/generate-docs",
     "prepublish": "npm run deploy"
   },
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
@@ -45,11 +46,13 @@
     "require": []
   },
   "devDependencies": {
+    "async": "^2.1.4",
     "ava": "^0.16.0",
     "benchmark": "^2.1.1",
     "eslint": "^2.13.1",
     "jsdoc": "^3.4.2",
     "lodash": "^4.16.3",
+    "marked": "^0.3.6",
     "mocha": "^2.3.4",
     "ramda": "^0.22.1",
     "rollup": "^0.21.0",
