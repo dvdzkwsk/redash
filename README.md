@@ -32,7 +32,7 @@ import * as _ from 'redash'   // import everything
 import { prop } from 'redash' // or just what you need
 
 const getName = _.prop('name')
-_.map(getName, [{ name: 'Dwight' }, { name: 'Jim' }] // => ['Dwight', 'Jim']
+_.map(getName, [{ name: 'Dwight' }, { name: 'Jim' }]) // => ['Dwight', 'Jim']
 ```
 
 ### Installer
