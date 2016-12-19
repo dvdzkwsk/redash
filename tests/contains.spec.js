@@ -21,3 +21,7 @@ test('performs deep equality comparisons', (t) => {
   t.true(contains({ id: 1 }, [{ id: 1 }, { id: 2 }]))
 })
 
+test('works for strings', (t) => {
+  t.true(contains('bar', 'foobarbaz'))
+  t.false(contains('bar', 'foobaz'))
+})
