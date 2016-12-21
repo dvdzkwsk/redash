@@ -2,11 +2,11 @@ sudo: false
 language: node_js
 node_js:
   - "6"
-
-install:
-  - npm install -g yarn
-  - yarn install
-
+cache:
+  yarn: true
+  apt: true
+  directories:
+    - node_modules
 script:
   - npm run lint
   - npm test
