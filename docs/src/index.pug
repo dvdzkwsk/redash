@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.4.1/github-markdown.min.css')
+    style
+      include ./main.css
+  body.markdown-body
+    nav
+      .nav-content
+        each fn in api
+          a(href='#' + fn.name.toLowerCase())= fn.name
+    article.code-javascript
+      each fn in api
+        h2(id=fn.name.toLowerCase())= fn.name
+        p
+          code= fn.signature
+        p
+          :markdown-it!= fn.description
+        each example in fn.examples
+          pre
+            code.lang-js= example
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-twilight.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js')

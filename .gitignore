@@ -9,3 +9,5 @@ redash.min.js
 installer.js
 installer.min.js
 sandbox.js
+docs/*
+!docs/src

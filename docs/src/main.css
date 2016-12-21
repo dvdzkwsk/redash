@@ -1,0 +1,21 @@
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+}
+.nav-content {
+  height: 100vh;
+  padding: 1em 4em 0 2em;
+  overflow-y: auto;
+}
+.nav-content a {
+  display: block;
+}
