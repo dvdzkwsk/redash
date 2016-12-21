@@ -5,10 +5,10 @@ import pipe from './pipe'
 
 /**
  * @name compose
- * @signature ((y -> z), ..., (g -> h), (a, b, ..., f -> g)) -> (a, b, ..., f -> z)
+ * @signature [(y -> z), ..., (b -> c), (a -> b)] -> a -> z
  * @since v0.1.0
  * @description
- * Takes a series of functions and wraps them in a single, curried function
+ * Takes a list of functions and wraps them in a single, curried function
  * that, when called, invokes the original functions from right to left,
  * passing the result of each function call as the argument to the next. The
  * result of the leftmost function call is the final return value.
@@ -25,7 +25,7 @@ import pipe from './pipe'
  * // to the next function, `isEven`. Because `isEven` is the last function in
  * // the composition, its result is the final return value.
  * // This would look like: (x) => isEven(sqrt(x))
- * const isSqrtEven = compose(isEven, sqrt)
+ * const isSqrtEven = compose([isEven, sqrt])
  *
  * isSqrtEven(9)  // => false
  * isSqrtEven(16) // => true
@@ -33,18 +33,18 @@ import pipe from './pipe'
  * // You can compose more than two functions at a time
  * compose(equals(4), sqrt, double)(8) // => true
  */
-export default function compose () {
+export default function compose (fns) {
   var i = 0
 
   // TODO(zuko): abstract for use in other functions and disable in production.
-  for (; i < arguments.length; i++) {
-    if (!isType('function', arguments[i])) {
+  for (; i < fns.length; i++) {
+    if (!isType('function', fns[i])) {
       throw new TypeError(
-        'Invalid argument supplied to `compose`. The argument at index ' +
+        'Invalid argument supplied to `compose`. The value at index ' +
         '[' + i + '] was not a function; what was received was of type: ' +
-        type(arguments[i]) + '.'
+        type(fns[i]) + '.'
       )
     }
   }
-  return pipe.apply(null, _reverse.call(arguments))
+  return pipe(_reverse.call(fns))
 }
