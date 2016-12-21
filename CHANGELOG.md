@@ -7,8 +7,8 @@
 pipe(fn1, fn2, fn3)   // old
 pipe([fn1, fn2, fn3]) // new
 
-compose(fn3, fn2, fn1)    // old
-compose([fn3, fn2, fnd1]) // new
+compose(fn3, fn2, fn1)   // old
+compose([fn3, fn2, fn1]) // new
 ```
 
 Beside making the signature for these functions more sane and in line with the rest of the redash API, this change has an added benefit for fans of the trailing comma:
@@ -32,8 +32,10 @@ pipe([
 ### Features
 * Added `init`.
 * Added `path`.
+* Added `replace`.
 
 ### Improvements
+* `contains` now supports strings.
 * `pipe` and `compose` are now both unary.
 
 ## v0.16.0
