@@ -31,7 +31,7 @@ import pipe from './pipe'
  * isSqrtEven(16) // => true
  *
  * // You can compose more than two functions at a time
- * compose(equals(4), sqrt, double)(8) // => true
+ * compose([equals(4), sqrt, double])(8) // => true
  */
 export default function compose (fns) {
   var i = 0

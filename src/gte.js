@@ -4,10 +4,9 @@ import _curry2 from './internal/_curry2'
  * @name gte
  * @signature Number -> Number -> Boolean
  * @since v0.13.0
- * Returns a boolean indicating whether or not the second argument was greater
- * than or equal to the first. Because infix notation with `>=` is generally
- * used when both arguments are known upfront, we optimize for readability
- * with partial application.
+ * Determines whether the second argument is greater than or equal to the first.
+ * Because infix notation with `>=` is generally used when both arguments are
+ * known upfront, we optimize for readability with partial application.
  * @see gt
  * @see lt
  * @see lte

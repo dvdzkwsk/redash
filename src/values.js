@@ -3,7 +3,7 @@
  * @signature String k, Any v => {k:v} -> [v]
  * @since v0.14.0
  * @description
- * Returns an array containing the values of an object's own enumerable properties.
+ * Returns a list containing the values of an object's own enumerable properties.
  * Note that this ignores all inherited properties, and does not guarantee
  * order due to discrepencies between JavaScript engines.
  *

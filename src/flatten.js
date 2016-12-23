@@ -3,7 +3,7 @@
  * @signature [[a]] -> [a]
  * @since v0.1.0
  * @description
- * Shallowly flattens an array (i.e. 1 level deep).
+ * Shallowly flattens a list (i.e. 1 level deep).
  * @see flattenDeep
  *
  * @example

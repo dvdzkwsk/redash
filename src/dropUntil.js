@@ -6,9 +6,9 @@ import _slice from './internal/_slice'
  * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.14.0
  * @description
- * Runs a predicate function sequentially through an array, dropping
+ * Runs a predicate function sequentially through a list, dropping
  * all elements until the predicate returns `true`. Once the predicate
- * returns `true`, the remainder of the array is returned.
+ * returns `true`, the remainder of the list is returned.
  * @see dropWhile
  *
  * @example

@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  * @signature (a -> Boolean) -> [a] -> a | undefined
  * @since v0.6.0
  * @description
- * Tests a predicate against an array, returning the first value that
+ * Tests a predicate against a list, returning the first value that
  * matches that predicate. If no matching value is found, `undefined` is
  * returned.
  *

@@ -7,7 +7,7 @@ import _slice from './internal/_slice'
  * @signature Number -> a -> [a] -> [a]
  * @since v0.11.0
  * @description
- * Inserts a value at the given position in an array. This does not replace
+ * Inserts a value at the given position in a list. This does not replace
  * the current value, but rather shifts it and all following elements forward
  * by one poisition.
  * @see append

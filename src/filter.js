@@ -7,7 +7,7 @@ import _curry2 from './internal/_curry2'
  * @description
  * Filters a list by calling the predicate function with each element in the
  * list. If the predicate returns a truthy value, the element is kept in
- * the new array, otherwise it is discarded.
+ * the new list, otherwise it is discarded.
  * @see reject
  *
  * @example

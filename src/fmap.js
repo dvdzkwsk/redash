@@ -4,9 +4,15 @@ import _curry2 from './internal/_curry2'
  * @name fmap
  * @signature Functor f => (a -> b) -> f a -> f b
  * @since v0.13.0
- * @param {Function} fn - transformation function
- * @param {Functor} functor - the functor to map over
- * @returns {Functor} the result of the functor transformation
+ * @description
+ * Lifts a function into a functor. The functor must implement either `fmap` or `map`.
+ * @example
+ * // Tree is a functor that implements `map` (or `fmap`):
+ * const tree = new Tree(2, new Tree(1), new Tree(3))
+ * fmap(double, tree) // => Tree(4, Tree(2), Tree(6))
+ *
+ * // Native arrays implement `map`:
+ * fmap(double, [1, 2, 3, 4]) // => [2, 4, 6, 8]
  */
 export default _curry2(function fmap (fn, functor) {
   if (functor.fmap) return functor.fmap(fn)

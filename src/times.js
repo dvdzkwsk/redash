@@ -5,8 +5,8 @@ import _curry2 from './internal/_curry2'
  * @signature (Number -> a) -> Number -> [a]
  * @since v0.5.0
  * @description
- * Calls a function N times with the index of the call. Returns an array
- * containing the result of each function call.
+ * Calls a function N times with the index of each call as its argument.
+ * Returns a list containing the result of each function call.
  * @see range
  *
  * @example

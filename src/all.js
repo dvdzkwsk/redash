@@ -11,9 +11,9 @@ import _curry2 from './internal/_curry2'
  * @see any
  *
  * @example
- * all(isEven, [2, 4, 6, 8])  // => true
- * all(isEven, [2, 4, 6, 3])  // => false, 3 is not an even number
- * all(isEven, [])            // => true
+ * all(isEven, [2, 4, 6, 8]) // => true
+ * all(isEven, [2, 4, 6, 3]) // => false, 3 is not an even number
+ * all(isEven, [])           // => true
  */
 export default _curry2(function all (fn, xs) {
   var i   = 0

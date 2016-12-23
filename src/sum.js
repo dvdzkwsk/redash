@@ -3,7 +3,7 @@
  * @signature [Number] -> Number
  * @since v0.10.0
  * @description
- * Returns the sum of all elements in an array.
+ * Returns the sum of all elements in a list.
  *
  * @example
  * sum([1, 10, 100]) // => 111

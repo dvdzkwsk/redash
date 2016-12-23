@@ -5,8 +5,8 @@ import _curry2 from './internal/_curry2'
  * @signature (a -> b) -> [a] -> [b]
  * @since v0.1.0
  * @description
- * Applies a transformation function to all elements in an array, returning
- * a new array containing the results of those transformations.
+ * Applies a transformation function to all elements in a list, returning
+ * a new list containing the results of those transformations.
  * @see mapIndexed
  *
  * @example

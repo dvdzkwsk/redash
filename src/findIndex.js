@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  * @signature (a -> Boolean) -> [a] -> Number
  * @since v0.1.0
  * @description
- * Tests a predicate against an array, returning the index of the first
+ * Tests a predicate against a list, returning the index of the first
  * vakye that matches that predicate. If no matching value is found, `-1` is
  * returned.
  * @see find

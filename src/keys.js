@@ -3,7 +3,7 @@
  * @signature {k:v} -> [k]
  * @since v0.1.0
  * @description
- * Returns an array containing all own enumerable properties of an object.
+ * Returns a list containing all own enumerable properties of an object.
  * Note that key order is not guaranteed due to discrepencies between
  * JavaScript engines.
  * @see values

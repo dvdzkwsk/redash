@@ -5,12 +5,12 @@ import _curry2 from './internal/_curry2'
  * @signature String -> String -> [String]
  * @since v0.10.0
  * @description
- * Splits a string on some delimeter and returns an array containing the
+ * Splits a string on some delimeter and returns a list containing the
  * fragments of that string between the delimeter.
  * @see join
  *
  * @example
- * split(',', 'Jim, Bill, Bob') // => ['Jim', 'Bill', 'Bob']
+ * split(', ', 'Jim, Bill, Bob') // => ['Jim', 'Bill', 'Bob']
  */
 export default _curry2(function split (char, str) {
   return str.split(char)

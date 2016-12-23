@@ -6,7 +6,7 @@ import _reverse from './internal/_reverse'
  * @signature [a] -> [a]
  * @since v0.1.0
  * @description
- * Returns an array with all of the elements reversed.
+ * Reverses the order of elements in a list.
  *
  * @example
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]

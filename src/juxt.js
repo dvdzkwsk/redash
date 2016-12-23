@@ -5,7 +5,7 @@ import map from './map'
  * @name juxt
  * @signature [(x, y, z... -> a), (x, y, z... -> b), ...] -> (x, y, z...) -> [a, b, ...]
  * @description
- * Applies a set of arguments to a list of functions, returning an array that
+ * Applies a set of arguments to a list of functions, returning a list that
  * contains the result of each function call in its corresponding position.
  *
  * @example

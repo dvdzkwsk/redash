@@ -5,8 +5,8 @@ import _curry2 from './internal/_curry2'
  * @signature (a -> Boolean) -> [a] -> [a]
  * @since v0.1.0
  * @description
- * Returns a subset of an array that excludes all items for which the
- * predicate function returns true. This is the inverse of `filter` and is
+ * Returns a subset of a list which excludes all items for which the
+ * predicate function returned true. This is the inverse of `filter` and is
  * equivalent to `filter(complement(predicate))`.
  *
  * @example

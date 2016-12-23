@@ -5,7 +5,7 @@ import _curry2 from './internal/_curry2'
  * @signature String -> [String] -> String
  * @since v0.13.0
  * @description
- * Joins all elements of an array with a given string.
+ * Joins all elements of a list together with the provided string.
  *
  * @example
  * join(' & ', ['Michael', 'Dwight', 'Jim']) // => 'Michael & Dwight & Jim'

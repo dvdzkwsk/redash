@@ -3,7 +3,7 @@
  * @signature [a] -> a
  * @since v0.1.0
  * @description
- * Returns the last element in an array.
+ * Returns the last element in a list.
  * @see head
  * @see tail
  *

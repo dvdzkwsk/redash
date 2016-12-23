@@ -5,12 +5,12 @@ import curryN from './curryN'
  * @signature (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
  * @since v0.1.0
  * @description
- * Curries a function based on its arity, reported via its `.length` property.
- * Curried functions continue to accept arguments up until the number of total
- * arguments supplied to it meet or exceed its arity, at which point the
- * original function is called with those arguments.
+ * Curries a function based on its arity, which is determined via its `length`
+ * property. Curried functions continue to accept arguments up until the number
+ * of total arguments supplied to it meet or exceed its arity, at which point
+ * the original function is called with those arguments.
  * If you wish to curry a function to a different or fixed arity, such as with
- * variadic functions, use `curryN`.
+ * variadic functions, use [curryN](#curryn).
  * @see curryN
  *
  * @example

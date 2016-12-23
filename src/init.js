@@ -10,9 +10,9 @@ import _slice from './internal/_slice'
  * @see tail
  *
  * @example
- * init(3, [1, 2, 3, 4, 5]) // => [1, 2, 3]
- * init(5, [1, 2, 3])       // => [1, 2, 3]
- * init(Infinity, [])       // => []
+ * init([])              // => []
+ * init([1])             // => []
+ * init([1, 2, 3, 4, 5]) // => [1, 2, 3, 4]
  */
 export default function init (xs) {
   return _slice.call(xs, 0, xs.length - 1)

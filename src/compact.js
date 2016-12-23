@@ -2,7 +2,7 @@
  * @name compact
  * @signature [a] -> [a]
  * @description
- * Filters out all falsy values from a list.
+ * Removes all falsy values from a list.
  *
  * @example
  * compact([null, undefined, true, false]) // => [true]
