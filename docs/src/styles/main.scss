@@ -1,0 +1,36 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  max-width: 225px;
+  padding: 1em 5em 0 2em;
+  overflow-y: auto;
+  box-shadow: 0 0 0.5rem #9da5ab;
+}
+
+nav a {
+  display: block;
+}
+
+main {
+  width: 100%;
+  padding-left: 225px;
+  overflow-y: auto;
+}
+
+.main__content {
+  margin: 0 auto;
+  max-width: 960px;
+}
