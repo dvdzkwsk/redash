@@ -1,19 +1,22 @@
 import _curry2 from './internal/_curry2'
-import _concat from './internal/_concat'
 
 /**
  * @name concat
- * @signature [a] -> [a] -> [a]
+ * @signature
+ * [a] -> [a] -> [a]
+ * String -> String -> String
  * @since v0.7.0
  * @description
- * Concatenates the second array onto the first.
+ * Concatenates two values together by dispatching to the `concat` method of
+ * the first argument. This is most commonly used for Array and String
+ * concatenation.
  *
  * @example
  * concat([1, 2, 3], [4, 5, 6]) // => [1, 2, 3, 4, 5, 6]
  * concat([1, 2, 3], [])        // => [1, 2, 3]
+ * concat('foo', 'bar')         // => 'foobar'
  */
-// TODO(zuko): support strings
 // TODO(zuko): consider flipping argument order, breaking change
-export default _curry2(function concat (as, bs) {
-  return _concat.call(as, bs)
+export default _curry2(function concat (xs, ys) {
+  return xs.concat(ys)
 })

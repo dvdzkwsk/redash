@@ -33,3 +33,7 @@ test('always returns a new array', (t) => {
   t.not(res, as)       // compare references
   t.deepEqual(res, as) // compare values
 })
+
+test('performs string concatenation when the first argument is a string', (t) => {
+  t.is(concat('foo', 'bar'), 'foobar')
+})
