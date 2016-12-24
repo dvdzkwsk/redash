@@ -9,7 +9,7 @@ import _contains from './internal/_contains'
  * Excludes all elements of the first list from the second list.
  *
  * @example
- * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) => [3, 4, 7]
+ * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) // => [3, 4, 7]
  */
 export default _curry2(function without (as, bs) {
   var i   = 0

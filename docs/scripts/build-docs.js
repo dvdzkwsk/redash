@@ -12,6 +12,7 @@ const rendered = renderToStaticMarkup(r(App, { functions: docs.api }))
 const html = '<!doctype html>' + renderToStaticMarkup(r(HTML, {
   scripts: [
     { inject: true, content: [
+      fs.readFileSync(path.resolve(__dirname, '../../dist/installer.min.js'), 'utf8'),
       fs.readFileSync(path.resolve(__dirname, '../src/main.js'), 'utf8'),
     ].join('') },
   ],

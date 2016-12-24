@@ -9,7 +9,7 @@ import _curry2 from './internal/_curry2'
  *
  * @example
  * test(/bar/, 'foobarbaz') // => true
- * filter(test(/joe/i), ['Joe', 'Bill', 'joey'])) // => ['Joe', 'joey']
+ * filter(test(/joe/i), ['Joe', 'Bill', 'joey']) // => ['Joe', 'joey']
  */
 export default _curry2(function test (regex, str) {
   return regex.test(str)

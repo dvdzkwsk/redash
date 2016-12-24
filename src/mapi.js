@@ -12,8 +12,8 @@ import _curry2 from './internal/_curry2'
  * @see map
  *
  * @example
- * const xform = (x, idx) => idx % 2 === 0 ? x * 2 : x
- * mapIndexed(xform, [1, 2, 3, 4, 5]) => [2, 2, 6, 4, 5]
+ * const xform = (x, i) => isOdd(i) ? x * 2 : x
+ * mapi(xform, [1, 2, 3, 4, 5]) // => [2, 2, 6, 4, 5]
  */
 export default _curry2(function mapi (fn, as) {
   var bs  = new Array(as.length)

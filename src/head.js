@@ -8,7 +8,6 @@
  *
  * @example
  * head([1, 2, 3, 4]) // => [1]
- * head([])           // => undefined
  */
 export default function head (xs) {
   return xs[0]

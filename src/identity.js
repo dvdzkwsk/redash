@@ -9,7 +9,7 @@
  * @example
  * identity(5) // => 5
  *
- * const doubleIfEven = ifElse(isEven, double, identity)
+ * const doubleIfEven = when(isEven, multiply(2))
  * doubleIfEven(2) // => 4
  * doubleIfEven(3) // => 3
  */

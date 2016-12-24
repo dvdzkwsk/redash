@@ -11,8 +11,8 @@ import _curry2 from './internal/_curry2'
  *
  * @example
  * find(isEven, [1, 3, 4, 6]) // => 4
- * find(propEq('id', 2), [{ id: 1 }, { id : 2 }]) // => { id: 2 }
  * find(isEven, [1, 3, 5, 7]) // => undefined
+ * find(propEq('id', 2), [{ id: 1 }, { id : 2 }]) // => { id: 2 }
  */
 export default _curry2(function find (pred, xs) {
   var i   = 0

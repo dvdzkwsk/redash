@@ -9,8 +9,8 @@ import map from './map'
  * contains the result of each function call in its corresponding position.
  *
  * @example
- * juxt([inc, dec, multiply(3)])(2) => [3, 1, 6]
- * juxt([add, divide, multiply])(2, 4) => [6, 2, 8]
+ * juxt([inc, dec, multiply(3)])(2)    // => [3, 1, 6]
+ * juxt([add, divide, multiply])(2, 4) // => [6, 2, 8]
  */
 export default function juxt (fns) {
   return function () {

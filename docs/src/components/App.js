@@ -3,7 +3,7 @@ const marked = require('marked')
 
 const CodeExample = ({ children }) =>
   r.pre(null,
-    r.code(null, children))
+    r.code({ className: 'code-example' }, children))
 
 const FunctionDoc = ({
   name,

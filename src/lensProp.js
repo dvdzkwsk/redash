@@ -17,9 +17,8 @@ import prop from './prop'
  * const nameLens = lensProp('name')
  * const bob = { name: 'Bob' }
  *
- * view(nameLens, bob)      // => 'Bob'
- * set(nameLes, 'Joe', bob) // => { name: 'Joe' }
- * console.log(bob)         // => { name: 'Bob' }
+ * view(nameLens, bob)       // => 'Bob'
+ * set(nameLens, 'Joe', bob) // => { name: 'Joe' }
  */
 export default function lensProp (key) {
   return lens(prop(key), assoc(key))

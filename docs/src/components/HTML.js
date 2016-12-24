@@ -1,10 +1,12 @@
 const r = require('../lib/react')
 
-const Script = ({ src, inject, content }) =>
-  inject ? r.script(null, content) : r.script({ src })
+const Script = ({ src, inject, content }) => inject
+   ? r.script({ dangerouslySetInnerHTML: { __html: content } })
+   : r.script({ src })
 
-const Style = ({ href, inject, content }) =>
-  inject ? r.style(null, content) : r.link({ href, rel: 'stylesheet' })
+const Style = ({ href, inject, content }) => inject
+  ? r.style({ dangerouslySetInnerHTML: { __html: content } })
+  : r.link({ href, rel: 'stylesheet' })
 
 const HTML = ({
   children,
@@ -12,7 +14,7 @@ const HTML = ({
   scripts = [],
   styles = [],
 }) =>
-  r.html(null,
+  r.html({ className: 'no-js' },
     r.head(null,
       r.title(null, title),
       r.meta({ charSet: 'utf-8' }),

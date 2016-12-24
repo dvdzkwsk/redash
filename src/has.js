@@ -12,7 +12,7 @@ import _hasOwn from './internal/_hasOwn'
  * has('name', { name: 'Bill' }) // => true
  *
  * // Ignores inherited properties
- * class A () {
+ * class A {
  *   foo () {}
  * }
  * const a = new A()

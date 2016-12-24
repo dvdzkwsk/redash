@@ -18,11 +18,13 @@ import type from './type'
  * @see compose
  *
  * @example
- * const getFriends = pipe([prop('friends')
- *                          map(toUpper),
- *                          join(', ')])
+ * const getFriends = pipe([
+ *  prop('friends'),
+ *  map(pipe([prop('name'), toUpper])),
+ *  join(', ')
+ * ])
  *
- * const user = { friends: [{ name: 'Jim' }, { name: 'Dwight'}] }
+ * const user = { friends: [{ name: 'Jim' }, { name: 'Dwight' }] }
  * getFriends(user) // => 'JIM, DWIGHT'
  */
 export default function pipe (fns) {

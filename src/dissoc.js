@@ -13,11 +13,6 @@ import _curry2 from './internal/_curry2'
  * @example
  * const user = { first: 'Bob', last: 'Loblaw' }
  * dissoc('first', user) // => { last: 'Loblaw' }
- * @example
- * const user = { first: 'Bob', last: 'Loblaw' }
- * const newUser = dissoc('age', user) // => { first: 'Bob', last: 'Loblaw' }
- *
- * user === newUser // => false
  */
 export default _curry2(function dissoc (k, kv) {
   var y = {}

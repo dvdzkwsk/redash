@@ -25,13 +25,9 @@ import pipe from './pipe'
  * // to the next function, `isEven`. Because `isEven` is the last function in
  * // the composition, its result is the final return value.
  * // This would look like: (x) => isEven(sqrt(x))
- * const isSqrtEven = compose([isEven, sqrt])
+ * const isSqrtEven = compose([isEven, Math.sqrt])
  *
- * isSqrtEven(9)  // => false
  * isSqrtEven(16) // => true
- *
- * // You can compose more than two functions at a time
- * compose([equals(4), sqrt, double])(8) // => true
  */
 export default function compose (fns) {
   var i = 0

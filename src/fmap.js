@@ -8,6 +8,20 @@ import _curry2 from './internal/_curry2'
  * Lifts a function into a functor. The functor must implement either `fmap` or `map`.
  * @example
  * // Tree is a functor that implements `map` (or `fmap`):
+ * class Tree {
+ *   constructor (value, left, right) {
+ *      this._value = value
+ *      this._left = left
+ *      this._right = right
+ *   }
+ *   map (fn) {
+ *     return new Tree(
+ *       fn(this._value),
+ *       this._left && this._left.map(fn),
+ *       this._right && this._right.map(fn),
+ *     )
+ *   }
+ * }
  * const tree = new Tree(2, new Tree(1), new Tree(3))
  * fmap(double, tree) // => Tree(4, Tree(2), Tree(6))
  *

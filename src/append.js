@@ -3,11 +3,13 @@ import _curry2 from './internal/_curry2'
 
 /**
  * @name append
- * @signature a -> [a] -> [a] | String -> String -> String
+ * @signature
+ * a -> [a] -> [a]
+ * String -> String -> String
  * @since v0.10.0
  * @description
- * Appends a single element to a list. If the second argument is a string,
- * string concatenation will be used instead.
+ * Appends a single element to a list. If the argument in list position is a
+ * string, string concatenation will be used instead.
  * @see prepend
  * @see concat
  *

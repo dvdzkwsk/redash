@@ -8,8 +8,8 @@ import _curry2 from './internal/_curry2'
  * Returns the value of a given property on an object.
  *
  * @example
- * prop('name', { name: 'Bob' }) // => Bob
  * prop('name', {})              // => undefined
+ * prop('name', { name: 'Bob' }) // => Bob
  */
 export default _curry2(function prop (k, o) {
   return o[k]
