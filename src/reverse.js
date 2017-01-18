@@ -12,5 +12,5 @@ import _reverse from './internal/_reverse'
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
  */
 export default function reverse (xs) {
-  return _reverse.call(_slice.call(xs, 0))
+  return _reverse.call(_slice.call(xs))
 }
