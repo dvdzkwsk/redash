@@ -40,3 +40,10 @@ test('returns a new array even if the supplied array is empty', (t) => {
   t.not(filtered, xs)       // compare references
   t.deepEqual(filtered, xs) // compare values
 })
+
+test('works for objects', (t) => {
+  t.deepEqual(
+    filter(x => x > 5, { a: 1, b: 6, c: 5, d: 7 }),
+    { b: 6, d: 7 }
+  )
+})
