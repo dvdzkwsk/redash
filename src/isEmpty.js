@@ -6,13 +6,13 @@ import empty from './empty'
  * @signature a -> Boolean
  * @since v0.14.0
  * @description
- * Returns whether or not a value is empty. To determine "emptiness", the value
- * is compared against the empty value for its type. Dispatches to the `empty`
- * method on an object if it exists.
+ * Describes whether or not a value is empty. To determine "emptiness", the
+ * value is compared against its type's empty representation. Dispatches to
+ * the `empty` method on an object if it exists.
  *
  * Note that this is different from checking whether or not a value is falsy.
  * Nil values (null and undefined) are not considered empty, nor is 0, since
- * the concept of "emptiness" is not intuitively applicable to a number.
+ * these are discrete values that cannot contain anything.
  *
  * @example
  * isEmpty('')        // => true

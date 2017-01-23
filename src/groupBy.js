@@ -17,9 +17,9 @@ import _forEach from './internal/_forEach'
  * )
  * // =>
  * // {
- * //   child: [{ age: 5 }, { age: 7 }, { age: 2 }]
- * // , teenager: [{ age: 15 }]
- * // , adult: [{ age: 21 }]
+ * //   child    : [{ age: 5 }, { age: 7 }, { age: 2 }]
+ * // , teenager : [{ age: 15 }]
+ * // , adult    : [{ age: 21 }]
  * // }
  */
 export default _curry2(function groupBy (fn, xs) {
