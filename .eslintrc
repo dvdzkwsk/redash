@@ -107,7 +107,7 @@
     "no-whitespace-before-property": 2,
     "no-with": 2,
     "one-var": 2,
-    "operator-linebreak": [2, "after", { "overrides": { "?": "before", ":": "before" } }],
+    "operator-linebreak": [0, "after", { "overrides": { "?": "before", ":": "before" } }],
     "padded-blocks": [2, "never"],
     "quotes": [2, "single", "avoid-escape"],
     "semi": [2, "never"],
