@@ -1,4 +1,5 @@
 import filter from './filter'
+import identity from './identity'
 
 /**
  * @name compact
@@ -14,6 +15,4 @@ import filter from './filter'
  * compact({ a: false, b: null, c: true }) // => { c: true }
  * compact(['', 0, {}, [], '0'])           // => [{}, [], '0']
  */
-export default filter(function (x) {
-  return !!x
-})
+export default filter(identity)
