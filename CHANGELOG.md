@@ -1,3 +1,23 @@
+## v0.18.0
+
+### Migration path
+* Internal `arity` function no longer preserves `this` context. This should not affect the public API, but always be sure that you are not implicitly relying on `this` when working with redash.
+
+### Features
+* Added `clamp`.
+* Added `groupBy`.
+* Added `takeUntil`.
+* Added `trace`.
+* Added `transform`.
+* Added `flatMap` alias for `chain`.
+
+### Improvements
+* `concat` now dispatches to the first argument's `concat` method.
+* `concat` now supports strings.
+* `curry` now supplies _all_ arguments to the wrapped function. This improves support for functions that do not properly report their arities.
+* `filter` now works for objects.
+* `reject` now works for objects.
+
 ## v0.17.0
 
 ### Migration path
