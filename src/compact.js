@@ -1,22 +1,19 @@
+import filter from './filter'
+
 /**
  * @name compact
- * @signature [a] -> [a]
+ * @signature
+ * [a] -> [a]
+ * String k, Any v => {k:v} -> {k:v}
  * @description
- * Removes all falsy values from a list.
+ * Removes all falsy values from a list. For objects, dissociates all
+ * properties with falsy values.
  *
  * @example
  * compact([null, undefined, true, false]) // => [true]
+ * compact({ a: false, b: null, c: true }) // => { c: true }
  * compact(['', 0, {}, [], '0'])           // => [{}, [], '0']
  */
-export default function compact (xs) {
-  var i   = 0
-    , len = xs.length
-    , res = []
-
-  for (; i < len; i++) {
-    if (xs[i]) {
-      res[res.length] = xs[i]
-    }
-  }
-  return res
-}
+export default filter(function (x) {
+  return !!x
+})

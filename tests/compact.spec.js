@@ -46,3 +46,10 @@ test('returns a new array even if no items are excluded', (t) => {
   t.not(cmp, arr)       // compare references
   t.deepEqual(cmp, arr) // compare values
 })
+
+test('works for objects', (t) => {
+  t.deepEqual(
+    compact({ a: false, b: null, c: true }),
+    { c: true }
+  )
+})
