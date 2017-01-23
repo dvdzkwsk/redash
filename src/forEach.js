@@ -1,4 +1,5 @@
 import _curry2 from './internal/_curry2'
+import _forEach from './internal/_forEach'
 
 /**
  * @name forEach
@@ -15,11 +16,4 @@ import _curry2 from './internal/_curry2'
  * const res = forEach(log, [1, 2, 3]) // => logs: 1, 2, 3
  * console.log(res)                    // => undefined
  */
-export default _curry2(function forEach (fn, xs) {
-  var i   = 0
-    , len = xs.length
-
-  for (; i < len; i++) {
-    fn(xs[i])
-  }
-})
+export default _curry2(_forEach)
