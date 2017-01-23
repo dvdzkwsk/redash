@@ -1,5 +1,5 @@
-const test      = require('ava')
-    , { chain } = require('../dist/redash')
+const test               = require('ava')
+    , { chain, flatMap } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(chain.length, 2)
@@ -23,4 +23,8 @@ test('flattens results 1 level deep', (t) => {
   t.deepEqual(
     chain(x => ([x * 2, [x * 3]]), [1, 2, 3, 4]),
     [2, [3], 4, [6], 6, [9], 8, [12]])
+})
+
+test('has alias: flatMap', (t) => {
+  t.is(chain, flatMap)
 })
