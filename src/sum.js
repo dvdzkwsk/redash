@@ -11,10 +11,9 @@
  */
 export default function sum (xs) {
   var i   = 0
-    , len = xs.length
     , sum = 0
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     sum += xs[i]
   }
   return sum

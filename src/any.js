@@ -16,10 +16,9 @@ import _curry2 from './internal/_curry2'
  * any(isEven, [])              // => false
  */
 export default _curry2(function any (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     if (fn(xs[i])) {
       return true
     }

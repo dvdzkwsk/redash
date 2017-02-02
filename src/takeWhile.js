@@ -18,13 +18,11 @@ import _slice from './internal/_slice'
  *
  * @example
  * takeWhile(isEven, [2, 4, 6, 7, 8]) // => [2, 4, 6]
- * takeWhile(isEven, [1, 3, 2, 4, 6]) // => []
  */
 export default _curry2(function takeWhile (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     if (!fn(xs[i])) {
       return _slice.call(xs, 0, i)
     }

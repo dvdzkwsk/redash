@@ -22,10 +22,9 @@
 export default function values (obj) {
   var keys   = Object.keys(obj)
     , i      = 0
-    , len    = keys.length
     , values = new Array(keys.length)
 
-  while (i < len) {
+  while (i < keys.length) {
     values[i] = obj[keys[i]]
     i += 1
   }

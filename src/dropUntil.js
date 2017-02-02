@@ -18,9 +18,8 @@ import _slice from './internal/_slice'
  * dropUntil(isEven, [1, 3, 6, 5, 7])  // => [6, 5, 7]
  */
 export default _curry2(function dropUntil (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  while (i < len && !fn(xs[i])) i += 1
+  while (i < xs.length && !fn(xs[i])) i += 1
   return _slice.call(xs, i)
 })

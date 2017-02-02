@@ -13,10 +13,9 @@ import _contains from './internal/_contains'
  */
 export default _curry2(function without (as, bs) {
   var i   = 0
-    , len = bs.length
     , res = []
 
-  while (i < len) {
+  while (i < bs.length) {
     if (!_contains(bs[i], as)) {
       res[res.length] = bs[i]
     }

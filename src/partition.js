@@ -15,10 +15,9 @@ import _curry2 from './internal/_curry2'
 export default _curry2(function partition (pred, xs) {
   var left  = []
     , right = []
-    , len   = xs.length
     , i     = 0
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     if (pred(xs[i])) {
       left[left.length] = xs[i]
     } else {

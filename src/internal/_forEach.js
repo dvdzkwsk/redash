@@ -1,8 +1,7 @@
 export default function _forEach (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  while (i < len) {
+  while (i < xs.length) {
     fn(xs[i])
     i++
   }

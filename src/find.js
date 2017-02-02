@@ -15,14 +15,11 @@ import _curry2 from './internal/_curry2'
  * find(propEq('id', 2), [{ id: 1 }, { id : 2 }]) // => { id: 2 }
  */
 export default _curry2(function find (pred, xs) {
-  var i   = 0
-    , len = xs.length
-    , x
+  var i = 0
 
-  for (; i < len; i++) {
-    x = xs[i]
-    if (pred(x)) {
-      return x
+  for (; i < xs.length; i++) {
+    if (pred(xs[i])) {
+      return xs[i]
     }
   }
 })

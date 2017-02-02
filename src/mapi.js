@@ -16,11 +16,10 @@ import _curry2 from './internal/_curry2'
  * mapi(xform, [1, 2, 3, 4, 5]) // => [2, 2, 6, 4, 5]
  */
 export default _curry2(function mapi (fn, as) {
-  var bs  = new Array(as.length)
-    , i   = 0
-    , len = as.length
+  var bs = new Array(as.length)
+    , i  = 0
 
-  for (; i < len; i++) {
+  for (; i < as.length; i++) {
     bs[i] = fn(as[i], i)
   }
   return bs

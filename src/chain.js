@@ -16,12 +16,11 @@ import _curry2 from './internal/_curry2'
  */
 export default _curry2(function chain (fn, xs) {
   var i   = 0
-    , len = xs.length
     , bs  = []
     , _i
     , b
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     b = fn(xs[i])
     if (Array.isArray(b)) {
       for (_i = 0; _i < b.length; _i++) {

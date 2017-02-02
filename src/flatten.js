@@ -13,15 +13,13 @@
 export default function flatten (xs) {
   var acc = []
     , i   = 0
-    , len = xs.length
     , x
     , xi
-    , xlen
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     x = xs[i]
     if (Array.isArray(x)) {
-      for (xi = 0, xlen = x.length; xi < xlen; xi++) {
+      for (xi = 0; xi < x.length; xi++) {
         acc.push(x[xi])
       }
     } else {

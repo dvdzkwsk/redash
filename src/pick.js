@@ -15,10 +15,9 @@ import _curry2 from './internal/_curry2'
  */
 export default _curry2(function pick (keys, obj) {
   var i   = 0
-    , len = keys.length
     , res = {}
 
-  while (i < len) {
+  while (i < keys.length) {
     res[keys[i]] = obj[keys[i]]
     i++
   }

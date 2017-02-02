@@ -17,14 +17,13 @@ import _curry3 from './internal/_curry3'
  * // fourth step: 6 + 4   --> 10
  * scan(add, 0, [1, 2, 3, 4]) // => [0, 1, 3, 6, 10]
  */
-export default _curry3(function scan (fn, acc, as) {
+export default _curry3(function scan (fn, acc, xs) {
   var i   = 0
-    , len = as.length
-    , bs  = [acc]
+    , res = [acc]
 
-  for (; i < len; i++) {
-    acc = fn(acc, as[i])
-    bs[bs.length] = acc
+  for (; i < xs.length; i++) {
+    acc = fn(acc, xs[i])
+    res[res.length] = acc
   }
-  return bs
+  return res
 })

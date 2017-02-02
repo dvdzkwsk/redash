@@ -13,11 +13,10 @@ import _curry2 from './internal/_curry2'
  * map(x => x * 2, [1, 2, 3, 4, 5]) // => [2, 4, 6, 8, 10]
  */
 export default _curry2(function map (fn, as) {
-  var bs  = new Array(as.length)
-    , i   = 0
-    , len = as.length
+  var bs = new Array(as.length)
+    , i  = 0
 
-  for (; i < len; i++) {
+  for (; i < as.length; i++) {
     bs[i] = fn(as[i])
   }
   return bs

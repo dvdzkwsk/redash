@@ -13,12 +13,11 @@ import _slice from './internal/_slice'
  * @see dropUntil
  *
  * @example
- * dropWhile(isEven, [1, 2, 5, 7, 8]) // => [5, 7, 9]
+ * dropWhile(isEven, [2, 4, 6, 7, 8]) // => [7, 8]
  */
 export default _curry2(function dropWhile (fn, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  while (i < len && fn(xs[i])) i += 1
+  while (i < xs.length && fn(xs[i])) i += 1
   return _slice.call(xs, i)
 })

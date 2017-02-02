@@ -16,10 +16,9 @@ import _curry2 from './internal/_curry2'
  * find(isEven, [1, 3, 5, 7]) // => -1
  */
 export default _curry2(function findIndex (pred, xs) {
-  var i   = 0
-    , len = xs.length
+  var i = 0
 
-  for (; i < len; i++) {
+  for (; i < xs.length; i++) {
     if (pred(xs[i])) {
       return i
     }
