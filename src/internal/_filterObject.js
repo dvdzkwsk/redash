@@ -1,15 +1,9 @@
-import _hasOwn from './_hasOwn'
+import _keys from './_keys'
+import _reduce from './_reduce'
 
 export default function filterObject (pred, obj) {
-  var res = {}
-    , key
-
-  for (key in obj) {
-    if (_hasOwn.call(obj, key)) {
-      if (pred(obj[key])) {
-        res[key] = obj[key]
-      }
-    }
-  }
-  return res
+  return _reduce(function (acc, key) {
+    if (pred(obj[key])) acc[key] = obj[key]
+    return acc
+  }, {}, _keys(obj))
 }
