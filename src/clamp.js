@@ -9,7 +9,7 @@ import _curry3 from './internal/_curry3'
  * @example
  * clamp(1, 10, 5)  // => 5
  * clamp(1, 10, -5) // => 1
- * clamp(1, 10, 15) // => 15
+ * clamp(1, 10, 15) // => 10
  */
 export default _curry3(function clamp (lower, upper, value) {
   return value < lower ? lower :
