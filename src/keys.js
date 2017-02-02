@@ -1,3 +1,5 @@
+import _keys from './internal/_keys'
+
 /**
  * @name keys
  * @signature {k:v} -> [k]
@@ -20,6 +22,4 @@
  * a.bar = () => {}
  * keys(a) // => ['bar']
  */
-export default function keys (object) {
-  return Object.keys(object)
-}
+export default _keys
