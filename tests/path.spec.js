@@ -1,5 +1,5 @@
 const test     = require('ava')
-    , { path } = require('../dist/redash')
+    , { path } = require('../dist/halcyon')
 
 test('patherly reports its arity (is binary)', (t) => {
   t.is(path.length, 2)

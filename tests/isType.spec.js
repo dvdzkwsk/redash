@@ -1,6 +1,6 @@
 /* eslint-disable no-new-wrappers */
 const test            = require('ava')
-  ,  { isType, type } = require('../dist/redash')
+  ,  { isType, type } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(isType.length, 2)

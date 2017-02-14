@@ -1,5 +1,5 @@
 const test    = require('ava')
-    , { dec } = require('../dist/redash')
+    , { dec } = require('../dist/halcyon')
 
 test('decrements the provided number by 1', (t) => {
   t.is(dec(5), 4)

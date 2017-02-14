@@ -1,6 +1,6 @@
 const test    = require('ava')
     , sinon   = require('sinon')
-    , { map } = require('../dist/redash')
+    , { map } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(map.length, 2)

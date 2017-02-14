@@ -1,6 +1,6 @@
 const test        = require('ava')
     , sinon       = require('sinon')
-    , { forEach } = require('../dist/redash')
+    , { forEach } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(forEach.length, 2)

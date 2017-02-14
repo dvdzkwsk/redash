@@ -1,5 +1,5 @@
 const test    = require('ava')
-    , { zip } = require('../dist/redash')
+    , { zip } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(zip.length, 2)

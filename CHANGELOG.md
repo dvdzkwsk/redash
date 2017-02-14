@@ -1,7 +1,7 @@
 ## v0.18.0
 
 ### Migration path
-* Internal `arity` function no longer preserves `this` context. This should not affect the public API, but always be sure that you are not implicitly relying on `this` when working with redash.
+* Internal `arity` function no longer preserves `this` context. This should not affect the public API, but always be sure that you are not implicitly relying on `this` when working with Halcyon.
 
 ### Features
 * Added `clamp`.
@@ -31,7 +31,7 @@ compose(fn3, fn2, fn1)   // old
 compose([fn3, fn2, fn1]) // new
 ```
 
-Beside making the signature for these functions more sane and in line with the rest of the redash API, this change has an added benefit for fans of the trailing comma:
+Beside making the signature for these functions more sane and in line with the rest of the Halcyon API, this change has an added benefit for fans of the trailing comma:
 
 ```js
 // Error!

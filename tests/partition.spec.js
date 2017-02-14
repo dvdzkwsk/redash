@@ -1,5 +1,5 @@
 const test          = require('ava')
-    , { partition } = require('../dist/redash')
+    , { partition } = require('../dist/halcyon')
 
 test('properly reports its arity (is curried)', (t) => {
   t.is(partition.length, 2)

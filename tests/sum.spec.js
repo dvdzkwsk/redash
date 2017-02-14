@@ -1,5 +1,5 @@
 const test    = require('ava')
-    , { sum } = require('../dist/redash')
+    , { sum } = require('../dist/halcyon')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(sum.length, 1)

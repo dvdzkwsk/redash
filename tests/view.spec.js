@@ -2,7 +2,7 @@ const test     = require('ava')
     , { lens
       , view
       , assoc
-      , prop } = require('../dist/redash')
+      , prop } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(view.length, 2)

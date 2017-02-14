@@ -1,5 +1,5 @@
 const test        = require('ava')
-    , { replace } = require('../dist/redash')
+    , { replace } = require('../dist/halcyon')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(replace.length, 3)

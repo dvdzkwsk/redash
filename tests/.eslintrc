@@ -11,7 +11,7 @@
     "expect": false,
     "it": false,
     "sinon": false,
-    "Redash": false
+    "halcyon": false
   },
   "rules": {
     "max-depth": 0,
