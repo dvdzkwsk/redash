@@ -1,6 +1,6 @@
 /**
  * @name always
- * @signature a -> (Any...) -> a
+ * @signature a -> Any -> a
  * @since v0.9.0
  * @description
  * Takes a single argument and returns a function that, when invoked, always

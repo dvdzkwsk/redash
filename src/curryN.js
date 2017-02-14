@@ -3,7 +3,7 @@ import _curryN from './internal/_curryN'
 
 /**
  * @name curryN
- * @signature Integer -> (a, b, ..., n -> v) -> a -> b -> ... -> n -> v
+ * @signature Integer N => N -> (a1, a2, ..., aN -> v) -> a1 -> a2 -> ... -> aN -> v
  * @description
  * Curries a function to the provided arity, regardless of its actual arity.
  * @see curry
