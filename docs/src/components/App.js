@@ -2,8 +2,8 @@ const r = require('../lib/react')
 const marked = require('marked')
 
 const CodeExample = ({ children }) =>
-  r.pre(null,
-    r.code({ className: 'code-example' }, children))
+  r.pre({ className: 'language-javascript' },
+    r.code(null, children))
 
 const FunctionDoc = ({
   name,
@@ -15,7 +15,8 @@ const FunctionDoc = ({
 }) =>
   r.div(null,
     r.h2({ id: toLower(name) }, name),
-    r.p({ dangerouslySetInnerHTML: { __html: marked(description || '') } }),
+    mapi((sig, i) => r.p({ key: i }, null, r.code(null, sig)), signature.split('\n')),
+    r.div({ dangerouslySetInnerHTML: { __html: marked(description || '') } }),
     mapi((ex, i) => r(CodeExample, { key: i }, ex), examples))
 
 const App = ({ functions }) =>
