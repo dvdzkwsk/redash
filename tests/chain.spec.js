@@ -1,5 +1,5 @@
 const test               = require('ava')
-    , { chain, flatMap } = require('../dist/redash')
+    , { chain, flatMap } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(chain.length, 2)

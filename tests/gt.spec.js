@@ -1,5 +1,5 @@
 const test   = require('ava')
-    , { gt } = require('../dist/redash')
+    , { gt } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(gt.length, 2)

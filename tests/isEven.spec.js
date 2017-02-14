@@ -1,5 +1,5 @@
 const test      = require('ava')
-  ,  { isEven } = require('../dist/redash')
+  ,  { isEven } = require('../dist/halcyon')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(isEven.length, 1)

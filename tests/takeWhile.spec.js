@@ -1,6 +1,6 @@
 const test          = require('ava')
     , sinon         = require('sinon')
-    , { takeWhile } = require('../dist/redash')
+    , { takeWhile } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(takeWhile.length, 2)

@@ -6,7 +6,7 @@ const test  = require('ava')
     , head
     , toUpper
     , transform
-    } = require('../dist/redash')
+    } = require('../dist/halcyon')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(transform.length, 2)
