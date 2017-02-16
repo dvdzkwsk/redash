@@ -1,16 +1,37 @@
-;(function () {
-  redash(window) // eslint-disable-line
-  // window.klipse_settings = {
-  //   selector_eval_js: '.code-example',
-  // }
+import React from 'react'
+import ReactDOM from 'react-dom'
+import docs from '../.api_cache.json'
+import './styles/main.scss'
 
-  // function loadScript (src) {
-  //   const script = document.createElement('script')
-  //   script.src = src
-  //   document.body.appendChild(script)
-  // }
+const MOUNT_NODE = document.getElementById('root')
 
-  // window.addEventListener('load', function () {
-  //   loadScript('https://cdn.zuko.me/klipse.js')
-  // })
-})()
+let render = () => {
+  const App = require('./components/App').default // eslint-disable-line
+
+  ReactDOM.render(
+    <App functions={docs.api} />,
+    MOUNT_NODE
+  )
+}
+
+if (__DEV__) {
+  if (module.hot) {
+    const renderApp = render
+    render = () => {
+      try {
+        renderApp()
+      } catch (e) {
+        console.error(e) // eslint-disable-line no-console
+      }
+    }
+
+    module.hot.accept('./components/App', () => {
+      setImmediate(() => {
+        ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+        render()
+      })
+    })
+  }
+}
+
+render()

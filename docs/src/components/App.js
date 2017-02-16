@@ -1,29 +1,82 @@
-const r = require('../lib/react')
-const marked = require('marked')
+import React from 'react'
+import DocBlock from './DocBlock'
+import REPL from './REPL'
 
-const CodeExample = ({ children }) =>
-  r.pre({ className: 'language-javascript' },
-    r.code(null, children))
+const SideNavigation = ({ functions }) => (
+  <nav>
+    {map(({ name }) => (
+      <a key={name} href={`#${toLower(name)}`}>
+        {name}
+      </a>
+    ), functions)}
+  </nav>
+)
 
-const FunctionDoc = ({
-  name,
-  signature,
-  description,
-  examples,
-  since,
-  see,
-}) =>
-  r.div(null,
-    r.h2({ id: toLower(name) }, name),
-    mapi((sig, i) => r.p({ key: i }, null, r.code(null, sig)), signature.split('\n')),
-    r.div({ dangerouslySetInnerHTML: { __html: marked(description || '') } }),
-    mapi((ex, i) => r(CodeExample, { key: i }, ex), examples))
+class APIDocs extends React.PureComponent {
+  render () {
+    return (
+      <div>
+        {map(func => (
+          <DocBlock
+            key={func.name}
+            {...func}
+            onTryInREPL={this.props.onTryInREPL}
+          />
+        ), this.props.functions)}
+      </div>
+    )
+  }
+}
 
-const App = ({ functions }) =>
-  r.div(null,
-    r.nav(null,
-    map(({ name }) => r.a({ key: name, href: `#${toLower(name)}` }, name), functions)),
-    r.main({ className: 'main__content' },
-      map((fn) => r(FunctionDoc, merge({ key: fn.name }, fn)), functions)))
+class App extends React.Component {
+  state = {
+    replValue: '',
+    replVisible: true,
+  }
 
-module.exports = App
+  _onTryInREPL = (code) => {
+    this.setState({
+      replValue: code,
+      replVisible: true,
+    })
+  }
+
+  _onREPLChange = (code) => {
+    this.setState({ replValue: code })
+  }
+
+  _onHideREPL = () => {
+    this.setState({ replVisible: false })
+  }
+
+  render () {
+    const { replValue, replVisible } = this.state
+    const { functions } = this.props
+
+    return (
+      <div>
+        <SideNavigation functions={functions} />
+        <main className='container'>
+          <APIDocs
+            functions={functions}
+            onTryInREPL={this._onTryInREPL}
+          />
+        </main>
+        <div className={`repl-container ${replVisible ? 'visible' : ''}`}>
+          <REPL
+            value={replValue}
+            onChange={this._onREPLChange}
+          />
+          <button
+            className='btn btn-outline-secondary repl__hide'
+            onClick={this._onHideREPL}
+          >
+            Hide
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default App

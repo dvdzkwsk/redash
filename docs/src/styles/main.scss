@@ -26,11 +26,74 @@ nav a {
 
 main {
   width: 100%;
-  padding-left: 225px;
+  padding: 0 0 0 225px !important;
   overflow-y: auto;
 }
 
-.main__content {
+.container {
   margin: 0 auto;
   max-width: 960px;
+}
+
+.repl-container {
+  position: fixed;
+  height: 25vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: 0.15s ease-in-out;
+
+  &.visible {
+    transform: translateY(0);
+  }
+
+  .repl__hide {
+    position: absolute;
+    top: 2px;
+    right: 0;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.repl {
+  height: 100%;
+  position: relative;
+  border-top: 5px solid rgb(200, 200, 200);
+
+  &__editor {
+    position: relative;
+    height: 75%;
+  }
+
+  &__result {
+    height: 25%;
+    padding: 0.5em 0 0;
+    border-top: 2px solid rgb(200, 200, 200);
+    background: #2d2d2d;
+    color: #fff;
+  }
+
+  #brace-editor {
+    position: absolute;
+    width: auto !important;
+    height: auto !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.try-in-repl {
+  float: right;
 }

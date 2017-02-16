@@ -1,11 +1,6 @@
 const path = require('path')
 
-const resolveConfig = require('genesis-core/configs/create-project-config')
-const compile = (opts) =>
-  require('genesis-core/lib/create-compiler')(resolveConfig(opts))()
-
-compile({
-  env: 'production',
+require('genesis-core').dev({
   root: path.resolve(__dirname, '..'),
   main: [
     path.resolve(__dirname, '../src/main.preload.js'),
