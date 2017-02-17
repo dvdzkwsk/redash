@@ -5,6 +5,8 @@ import _defn from './internal/_defn'
  * @signature String k, Any v => [k] -> {k:v} -> {k:v}
  * @since v0.14.0
  * @description
+ * Produces a new object that contains all keys from the original object
+ * except those which have been omitted.
  * @see pick
  *
  * @example

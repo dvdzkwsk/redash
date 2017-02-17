@@ -6,6 +6,11 @@ import _hasOwn from './internal/_hasOwn'
  * @signature String k, (Any -> Boolean) Spec => {k:Spec} -> Boolean
  * @since v0.15.0
  * @description
+ * Checks whether an object matches a given spec. A spec is defined by
+ * an object where each key/value represents the key to check, and the
+ * predicate to run for that key. An object is said to have matched a spec
+ * when every predicate returns true.
+ *
  * @example
  * const pred = where({ name: equals('Michael') })
  * pred({ name: 'Michael' }) // => true
