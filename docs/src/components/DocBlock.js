@@ -18,7 +18,7 @@ class DocBlock extends React.PureComponent {
     const cleanedExample = pipe([
       join('\n'),
       split('\n'),
-      map(pipe([split('//'), head, trim])),
+      map(pipe([split('//'), head])),
       compact,
       join('\n')
     ])(this.props.examples)
