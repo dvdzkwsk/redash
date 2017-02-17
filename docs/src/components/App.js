@@ -31,7 +31,7 @@ class APIDocs extends React.PureComponent {
 class App extends React.Component {
   state = {
     replValue: '',
-    replVisible: true,
+    replVisible: false,
   }
 
   _onTryInREPL = (code) => {
