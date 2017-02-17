@@ -27,7 +27,7 @@ class DocBlock extends React.PureComponent {
   }
 
   render () {
-    const { name, signature, description, examples, since, see } = this.props
+    const { name, signature, description, examples } = this.props
     return (
       <div>
         <h2 id={toLower(name)}>

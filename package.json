@@ -16,7 +16,7 @@
     "installer.min.js"
   ],
   "scripts": {
-    "lint": "eslint src tests",
+    "lint": "eslint src docs/src docs/scripts tests",
     "bundle": "npm run bundle:main && npm run bundle:next && npm run bundle:installer",
     "bundle:main": "rollup --format umd --name halcyon -i src/bundles/index.js -o dist/halcyon.js",
     "bundle:next": "rollup --format es6 --name halcyon -i src/bundles/index.js -o dist/halcyon.next.js",

@@ -6,9 +6,9 @@ import 'brace/theme/tomorrow_night_eighties'
 
 const evaluate = (code) => {
   try {
-    return eval(code)
+    return eval(code) // eslint-disable-line
   } catch (e) {
-    return e.message
+    return e
   }
 }
 
