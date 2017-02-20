@@ -31,3 +31,7 @@ test('returns a new array even if the result is identical', (t) => {
   t.deepEqual(res, [1, 2, 3])
   t.not(arr, res)
 })
+
+test('maps over objects', (t) => {
+  t.deepEqual(map(x => x * 2, { a: 1, b: 2, c: 3 }), { a: 2, b: 4, c: 6 })
+})
