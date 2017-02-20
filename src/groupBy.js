@@ -1,5 +1,5 @@
 import _curry2 from './internal/_curry2'
-import _forEach from './internal/_forEach'
+import _reduce from './internal/_reduce'
 
 /**
  * @name groupBy
@@ -23,11 +23,9 @@ import _forEach from './internal/_forEach'
  * // }
  */
 export default _curry2(function groupBy (fn, xs) {
-  var res = {}
-
-  _forEach(function (x) {
+  return _reduce(function (acc, x) {
     var key = fn(x)
-    res[key] = (res[key] || []).concat(x)
-  }, xs)
-  return res
+    acc[key] = (acc[key] || []).concat(x)
+    return acc
+  }, {}, xs)
 })
