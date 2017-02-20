@@ -17,11 +17,8 @@ import _curry2 from './internal/_curry2'
  * isType('number', 123) // => true
  */
 export default _curry2(function isType (type, a) {
-  if (typeof type === 'undefined') {
-    return typeof a === 'undefined'
-  }
   if (type == null) {
-    return a == null && typeof a !== 'undefined'
+    return typeof type === typeof a
   }
 
   return typeof type === 'string'
