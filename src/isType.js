@@ -1,5 +1,5 @@
+import _defn from './internal/_defn'
 import _type from './type'
-import _curry2 from './internal/_curry2'
 
 /**
  * @name isType
@@ -16,7 +16,7 @@ import _curry2 from './internal/_curry2'
  * isString('hello!')    // => true
  * isType('number', 123) // => true
  */
-export default _curry2(function isType (type, a) {
+export default _defn('isType', function (type, a) {
   if (type == null) {
     return typeof type === typeof a
   }

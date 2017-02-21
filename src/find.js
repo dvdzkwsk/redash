@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name find
@@ -14,7 +14,7 @@ import _curry2 from './internal/_curry2'
  * find(isEven, [1, 3, 5, 7]) // => undefined
  * find(propEq('id', 2), [{ id: 1 }, { id : 2 }]) // => { id: 2 }
  */
-export default _curry2(function find (pred, xs) {
+export default _defn('find', function (pred, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {

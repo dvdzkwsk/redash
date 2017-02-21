@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name dec
  * @signature Number -> Number
@@ -10,6 +12,6 @@
  * dec(10) // => 9
  * dec(-1) // => -2
  */
-export default function dec (a) {
+export default _defn('dec', function (a) {
   return a - 1
-}
+})

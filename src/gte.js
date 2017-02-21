@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name gte
@@ -16,6 +16,6 @@ import _curry2 from './internal/_curry2'
  * gte(5, 5) // => true (5 is equal to 5)
  * filter(gte(3), [1, 2, 3, 4, 5]) // => [3, 4, 5]
  */
-export default _curry2(function gte (a, b) {
+export default _defn('gte', function (a, b) {
   return b >= a
 })

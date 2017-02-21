@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _equals from './internal/_equals'
 
 /**
@@ -18,4 +18,4 @@ import _equals from './internal/_equals'
  * const people = [{ name: 'Bill' }, { name: 'Bob' }]
  * reject(equals({ name: 'Bill' }), people) // => [{ name: 'Bob' }]
  */
-export default _curry2(_equals)
+export default _defn('equals', _equals)

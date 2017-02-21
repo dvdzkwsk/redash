@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _hasOwn from './internal/_hasOwn'
 
 /**
@@ -22,7 +22,7 @@ import _hasOwn from './internal/_hasOwn'
  *   }
  * ) // => { name: 'JOE', details: { age: 40, location: 'USA' } }
  */
-export default _curry2(function transform (transforms, obj) {
+export default _defn('transform', function transform (transforms, obj) {
   var res = {}
     , prop
 

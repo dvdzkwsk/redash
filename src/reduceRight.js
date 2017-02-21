@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 import _reverse from './internal/_reverse'
 
@@ -23,6 +23,6 @@ import _reverse from './internal/_reverse'
  * const reverse = reduce((acc, x) => [x].concat(acc), [])
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
  */
-export default _curry3(function reduceRight (fn, y, xs) {
+export default _defn('reduceRight', function (fn, y, xs) {
   return _reduce(fn, y, _reverse.call(xs))
 })

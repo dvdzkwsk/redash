@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _eachOwn from './internal/_eachOwn'
 
 /**
@@ -6,7 +6,7 @@ import _eachOwn from './internal/_eachOwn'
  * @signature {k:v} -> {k:v} -> {k:v}
  * @since v0.4.0
  */
-export default _curry2(function merge (a, b) {
+export default _defn('merge', function (a, b) {
   var y = {}
     , f = function (k, v) {
       y[k] = v

@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name scan
@@ -17,7 +17,7 @@ import _curry3 from './internal/_curry3'
  * // fourth step: 6 + 4   --> 10
  * scan(add, 0, [1, 2, 3, 4]) // => [0, 1, 3, 6, 10]
  */
-export default _curry3(function scan (fn, acc, xs) {
+export default _defn('scan', function (fn, acc, xs) {
   var i   = 0
     , res = [acc]
 

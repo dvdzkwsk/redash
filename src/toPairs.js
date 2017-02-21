@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import _eachOwn from './internal/_eachOwn'
 
 /**
@@ -13,11 +14,11 @@ import _eachOwn from './internal/_eachOwn'
  * @example
  * toPairs({ a: 'foo', b: 'bar' }) // => [['a', 'foo'], ['b', 'bar']]
  */
-export default function toPairs (o) {
+export default _defn('toPairs', function toPairs (o) {
   var kvs = []
 
   _eachOwn(function (k, v) {
     kvs.push([k, v])
   }, o)
   return kvs
-}
+})

@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 
 /**
  * @name tap
@@ -14,9 +15,9 @@
  * // logs: 1, 2, 2, 4, 3, 6, 4, 8
  * map(pipe([log, multiply(2), log]), [1, 2, 3, 4]) // => [2, 4, 6, 8]
  */
-export default function tap (fn) {
+export default _defn('tap', function (fn) {
   return function (a) {
     fn(a)
     return a
   }
-}
+})

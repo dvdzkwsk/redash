@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import complement from './complement'
 import when from './when'
 
@@ -19,6 +19,6 @@ import when from './when'
  * doubleIfNotEven(3) // => 6
  * doubleIfNotEven(2) // => 2
  */
-export default _curry2(function unless (pred, fn) {
+export default _defn('unless', function (pred, fn) {
   return when(complement(pred), fn)
 })

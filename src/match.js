@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _match from './internal/_match'
 
 /**
@@ -12,6 +12,6 @@ import _match from './internal/_match'
  * @example
  * match(/foo[a-z]+/g, 'foobar foo bazbiz foobop') // => ['foobar', 'foobop']
  */
-export default _curry2(function match (regex, str) {
+export default _defn('match', function (regex, str) {
   return _match.call(str, regex) || []
 })

@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name set
@@ -16,6 +16,6 @@ import _curry3 from './internal/_curry3'
  * console.log(userA) // => { name: 'Joe' }
  * console.log(userB) // => { name: 'Billy' }
  */
-export default _curry3(function set (lens, value, target) {
+export default _defn('set', function (lens, value, target) {
   return lens.set(value, target)
 })

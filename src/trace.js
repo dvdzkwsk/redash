@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+import _nameFunc from './internal/_nameFunc'
 import tap from './tap'
 
 /**
@@ -23,8 +25,8 @@ import tap from './tap'
  * // ...
  * // value after multiply 10
  */
-export default function trace (message) {
-  return tap(function (x) {
+export default _defn('trace', function (message) {
+  return _nameFunc('trace', [message], tap(function (x) {
     console.log(message, x)
-  })
-}
+  }))
+})

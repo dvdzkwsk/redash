@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _forEach from './internal/_forEach'
 
 /**
@@ -16,4 +16,4 @@ import _forEach from './internal/_forEach'
  * const res = forEach(log, [1, 2, 3]) // => logs: 1, 2, 3
  * console.log(res)                    // => undefined
  */
-export default _curry2(_forEach)
+export default _defn('forEach', _forEach)

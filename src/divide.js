@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name divide
@@ -15,7 +15,7 @@ import _curry2 from './internal/_curry2'
  * @example
  * map(divide(2), [2, 4, 6, 8]) // => [1, 2, 3, 4]
  */
-export default _curry2(function divide (a, b) {
+export default _defn('divide', function (a, b) {
   if (!a) {
     throw new Error('Cannot divide by 0.')
   }

@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import curryN from './curryN'
 
 /**
@@ -29,6 +30,6 @@ import curryN from './curryN'
  * add8(2) // => 10
  * add8(0) // => 8
  */
-export default function curry (fn) {
+export default _defn('curry', function (fn) {
   return curryN(fn.length, fn)
-}
+})

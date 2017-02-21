@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import _toString from './internal/_toString'
 
 /**
@@ -19,8 +20,8 @@ import _toString from './internal/_toString'
  * type(undefined)         // => 'Nil'
  * type(null)              // => 'Nil'
  */
-export default function type (a) {
+export default _defn('type', function type (a) {
   if (a == null) return 'Nil'
 
   return _toString.call(a).slice(8, -1)
-}
+})

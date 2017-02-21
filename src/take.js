@@ -1,5 +1,5 @@
 import _slice from './internal/_slice'
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name take
@@ -17,6 +17,6 @@ import _curry2 from './internal/_curry2'
  * take(5, [1, 2, 3])       // => [1, 2, 3]
  * take(Infinity, [])       // => []
  */
-export default _curry2(function take (n, xs) {
+export default _defn('take', function (n, xs) {
   return _slice.call(xs, 0, n)
 })

@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name inc
  * @signature Number -> Number
@@ -9,6 +11,6 @@
  * inc(10) // => 11
  * inc(-1) // => 0
  */
-export default function inc (a) {
+export default _defn('inc', function (a) {
   return a + 1
-}
+})

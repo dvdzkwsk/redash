@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name always
  * @signature a -> Any -> a
@@ -12,8 +14,8 @@
  * alwaysTrue(false)    // => true
  * times(alwaysTrue, 5) // => [true, true, true, true, true]
  */
-export default function always (x) {
+export default _defn('always', function (x) {
   return function () {
     return x
   }
-}
+})

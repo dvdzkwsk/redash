@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name lt
@@ -16,6 +16,6 @@ import _curry2 from './internal/_curry2'
  * lt(2, 1) // => true (1 is less than 2)
  * filter(lt(3), [1, 2, 3, 4, 5]) // => [1, 2]
  */
-export default _curry2(function lt (a, b) {
+export default _defn('lt', function (a, b) {
   return b < a
 })

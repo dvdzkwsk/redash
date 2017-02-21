@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name cond
@@ -27,7 +27,7 @@ import _curry2 from './internal/_curry2'
  *
  * map(fizzbuzz, [1, 2, 3, 4, 5]) // => [1, 2, 'Fizz', 4, 'Buzz']
  */
-export default _curry2(function cond (conditions, a) {
+export default _defn('cond', function (conditions, a) {
   var i = 0
 
   for (; i < conditions.length; i++) {

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 
 /**
@@ -15,7 +15,7 @@ import _slice from './internal/_slice'
  * @example
  * dropWhile(isEven, [2, 4, 6, 7, 8]) // => [7, 8]
  */
-export default _curry2(function dropWhile (fn, xs) {
+export default _defn('dropWhile', function (fn, xs) {
   var i = 0
 
   while (i < xs.length && fn(xs[i])) i += 1

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name fmap
@@ -28,7 +28,7 @@ import _curry2 from './internal/_curry2'
  * // Native arrays implement `map`:
  * fmap(double, [1, 2, 3, 4]) // => [2, 4, 6, 8]
  */
-export default _curry2(function fmap (fn, functor) {
+export default _defn('fmap', function (fn, functor) {
   if (functor.fmap) return functor.fmap(fn)
   if (functor.map) return functor.map(fn)
 

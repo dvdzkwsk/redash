@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name identity
  * @signature a -> a
@@ -13,6 +15,6 @@
  * doubleIfEven(2) // => 4
  * doubleIfEven(3) // => 3
  */
-export default function identity (a) {
+export default _defn('identity', function (a) {
   return a
-}
+})

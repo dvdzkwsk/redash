@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import rangeBy from './rangeBy'
 
 /**
@@ -15,7 +15,7 @@ import rangeBy from './rangeBy'
  * range(1, 5)  // => [1, 2, 3, 4]
  * range(0, -5) // => [0, -1, -2, -3, -4]
  */
-export default _curry2(function range (start, end) {
+export default _defn('range', function (start, end) {
   if (start < end) return rangeBy(1, start, end)
   if (start > end) return rangeBy(-1, start, end)
   throw new Error(

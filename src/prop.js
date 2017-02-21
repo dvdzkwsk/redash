@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name prop
@@ -11,6 +11,6 @@ import _curry2 from './internal/_curry2'
  * prop('name', {})              // => undefined
  * prop('name', { name: 'Bob' }) // => Bob
  */
-export default _curry2(function prop (k, o) {
+export default _defn('prop', function prop (k, o) {
   return o[k]
 })

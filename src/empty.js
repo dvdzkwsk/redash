@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import type from './type'
 
 /**
@@ -18,7 +19,7 @@ import type from './type'
  * empty(false)                   // => undefined
  * empty({ empty: () => 'FOO!' }) // => 'FOO!'
  */
-export default function empty (a) {
+export default _defn('empty', function (a) {
   if (a == null) return void 0
   if (typeof a.empty === 'function') return a.empty()
   if (a.constructor && typeof a.constructor.empty === 'function') {
@@ -35,4 +36,4 @@ export default function empty (a) {
     default:
       return void 0
   }
-}
+})

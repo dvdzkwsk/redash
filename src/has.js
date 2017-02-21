@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _hasOwn from './internal/_hasOwn'
 
 /**
@@ -18,6 +18,6 @@ import _hasOwn from './internal/_hasOwn'
  * const a = new A()
  * has('foo', a) // => false
  */
-export default _curry2(function as (k, o) {
+export default _defn('has', function (k, o) {
   return _hasOwn.call(o, k)
 })

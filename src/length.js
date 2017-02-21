@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name length
  * @signature [a] -> Number
@@ -8,6 +10,6 @@
  * @example
  * length([1, 2, 3, 4, 5]) // => 5
  */
-export default function length (xs) {
+export default _defn('length', function (xs) {
   return xs.length
-}
+})

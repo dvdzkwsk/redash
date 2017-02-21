@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import curryN from './curryN'
 
 /**
@@ -17,8 +18,8 @@ import curryN from './curryN'
  * const isOdd = complement(isEven)
  * isOdd(3) // => true
  */
-export default function complement (x) {
-  return curryN(x.length, function asComplement () {
+export default _defn('complement', function (x) {
+  return curryN(x.length, function () {
     return !x.apply(null, arguments)
   })
-}
+})

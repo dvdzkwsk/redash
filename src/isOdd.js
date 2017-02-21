@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name isOdd
  * @signature Number -> Boolean
@@ -12,6 +14,6 @@
  * isOdd(3.9)      // => false
  * isOdd(Infinity) // => false
  */
-export default function isOdd (a) {
+export default _defn('isOdd', function (a) {
   return !isNaN(a) && isFinite(a) && !!a && a === Math.floor(a) && a % 2 !== 0
-}
+})

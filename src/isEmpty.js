@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import _equals from './internal/_equals'
 import empty from './empty'
 
@@ -23,7 +24,7 @@ import empty from './empty'
  * isEmpty(0)         // => false
  * isEmpty(false)     // => false
  */
-export default function isEmpty (a) {
+export default _defn('isEmpty', function (a) {
   if (a == null) return false
   return _equals(a, empty(a))
-}
+})

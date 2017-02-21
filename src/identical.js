@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name identical
@@ -17,6 +17,6 @@ import _curry2 from './internal/_curry2'
  * identical(a, { id: 1 }) // => false
  * identical(a, a)         // => true
  */
-export default _curry2(function identical (a, b) {
+export default _defn('identical', function (a, b) {
   return a === b
 })

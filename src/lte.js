@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name lte
@@ -17,6 +17,6 @@ import _curry2 from './internal/_curry2'
  * lte(2, 2) // => true (2 is equal to 2)
  * filter(lte(3), [1, 2, 3, 4, 5]) // => [1, 2, 3]
  */
-export default _curry2(function lte (a, b) {
+export default _defn('lte', function (a, b) {
   return b <= a
 })

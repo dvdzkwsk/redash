@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name zip
@@ -14,7 +14,7 @@ import _curry2 from './internal/_curry2'
  * zip(['a', 'b', 'c'], [1, 2, 3]) // => [['a', 1], ['b', 2], ['c', 3]]
  * zip(['a', 'b', 'c'], [1])       // => [['a', 1]]
  */
-export default _curry2(function zip (as, bs) {
+export default _defn('zip', function (as, bs) {
   var i   = 0
     , len = Math.min(as.length, bs.length)
     , abs = new Array(len)

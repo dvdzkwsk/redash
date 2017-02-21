@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name ifElse
@@ -18,7 +18,7 @@ import _curry3 from './internal/_curry3'
  * myFunc(4) // => 5
  * myFunc(7) // => 6
  */
-export default _curry3(function ifElse (cond, whenTrue, whenElse) {
+export default _defn('ifElse', function (cond, whenTrue, whenElse) {
   return function (x) {
     return cond(x) ? whenTrue(x) : whenElse(x)
   }

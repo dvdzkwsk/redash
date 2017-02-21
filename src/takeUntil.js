@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import complement from './complement'
 import takeWhile from './takeWhile'
 
@@ -18,6 +18,6 @@ import takeWhile from './takeWhile'
  * @example
  * takeUntil(isEven, [1, 3, 5, 2, 7]) // => [1, 3, 5]
  */
-export default _curry2(function takeUntil (fn, xs) {
+export default _defn('takeUntil', function (fn, xs) {
   return takeWhile(complement(fn), xs)
 })

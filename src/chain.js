@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name chain
@@ -14,7 +14,7 @@ import _curry2 from './internal/_curry2'
  * @example
  * chain(x => [x, x * 2], [1, 2, 3, 4]) // => [1, 2, 2, 4, 3, 6, 4, 8]
  */
-export default _curry2(function chain (fn, xs) {
+export default _defn('chain', function (fn, xs) {
   var i   = 0
     , bs  = []
     , _i

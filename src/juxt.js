@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 import map from './map'
 
@@ -12,11 +13,11 @@ import map from './map'
  * juxt([inc, dec, multiply(3)])(2)    // => [3, 1, 6]
  * juxt([add, divide, multiply])(2, 4) // => [6, 2, 8]
  */
-export default function juxt (fns) {
+export default _defn('juxt', function (fns) {
   return function () {
     var args = _slice.call(arguments)
     return map(function (fn) {
       return fn.apply(null, args)
     }, fns)
   }
-}
+})

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name test
@@ -11,6 +11,6 @@ import _curry2 from './internal/_curry2'
  * test(/bar/, 'foobarbaz') // => true
  * filter(test(/joe/i), ['Joe', 'Bill', 'joey']) // => ['Joe', 'joey']
  */
-export default _curry2(function test (regex, str) {
+export default _defn('test', function (regex, str) {
   return regex.test(str)
 })

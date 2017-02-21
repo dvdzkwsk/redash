@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name isEven
  * @signature Number -> Boolean
@@ -12,6 +14,6 @@
  * isEven(2.4)      // => false
  * isEven(Infinity) // => false
  */
-export default function isEven (a) {
+export default _defn('isEven', function (a) {
   return !isNaN(a) && isFinite(a) && a % 2 === 0
-}
+})

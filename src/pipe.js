@@ -1,4 +1,6 @@
-import curryN from './curryN'
+import _defn from './internal/_defn'
+import _curryN from './internal/_curryN'
+import _nameFunc from './internal/_nameFunc'
 import isType from './isType'
 import type from './type'
 
@@ -27,8 +29,9 @@ import type from './type'
  * const user = { friends: [{ name: 'Jim' }, { name: 'Dwight' }] }
  * getFriends(user) // => 'JIM, DWIGHT'
  */
-export default function pipe (fns) {
+export default _defn('pipe', function (fns) {
   var fni = 0
+    , wrappedFn
 
   // TODO(zuko): abstract for use in other functions and disable in production.
   for (; fni < fns.length; fni++) {
@@ -40,7 +43,7 @@ export default function pipe (fns) {
       )
     }
   }
-  return curryN(fns[0].length, function () {
+  wrappedFn = _curryN(fns[0].length, [], function () {
     var i   = 0
       , len = fns.length
       , acc = fns[i++].apply(null, arguments)
@@ -50,4 +53,6 @@ export default function pipe (fns) {
     }
     return acc
   })
-}
+  _nameFunc('pipe', [fns], wrappedFn)
+  return wrappedFn
+})

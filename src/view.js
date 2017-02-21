@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name view
@@ -14,6 +14,6 @@ import _curry2 from './internal/_curry2'
  * view(nameLens, { name: 'Dwight' })  // => 'Dwight'
  * view(nameLens, { name: 'Michael' }) // => 'Michael'
  */
-export default _curry2(function view (lens, target) {
+export default _defn('view', function (lens, target) {
   return lens.get(target)
 })

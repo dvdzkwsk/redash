@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import filter from './filter'
 import identity from './identity'
 
@@ -15,4 +16,4 @@ import identity from './identity'
  * compact({ a: false, b: null, c: true }) // => { c: true }
  * compact(['', 0, {}, [], '0'])           // => [{}, [], '0']
  */
-export default filter(identity)
+export default _defn('compact', filter(identity))

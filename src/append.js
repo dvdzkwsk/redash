@@ -1,5 +1,5 @@
 import _concat from './internal/_concat'
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name append
@@ -18,7 +18,7 @@ import _curry2 from './internal/_curry2'
  * append([4, 5], [1, 2, 3]) // => [1, 2, 3, [4, 5]]
  * append('bar', 'foo')      // => 'foobar'
  */
-export default _curry2(function append (x, xs) {
+export default _defn('append', function (x, xs) {
   if (typeof xs === 'string') {
     return xs + x
   }

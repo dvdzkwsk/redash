@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _contains from './internal/_contains'
 
 /**
@@ -11,7 +11,7 @@ import _contains from './internal/_contains'
  * @example
  * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) // => [3, 4, 7]
  */
-export default _curry2(function without (as, bs) {
+export default _defn('without', function (as, bs) {
   var i   = 0
     , res = []
 

@@ -1,5 +1,6 @@
-import curryN from './curryN'
+import _defn from './internal/_defn'
 import _reverse from './internal/_reverse'
+import curryN from './curryN'
 
 /**
  * @name flip
@@ -14,8 +15,8 @@ import _reverse from './internal/_reverse'
  * fn('A', 'B', 'C') // => ['C', 'B', 'A']
  * fn('a')('b')('c') // => ['c', 'b', 'a']
  */
-export default function flip (fn) {
+export default _defn('flip', function (fn) {
   return curryN(fn.length, function () {
     return fn.apply(null, _reverse.call(arguments))
   })
-}
+})

@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name rangeBy
@@ -13,7 +13,7 @@ import _curry3 from './internal/_curry3'
  * @example
  * rangeBy(4, 0, 17) // => [0, 4, 8, 12, 16]
  */
-export default _curry3(function rangeBy (inc, start, end) {
+export default _defn('rangeBy', function (inc, start, end) {
   var ys = []
     , times
     , i

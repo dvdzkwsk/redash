@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name dissoc
@@ -14,7 +14,7 @@ import _curry2 from './internal/_curry2'
  * const user = { first: 'Bob', last: 'Loblaw' }
  * dissoc('first', user) // => { last: 'Loblaw' }
  */
-export default _curry2(function dissoc (k, kv) {
+export default _defn('dissoc', function (k, kv) {
   var y = {}
     , p
 

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _contains from './internal/_contains'
 
 /**
@@ -17,4 +17,4 @@ import _contains from './internal/_contains'
  * contains({ id: 1 }, [{ id: 1 }, { id: 2 }]) // => true
  * contains('foo', 'foobarbaz')                // => true
  */
-export default _curry2(_contains)
+export default _defn('contains', _contains)

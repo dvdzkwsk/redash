@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 
 /**
@@ -21,4 +21,4 @@ import _reduce from './internal/_reduce'
  * const sum = reduce((acc, n) => acc + n, 0)
  * sum([1, 2, 3, 4, 5]) // => 15
  */
-export default _curry3(_reduce)
+export default _defn('reduce', _reduce)

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _hasOwn from './internal/_hasOwn'
 
 /**
@@ -14,7 +14,7 @@ import _hasOwn from './internal/_hasOwn'
  * const people = [{ age: 12 }, { age: 14 }, { age: 18 }, { age: 22 }]
  * filter(where({ age: gte(18) }), people) // => [{ age: 18 }, { age: 22 }]
  */
-export default _curry2(function where (spec, obj) {
+export default _defn('where', function (spec, obj) {
   var prop
 
   for (prop in spec) {

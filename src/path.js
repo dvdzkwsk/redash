@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name path
@@ -14,7 +14,7 @@ import _curry2 from './internal/_curry2'
  * getAge({ info: { age: 20 }}) // => 20
  * getAge({})                   // => undefined
  */
-export default _curry2(function path (props, obj) {
+export default _defn('path', function (props, obj) {
   var i   = 0
     , val = obj
 

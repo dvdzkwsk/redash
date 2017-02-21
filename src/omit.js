@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name omit
@@ -10,7 +10,7 @@ import _curry2 from './internal/_curry2'
  * @example
  * omit(['a', 'b'], { a: 1, b: 2, c: 3, d: 4 }) // => { c: 3, d: 4 }
  */
-export default _curry2(function omit (keys, a) {
+export default _defn('omit', function (keys, a) {
   var res = {}
     , prop
     , discard

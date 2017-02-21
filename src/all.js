@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name all
@@ -15,7 +15,7 @@ import _curry2 from './internal/_curry2'
  * all(isEven, [2, 4, 6, 3]) // => false, 3 is not an even number
  * all(isEven, [])           // => true
  */
-export default _curry2(function all (fn, xs) {
+export default _defn('all', function (fn, xs) {
   var i   = 0
     , len = xs.length
 

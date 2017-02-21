@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name flatten
  * @signature [[a]] -> [a]
@@ -10,7 +12,7 @@
  * flatten([1, 2, [3, 4]])   // => [1, 2, 3, 4]
  * flatten([1, 2, [3, [4]]]) // => [1, 2, 3, [4]]
  */
-export default function flatten (xs) {
+export default _defn('flatten', function (xs) {
   var acc = []
     , i   = 0
     , x
@@ -27,4 +29,4 @@ export default function flatten (xs) {
     }
   }
   return acc
-}
+})

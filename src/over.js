@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 import set from './set'
 
 /**
@@ -17,6 +17,6 @@ import set from './set'
  * over(lensProp('name'), toUpper, user) // => { name: 'MICHAEL' }
  * console.log(user)                     // => { name: 'Michael' }
  */
-export default _curry3(function over (lens, fn, target) {
+export default _defn('over', function (lens, fn, target) {
   return set(lens, fn(lens.get(target)), target)
 })

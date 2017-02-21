@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import complement from './complement'
 import filter from './filter'
 
@@ -16,6 +16,6 @@ import filter from './filter'
  * @example
  * reject(isEven, [1, 2, 3, 4, 5]) // => [1, 3, 5]
  */
-export default _curry2(function reject (pred, xs) {
+export default _defn('reject', function (pred, xs) {
   return filter(complement(pred), xs)
 })

@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name clamp
@@ -11,7 +11,7 @@ import _curry3 from './internal/_curry3'
  * clamp(1, 10, -5) // => 1
  * clamp(1, 10, 15) // => 10
  */
-export default _curry3(function clamp (lower, upper, value) {
+export default _defn('clamp', function (lower, upper, value) {
   return value < lower ? lower :
          value > upper ? upper :
          value

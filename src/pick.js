@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name pick
@@ -13,7 +13,7 @@ import _curry2 from './internal/_curry2'
  * pick(['first', 'last'], { first: 'Michael', last: 'Scott', age: 35 })
  * // => { first: 'Michael', last: 'Scott' }
  */
-export default _curry2(function pick (keys, obj) {
+export default _defn('pick', function (keys, obj) {
   var i   = 0
     , res = {}
 

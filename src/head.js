@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name head
  * @signature [a] -> a
@@ -9,6 +11,6 @@
  * @example
  * head([1, 2, 3, 4]) // => [1]
  */
-export default function head (xs) {
+export default _defn('head', function (xs) {
   return xs[0]
-}
+})

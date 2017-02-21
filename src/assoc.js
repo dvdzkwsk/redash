@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name assoc
@@ -13,7 +13,7 @@ import _curry3 from './internal/_curry3'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * assoc('first', 'Bob', user) // => { first: 'Bob', last: 'LobLaw' }
  */
-export default _curry3(function assoc (k, v, o) {
+export default _defn('assoc', function (k, v, o) {
   var y = {}
     , p
 

@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import _reverse from './internal/_reverse'
 import isType from './isType'
 import type from './type'
@@ -29,7 +30,7 @@ import pipe from './pipe'
  *
  * isSqrtEven(16) // => true
  */
-export default function compose (fns) {
+export default _defn('compose', function (fns) {
   var i = 0
 
   // TODO(zuko): abstract for use in other functions and disable in production.
@@ -43,4 +44,4 @@ export default function compose (fns) {
     }
   }
   return pipe(_reverse.call(fns))
-}
+})

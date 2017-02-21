@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name subtract
@@ -18,6 +18,6 @@ import _curry2 from './internal/_curry2'
  * subtract5(10) // => 5
  * subtract5(15) // => 10
  */
-export default _curry2(function subtract (a, b) {
+export default _defn('subtract', function (a, b) {
   return b - a
 })

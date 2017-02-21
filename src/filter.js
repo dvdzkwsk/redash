@@ -1,6 +1,6 @@
 import _filterList from './internal/_filterList'
 import _filterObject from './internal/_filterObject'
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import isType from './isType'
 
 /**
@@ -18,7 +18,7 @@ import isType from './isType'
  * @example
  * filter(isEven, [1, 2, 3, 4, 5]) // => [2, 4]
  */
-export default _curry2(function filter (pred, xs) {
+export default _defn('filter', function (pred, xs) {
   return isType('Object', xs)
     ? _filterObject(pred, xs)
     : _filterList(pred, xs)

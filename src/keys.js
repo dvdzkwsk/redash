@@ -1,4 +1,5 @@
 import _keys from './internal/_keys'
+import _defn from './internal/_defn'
 
 /**
  * @name keys
@@ -22,4 +23,4 @@ import _keys from './internal/_keys'
  * a.bar = () => {}
  * keys(a) // => ['bar']
  */
-export default _keys
+export default _defn('keys', _keys)

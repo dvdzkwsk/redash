@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name when
@@ -20,7 +20,7 @@ import _curry2 from './internal/_curry2'
  * doubleIfEven(5) // => 5
  * map(doubleIfEven, [1, 2, 3, 4, 5]) // => [1, 4, 3, 8, 5]
  */
-export default _curry2(function when (pred, fn) {
+export default _defn('when', function (pred, fn) {
   return function (x) {
     return pred(x) ? fn(x) : x
   }

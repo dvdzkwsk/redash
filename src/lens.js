@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name lens
@@ -19,7 +19,7 @@ import _curry2 from './internal/_curry2'
  * set(nameLens, 'Bob', { name: 'Joe' })    // => Bob
  * over(nameLens, toUpper, { name: 'Joe' }) // => JOE
  */
-export default _curry2(function lens (getter, setter) {
+export default _defn('lens', function (getter, setter) {
   return {
     get: getter
   , set: setter

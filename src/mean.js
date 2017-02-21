@@ -1,3 +1,4 @@
+import _defn from './internal/_defn'
 import sum from './sum'
 
 /**
@@ -10,9 +11,9 @@ import sum from './sum'
  * @example
  * mean([1, 2, 3, 4, 5, 6]) // => 3.5
  */
-export default function mean (xs) {
+export default _defn('mean', function (xs) {
   if (!xs.length) {
     throw new Error('Cannot calculate the mean of an empty list.')
   }
   return sum(xs) / xs.length
-}
+})

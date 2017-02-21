@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name times
@@ -12,7 +12,7 @@ import _curry2 from './internal/_curry2'
  * @example
  * times(identity, 5) // => [0, 1, 2, 3, 4]
  */
-export default _curry2(function times (fn, n) {
+export default _defn('times', function (fn, n) {
   var i  = 0
     , bs = []
 

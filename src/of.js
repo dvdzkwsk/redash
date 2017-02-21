@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name of
  * @signature a -> [a]
@@ -9,6 +11,6 @@
  * of(1)   // => [1]
  * of([1]) // => [[1]]
  */
-export default function of (x) {
+export default _defn('of', function (x) {
   return [x]
-}
+})

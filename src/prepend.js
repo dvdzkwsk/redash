@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _concat from './internal/_concat'
 
 /**
@@ -6,7 +6,7 @@ import _concat from './internal/_concat'
  * @signature a -> [a] -> a | String -> String -> String
  * @since v0.14.0
  */
-export default _curry2(function prepend (a, as) {
+export default _defn('prepend', function (a, as) {
   if (typeof as === 'string') {
     return a + as
   }

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 
 /**
@@ -12,6 +12,6 @@ import _slice from './internal/_slice'
  * @example
  * drop(2, [1, 2, 3, 4]) // => [3, 4]
  */
-export default _curry2(function drop (n, xs) {
+export default _defn('drop', function (n, xs) {
   return _slice.call(xs, n)
 })

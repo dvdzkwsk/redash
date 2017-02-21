@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name multiply
@@ -11,6 +11,6 @@ import _curry2 from './internal/_curry2'
  * multiply(2, 3) // => 6
  * map(multiply(2), [1, 2, 3, 4]) // => [2, 4, 6, 8]
  */
-export default _curry2(function multiply (a, b) {
+export default _defn('multiply', function (a, b) {
   return a * b
 })

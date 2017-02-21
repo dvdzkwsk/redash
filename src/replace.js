@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 
 /**
  * @name replace
@@ -12,6 +12,6 @@ import _curry3 from './internal/_curry3'
  * replace('Scott', 'Schrute', 'Dwight Scott') // => 'Dwight Schrute'
  * replace(/hi/g, 'hey', 'hi hi hi')           // => 'hey hey hey'
  */
-export default _curry3(function replace (match, value, str) {
+export default _defn('replace', function (match, value, str) {
   return str.replace(match, value)
 })

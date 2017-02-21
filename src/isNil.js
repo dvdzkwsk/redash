@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name isNil
  * @signature a -> Boolean
@@ -16,6 +18,6 @@
  * @param {*} x
  * @returns Boolean
  */
-export default function isNil (x) {
+export default _defn('isNil', function (x) {
   return x == null
-}
+})

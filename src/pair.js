@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name pair
@@ -10,6 +10,6 @@ import _curry2 from './internal/_curry2'
  * @example
  * pair(1, 2) // => [1, 2]
  */
-export default _curry2(function pair (a, b) {
+export default _defn('pair', function (a, b) {
   return [a, b]
 })

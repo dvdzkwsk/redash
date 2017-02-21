@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name split
@@ -12,6 +12,6 @@ import _curry2 from './internal/_curry2'
  * @example
  * split(', ', 'Jim, Bill, Bob') // => ['Jim', 'Bill', 'Bob']
  */
-export default _curry2(function split (char, str) {
+export default _defn('split', function (char, str) {
   return str.split(char)
 })

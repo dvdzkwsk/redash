@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name toLower
  * @signature String -> String
@@ -10,6 +12,6 @@
  * toLower('Hi There')  // => 'hi there'
  * toLower('GoodBye')   // => 'goodbye'
  */
-export default function toLower (a) {
+export default _defn('toLower', function toLower (a) {
   return a.toLowerCase()
-}
+})

@@ -1,3 +1,5 @@
+import _defn from './internal/_defn'
+
 /**
  * @name max
  * @signature [Number] -> Number
@@ -8,7 +10,7 @@
  * @example
  * max([1, 2, 3, 4, 5]) // => 5
  */
-export default function max (xs) {
+export default _defn('max', function (xs) {
   var i   = xs.length - 1
     , max = xs[i--]
 
@@ -19,4 +21,4 @@ export default function max (xs) {
     i--
   }
   return max
-}
+})

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name any
@@ -15,7 +15,7 @@ import _curry2 from './internal/_curry2'
  * any(isEven, [1, 3, 5])       // => false, no numbers are even
  * any(isEven, [])              // => false
  */
-export default _curry2(function any (fn, xs) {
+export default _defn('any', function (fn, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {

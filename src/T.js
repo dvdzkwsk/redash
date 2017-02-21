@@ -1,3 +1,6 @@
+import _defn from './internal/_defn'
+import always from './always'
+
 /**
  * @name T
  * @signature Any -> Boolean
@@ -11,6 +14,4 @@
  * @example
  * times(T, 5) // => [true, true, true, true, true]
  */
-export default function T () {
-  return true
-}
+export default _defn('T', always(true))

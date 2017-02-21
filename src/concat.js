@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name concat
@@ -17,6 +17,6 @@ import _curry2 from './internal/_curry2'
  * concat('foo', 'bar')         // => 'foobar'
  */
 // TODO(zuko): consider flipping argument order, breaking change
-export default _curry2(function concat (xs, ys) {
+export default _defn('concat', function (xs, ys) {
   return xs.concat(ys)
 })

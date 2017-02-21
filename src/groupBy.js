@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 
 /**
@@ -22,7 +22,7 @@ import _reduce from './internal/_reduce'
  * // , adult    : [{ age: 21 }]
  * // }
  */
-export default _curry2(function groupBy (fn, xs) {
+export default _defn('groupBy', function (fn, xs) {
   return _reduce(function (acc, x) {
     var key = fn(x)
     acc[key] = (acc[key] || []).concat(x)

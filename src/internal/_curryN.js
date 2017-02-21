@@ -1,5 +1,7 @@
 import _slice from './_slice'
 import _arity from './_arity'
+import _nameFunc from './_nameFunc'
+import _createFnName from './_createFnName'
 
 /**
  * @description
@@ -11,22 +13,23 @@ import _arity from './_arity'
  * be called with those arguments. If the number of arguments is still
  * smaller than the required amount, the function will be curried again.
  */
-var _curryN = function _curryN (arity, applied, fn) {
-  return _arity(arity, function () {
-    var newApplied = applied
+export default function _curryN (arity, args, fn) {
+  var fnWrapper = _arity(arity, function () {
+    var nextArgs = args
       , i
 
     if (arguments.length) {
-      newApplied = _slice.call(applied)
+      i = 0
+      nextArgs = _slice.call(nextArgs)
       for (i = 0; i < arguments.length; i++) {
-        newApplied.push(arguments[i])
+        nextArgs.push(arguments[i])
       }
     }
 
-    return newApplied.length >= arity
-      ? fn.apply(null, newApplied)
-      : _curryN(arity, newApplied, fn)
+    return nextArgs.length >= arity
+      ? fn.apply(null, nextArgs)
+      : _curryN(arity, nextArgs, fn)
   })
+  _nameFunc(_createFnName(fn.displayName || fn.name, args), fnWrapper)
+  return fnWrapper
 }
-
-export default _curryN

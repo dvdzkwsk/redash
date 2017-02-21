@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name add
@@ -15,6 +15,6 @@ import _curry2 from './internal/_curry2'
  * add5(10) // => 15
  * add5(15) // => 20
  */
-export default _curry2(function add (a, b) {
+export default _defn('add', function (a, b) {
   return a + b
 })

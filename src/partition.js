@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name partition
@@ -12,7 +12,7 @@ import _curry2 from './internal/_curry2'
  * @example
  * partition(isEven, [1, 2, 3, 4, 5]) // => [[2, 4], [1, 3, 5]]
  */
-export default _curry2(function partition (pred, xs) {
+export default _defn('partition', function (pred, xs) {
   var left  = []
     , right = []
     , i     = 0

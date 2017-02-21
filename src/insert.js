@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3'
+import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 
 /**
@@ -15,7 +15,7 @@ import _slice from './internal/_slice'
  * @example
  * insert(1, 5, [0, 1, 2, 3]) // => [0, 5, 1, 2, 3]
  */
-export default _curry3(function insert (idx, x, xs) {
+export default _defn('insert', function (idx, x, xs) {
   var ys = _slice.call(xs, 0, idx)
   ys[ys.length] = x
   return ys.concat(_slice.call(xs, idx))

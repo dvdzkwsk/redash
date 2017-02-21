@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2'
+import _defn from './internal/_defn'
 
 /**
  * @name join
@@ -11,6 +11,6 @@ import _curry2 from './internal/_curry2'
  * join(' & ', ['Michael', 'Dwight', 'Jim']) // => 'Michael & Dwight & Jim'
  * join('', ['Hello', 'Goodbye'])            // => 'HelloGoodbye'
  */
-export default _curry2(function join (joiner, xs) {
+export default _defn('join', function (joiner, xs) {
   return xs.join(joiner)
 })
