@@ -15,20 +15,20 @@ import _createFnName from './_createFnName'
  */
 export default function _curryN (arity, args, fn) {
   var fnWrapper = _arity(arity, function () {
-    var nextArgs = args
+    var nextArgs  = args
+      , nextArity = arity - arguments.length
       , i
 
     if (arguments.length) {
-      i = 0
       nextArgs = _slice.call(nextArgs)
       for (i = 0; i < arguments.length; i++) {
-        nextArgs.push(arguments[i])
+        nextArgs[nextArgs.length] = arguments[i]
       }
     }
 
-    return nextArgs.length >= arity
+    return nextArity <= 0
       ? fn.apply(null, nextArgs)
-      : _curryN(arity, nextArgs, fn)
+      : _curryN(nextArity, nextArgs, fn)
   })
   _nameFunc(_createFnName(fn.displayName || fn.name, args), fnWrapper)
   return fnWrapper
