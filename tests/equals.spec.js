@@ -1,5 +1,6 @@
 const test       = require('ava')
     , { equals } = require('../dist/halcyon')
+    , implementsSameValueZero = require('./utils/implementsSameValueZero')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(equals.length, 2)
@@ -8,6 +9,8 @@ test('properly reports its arity (is binary)', (t) => {
 test('is curried', (t) => {
   t.is(typeof equals(5), 'function')
 })
+
+implementsSameValueZero(equals, test)
 
 // ========================================================
 // Coercion
@@ -27,8 +30,6 @@ test('does not coerce values', (t) => {
 test('correctly handles number literals', (t) => {
   t.true(equals(5, 5))
 })
-
-// TODO(zuko): should treat +0 and -0 as different
 
 // Strings
 // ------------------------------------

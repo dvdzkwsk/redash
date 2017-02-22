@@ -1,5 +1,6 @@
 const test          = require('ava')
     , { identical } = require('../dist/halcyon')
+    , implementsSameValueZero = require('./utils/implementsSameValueZero')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(identical.length, 2)
@@ -28,3 +29,5 @@ test('returns true if the values occupy the same space in memory', (t) => {
 test('returns false if objects have the same exact shape and values, but occupy different spaces in memory', (t) => {
   t.false(identical({}, {}))
 })
+
+implementsSameValueZero(identical, test)

@@ -1,4 +1,5 @@
 import _defn from './internal/_defn'
+import _identical from './internal/_identical'
 
 /**
  * @name identical
@@ -13,10 +14,9 @@ import _defn from './internal/_defn'
  * @example
  * identical(5, 5) // => true
  *
+ * // Objects are compared by reference, unlike `equals`.
  * const a = { id: 1 }
- * identical(a, { id: 1 }) // => false
  * identical(a, a)         // => true
+ * identical(a, { id: 1 }) // => false
  */
-export default _defn('identical', function (a, b) {
-  return a === b
-})
+export default _defn('identical', _identical)

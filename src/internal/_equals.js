@@ -1,6 +1,7 @@
 import typeOf from '../type'
 import _iteratorToArray from './_iteratorToArray'
 import _hasOwn from './_hasOwn'
+import _identical from './_identical'
 
 function _compareObjects (a, b) {
   var aKeys
@@ -30,7 +31,7 @@ export default function _equals (a, b) {
   var aEntries
     , bEntries
 
-  if (a === b) return true
+  if (_identical(a, b)) return true
   if (typeOf(a) !== typeOf(b)) return false
 
   // We now know that a and b are the same type. If they are primitives
