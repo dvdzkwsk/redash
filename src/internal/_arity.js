@@ -1,7 +1,11 @@
-// Credit to Ramda for this idea for creating curried functions that
-// properly report their arity via function.length.
-// https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
 export default function _arity (arity, fn) {
+  if (Object.getOwnPropertyDescriptor(fn, 'length').writable) {
+    Object.defineProperty(fn, 'length', { value: arity })
+    return fn
+  }
+  // Credit to Ramda for this idea for creating curried functions that
+  // properly report their arity via function.length.
+  // https://github.com/ramda/ramda/blob/master/src/internal/_arity.js
   switch (arity) {
     case 0: return function () { return fn.apply(null, arguments) }
     case 1: return function (a0) { return fn.apply(null, arguments) }
