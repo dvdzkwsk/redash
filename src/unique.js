@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import _contains from './internal/_contains'
+import _Set from './internal/_Set'
 
 /**
  * @name unique
@@ -12,18 +12,16 @@ import _contains from './internal/_contains'
  * @example
  * unique([1, 1, 2, 2, 3, 3]) // => [1, 2, 3]
  */
-//  TODO(zuko): super naive, improve algorithm
-//  TODO(zuko): support objects
-//  TODO(zuko): if we enforce all elements to be of the same type, we can
-//  reliably hash primitives for better performance
 export default _defn('unique', function (xs) {
   var i   = 0
     , res = []
+    , set = new _Set()
 
   for (; i < xs.length; i++) {
-    if (!_contains(xs[i], res)) {
+    if (set.add(xs[i])) {
       res[res.length] = xs[i]
     }
   }
+  set.clear()
   return res
 })
