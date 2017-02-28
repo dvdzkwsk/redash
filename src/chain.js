@@ -16,20 +16,20 @@ import _defn from './internal/_defn'
  */
 export default _defn('chain', function (fn, xs) {
   var i   = 0
-    , bs  = []
-    , _i
-    , b
+    , res  = []
+    , x
+    , xi
 
   for (; i < xs.length; i++) {
-    b = fn(xs[i])
-    if (Array.isArray(b)) {
-      for (_i = 0; _i < b.length; _i++) {
-        bs.push(b[_i])
+    x = fn(xs[i])
+    if (Array.isArray(x)) {
+      for (xi = 0; xi < x.length; xi++) {
+        res[res.length] = x[xi]
       }
     } else {
-      bs.push(b)
+      res[res.length] = x
     }
   }
 
-  return bs
+  return res
 })
