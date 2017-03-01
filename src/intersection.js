@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import _Set from './internal/_set'
+import _Set from './internal/_Set'
 
 /**
  * @name intersection
