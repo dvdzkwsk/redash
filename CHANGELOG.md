@@ -3,6 +3,7 @@
 ### Migration path
 * `mapValues` has been deprecated because `map` now supports objects. Replace
   usage of `mapValues` with `map`.
+* `identical` now implements [SameValueZero](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero) semantics. The only breaking change here is that `NaN` is now treated as identical to `NaN`.
 
 ### Features
 * Added `intersection`.
@@ -13,12 +14,12 @@
 * Added `unique`.
 
 ### Fixes
-* Functions with an arity > 3 now properly report their arity when partially
-  applied.
+* Functions with an arity > 3 now properly report their arity when partially applied.
 
 ### Improvements
 * `map` now supports plain objects.
 * Curried functions now provide better stringified representations for a better debugging experience.
+* `identical` now implements [SameValueZero](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero) semantics. This affects any function, such as `equals`, that performs identity checks.
 
 ## v0.18.0
 
