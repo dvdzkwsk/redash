@@ -1,3 +1,25 @@
+## v0.19.0
+
+### Migration path
+* `mapValues` has been deprecated because `map` now supports objects. Replace
+  usage of `mapValues` with `map`.
+
+### Features
+* Added `intersection`.
+* Added `match`.
+* Added `pad`.
+* Added `padLeft`.
+* Added `padRight`.
+* Added `unique`.
+
+### Fixes
+* Functions with an arity > 3 now properly report their arity when partially
+  applied.
+
+### Improvements
+* `map` now supports plain objects.
+* Curried functions now provide better stringified representations for a better debugging experience.
+
 ## v0.18.0
 
 ### Migration path
