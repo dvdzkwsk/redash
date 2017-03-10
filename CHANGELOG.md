@@ -1,3 +1,8 @@
+## v0.19.1
+
+### Fixes
+* `trace` now correctly returns a tapped function. This was broken after function naming was implemented.
+
 ## v0.19.0
 
 ### Migration path
