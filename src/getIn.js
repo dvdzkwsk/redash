@@ -1,26 +1,26 @@
 import _defn from './internal/_defn'
 
 /**
- * @name path
+ * @name getIn
  * @signature String k => [k] -> {k:v} -> v
- * @since v0.17.0
+ * @since v0.20.0
  * @description
  * Returns the value at the given path in an object. If any prop in the series
  * does not exist, the function short circuits and returns `undefined`.
  *
  * @example
- * const getAge = path(['info', 'age'])
+ * const getAge = getIn(['info', 'age'])
  *
  * getAge({ info: { age: 20 }}) // => 20
  * getAge({})                   // => undefined
  */
-export default _defn('path', function (props, obj) {
+export default _defn('getIn', function (props, obj) {
   var i   = 0
     , val = obj
 
   if (val == null) {
     throw new TypeError(
-      'The second argument to `path` must not be undefined or null.'
+      'The second argument to `getIn` must not be undefined or null.'
     )
   }
 

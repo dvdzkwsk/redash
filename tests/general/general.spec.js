@@ -38,6 +38,8 @@ const EXPECTED_FNS = [
 , 'fmap'
 , 'forEach'
 , 'fromPairs'
+, 'get'
+, 'getIn'
 , 'groupBy'
 , 'gt'
 , 'gte'
@@ -77,11 +79,9 @@ const EXPECTED_FNS = [
 , 'over'
 , 'pair'
 , 'partition'
-, 'path'
 , 'pick'
 , 'pipe'
 , 'prepend'
-, 'prop'
 , 'propEq'
 , 'range'
 , 'rangeBy'
@@ -137,5 +137,5 @@ test('all functions have a `displayName` property matching `name`', (t) => {
 test('function names allow introspecting curried arguments', (t) => {
   t.is(stringifyFn(h.map()), 'map')
   t.is(stringifyFn(h.map(h.multiply(2))), 'map(multiply(2))')
-  t.is(stringifyFn(h.groupBy(h.prop('id'))), 'groupBy(prop("id"))')
+  t.is(stringifyFn(h.groupBy(h.get('id'))), 'groupBy(get("id"))')
 })

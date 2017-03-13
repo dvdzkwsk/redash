@@ -1,7 +1,7 @@
 import _defn from './internal/_defn'
 import assoc from './assoc'
 import lens from './lens'
-import prop from './prop'
+import get from './get'
 
 /**
  * @name lensProp
@@ -22,5 +22,5 @@ import prop from './prop'
  * set(nameLens, 'Joe', bob) // => { name: 'Joe' }
  */
 export default _defn('lensProp', function (key) {
-  return lens(prop(key), assoc(key))
+  return lens(get(key), assoc(key))
 })
