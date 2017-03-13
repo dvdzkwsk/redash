@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import _shallowCloneObject from './internal/_shallowCloneObject'
+import updateIn from './updateIn'
 
 /**
  * @name update
@@ -13,8 +13,5 @@ import _shallowCloneObject from './internal/_shallowCloneObject'
  * update('first', toUpper, user) // => { first: 'BOB', last: 'LobLaw' }
  */
 export default _defn('update', function (key, xform, obj) {
-  var res = _shallowCloneObject(obj)
-
-  res[key] = xform(res[key])
-  return res
+  return updateIn([key], xform, obj)
 })
