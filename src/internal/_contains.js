@@ -1,6 +1,6 @@
 import _equals from './_equals'
 
-export default function contains (x, xs) {
+export default function _contains (x, xs) {
   var i
 
   if (typeof xs === 'string') {

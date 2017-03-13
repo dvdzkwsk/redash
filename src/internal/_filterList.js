@@ -1,4 +1,4 @@
-export default function filterList (pred, xs) {
+export default function _filterList (pred, xs) {
   var i   = 0
     , res = []
 
