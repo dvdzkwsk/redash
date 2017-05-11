@@ -1,3 +1,4 @@
+.yarn-cache
 .DS_STORE
 *.log
 node_modules
