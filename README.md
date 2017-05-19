@@ -13,7 +13,21 @@ The missing standard library for JavaScript. This lightweight library is meant t
 ## Why?
 
 ### First Class Functional Programming
-Halcyon's guiding principle is to support and encourage functional programming styles. Unlike some other libraries that simply offer FP-_ish_ wrappers, functional programming is a first class citizen in Halcyon. This means that every function is immutable, auto-curried, and written to expect data last to facilitate composition. Halcyon also compares objects by value, not reference, which allows you to start working with data in a meaningful way without concerning yourself with how it's stored in memory.
+The Halcyon API is designed specifically for functional programming styles.
+
+Unlike some other libraries that simply offer FP-_ish_ wrappers, functional programming is a first class citizen in Halcyon. This means that every function is immutable, auto-curried, and written to expect data last to facilitate composition. Halcyon also compares objects by value, not reference, which allows you to start working with data in a meaningful way without concerning yourself with how it's stored in memory.
+
+### A Better Developer Experience
+
+One of the common pain points when writing more functional-style JavaScript is debuggability. Because features like currying are not native to the language, it can be difficult to debug partially applied functions and compositions, especially because of JavaScript's dynamic nature. Halcyon strives to improve upon this to make your life easier.
+
+```js
+const double = multiply(2)
+
+console.log(double) // "multiply(2)"
+```
+
+### 
 
 ### Built for the Next Generation of JavaScript
 The Halcyon codebase is written with ES2015 modules and packaged with rollup, allowing you to take advantage of tree shaking to produce slimmer bundles without the need for extra tooling.
@@ -21,31 +35,26 @@ The Halcyon codebase is written with ES2015 modules and packaged with rollup, al
 ## Usage
 
 ```bash
-npm i --save halcyon
+npm install --save halcyon
 ```
 
 After that's done, just import it in your code and get on to building awesome stuff. If you haven't already done so, you should check out the [API documentation](https://halcyon.zuko.me) to see what functions are available and learn how to use them. With that out of the way, here are two of the most common ways to use Halcyon:
 
 ### ES2015 Module
 ```js
-import * as _ from 'halcyon'   // import everything
-import { prop } from 'halcyon' // or just what you need
+import * as h from 'halcyon'
 
-const getName = _.prop('name')
-_.map(getName, [{ name: 'Dwight' }, { name: 'Jim' }]) // => ['Dwight', 'Jim']
+const getName = h.prop('name')
+h.map(getName, [{ name: 'Dwight' }, { name: 'Jim' }]) // => ['Dwight', 'Jim']
 ```
 
 ### Installer
 If you have full control over your codebase and don't want to continually import/prefix all of the functions, you can install the library to a context.
 
 ```js
-import install from 'halcyon/installer'
+import installTo from 'halcyon/installer'
 
-// Node/Webpack/etc:
-install(global)
-
-// Directly in the browser:
-install(window)
+installTo(global) // or `window` if you are in the browser
 
 // Now all of the functions are available on the scope you installed it to:
 prop('name', { name: 'Michael' }) // => 'Michael'
