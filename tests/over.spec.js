@@ -3,7 +3,7 @@ const test     = require('ava')
     , { lens
       , assoc
       , prop
-      , over } = require('../dist/halcyon')
+      , over } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(over.length, 3)

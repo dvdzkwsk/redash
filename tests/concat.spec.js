@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { concat } = require('../dist/halcyon')
+    , { concat } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(concat.length, 2)

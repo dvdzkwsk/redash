@@ -1,6 +1,6 @@
 const test         = require('ava')
     , sinon        = require('sinon')
-    , { updateIn } = require('../dist/halcyon')
+    , { updateIn } = require('../dist/redash')
 
 test('properly report its arity (is ternary)', (t) => {
   t.is(updateIn.length, 3)

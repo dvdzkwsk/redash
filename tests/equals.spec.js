@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { equals } = require('../dist/halcyon')
+    , { equals } = require('../dist/redash')
     , implementsSameValueZero = require('./utils/implementsSameValueZero')
 
 test('properly reports its arity (is binary)', (t) => {

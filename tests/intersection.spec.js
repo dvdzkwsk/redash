@@ -1,5 +1,5 @@
 const test             = require('ava')
-    , { intersection } = require('../dist/halcyon')
+    , { intersection } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(intersection.length, 2)

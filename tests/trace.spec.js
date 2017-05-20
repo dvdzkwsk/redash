@@ -1,6 +1,6 @@
 const test      = require('ava')
     , sinon     = require('sinon')
-    , { trace } = require('../dist/halcyon')
+    , { trace } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(trace.length, 1)

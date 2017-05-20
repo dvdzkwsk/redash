@@ -10,8 +10,7 @@
     "describe": false,
     "expect": false,
     "it": false,
-    "sinon": false,
-    "halcyon": false
+    "sinon": false
   },
   "rules": {
     "max-depth": 0,

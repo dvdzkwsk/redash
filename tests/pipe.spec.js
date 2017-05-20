@@ -1,6 +1,6 @@
 const test     = require('ava')
     , sinon    = require('sinon')
-    , { pipe } = require('../dist/halcyon')
+    , { pipe } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(pipe.length, 1)

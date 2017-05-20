@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { zipObj } = require('../dist/halcyon')
+    , { zipObj } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(zipObj.length, 2)

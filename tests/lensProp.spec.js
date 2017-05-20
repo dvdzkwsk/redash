@@ -2,7 +2,7 @@ const test         = require('ava')
     , { lensProp
       , over
       , set
-      , view     } = require('../dist/halcyon')
+      , view     } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(lensProp.length, 1)

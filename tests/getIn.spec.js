@@ -1,5 +1,5 @@
 const test      = require('ava')
-    , { getIn } = require('../dist/halcyon')
+    , { getIn } = require('../dist/redash')
 
 test('property reports its arity (is binary)', (t) => {
   t.is(getIn.length, 2)

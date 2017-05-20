@@ -1,5 +1,5 @@
 const test       = require('ava')
-    , { groupBy } = require('../dist/halcyon')
+    , { groupBy } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(groupBy.length, 2)

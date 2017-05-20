@@ -1,5 +1,5 @@
 const test      = require('ava')
-    , { getEq } = require('../dist/halcyon')
+    , { getEq } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
   t.is(getEq.length, 3)

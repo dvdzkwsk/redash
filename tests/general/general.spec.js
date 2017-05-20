@@ -1,6 +1,6 @@
 /* eslint-disable one-var */
 const test = require('ava')
-    , h    = require('../../dist/halcyon')
+    , h    = require('../../dist/redash')
 
 const EXPECTED_FNS = [
   'add'

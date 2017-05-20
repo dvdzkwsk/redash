@@ -5,7 +5,7 @@ const test       = require('ava')
       , divide
       , inc
       , dec
-    }            = require('../dist/halcyon')
+    }            = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(juxt.length, 1)

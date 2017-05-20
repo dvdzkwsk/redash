@@ -1,5 +1,5 @@
 const test            = require('ava')
-    , { flattenDeep } = require('../dist/halcyon')
+    , { flattenDeep } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(flattenDeep.length, 1)
