@@ -1,5 +1,18 @@
 {
   "parser": "babel-eslint",
+  "extends": ["plugin:react/recommended"],
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "globals": {
     "add": false,
     "all": false,
@@ -101,6 +114,7 @@
     "toLower": false,
     "toPairs": false,
     "toUpper": false,
+    "transform": false,
     "trim": false,
     "type": false,
     "unless": false,
@@ -117,6 +131,7 @@
   "rules": {
     "comma-dangle": "off",
     "comma-style": "off",
-    "one-var": "off"
+    "one-var": "off",
+    "react/prop-types": "off"
   }
 }

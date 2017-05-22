@@ -18,7 +18,7 @@ class DocBlock extends React.PureComponent {
     const cleanedExample = pipe([
       join('\n'),
       split('\n'),
-      map(pipe([split('//'), head, trim])),
+      map(pipe([split('//'), head])),
       compact,
       join('\n')
     ])(this.props.examples)
@@ -27,7 +27,7 @@ class DocBlock extends React.PureComponent {
   }
 
   render () {
-    const { name, signature, description, examples, since, see } = this.props
+    const { name, signature, description, examples } = this.props
     return (
       <div>
         <h2 id={toLower(name)}>
