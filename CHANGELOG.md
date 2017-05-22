@@ -1,3 +1,23 @@
+## v0.20.0
+
+### Deprecation Warnings
+* `path` will be deprecated in future releases.
+* `prop` will be deprecated in future releases.
+* `propEq` will be deprecated in future releases.
+
+### Migration Path
+* `isEmpty` now returns true for falsy values.
+
+### Features
+* Added rudimentary TypeScript definitions.
+* Added `update`.
+* Added `updateIn`.
+
+### Improvements
+* Renamed `path` to `getIn`.
+* Renamed `prop` to `get`.
+* Renamed `propEq` to `getEq`.
+
 ## v0.19.1
 
 ### Fixes
