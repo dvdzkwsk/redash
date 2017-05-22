@@ -4,9 +4,9 @@
 node_modules
 coverage
 dist
-halcyon.js
-halcyon.next.js
-halcyon.min.js
+redash.js
+redash.next.js
+redash.min.js
 installer.js
 installer.min.js
 sandbox.js
