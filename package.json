@@ -9,6 +9,7 @@
     "test": "tests"
   },
   "files": [
+    "index.d.ts",
     "redash.js",
     "redash.min.js",
     "redash.next.js",
