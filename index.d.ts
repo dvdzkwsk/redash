@@ -1,5 +1,8 @@
 declare namespace Redash {
   type Key = string | number | boolean
+  type List<T> = Array<T>
+  type Functor<T> = List<T>
+  type Filterable<T> = List<T> | Object
 
   interface API {
     add (a: number, b: number): number
@@ -13,13 +16,18 @@ declare namespace Redash {
     any<T> (predicate: (x: T) => boolean, xs: Array<T>): boolean
     any<T> (predicate: (x: T) => boolean): (xs: Array<T>) => boolean
 
-    append (...args: Array<any>): any
+    append<T> (value: T, xs: Array<T>): Array<T>
+    append<T> (value: T): (xs: Array<T>) => Array<T>
 
-    assoc (...args: Array<any>): any
+    assoc<T> (key: Key, value: any, target: T): T
+    assoc<T> (key: Key, value: any): (target: T) => T
+    assoc<T> (key: Key): (value: any) => (target: T) => T
 
     chain (...args: Array<any>): any
 
-    clamp (...args: Array<any>): any
+    clamp (lower: number, upper: number, value: number): number
+    clamp (lower: number, upper: number): (value: number) => number
+    clamp (lower: number): (upper: number) => (value: number) => number
 
     compact<T> (xs: Array<T>): Array<T>
 
@@ -27,7 +35,8 @@ declare namespace Redash {
 
     compose (...args: Array<any>): any
 
-    concat (...args: Array<any>): any
+    concat<T> (as: Array<T>, bs: Array<T>): Array<T>
+    concat<T> (as: Array<T>): (bs: Array<T>) => Array<T>
 
     cond (...args: Array<any>): any
 
@@ -40,7 +49,8 @@ declare namespace Redash {
 
     dec (a: number): number
 
-    dissoc (...args: Array<any>): any
+    dissoc<T> (key: Key, target: T): T
+    dissoc<T> (key: Key): (target: T) => T
 
     divide (a: number, b: number): number
     divide (a: number): (b: number) => number
@@ -48,9 +58,11 @@ declare namespace Redash {
     drop<T> (n: number, xs: Array<T>): Array<T>
     drop<T> (n: number): (xs: Array<T>) => Array<T>
 
-    dropUntil (...args: Array<any>): any
+    dropUntil<T> (predicate: (x: T) => boolean, xs: List<T>): List<T>
+    dropUntil<T> (predicate: (x: T) => boolean): (xs: List<T>) => List<T>
 
-    dropWhile (...args: Array<any>): any
+    dropWhile<T> (predicate: (x: T) => boolean, xs: List<T>): List<T>
+    dropWhile<T> (predicate: (x: T) => boolean): (xs: List<T>) => List<T>
 
     empty<T> (x: T): T
 
@@ -59,17 +71,21 @@ declare namespace Redash {
 
     F (): boolean
 
-    filter (...args: Array<any>): any
+    filter<T> (predicate: (x: T) => boolean, xs: Filterable<T>): Filterable<T>
+    filter<T> (predicate: (x: T) => boolean): (xs: Filterable<T>) => Filterable<T>
 
-    find (...args: Array<any>): any
+    find<T> (predicate: (x: T) => boolean, xs: List<T>): T | undefined
+    find<T> (predicate: (x: T) => boolean): (xs: List<T>) => T | undefined
 
-    findIndex (...args: Array<any>): any
+    findIndex<T> (predicate: (x: T) => boolean, xs: List<T>): number
+    findIndex<T> (predicate: (x: T) => boolean): (xs: List<T>) => number
 
-    findLast (...args: Array<any>): any
+    findLast<T> (predicate: (x: T) => boolean, xs: List<T>): T | undefined
+    findLast<T> (predicate: (x: T) => boolean): (xs: List<T>) => T | undefined
 
     flatten<T> (xs: Array<any>): Array<any>
 
-    flattenDeep (...args: Array<any>): Array<any>
+    flattenDeep (xs: Array<any>): Array<any>
 
     flip (...args: Array<any>): any
 
@@ -80,7 +96,10 @@ declare namespace Redash {
 
     fromPairs (pairs: Array<[string, any]>): { [key: string]: any }
 
-    get (...args: Array<any>): any
+    get (key: string, target: Object): any
+    get (key: string): (target: Object) => any
+    get<T> (key: number, target: List<T>): T
+    get<T> (key: number): (target: List<T>) => T
 
     getEq (...args: Array<any>): any
 
@@ -111,7 +130,8 @@ declare namespace Redash {
 
     insert (...args: Array<any>): any
 
-    intersection (...args: Array<any>): any
+    intersection<T> (as: List<T>, bs: List<T>): List<T>
+    intersection<T> (as: List<T>): (bs: List<T>) => List<T>
 
     isEmpty (x: any): boolean
 
@@ -121,7 +141,8 @@ declare namespace Redash {
 
     isOdd (x: number): boolean
 
-    isType (...args: Array<any>): any
+    isType (type: string | Object, value: any): boolean
+    isType (type: string | Object): (value: any) => boolean
 
     join (...args: Array<any>): any
 
@@ -143,11 +164,13 @@ declare namespace Redash {
     lte (a: number, b: number): boolean
     lte (a: number): (b: number) => boolean
 
-    map (...args: Array<any>): any
+    map<A, B> (fn: (a: A) => B, as: Functor<A>): Functor<B>
+    map<A, B> (fn: (a: A) => B): (as: Functor<A>) => Functor<B>
 
     mapi (...args: Array<any>): any
 
-    mapKeys (...args: Array<any>): any
+    mapKeys (fn: (key: string) => Key, target: Object): Object
+    mapKeys (fn: (key: string) => Key): (target: Object) => Object
 
     match (...args: Array<any>): any
 
@@ -175,7 +198,7 @@ declare namespace Redash {
 
     pair (...args: Array<any>): any
 
-    partition (...args: Array<any>): any
+    partition<T> (fn: (x: T) => boolean, xs: List<T>): [T[], T[]]
 
     pick (...args: Array<any>): any
 
@@ -188,17 +211,24 @@ declare namespace Redash {
 
     rangeBy (...args: Array<any>): any
 
-    reduce (...args: Array<any>): any
+    reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC, xs: List<T>): ACC
+    reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => ACC
+    reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC): (acc: ACC) => (xs: List<T>) => ACC
 
     reduceRight (...args: Array<any>): any
 
-    reject (...args: Array<any>): any
+    reject<T> (predicate: (x: T) => boolean, xs: Filterable<T>): Filterable<T>
+    reject<T> (predicate: (x: T) => boolean): (xs: Filterable<T>) => Filterable<T>
 
-    replace (...args: Array<any>): any
+    replace (match: string | RegExp, replacement: string, target: string): string
+    replace (match: string | RegExp, replacement: string): (target: string) => string
+    replace (match: string | RegExp): (replacement: string) => (target: string) => string
 
-    reverse (...args: Array<any>): any
+    reverse<T> (xs: List<T>): Array<T>
 
-    scan (...args: Array<any>): any
+    scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC, xs: List<T>): Array<ACC>
+    scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => Array<ACC>
+    scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC): (acc: ACC) => (xs: List<T>) => Array<ACC>
 
     set (...args: Array<any>): any
 
@@ -221,9 +251,10 @@ declare namespace Redash {
 
     takeWhile (...args: Array<any>): any
 
-    tap (...args: Array<any>): any
+    tap<T> (fn: (...args: any[]) => T): (...args: any[]) => T
 
-    test (...args: Array<any>): any
+    test (pattern: RegExp, target: string): boolean
+    test (pattern: RegExp): (target: string) => boolean
 
     times<T> (fn: (n: number) => T, n: number): Array<T>
     times<T> (fn: (n: number) => T): (n: number) => Array<T>
@@ -250,7 +281,7 @@ declare namespace Redash {
 
     updateIn (...args: Array<any>): any
 
-    values (...args: Array<any>): any
+    values (obj: Object): Array<string>
 
     view (...args: Array<any>): any
 
@@ -258,7 +289,8 @@ declare namespace Redash {
 
     where (...args: Array<any>): any
 
-    without (...args: Array<any>): any
+    without<T> (x: T, xs: List<T>): List<T>
+    without<T> (x: T): (xs: List<T>) => List<T>
 
     zip<A, B> (as: Array<A>, bs: Array<B>): Array<[A, B]>
     zip<A, B> (as: Array<A>): (bs: Array<B>) => Array<[A, B]>
@@ -270,4 +302,3 @@ declare namespace Redash {
 
 declare var R: Redash.API
 export = R
-
