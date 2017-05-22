@@ -1,3 +1,8 @@
+## v0.20.1
+
+### Improvements
+* Improved TypeScript definitions
+
 ## v0.20.0
 
 ### Deprecation Warnings
