@@ -74,7 +74,6 @@ const EXPECTED_FNS = [
 , 'merge'
 , 'min'
 , 'multiply'
-, 'of'
 , 'omit'
 , 'over'
 , 'pair'
