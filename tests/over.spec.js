@@ -2,7 +2,7 @@ const test     = require('ava')
     , sinon    = require('sinon')
     , { lens
       , assoc
-      , prop
+      , get
       , over } = require('../dist/redash')
 
 test('properly reports its arity (is ternary)', (t) => {
@@ -10,7 +10,7 @@ test('properly reports its arity (is ternary)', (t) => {
 })
 
 test('calls the getter, transformer, and setter exactly once', (t) => {
-  const getter = sinon.spy(prop('foo'))
+  const getter = sinon.spy(get('foo'))
       , setter = sinon.spy(assoc('foo'))
       , xform  = sinon.spy(x => x * 2)
 
@@ -23,6 +23,6 @@ test('calls the getter, transformer, and setter exactly once', (t) => {
 })
 
 test('returns the target object with its value transformed at the lens path', (t) => {
-  t.deepEqual(over(lens(prop('foo'), assoc('foo')), x => x * 2, { foo: 2 })
+  t.deepEqual(over(lens(get('foo'), assoc('foo')), x => x * 2, { foo: 2 })
             , { foo: 4 })
 })

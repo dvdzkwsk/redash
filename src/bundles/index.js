@@ -124,5 +124,4 @@ export { default as zipObj }       from '../zipObj'
 // Aliases
 // ------------------------------------
 export { default as flatMap }      from '../chain'
-export { default as prop }         from '../get'
 export { default as propEq }       from '../getEq'

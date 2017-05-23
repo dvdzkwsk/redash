@@ -2,7 +2,7 @@ const test     = require('ava')
     , { lens
       , view
       , assoc
-      , prop } = require('../dist/redash')
+      , get } = require('../dist/redash')
 
 test('properly reports its arity (is binary)', (t) => {
   t.is(view.length, 2)
@@ -13,5 +13,5 @@ test('is curried', (t) => {
 })
 
 test('properly applies the lens getter to the target', (t) => {
-  t.is(view(lens(prop('foo'), assoc('foo')), { foo: 'bar' }), 'bar')
+  t.is(view(lens(get('foo'), assoc('foo')), { foo: 'bar' }), 'bar')
 })
