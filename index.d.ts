@@ -87,8 +87,6 @@ declare namespace Redash {
 
     flattenDeep (xs: Array<any>): Array<any>
 
-    flip (...args: Array<any>): any
-
     fmap (...args: Array<any>): any
 
     forEach<T> (fn: (x: T) => any, xs: Array<T>): void
