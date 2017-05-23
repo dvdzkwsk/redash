@@ -182,8 +182,6 @@ declare namespace Redash {
 
     multiply (...args: Array<any>): any
 
-    of (...args: Array<any>): any
-
     omit (...args: Array<any>): any
 
     over (...args: Array<any>): any
