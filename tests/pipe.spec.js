@@ -33,11 +33,3 @@ test('invokes the functions from left to right and returns the result of the las
   t.true(s3.calledWithExactly(10))
   t.is(res, 5)
 })
-
-test('throws early if a non-function is passed', (t) => {
-  t.throws(
-    () => pipe([() => {}, undefined]),
-    'Invalid argument supplied to `pipe`. The value at index [1] was not a function; ' +
-    'what was received was of type: Nil.')
-})
-

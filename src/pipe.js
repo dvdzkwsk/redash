@@ -1,8 +1,6 @@
 import _defn from './internal/_defn'
 import _curryN from './internal/_curryN'
 import _nameFunc from './internal/_nameFunc'
-import isType from './isType'
-import type from './type'
 
 /**
  * @name pipe
@@ -30,19 +28,8 @@ import type from './type'
  * getFriends(user) // => 'JIM, DWIGHT'
  */
 export default _defn('pipe', function (fns) {
-  var fni = 0
-    , wrappedFn
+  var wrappedFn
 
-  // TODO(zuko): abstract for use in other functions and disable in production.
-  for (; fni < fns.length; fni++) {
-    if (!isType('function', fns[fni])) {
-      throw new TypeError(
-        'Invalid argument supplied to `pipe`. The value at index ' +
-        '[' + fni + '] was not a function; what was received was of type: ' +
-        type(fns[fni]) + '.'
-      )
-    }
-  }
   wrappedFn = _curryN(fns[0].length, [], function () {
     var i   = 0
       , len = fns.length
