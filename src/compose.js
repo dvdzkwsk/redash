@@ -1,7 +1,5 @@
 import _defn from './internal/_defn'
 import _reverse from './internal/_reverse'
-import isType from './isType'
-import type from './type'
 import pipe from './pipe'
 
 /**
@@ -31,17 +29,5 @@ import pipe from './pipe'
  * isSqrtEven(16) // => true
  */
 export default _defn('compose', function (fns) {
-  var i = 0
-
-  // TODO(zuko): abstract for use in other functions and disable in production.
-  for (; i < fns.length; i++) {
-    if (!isType('function', fns[i])) {
-      throw new TypeError(
-        'Invalid argument supplied to `compose`. The value at index ' +
-        '[' + i + '] was not a function; what was received was of type: ' +
-        type(fns[i]) + '.'
-      )
-    }
-  }
   return pipe(_reverse.call(fns))
 })

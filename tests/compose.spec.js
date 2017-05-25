@@ -53,10 +53,3 @@ test('invokes the functions from right to left', (t) => {
   t.true(s2.calledBefore(s1))
   t.true(s1.calledOnce)
 })
-
-test('throws early if a non-function is passed', (t) => {
-  t.throws(
-    () => compose([() => {}, undefined]),
-    'Invalid argument supplied to `compose`. The value at index [1] was not a function; ' +
-      'what was received was of type: Nil.')
-})
