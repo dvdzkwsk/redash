@@ -24,12 +24,12 @@ test('returns `undefined` if a property in the path does not exist', (t) => {
   t.is(getIn(['foo', 'bop'], { foo: { bar: 'baz' }}))
 })
 
-test('respects null values', (t) => {
+test('respects falsy values', (t) => {
   t.is(getIn(['foo', 'bar'], { foo: { bar: null }}), null)
+  t.is(getIn(['foo', 'bar'], { foo: { bar: false }}), false)
+  t.is(getIn(['foo', 'bar'], { foo: { bar: 0 }}), 0)
 })
 
-// Asserts that `getIn` acts like `get` for the first property.
-test('throws if the target object is undefined or null', (t) => {
-  t.throws(() => getIn([], undefined), 'The second argument to `getIn` must not be undefined or null.')
-  t.throws(() => getIn([], null), 'The second argument to `getIn` must not be undefined or null.')
+test('returns undefined if the target is nil', (t) => {
+  t.is(getIn(['foo'], null), undefined)
 })

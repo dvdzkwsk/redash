@@ -1,4 +1,5 @@
 import _defn from './internal/_defn'
+import get from './get'
 
 /**
  * @name getIn
@@ -14,13 +15,12 @@ import _defn from './internal/_defn'
  * getAge({ info: { age: 20 }}) // => 20
  * getAge({})                   // => undefined
  */
-export default _defn('getIn', function (props, obj) {
+export default _defn('getIn', function (keys, target) {
   var i   = 0
-    , val = obj
+    , val = target
 
-  while (i < props.length) {
-    if (val == null) return val
-    val = val[props[i]]
+  while (i < keys.length) {
+    val = get(keys[i], val)
     i += 1
   }
   return val
