@@ -1,6 +1,6 @@
-const test        = require('ava')
-    , sinon       = require('sinon')
-    , { compose } = require('../dist/redash')
+const test             = require('ava')
+    , sinon            = require('sinon')
+    , { compose, get } = require('../dist/redash')
 
 test('correctly reports its arity (is unary)', (t) => {
   t.is(compose.length, 1)
@@ -52,4 +52,9 @@ test('invokes the functions from right to left', (t) => {
   t.true(s3.calledBefore(s2))
   t.true(s2.calledBefore(s1))
   t.true(s1.calledOnce)
+})
+
+test('provides a friendly to-string representation', (t) => {
+  t.is(compose([get('a'), get('b')]).toString()
+    , 'compose([get("a"), get("b")])')
 })
