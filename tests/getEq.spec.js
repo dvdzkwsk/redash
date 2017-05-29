@@ -16,3 +16,7 @@ test('returns true if the property on the object equals the target value', (t) =
 test('uses deep equality', (t) => {
   t.true(getEq('foo', { baz: 'biz' }, { foo: { baz: 'biz' }}))
 })
+
+test('does not throw if the target is nil', (t) => {
+  t.true(getEq('foo', undefined, null))
+})

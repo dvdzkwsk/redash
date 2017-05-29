@@ -1,5 +1,6 @@
 import _defn from './internal/_defn'
 import _equals from './internal/_equals'
+import get from './get'
 
 /**
  * @name getEq
@@ -15,5 +16,5 @@ import _equals from './internal/_equals'
  * getEq('data', { id: 1 }, { data: { id: 1 }})  // => true
  */
 export default _defn('getEq', function (key, value, obj) {
-  return _equals(obj[key], value)
+  return _equals(get(key, obj), value)
 })
