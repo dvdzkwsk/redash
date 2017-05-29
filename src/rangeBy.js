@@ -18,14 +18,12 @@ export default _defn('rangeBy', function (inc, start, end) {
     , times
     , i
 
+  if (start === end) {
+    return []
+  }
   if (inc === 0) {
     throw new Error(
       'The `increment` value provided to `rangeBy` must be a non-zero number.'
-    )
-  } else if (start === end) {
-    throw new Error(
-      'The `start` value provided to `rangeBy` must be greater than or less than ' +
-      'the `end` value. Received the same value for both: ' + start + '.'
     )
   } else if (inc > 0 && start > end) {
     throw new Error(
