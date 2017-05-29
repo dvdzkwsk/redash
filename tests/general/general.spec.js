@@ -41,7 +41,6 @@ const EXPECTED_FNS = [
 , 'getEq'
 , 'getIn'
 , 'groupBy'
-, 'gt'
 , 'gte'
 , 'has'
 , 'head'
