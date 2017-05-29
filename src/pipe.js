@@ -1,5 +1,6 @@
 import _defn from './internal/_defn'
 import _curryN from './internal/_curryN'
+import _createFnName from './internal/_createFnName'
 import _nameFunc from './internal/_nameFunc'
 
 /**
@@ -28,9 +29,10 @@ import _nameFunc from './internal/_nameFunc'
  * getFriends(user) // => 'JIM, DWIGHT'
  */
 export default _defn('pipe', function (fns) {
-  var wrappedFn
+  var arity = fns[0].length
+    , wrappedFn
 
-  wrappedFn = _curryN(fns[0].length, [], function () {
+  wrappedFn = _curryN(arity, [], function () {
     var i   = 0
       , len = fns.length
       , acc = fns[i++].apply(null, arguments)
@@ -40,6 +42,6 @@ export default _defn('pipe', function (fns) {
     }
     return acc
   })
-  _nameFunc('pipe', [fns], wrappedFn)
-  return wrappedFn
+
+  return _nameFunc(_createFnName('pipe', [fns]), wrappedFn)
 })
