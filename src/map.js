@@ -1,7 +1,6 @@
 import _defn from './internal/_defn'
 import _mapList from './internal/_mapList'
 import _mapObject from './internal/_mapObject'
-import isType from './isType'
 
 /**
  * @name map
@@ -19,8 +18,12 @@ import isType from './isType'
  * map(x => x * 2, [1, 2, 3, 4, 5])      // => [2, 4, 6, 8, 10]
  * map(x => x * 2, { a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  */
-export default _defn('map', function (fn, xs) {
-  return isType('Object', xs)
-    ? _mapObject(fn, xs)
-    : _mapList(fn, xs)
+export default _defn('map', function (fn, functor) {
+  if (Array.isArray(functor)) {
+    return _mapList(fn, functor)
+  }
+  if (typeof functor.map === 'function') {
+    return functor.map(fn)
+  }
+  return _mapObject(fn, functor)
 })

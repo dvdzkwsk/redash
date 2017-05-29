@@ -10,6 +10,28 @@ test('is curried', (t) => {
   t.is(typeof map(() => {}), 'function')
 })
 
+// Dispatching
+// ------------------------------------
+test('dispatches to `map` if present', (t) => {
+  const spy = sinon.spy()
+      , fn  = () => {}
+
+  map(fn, { map: spy })
+  t.is(spy.callCount, 1)
+  t.true(spy.calledWithExactly(fn))
+})
+
+test('does not dispatch to native Array.prototype.map', (t) => {
+  const fn  = sinon.spy(() => {})
+      , arr = [1, 2, 3, 4]
+
+  arr.map = sinon.spy(Array.prototype.map)
+
+  map(fn, [1, 2, 3, 4])
+  t.is(arr.map.callCount, 0)
+  t.is(fn.callCount, 4)
+})
+
 // Lists
 // ------------------------------------
 test('List => returns a new list where each element has been transformed in place', (t) => {

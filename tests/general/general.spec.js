@@ -34,7 +34,6 @@ const EXPECTED_FNS = [
 , 'findLast'
 , 'flatten'
 , 'flattenDeep'
-, 'fmap'
 , 'forEach'
 , 'fromPairs'
 , 'get'
