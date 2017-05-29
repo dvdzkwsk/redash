@@ -8,9 +8,9 @@ import _defn from './internal/_defn'
  * Returns the value associated with the provided key on an object.
  *
  * @example
- * get('name', {})              // => undefined
+ * get('name', null)            // => undefined
  * get('name', { name: 'Bob' }) // => Bob
  */
 export default _defn('get', function (key, obj) {
-  return obj[key]
+  return obj ? obj[key] : undefined
 })
