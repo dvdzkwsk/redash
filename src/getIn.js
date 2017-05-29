@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import get from './get'
+import _get from './internal/_get'
 
 /**
  * @name getIn
@@ -20,7 +20,7 @@ export default _defn('getIn', function (keys, target) {
     , val = target
 
   while (i < keys.length) {
-    val = get(keys[i], val)
+    val = _get(keys[i], val)
     i += 1
   }
   return val

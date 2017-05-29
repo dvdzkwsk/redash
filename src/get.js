@@ -1,4 +1,5 @@
 import _defn from './internal/_defn'
+import _get from './internal/_get'
 
 /**
  * @name get
@@ -11,6 +12,4 @@ import _defn from './internal/_defn'
  * get('name', null)            // => undefined
  * get('name', { name: 'Bob' }) // => Bob
  */
-export default _defn('get', function (key, obj) {
-  return obj ? obj[key] : undefined
-})
+export default _defn('get', _get)
