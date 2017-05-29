@@ -20,6 +20,7 @@ test('does not coerce values', (t) => {
   t.false(equals(false, 0))
   t.false(equals(true, 'true'))
   t.false(equals([], ''))
+  t.false(equals(null, undefined))
 })
 
 // ========================================================
