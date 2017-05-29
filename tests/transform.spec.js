@@ -2,7 +2,6 @@ const test  = require('ava')
     , sinon = require('sinon')
     , {
       filter
-    , gte
     , head
     , toUpper
     , transform
@@ -59,7 +58,7 @@ test('transforms recursively', (t) => {
       things: head
     , data: {
         name: toUpper
-      , nums: filter(gte(10))
+      , nums: filter(x => (x >= 10))
       }
     }
   }
