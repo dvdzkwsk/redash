@@ -18,12 +18,6 @@ export default _defn('getIn', function (props, obj) {
   var i   = 0
     , val = obj
 
-  if (val == null) {
-    throw new TypeError(
-      'The second argument to `getIn` must not be undefined or null.'
-    )
-  }
-
   while (i < props.length) {
     if (val == null) return val
     val = val[props[i]]
