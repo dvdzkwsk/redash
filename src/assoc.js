@@ -1,4 +1,5 @@
 import _defn from './internal/_defn'
+import _shallowCloneObject from './internal/_shallowCloneObject'
 
 /**
  * @name assoc
@@ -13,11 +14,8 @@ import _defn from './internal/_defn'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * assoc('first', 'Bob', user) // => { first: 'Bob', last: 'LobLaw' }
  */
-export default _defn('assoc', function (k, v, o) {
-  var y = {}
-    , p
-
-  for (p in o) y[p] = o[p]
-  y[k] = v
-  return y
+export default _defn('assoc', function (key, value, target) {
+  var res = _shallowCloneObject(target)
+  res[key] = value
+  return res
 })
