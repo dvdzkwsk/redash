@@ -61,7 +61,6 @@ const EXPECTED_FNS = [
 , 'length'
 , 'lens'
 , 'lensProp'
-, 'lte'
 , 'map'
 , 'mapi'
 , 'mapKeys'
