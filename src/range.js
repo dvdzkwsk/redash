@@ -16,10 +16,5 @@ import rangeBy from './rangeBy'
  * range(0, -5) // => [0, -1, -2, -3, -4]
  */
 export default _defn('range', function (start, end) {
-  if (start < end) return rangeBy(1, start, end)
-  if (start > end) return rangeBy(-1, start, end)
-  throw new Error(
-    'The `start` value provided to `range` must be greater than or less ' +
-    'than the `end` value. Received the same value for both: ' + start + '.'
-  )
+  return rangeBy(start < end ? 1 : -1, start, end)
 })
