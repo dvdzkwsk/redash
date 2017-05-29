@@ -48,6 +48,7 @@ const EXPECTED_FNS = [
 , 'inc'
 , 'init'
 , 'insert'
+, 'interpose'
 , 'isEmpty'
 , 'isEven'
 , 'isNil'
