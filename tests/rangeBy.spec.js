@@ -28,12 +28,8 @@ test('allows negative steps', (t) => {
   t.deepEqual(rangeBy(-1, 0, -5), [0, -1, -2, -3, -4])
 })
 
-test('throws when end === start', (t) => {
-  t.throws(
-    () => rangeBy(5, 2, 2),
-    'The `start` value provided to `rangeBy` must be greater than or less than ' +
-    'the `end` value. Received the same value for both: 2.'
-  )
+test('returns an empty array when start === end', (t) => {
+  t.deepEqual(rangeBy(-1, 1, 1), [])
 })
 
 test('throws when the incrementor is 0', (t) => {
