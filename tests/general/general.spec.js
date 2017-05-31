@@ -20,6 +20,7 @@ const EXPECTED_FNS = [
 , 'curry'
 , 'curryN'
 , 'dec'
+, 'difference'
 , 'dissoc'
 , 'divide'
 , 'drop'
