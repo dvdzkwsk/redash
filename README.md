@@ -4,7 +4,7 @@
 
 [Check out the API docs!](https://redash.zuko.me)
 
-The missing standard library for JavaScript. This lightweight library is meant to fill the gap between Ramda (functional) and Lodash (performance) while providing you with the tools you need to write sane JavaScript. This means that all functions are immutable, auto-curried, and designed for composition.
+The missing standard library for JavaScript. This lightweight library is meant to fill the gap between Ramda (functional) and Lodash (performance) while providing you with the tools you need to write sane JavaScript. This means that all functions are immutable, auto-curried, and easily composable.
 
 1. [Why](#why)
 1. [Usage](#usage)
@@ -13,7 +13,11 @@ The missing standard library for JavaScript. This lightweight library is meant t
 ## Why?
 
 ### First Class Functional Programming
-Redash's primary goal is to support and encourage functional programming styles. Unlike some other libraries that simply offer FP-_ish_ wrappers, functional programming is a first class citizen in Redash. This means that every function is immutable, auto-curried, and written to expect data last to facilitate composition. Redash also compares objects by value, not reference, allowing you to start working with data in a meaningful way without concerning yourself with how it's stored in memory.
+Redash is designed to encourage functional programming styles without sacrificing the utility you're used to. What sets it apart is that, unlike some other libraries that simply offer FP-_ish_ wrappers, functional programming is a first class citizen in Redash. Here's what that means for you:
+
+* **Immutability** - Redash will never mutate your data; objects are always shallowly copied.
+* **Auto-Curry** - Every function in the redash API is [curried](https://hughfdjackson.com/javascript/why-curry-helps/). Use them as building blocks to create more complex functionality.
+* **Equality** - Objects are compared by value, not reference. Work with data in a meaningful way without concerning yourself with how it's stored in memory.
 
 ### Built for the Next Generation of JavaScript
 The Redash codebase is written with ES2015 modules and packaged with rollup so you to take advantage of tree shaking without the need for extra tooling. Redash also offers complete typings for TypeScript users so that you can work with its API with complete confidence.
@@ -61,9 +65,9 @@ get('name', { name: 'Michael' }) // => 'Michael'
 
 ## Comparisons
 
-Category        | Redash  | Ramda | Lodash    | Lodash-FP
+Category        | Redash  | Ramda | Lodash    | Lodash/FP
 --------------- | ------- | ----- | --------- | ---------
-Minified (kb)   | 15.6    | 41.1  | 71.1      | 82.4
+Minified (kb)   | 14.8    | 44.7  | 71.1      | 82.4
 100% Immutable  | Yes     | Yes   | No        | Yes
 Auto-Curry      | Yes     | Yes   | No        | Yes
 Object Equality | Value   | Value | Reference | Reference
