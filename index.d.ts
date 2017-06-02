@@ -1,8 +1,8 @@
 declare namespace Redash {
-  type Key = string | number | boolean
+  type Key = string | number
   type List<T> = Array<T>
   type Functor<T> = List<T>
-  type Filterable<T> = List<T> | Object
+  type Filterable<T> = List<T> | object
 
   interface API {
     add (a: number, b: number): number
@@ -23,7 +23,10 @@ declare namespace Redash {
     assoc<T> (key: Key, value: any): (target: T) => T
     assoc<T> (key: Key): (value: any) => (target: T) => T
 
-    chain (...args: Array<any>): any
+    chain<A, B> (fn: (a: A) => B | Array<B>, as: Array<A>): Array<B>
+    chain<A, B> (fn: (a: A) => B | Array<B>): (as: Array<A>) => Array<B>
+    flatMap<A, B> (fn: (a: A) => B | Array<B>): (as: Array<A>) => Array<B>
+    flatMap<A, B> (fn: (a: A) => B | Array<B>): (as: Array<A>) => Array<B>
 
     clamp (lower: number, upper: number, value: number): number
     clamp (lower: number, upper: number): (value: number) => number
@@ -48,6 +51,9 @@ declare namespace Redash {
     curryN (...args: Array<any>): any
 
     dec (a: number): number
+
+    difference<T> (as: List<T>, bs: List<T>): List<T>
+    difference<T> (as: List<T>): (bs: List<T>) => List<T>
 
     dissoc<T> (key: Key, target: T): T
     dissoc<T> (key: Key): (target: T) => T
@@ -87,31 +93,26 @@ declare namespace Redash {
 
     flattenDeep (xs: Array<any>): Array<any>
 
-    fmap (...args: Array<any>): any
+    forEach<T> (fn: (x: T) => any, xs: Array<T>): undefined
+    forEach<T> (fn: (x: T) => any): (xs: Array<T>) => undefined
 
-    forEach<T> (fn: (x: T) => any, xs: Array<T>): void
-    forEach<T> (fn: (x: T) => any): (xs: Array<T>) => void
+    fromPairs<T> (pairs: Array<[string, T]>): { [key: string]: T }
 
-    fromPairs (pairs: Array<[string, any]>): { [key: string]: any }
-
-    get (key: string, target: Object): any
-    get (key: string): (target: Object) => any
-    get<T> (key: number, target: List<T>): T
-    get<T> (key: number): (target: List<T>) => T
+    get<T> (key: string, target: { [key: string]: T }): T | undefined
+    get<T> (key: string): (target: { [key: string]: T }) => T | undefined
+    get<T> (key: number, target: List<T>): T | undefined
+    get<T> (key: number): (target: List<T>) => T | undefined
 
     getEq (...args: Array<any>): any
 
-    getIn (...args: Array<any>): any
+    getIn (path: Array<Key>, target: object): any | undefined
+    getIn (path: Array<Key>): (target: object) => any | undefined
 
-    groupBy (...args: Array<any>): any
+    groupBy<T> (fn: (x: T) => string, xs: Array<T>): { [key: string]: T }
+    groupBy<T> (fn: (x: T) => string): (xs: Array<T>) => { [key: string]: T }
 
-    gt (a: number, b: number): boolean
-    gt (a: number): (b: number) => boolean
-
-    gte (a: number, b: number): boolean
-    gte (a: number): (b: number) => boolean
-
-    has (...args: Array<any>): any
+    has (key: string, target: object): boolean
+    has (key: string): (target: object) => boolean
 
     head<T> (xs: Array<T>): T
 
@@ -126,10 +127,14 @@ declare namespace Redash {
 
     init<T> (xs: Array<T>): Array<T>
 
-    insert (...args: Array<any>): any
+    insert<T> (index: number, value: T, xs: List<T>): Array<T>
+    insert<T> (index: number, value: T): (xs: List<T>) => Array<T>
+    insert<T> (index: number): (value: T) => (xs: List<T>) => Array<T>
 
     intersection<T> (as: List<T>, bs: List<T>): List<T>
     intersection<T> (as: List<T>): (bs: List<T>) => List<T>
+
+    invert (obj: object): object
 
     isEmpty (x: any): boolean
 
@@ -139,14 +144,15 @@ declare namespace Redash {
 
     isOdd (x: number): boolean
 
-    isType (type: string | Object, value: any): boolean
-    isType (type: string | Object): (value: any) => boolean
+    isType (type: string | object, value: any): boolean
+    isType (type: string | object): (value: any) => boolean
 
-    join (...args: Array<any>): any
+    join (joiner: string, xs: Array<string>): string
+    join (joiner: string): (xs: Array<string>) => string
 
-    juxt (...args: Array<any>): any
+    juxt (fns: Array<Function>): Array<any>
 
-    keys (obj: Object): Array<string>
+    keys (obj: object): Array<string>
 
     last<T> (xs: Array<T>): T
 
@@ -156,51 +162,59 @@ declare namespace Redash {
 
     lensProp (...args: Array<any>): any
 
-    lt (a: number, b: number): boolean
-    lt (a: number): (b: number) => boolean
-
-    lte (a: number, b: number): boolean
-    lte (a: number): (b: number) => boolean
-
     map<A, B> (fn: (a: A) => B, as: Functor<A>): Functor<B>
     map<A, B> (fn: (a: A) => B): (as: Functor<A>) => Functor<B>
 
-    mapi (...args: Array<any>): any
+    mapi<A, B> (fn: ((a: A, idx: number) => B), as: Functor<A>): Functor<B>
+    mapi<A, B> (fn: ((a: A, idx: number) => B)): (as: Functor<A>) => Functor<B>
 
-    mapKeys (fn: (key: string) => Key, target: Object): Object
-    mapKeys (fn: (key: string) => Key): (target: Object) => Object
+    mapKeys (fn: (key: string) => Key, target: object): object
+    mapKeys (fn: (key: string) => Key): (target: object) => object
 
-    match (...args: Array<any>): any
+    match (regex: RegExp, target: string): Array<string>
+    match (regex: RegExp): (target: string) => Array<string>
 
     max (xs: Array<number>): number
 
     mean (xs: Array<number>): number
 
-    merge (...args: Array<any>): any
+    merge (base: object, overrides: object): object
+    merge (base: object): (overrides: object) => object
 
     min (xs: Array<number>): number
 
-    multiply (...args: Array<any>): any
+    multiply (a: number, b: number): number
+    multiply (a: number): (b: number) => number
 
-    omit (...args: Array<any>): any
+    omit (keys: Array<Key>, target: object): object
+    omit (keys: Array<Key>): (target: object) => object
 
     over (...args: Array<any>): any
 
-    pad (...args: Array<any>): any
+    pad (length: number, char: string, string: string): string
+    pad (length: number, char: string): (string: string) => string
+    pad (length: number): (char: string) => (string: string) => string
 
-    padLeft (...args: Array<any>): any
+    padLeft (length: number, char: string, string: string): string
+    padLeft (length: number, char: string): (string: string) => string
+    padLeft (length: number): (char: string) => (string: string) => string
 
-    padRight (...args: Array<any>): any
+    padRight (length: number, char: string, string: string): string
+    padRight (length: number, char: string): (string: string) => string
+    padRight (length: number): (char: string) => (string: string) => string
 
-    pair (...args: Array<any>): any
+    pair<T1, T2> (a: T1, b: T2): [T1, T2]
+    pair<T1, T2> (a: T1): (b: T2) => [T1, T2]
 
     partition<T> (fn: (x: T) => boolean, xs: List<T>): [T[], T[]]
 
-    pick (...args: Array<any>): any
+    pick (keys: Array<string>, object: object): object
+    pick (keys: Array<string>): (object: object) => object
 
-    pipe (...args: Array<any>): any
+    pipe (fns: Array<Function>): (...args: Array<any>) => any
 
-    prepend (...args: Array<any>): any
+    prepend<T> (x: T, xs: Array<T>): Array<T>
+    prepend<T> (x: T): (xs: Array<T>) => Array<T>
 
     range (start: number, end: number): Array<number>
     range (start: number): (end: number) => Array<number>
@@ -211,7 +225,9 @@ declare namespace Redash {
     reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => ACC
     reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC): (acc: ACC) => (xs: List<T>) => ACC
 
-    reduceRight (...args: Array<any>): any
+    reduceRight<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC, xs: List<T>): ACC
+    reduceRight<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => ACC
+    reduceRight<T, ACC> (reducer: (acc: ACC, x: T) => ACC): (acc: ACC) => (xs: List<T>) => ACC
 
     reject<T> (predicate: (x: T) => boolean, xs: Filterable<T>): Filterable<T>
     reject<T> (predicate: (x: T) => boolean): (xs: Filterable<T>) => Filterable<T>
@@ -243,11 +259,13 @@ declare namespace Redash {
     take<T> (n: number, xs: Array<T>): Array<T>
     take<T> (n: number): (xs: Array<T>) => Array<T>
 
-    takeUntil (...args: Array<any>): any
+    takeUntil<T> (predicate: (x: T) => boolean, xs: List<T>): Array<T>
+    takeUntil<T> (predicate: (x: T) => boolean): (xs: List<T>) => Array<T>
 
-    takeWhile (...args: Array<any>): any
+    takeWhile<T> (predicate: (x: T) => boolean, xs: List<T>): Array<T>
+    takeWhile<T> (predicate: (x: T) => boolean): (xs: List<T>) => Array<T>
 
-    tap<T> (fn: (...args: any[]) => T): (...args: any[]) => T
+    tap<T> (fn: (...args: Array<any>) => T): (...args: Array<any>) => T
 
     test (pattern: RegExp, target: string): boolean
     test (pattern: RegExp): (target: string) => boolean
@@ -257,11 +275,11 @@ declare namespace Redash {
 
     toLower (str: string): string
 
-    toPairs (obj: Object): Array<[string, any]>
+    toPairs<T> (obj: { [key: string]: T }): Array<[string, T]>
 
     toUpper (str: string): string
 
-    trace (...args: Array<any>): any
+    trace<T> (message: string): (x: T, ...rest: Array<any>) => T
 
     transform (...args: Array<any>): any
 
@@ -271,19 +289,25 @@ declare namespace Redash {
 
     unique<T> (xs: Array<T>): Array<T>
 
-    unless (...args: Array<any>): any
+    unless<T, Y> (predicate: (x: T) => boolean, fn: (x: T) => Y): (x: T) => T | Y
+    unless<T, Y> (predicate: (x: T) => boolean): (fn: (x: T) => Y) => (x: T) => T | Y
 
-    update (...args: Array<any>): any
+    update<T> (key: Key, xform: (value: T) => any, target: Array<T>): Array<T>
+    update<T> (key: Key, xform: (value: T) => any): (target: Array<T>) => Array<T>
+    update<T> (key: Key): (xform: (value: T) => any) => (target: Array<T>) => Array<T>
+    update<T> (key: Key, xform: (value: T) => any, target: { [key: string]: T }): { [key: string]: T }
 
     updateIn (...args: Array<any>): any
 
-    values (obj: Object): Array<string>
+    values<T> (obj: { [key: string]: T }): Array<T>
 
     view (...args: Array<any>): any
 
-    when (...args: Array<any>): any
+    when<T, Y> (predicate: (x: T) => boolean, fn: (x: T) => Y): (x: T) => T | Y
+    when<T, Y> (predicate: (x: T) => boolean): (fn: (x: T) => Y) => (x: T) => T | Y
 
-    where (...args: Array<any>): any
+    where<T> (spec: { [key: string]: (predicate: T) => boolean }, target: { [key: string]: T }): boolean
+    where<T> (spec: { [key: string]: (predicate: T) => boolean }): (target: { [key: string]: T }) => boolean
 
     without<T> (x: T, xs: List<T>): List<T>
     without<T> (x: T): (xs: List<T>) => List<T>
