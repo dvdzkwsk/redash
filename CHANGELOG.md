@@ -1,7 +1,36 @@
+## v0.21.0
+
+### Deprecations
+* Removed `gt`, use `>` inline instead.
+* Removed `gte`, use `>=` inline instead.
+* Removed `lt`, use `<` inline instead.
+* Removed `lte`, use `<=` inline instead.
+* Removed `flip`, use arrow functions instead.
+* Removed `fmap`.
+* Removed `of`.
+
+### Features
+* Added `difference`.
+* Added `interpose`.
+* Added `invert`.
+
+### Fixes
+* `compose` now has a correct `toString` representation.
+* `pipe` now has a correct `toString` representation.
+
+### Improvements
+* Miscellaneous TypesScript definition improvements.
+* `get` no longer throws when the target is nil, now returns undefined.
+* `getIn` no longer throws when the target is nil, now returns undefined.
+* `rangeBy` now returns an empty array when start === end.
+* `compose` no longer performs runtime type checking.
+* `pipe` no longer performs runtime type checking.
+* Eliminated extra toString calls in `equals`.
+
 ## v0.20.1
 
 ### Improvements
-* Improved TypeScript definitions
+* Improved TypeScript definitions.
 
 ## v0.20.0
 

@@ -1,6 +1,6 @@
 {
   "name": "redash",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "description": "A better Standard Library for JavaScript",
   "main": "redash.js",
   "module": "redash.next.js",
