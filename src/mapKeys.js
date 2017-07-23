@@ -1,4 +1,5 @@
 import _defn from './internal/_defn'
+import _keys from './internal/_keys'
 import _reduce from './internal/_reduce'
 
 /**
@@ -17,5 +18,5 @@ export default _defn('mapKeys', function (fn, obj) {
   return _reduce(function (acc, key) {
     acc[fn(key)] = obj[key]
     return acc
-  }, {}, Object.keys(obj))
+  }, {}, _keys(obj))
 })
