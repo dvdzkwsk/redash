@@ -38,7 +38,6 @@ const EXPECTED_FNS = [
 , 'forEach'
 , 'fromPairs'
 , 'get'
-, 'getEq'
 , 'getIn'
 , 'groupBy'
 , 'has'
