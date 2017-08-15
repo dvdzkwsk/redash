@@ -23,6 +23,10 @@ declare namespace Redash {
     assoc<T> (key: Key, value: any): (target: T) => T
     assoc<T> (key: Key): (value: any) => (target: T) => T
 
+    assocIn<T> (path: Array<Key>, value: any, target: T): T
+    assocIn<T> (path: Array<Key>, value: any): (target: T) => T
+    assocIn<T> (path: Array<Key>): (value: any) => (target: T) => T
+
     chain<A, B> (fn: (a: A) => B | Array<B>, as: Array<A>): Array<B>
     chain<A, B> (fn: (a: A) => B | Array<B>): (as: Array<A>) => Array<B>
     flatMap<A, B> (fn: (a: A) => B | Array<B>): (as: Array<A>) => Array<B>
@@ -74,6 +78,9 @@ declare namespace Redash {
 
     equals (a: any, b: any): boolean
     equals (a: any): (b: any) => boolean
+
+    everyPred<T> (predicates: Array<(x: T) => boolean>, target: T): boolean
+    everyPred<T> (predicates: Array<(x: T) => boolean>): (target: T) => boolean
 
     F (): boolean
 
@@ -173,6 +180,9 @@ declare namespace Redash {
 
     match (regex: RegExp, target: string): Array<string>
     match (regex: RegExp): (target: string) => Array<string>
+
+    matches (spec: { [key: string]: any }, target: any): boolean
+    matches (spec: { [key: string]: any }): (target: any) => boolean
 
     max (xs: Array<number>): number
 
