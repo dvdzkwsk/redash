@@ -8,7 +8,10 @@ import _defn from './internal/_defn'
  * Tests a predicate against all items in a list. Returns true if the predicate
  * returns true for all items in the list, otherwise returns false. If the list
  * is empty it will return true ([vacuous truth](https://en.wikipedia.org/wiki/Vacuous_truth)).
+ *
+ * If you wish to test multiple predicates, use `everyPred`.
  * @see any
+ * @see everyPred
  *
  * @example
  * all(isEven, [2, 4, 6, 8]) // => true
