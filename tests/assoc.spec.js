@@ -24,3 +24,10 @@ test('does not mutate the original object', (t) => {
   t.deepEqual(obj, { foo: 'bar' })
   t.deepEqual(res, { foo: 'baz' })
 })
+
+test('does not convert arrays to objects', (t) => {
+  t.deepEqual(
+    assoc(2, 'BOP', ['foo', 'bar', 'baz']),
+    ['foo', 'bar', 'BOP']
+  )
+})

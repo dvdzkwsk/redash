@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import _shallowCloneObject from './internal/_shallowCloneObject'
+import _shallowClone from './internal/_shallowClone'
 
 /**
  * @name assoc
@@ -15,7 +15,7 @@ import _shallowCloneObject from './internal/_shallowCloneObject'
  * assoc('first', 'Bob', user) // => { first: 'Bob', last: 'LobLaw' }
  */
 export default _defn('assoc', function (key, value, target) {
-  var res = _shallowCloneObject(target)
+  var res = _shallowClone(target)
   res[key] = value
   return res
 })
