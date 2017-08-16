@@ -4,7 +4,8 @@ import DocBlock from './DocBlock'
 const Navbar = () =>
   <nav className='navbar navbar-light sticky-top bg-primary' style={{ color: '#fff' }}>
     <a className='navbar-brand mr-auto'>
-      Redash
+      <span className='r'>Re</span>
+      dash
     </a>
   </nav>
 
@@ -17,13 +18,15 @@ const scrollToTarget = (e) => {
   window.scroll(0, elemRect.top - bodyRect.top - 75)
 }
 
-const TableOfContents = ({ functions }) => (
+const TableOfContents = ({ functions, search, onSearchChange }) => (
   <div className='toc'>
     <form className='toc__search d-flex align-items-center'>
       <input
         type='text'
         className='form-control'
         placeholder='Search...'
+        onChange={onSearchChange}
+        value={search}
       />
     </form>
     <nav>
@@ -41,21 +44,40 @@ const TableOfContents = ({ functions }) => (
 )
 
 class App extends React.Component {
+  state = {
+    search: '',
+  }
+
+  _onSearchChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
+
   render () {
     const { api } = this.props
+    const { search } = this.state
+
+    let functions = api
+    const normalizedSearch = search.trim().toLowerCase()
+    if (normalizedSearch) {
+      functions = filter((fn) => {
+        return fn.name.includes(normalizedSearch)
+      }, functions)
+    }
 
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         <Navbar />
         <div className='container-fluid'>
-          <div className='row'>
+          <div className='row' style={{ height: '100%' }}>
             <div className='col-2 toc-wrapper'>
-              <TableOfContents functions={api} />
+              <TableOfContents functions={functions} search={search} onSearchChange={this._onSearchChange} />
             </div>
             <div className='col-10'>
-              {map(fn => (
-                <DocBlock key={fn.name} {...fn} />
-              ), api)}
+              <main>
+                {map(fn => (
+                  <DocBlock key={fn.name} {...fn} />
+                ), functions)}
+              </main>
             </div>
           </div>
         </div>

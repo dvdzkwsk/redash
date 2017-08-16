@@ -2,15 +2,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'prism';
 
+html,
 body {
   background: rgba(0, 0, 0, 0.1);
+}
+
+html,
+body,
+.container-fluid {
+  height: 100%;
 }
 
 .toc-wrapper {
   position: sticky;
   left: 0;
-  top: 3.5rem;
-  max-height: calc(100vh - 3.5rem);
+  top: 3.25rem;
+  max-height: calc(100vh - 3.25rem);
   background: #fff;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -48,12 +55,46 @@ body {
   }
 }
 
+.navbar-brand {
+  font-weight: 500;
+  padding-right: 1em;
+  padding-bottom: 0;
+
+  .r {
+    position: relative;
+    border: 1px solid #fff;
+    padding: 0.15em 0 0.15em 0.25em;
+    position: relative;
+    font-size: 1em;
+    border-right: none;
+
+    &::after {
+      content: '';
+      bottom: -1px;
+      position: absolute;
+      width: 250%;
+      height: 1px;
+      background: #fff;
+    }
+  }
+}
+
 .doc-block {
-  margin-bottom: 1rem;
-  padding: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
   background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 
   &:first-of-type {
     margin-top: 1rem;
   }
+
+  p {
+    @extend .lead;
+  }
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
 }

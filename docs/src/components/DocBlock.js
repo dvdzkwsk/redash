@@ -8,7 +8,7 @@ const Signature = ({ signature }) => (
 )
 
 const Example = ({ children }) => (
-  <pre className='language-javascript'>
+  <pre className='doc-block__example language-javascript'>
     <code>{children}</code>
   </pre>
 )
@@ -25,10 +25,9 @@ class DocBlock extends React.PureComponent {
           className='markdown-body'
           dangerouslySetInnerHTML={{ __html: marked(description || '') }}
         />
+        <hr />
         {mapi((example, i) => (
-          <div key={i}>
-            <Example>{example}</Example>
-          </div>
+          <Example key={i}>{example}</Example>
         ), examples)}
       </div>
     )
