@@ -12,8 +12,5 @@ import sum from './sum'
  * mean([1, 2, 3, 4, 5, 6]) // => 3.5
  */
 export default _defn('mean', function (xs) {
-  if (!xs.length) {
-    throw new Error('Cannot calculate the mean of an empty list.')
-  }
   return sum(xs) / xs.length
 })
