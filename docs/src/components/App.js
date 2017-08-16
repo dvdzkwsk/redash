@@ -2,21 +2,24 @@ import React from 'react'
 import DocBlock from './DocBlock'
 
 const Navbar = () =>
-  <nav className='navbar navbar-light sticky-top bg-primary' style={{ color: '#fff' }}>
+  <nav className='navbar navbar-light sticky-top' style={{ color: '#fff' }}>
     <a className='navbar-brand mr-auto'>
       <span className='r'>Re</span>
       dash
     </a>
   </nav>
 
-const scrollToTarget = (e) => {
+document.addEventListener('click', (e) => {
+  const href = e.target.getAttribute('href')
+  if (!href || href.length === 1 || href[0] !== '#') return
+
   e.preventDefault()
-  const target = document.querySelector(e.target.getAttribute('href'))
+  const target = document.querySelector(href)
   const bodyRect = document.body.getBoundingClientRect()
   const elemRect = target.getBoundingClientRect()
 
   window.scroll(0, elemRect.top - bodyRect.top - 75)
-}
+})
 
 const TableOfContents = ({ functions, search, onSearchChange }) => (
   <div className='toc'>
@@ -33,7 +36,7 @@ const TableOfContents = ({ functions, search, onSearchChange }) => (
       <ul className='toc__items'>
         {map(({ name }) => (
           <li className='toc__item' key={name}>
-            <a className='toc__link' href={`#${toLower(name)}`} onClick={scrollToTarget}>
+            <a className='toc__link' href={`#${toLower(name)}`}>
               {name}
             </a>
           </li>

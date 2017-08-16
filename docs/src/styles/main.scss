@@ -4,7 +4,7 @@
 
 html,
 body {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .toc-wrapper {
@@ -22,7 +22,7 @@ body {
     margin-left: -15px;
     margin-right: -15px;
     padding: 1rem 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid transparentize(theme-color('primary'), 0.85);
   }
 
   &__items {
@@ -50,6 +50,10 @@ body {
   }
 }
 
+.navbar {
+  background: linear-gradient(to bottom right, #8c77f5 ,#6041FF);
+}
+
 .navbar-brand {
   font-weight: 500;
   padding-right: 1em;
@@ -74,7 +78,7 @@ body {
   }
 }
 
-.doc-block {
+.doc-card {
   margin-bottom: 2rem;
   padding: 1.5rem;
   background: #fff;
@@ -86,6 +90,10 @@ body {
 
   p {
     @extend .lead;
+  }
+
+  &__related-link {
+    margin-right: 0.25em;
   }
 }
 
