@@ -73,7 +73,6 @@ const EXPECTED_FNS = [
 , 'multiply'
 , 'omit'
 , 'over'
-, 'pair'
 , 'partition'
 , 'pick'
 , 'pipe'
