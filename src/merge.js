@@ -4,7 +4,7 @@ import _eachOwn from './internal/_eachOwn'
 /**
  * @name merge
  * @signature {k:v} -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.4.0
  */
 export default _defn('merge', function (a, b) {

@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name pick
  * @signature String k, Any v => [k] -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.15.0
  * @description
  * Returns an object that only has the listed keys from the target object.

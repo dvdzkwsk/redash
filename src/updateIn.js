@@ -4,7 +4,7 @@ import _shallowClone from './internal/_shallowClone'
 /**
  * @name updateIn
  * @signature String k, Any v => [k] -> (v -> v) -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.20.0
  * @description
  * Applies a transformation to the value at the given path.

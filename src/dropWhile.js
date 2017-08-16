@@ -4,7 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name dropWhile
  * @signature (a -> Boolean) -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.14.0
  * @description
  * Runs a predicate function sequentially through a list, dropping

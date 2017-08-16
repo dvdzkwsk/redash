@@ -4,7 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name drop
  * @signature Integer -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.10.0
  * @description
  * Returns a list with the first N elements removed. If N exceeds the length

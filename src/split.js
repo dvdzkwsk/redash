@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name split
  * @signature String -> String -> [String]
- * @namespace String
+ * @category String
  * @since v0.10.0
  * @description
  * Splits a string on some delimeter and returns a list containing the

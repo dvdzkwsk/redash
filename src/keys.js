@@ -4,7 +4,7 @@ import _defn from './internal/_defn'
 /**
  * @name keys
  * @signature {k:v} -> [k]
- * @namespace Object
+ * @category Object
  * @since v0.1.0
  * @description
  * Returns a list containing all own enumerable properties of an object.

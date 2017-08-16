@@ -6,7 +6,7 @@ import _nameFunc from './internal/_nameFunc'
 /**
  * @name pipe
  * @signature [(a -> b), (b -> c), ... (y -> z)] -> a -> z
- * @namespace Function
+ * @category Function
  * @since v0.1.0
  * @description
  * Takes a list of functions and creates a single, curried function

@@ -4,7 +4,7 @@ import _hasOwn from './internal/_hasOwn'
 /**
  * @name where
  * @signature String k, (Any -> Boolean) Spec => {k:Spec} -> Boolean
- * @namespace Logic
+ * @category Logic
  * @since v0.15.0
  * @description
  * @example

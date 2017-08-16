@@ -4,7 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name takeWhile
  * @signature (a -> Boolean) -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.12.0
  * @description
  * Returns a list containing values from the original list up until the

@@ -4,7 +4,7 @@ import curryN from './curryN'
 /**
  * @name curry
  * @signature (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
- * @namespace Function
+ * @category Function
  * @since v0.1.0
  * @description
  * Curries a function based on its reported arity, which is determined by its `length`

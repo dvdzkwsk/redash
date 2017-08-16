@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name everyPred
  * @signature [(a -> Boolean)] -> a -> Boolean
- * @namespace Logic
+ * @category Logic
  * @since v0.22.0
  * @description
  * Returns true if every predicate returns true for the given input.

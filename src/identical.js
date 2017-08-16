@@ -4,7 +4,7 @@ import _identical from './internal/_identical'
 /**
  * @name identical
  * @signature a -> a -> Boolean
- * @namespace Relation
+ * @category Relation
  * @since v0.13.0
  * @description
  * Tests if two values are strictly identical. For objects, this tests that

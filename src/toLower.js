@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name toLower
  * @signature String -> String
- * @namespace String
+ * @category String
  * @since v0.4.0
  * @description
  * Lower-cases all characters in a string.

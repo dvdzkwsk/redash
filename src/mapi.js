@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name mapi
  * @signature ((a, Integer) -> b) -> [a] -> [b]
- * @namespace Collection
+ * @category Collection
  * @since v0.16.0
  * @description
  * Same as [map](#map), but supplies an additional `index` argument to the

@@ -5,7 +5,7 @@ import updateIn from './updateIn'
 /**
  * @name assocIn
  * @signature String k, Any v => [k] -> v -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.22.0
  * @description
  * Similar to `assoc`, but takes a path rather than a single key. Traverses

@@ -4,7 +4,7 @@ import _hasOwn from './internal/_hasOwn'
 /**
  * @name has
  * @signature String k -> {k:v} -> Boolean
- * @namespace Object
+ * @category Object
  * @since v0.11.0
  * @description
  * Returns whether or not an object has a key as an own (non-inherited) property.

@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name cond
  * @signature [[(a -> Boolean), (a -> b)]] -> a -> b | undefined
- * @namespace Function
+ * @category Function
  * @since v0.12.0
  * @description
  * Takes a series of conditions, expressed by tuples which contain two

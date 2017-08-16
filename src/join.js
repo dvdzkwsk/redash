@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name join
  * @signature String -> [String] -> String
- * @namespace Collection
+ * @category Collection
  * @since v0.13.0
  * @description
  * Joins all elements of a list together with the provided string.

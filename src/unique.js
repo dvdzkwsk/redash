@@ -4,7 +4,7 @@ import _Set from './internal/_Set'
 /**
  * @name unique
  * @signature [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.19.0
  * @description
  * Returns a new list with all duplicate values removed. Objects are compared

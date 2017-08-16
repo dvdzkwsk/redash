@@ -4,7 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name insert
  * @signature Number -> a -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.11.0
  * @description
  * Inserts a value at a given index in a list. This does not replace the

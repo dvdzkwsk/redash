@@ -4,7 +4,7 @@ import sum from './sum'
 /**
  * @name mean
  * @signature [Number] -> Number
- * @namespace Math
+ * @category Math
  * @since v0.14.0
  * @description
  * Returns the mean (average) of all numbers in a list.

@@ -8,7 +8,7 @@ import isType from './isType'
  * @signature
  * (a -> Boolean) -> [a] -> [a]
  * String k, Any v => (v -> Boolean) -> {k:v} -> {k:v}
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Returns a list of the values for which the predicate returned true.

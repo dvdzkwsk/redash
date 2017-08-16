@@ -7,7 +7,7 @@ import pipe from './pipe'
 /**
  * @name compose
  * @signature [(y -> z), ..., (b -> c), (a -> b)] -> a -> z
- * @namespace Function
+ * @category Function
  * @since v0.1.0
  * @description
  * Composes a list of functions into a single curried function that invokes

@@ -4,7 +4,7 @@ import _concat from './internal/_concat'
 /**
  * @name prepend
  * @signature a -> [a] -> a | String -> String -> String
- * @namespace Collection
+ * @category Collection
  * @since v0.14.0
  * @description
  * Inserts a value at the head of a list. If the argument in list position

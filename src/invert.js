@@ -4,7 +4,7 @@ import _hasOwn from './internal/_hasOwn'
 /**
  * @name invert
  * @signature String k, Any v => {k:v} -> {v:k}
- * @namespace Object
+ * @category Object
  * @since v0.21.0
  * @description
  * Inverts an object by swapping key/value pairs. Duplicate values will be

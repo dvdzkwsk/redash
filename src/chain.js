@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name chain
  * @signature (a -> [b]) -> [a] -> [b]
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Maps over a list and concatenates the results as it goes; this is also

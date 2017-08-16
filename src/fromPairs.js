@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name fromPairs
  * @signature [[k, v]] -> {k:v}
- * @namespace Collection
+ * @category Collection
  * @since v0.7.0
  * @description
  * Builds an object out of a list of [key, value] tuples. If you have two separate

@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name flattenDeep
  * @signature [[a]] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.5.0
  * @description
  * Deeply flattens a list.

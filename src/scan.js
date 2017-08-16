@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name scan
  * @signature (b, a -> b) -> b -> [a] -> [b]
- * @namespace Collection
+ * @category Collection
  * @since v0.12.0
  * @description
  * Similar to reduce, but, instead of returning the final accumulator value,

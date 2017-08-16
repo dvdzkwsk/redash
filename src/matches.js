@@ -5,7 +5,7 @@ import _hasOwn from './internal/_hasOwn'
 /**
  * @name matches
  * @signature String k, Any v => {k:v} -> Boolean
- * @namespace Logic
+ * @category Logic
  * @since v0.22.0
  * @description
  * Determines whether an object matches a given spec. Similar to `where`, but compares

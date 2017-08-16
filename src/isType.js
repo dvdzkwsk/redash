@@ -4,7 +4,7 @@ import _type from './type'
 /**
  * @name isType
  * @signature (String | Function) -> Boolean
- * @namespace Logic
+ * @category Logic
  * @since v0.13.0
  * @description
  * Returns whether or not a value is of an expected. If the provided type is

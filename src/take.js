@@ -4,7 +4,7 @@ import _defn from './internal/_defn'
 /**
  * @name take
  * @signature Integer -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Returns a list containing the first N elements of the target list.

@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name last
  * @signature [a] -> a
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Returns the last value in a list. If the list is empty, returns `undefined`.

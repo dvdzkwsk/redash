@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name divide
  * @signature Number -> Number -> Number
- * @namespace Math
+ * @category Math
  * @since v0.14.0
  * @description
  * Returns the result of the second argument divided by the first. Because

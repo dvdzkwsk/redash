@@ -4,7 +4,7 @@ import _hasOwn from './internal/_hasOwn'
 /**
  * @name transform
  * @signature String k, Any v => {k: (v -> v)} -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.18.0
  * @description
  * Recursively applies property-based transforms to the target object's own

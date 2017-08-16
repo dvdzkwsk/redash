@@ -4,7 +4,7 @@ import _type from './internal/_type'
 /**
  * @name type
  * @signature a -> String
- * @namespace Function
+ * @category Function
  * @since v0.13.0
  * @description
  * Returns the string representation of an argument. Note that this function

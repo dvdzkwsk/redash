@@ -5,7 +5,7 @@ import _reverse from './internal/_reverse'
 /**
  * @name reverse
  * @signature [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Reverses the order of elements in a list.

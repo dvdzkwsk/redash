@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name tap
  * @signature (a -> *) -> a -> a
- * @namespace Function
+ * @category Function
  * @since v0.7.0
  * @description
  * Wraps a unary function so that it is called as normal but its return value

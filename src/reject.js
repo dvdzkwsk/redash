@@ -7,7 +7,7 @@ import filter from './filter'
  * @signature
  * (a -> Boolean) -> [a] -> [a]
  * String k, Any v => (v -> Boolean) -> {k:v} -> {k:v}
- * @namespace Collection
+ * @category Collection
  * @since v0.1.0
  * @description
  * Returns a subset of a list which excludes all items for which the

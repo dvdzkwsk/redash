@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name view
  * @signature Lens k -> {k:v} -> v
- * @namespace Function
+ * @category Function
  * @since v0.11.0
  * @description
  * Returns the value at the focal point of a lens on a given object.

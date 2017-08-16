@@ -5,7 +5,7 @@ import init from './init'
 /**
  * @name interpose
  * @signature Any a => a -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.21.0
  * @description
  * Interposes a value between all items in a list.

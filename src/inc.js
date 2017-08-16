@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name inc
  * @signature Number -> Number
- * @namespace Math
+ * @category Math
  * @since v0.6.0
  * Increments a number by `1`.
  * @see dec

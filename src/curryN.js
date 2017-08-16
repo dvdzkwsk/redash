@@ -4,7 +4,7 @@ import _curryN from './internal/_curryN'
 /**
  * @name curryN
  * @signature Integer N => N -> (a1, a2, ..., aN -> v) -> a1 -> a2 -> ... -> aN -> v
- * @namespace Function
+ * @category Function
  * @description
  * Curries a function to the provided arity, ignoring its actual arity.
  *

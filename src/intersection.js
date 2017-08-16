@@ -4,7 +4,7 @@ import _Set from './internal/_Set'
 /**
  * @name intersection
  * @signature [a] -> [a] -> [a]
- * @namespace Collection
+ * @category Collection
  * @since v0.19.0
  * @description
  * Returns a list of unique values which occur in both of the input lists.

@@ -5,7 +5,7 @@ import padRight from './padRight'
 /**
  * @name pad
  * @signature Integer -> String -> String -> String
- * @namespace String
+ * @category String
  * @since v0.19.0
  * @description
  * Pads a string to a given length by alternating prepending/appending

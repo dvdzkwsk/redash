@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name always
  * @signature a -> Any -> a
- * @namespace Function
+ * @category Function
  * @since v0.9.0
  * @description
  * Takes a single argument and returns a function that always returns that

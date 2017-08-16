@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name test
  * @signature RegExp -> String -> Boolean
- * @namespace String
+ * @category String
  * @since v0.14.0
  * @description
  * Returns whether or not a string is matched by a regular expression.

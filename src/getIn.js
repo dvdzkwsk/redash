@@ -4,7 +4,7 @@ import _get from './internal/_get'
 /**
  * @name getIn
  * @signature String k => [k] -> {k:v} -> v
- * @namespace Object
+ * @category Object
  * @since v0.20.0
  * @description
  * Returns the value at the given path in an object. If any property in the path

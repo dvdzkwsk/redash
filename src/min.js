@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name min
  * @signature [Number] -> Number
- * @namespace Relation
+ * @category Relation
  * @since v0.14.0
  * @description
  * Returns the smallest number from a list.

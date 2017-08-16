@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name findLast
  * @signature (a -> Boolean) -> [a] -> a | undefined
- * @namespace Collection
+ * @category Collection
  * @since v0.12.0
  * @description
  * Finds and returns the last value in a list that matches the given predicate. If no

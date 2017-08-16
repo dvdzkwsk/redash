@@ -4,7 +4,7 @@ import _shallowClone from './internal/_shallowClone'
 /**
  * @name assoc
  * @signature String k, Any v => k -> v -> {k:v} -> {k:v}
- * @namespace Object
+ * @category Object
  * @since v0.6.0
  * @description
  * Applies a value to a given key on an object. You can think of `assoc` as

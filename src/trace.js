@@ -6,7 +6,7 @@ import tap from './tap'
 /**
  * @name trace
  * @signature String -> a -> a
- * @namespace Function
+ * @category Function
  * @since v0.18.0
  * @description
  * Creates a unary function that will log out the provided message along with its

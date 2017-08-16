@@ -3,7 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name length
  * @signature [a] -> Number
- * @namespace Collection
+ * @category Collection
  * @since v0.13.0
  * @description
  * Returns the length of a list.
