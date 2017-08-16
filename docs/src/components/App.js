@@ -68,7 +68,7 @@ class App extends React.Component {
       <div style={{ height: '100%' }}>
         <Navbar />
         <div className='container-fluid'>
-          <div className='row' style={{ height: '100%' }}>
+          <div className='row'>
             <div className='col-2 toc-wrapper'>
               <TableOfContents functions={functions} search={search} onSearchChange={this._onSearchChange} />
             </div>
