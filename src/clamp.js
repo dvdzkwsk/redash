@@ -6,6 +6,7 @@ import _defn from './internal/_defn'
  * @since v0.18.0
  * @description
  * Restricts a value to a given range (inclusive).
+ *
  * @example
  * clamp(1, 10, 5)  // => 5
  * clamp(1, 10, -5) // => 1

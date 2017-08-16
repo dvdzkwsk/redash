@@ -5,9 +5,8 @@ import _defn from './internal/_defn'
  * @signature (a -> Boolean) -> [a] -> Boolean
  * @since v0.7.0
  * @description
- * Tests a predicate against all items in a list. Returns true if the predicate
- * returns true for any item, otherwise returns false. Short circuits once
- * a true condition is found. If the list is empty it will return false.
+ * Returns true if the predicate returns true for any value in a list, otherwise false.
+ *
  * @see all
  *
  * @example

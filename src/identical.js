@@ -6,9 +6,10 @@ import _identical from './internal/_identical'
  * @signature a -> a -> Boolean
  * @since v0.13.0
  * @description
- * Checks whether two values are strictly identical. For objects, this test
- * asserts that they reference the same place in memory (think `===`).
- * For deep comparisons, use `equals`.
+ * Tests if two values are strictly identical. For objects, this tests that
+ * they reference the same place in memory (think `===`). For deep comparisons,
+ * use `equals`.
+ *
  * @see equals
  *
  * @example
@@ -16,7 +17,7 @@ import _identical from './internal/_identical'
  *
  * // Objects are compared by reference, unlike `equals`.
  * const a = { id: 1 }
- * identical(a, a)         // => true
- * identical(a, { id: 1 }) // => false
+ * identical(a, a)                 // => true
+ * identical({ id: 1 }, { id: 1 }) // => false
  */
 export default _defn('identical', _identical)

@@ -6,9 +6,8 @@ import rangeBy from './rangeBy'
  * @signature Integer -> Integer -> [Integer]
  * @since v0.7.0
  * @description
- * Returns containing all integers between at an initial value (inclusive)
- * and an end value (exclusive). If you wish to specify a custom step, use
- * `rangeBy`.
+ * Returns a list of all integers between an initial value (inclusive) and an
+ * end value (exclusive). If you wish to specify a step, use [rangeBy](#rangeBy).
  * @see rangeBy
  *
  * @example

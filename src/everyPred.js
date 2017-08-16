@@ -5,7 +5,7 @@ import _defn from './internal/_defn'
  * @signature [(a -> Boolean)] -> a -> Boolean
  * @since v0.22.0
  * @description
- * Runs a series of predicates against an input, returning true if they all pass.
+ * Returns true if every predicate returns true for the given input.
  *
  * @example
  * const evenAndLessThanTen = everyPred([

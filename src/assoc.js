@@ -7,8 +7,8 @@ import _shallowClone from './internal/_shallowClone'
  * @since v0.6.0
  * @description
  * Applies a value to a given key on an object. You can think of `assoc` as
- * the process of _associating_ a key with a value.
- * Note that the original object is not mutated; a shallow copy is returned.
+ * the process of _associating_ a key with a value. Note that a shallow copy
+ * of the object is returned.
  * @see dissoc
  * @example
  * const user = { first: 'Chris', last: 'Loblaw' }

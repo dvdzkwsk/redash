@@ -7,7 +7,7 @@ import _Set from './internal/_Set'
  * @signature [a] -> [a] -> [a]
  * @since v0.21.0
  * @description
- * Returns the set of values contained in the first list but not the second.
+ * Returns the _set_ of values contained in the first list but not the second.
  *
  * @example
  * difference([1, 2, 3, 4], [1, 2]) // => [3, 4]

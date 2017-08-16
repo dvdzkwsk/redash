@@ -5,10 +5,8 @@ import _defn from './internal/_defn'
  * @signature ((a, Integer) -> b) -> [a] -> [b]
  * @since v0.16.0
  * @description
- * Applies a transformation function to all elements in a list, returning
- * a new list containing the results of those transformations. This is the
- * same as `map`, but provides the index of the each element as an additional
- * argument to the transformation function.
+ * Same as [map](#map), but supplies an additional `index` argument to the
+ * transformation function.
  * @see map
  *
  * @example

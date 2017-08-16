@@ -6,17 +6,15 @@ import curryN from './curryN'
  * @signature (*... -> Boolean) -> (*... -> Boolean)
  * @since v0.13.0
  * @description
- * Wraps a function and returns a new function, when called, invokes the
- * original function and returns the complement of its result. For example,
- * if the original function were to return `true` its complement would return
- * `false`.
+ * Wraps a function so that when it is called, its
+ * the complement of the original
+ *
+ * Wraps a function in one that invokes the wrapped function and returns
+ * the complement of its result.
  *
  * @example
- * isEven(2) // => true
+ * isEven(2)             // => true
  * complement(isEven)(2) // => false
- *
- * const isOdd = complement(isEven)
- * isOdd(3) // => true
  */
 export default _defn('complement', function (x) {
   return curryN(x.length, function () {

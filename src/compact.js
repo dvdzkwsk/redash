@@ -12,8 +12,7 @@ import identity from './identity'
  * properties with falsy values.
  *
  * @example
- * compact([null, undefined, true, false]) // => [true]
- * compact({ a: false, b: null, c: true }) // => { c: true }
- * compact(['', 0, {}, [], '0'])           // => [{}, [], '0']
+ * compact([null, undefined, 0, true, false]) // => [true]
+ * compact({ a: false, b: null, c: true })    // => { c: true }
  */
 export default _defn('compact', filter(identity))

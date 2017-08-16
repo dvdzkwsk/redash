@@ -5,10 +5,10 @@ import _defn from './internal/_defn'
  * @signature [[k, v]] -> {k:v}
  * @since v0.7.0
  * @description
- * Builds an object out of a list of tuples containing key/value pairs. Note
- * that for duplicate keys, the last key/value pair will be used. If you wish
- * to merge a list of keys with a list of values, use `zip` or `zipObj`.
+ * Builds an object out of a list of [key, value] tuples. If you have two separate
+ * lists, rather than a single list of tuples, you can use [zipObj](#zipObj).
  * @see toPairs
+ * @see zipObj
  *
  * @example
  * fromPairs([['a', 1], ['b', 2]])           // => { a: 1, b: 2 }

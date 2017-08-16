@@ -12,12 +12,12 @@ import type from './type'
  * returned.
  *
  * @example
- * empty([1, 2, 3, 4])            // => []
- * empty({ foo: 'bar '})          // => {}
- * empty('hello!')                // => ''
- * empty(0)                       // => undefined
- * empty(false)                   // => undefined
- * empty({ empty: () => 'FOO!' }) // => 'FOO!'
+ * empty([1, 2, 3, 4])              // => []
+ * empty({ foo: 'bar '})            // => {}
+ * empty('hello!')                  // => ''
+ * empty({ empty: () => 'EMPTY!' }) // => 'EMPTY!'
+ * empty(0)                         // => undefined
+ * empty(false)                     // => undefined
  */
 export default _defn('empty', function (a) {
   if (a == null) return void 0
@@ -34,6 +34,6 @@ export default _defn('empty', function (a) {
     case 'Object':
       return {}
     default:
-      return void 0
+      return undefined
   }
 })

@@ -9,7 +9,7 @@ import updateIn from './updateIn'
  * @description
  * Similar to `assoc`, but takes a path rather than a single key. Traverses
  * the path on the target object and applies the value to the final key. Nested
- * objects found along the path are shallowly cloned.
+ * objects found along the path are shallowly copied.
  * @see dissoc
  * @example
  * const model = { user: { age: 21 } }

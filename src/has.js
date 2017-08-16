@@ -6,7 +6,7 @@ import _hasOwn from './internal/_hasOwn'
  * @signature String k -> {k:v} -> Boolean
  * @since v0.11.0
  * @description
- * Checks whether an object has the provided key as an own property.
+ * Returns whether or not an object has a key as an own (non-inherited) property.
  *
  * @example
  * has('name', { name: 'Bill' }) // => true

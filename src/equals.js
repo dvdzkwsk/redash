@@ -6,16 +6,12 @@ import _equals from './internal/_equals'
  * @signature a -> a -> Boolean
  * @since v0.7.0
  * @description
- * Deeply compares two values and returns a boolean indicating whether or
- * not they are equal.
+ * Returns whether or not two values are equal by performing a deep comparison.
  * @see identical
  *
  * @example
  * equals(5, 5) // => true
  * equals({ name: 'Bill' }, { name: 'Bill' }) // => true
  * equals({ name: 'Bill' }, { name: 'Bob' })  // => false
- *
- * const people = [{ name: 'Bill' }, { name: 'Bob' }]
- * reject(equals({ name: 'Bill' }), people) // => [{ name: 'Bob' }]
  */
 export default _defn('equals', _equals)

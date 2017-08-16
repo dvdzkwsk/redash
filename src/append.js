@@ -8,8 +8,9 @@ import _defn from './internal/_defn'
  * String -> String -> String
  * @since v0.10.0
  * @description
- * Appends a single element to a list. If the argument in list position is a
- * string, string concatenation will be used instead.
+ * Appends a single value to the end of a list. If the argument in list position
+ * is a string, string concatenation will be performed.
+ *
  * @see prepend
  * @see concat
  *

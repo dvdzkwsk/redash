@@ -7,10 +7,8 @@ import _defn from './internal/_defn'
  * @description
  * Maps over a list and concatenates the results as it goes; this is also
  * known as `flatMap`, and is generally equivalent to:
- * `_.flatten(_.map(yourFn, yourList))`.
+ * `_.flatten(_.map(yourFn, yourList))`, but performed in a single step.
  *
- * Note that this does not currently dispatch to the `chain` method on
- * the argument in list position.
  * @example
  * chain(x => [x, x * 2], [1, 2, 3, 4]) // => [1, 2, 2, 4, 3, 6, 4, 8]
  */

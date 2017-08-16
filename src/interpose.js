@@ -7,7 +7,7 @@ import init from './init'
  * @signature Any a => a -> [a] -> [a]
  * @since v0.21.0
  * @description
- * Interposes a separator between elements in a list.
+ * Interposes a value between all items in a list.
  *
  * @example
  * interpose('FOO', ['a', 'b', 'c']) // => ['a', 'FOO', 'b', 'FOO', 'c']

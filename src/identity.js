@@ -5,15 +5,22 @@ import _defn from './internal/_defn'
  * @signature a -> a
  * @since v0.6.0
  * @description
- * Unary function that returns the argument it receives. Useful for when
- * you simply want to forward an argument along.
+ * Returns the argument it receives; ignores all but the first argument.
+ * Useful for when you simply want to forward a value along.
  *
  * @example
  * identity(5) // => 5
+ * const lessThan = a => b => b < a
  *
- * const doubleIfEven = when(isEven, multiply(2))
- * doubleIfEven(2) // => 4
- * doubleIfEven(3) // => 3
+ * const fn = cond([
+ *   [isEven, inc],
+ *   [lessThan(10), double],
+ *   [T, identity],
+ * ])
+ *
+ * fn(2)  // => 3 (is even, so increment)
+ * fn(5)  // => (not even, but < 10, so double)
+ * fn(13) // => 13 (else clause, return unmodified)
  */
 export default _defn('identity', function (a) {
   return a

@@ -10,9 +10,7 @@ import isType from './isType'
  * String k, Any v => (v -> Boolean) -> {k:v} -> {k:v}
  * @since v0.1.0
  * @description
- * Filters a list by calling the predicate function with each element in the
- * list. If the predicate returns a truthy value, the element is kept in
- * the new list, otherwise it is discarded.
+ * Returns a list of the values for which the predicate returned true.
  * @see reject
  *
  * @example

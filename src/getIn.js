@@ -6,7 +6,7 @@ import _get from './internal/_get'
  * @signature String k => [k] -> {k:v} -> v
  * @since v0.20.0
  * @description
- * Returns the value at the given path in an object. If any prop in the series
+ * Returns the value at the given path in an object. If any property in the path
  * does not exist, the function short circuits and returns `undefined`.
  *
  * @example

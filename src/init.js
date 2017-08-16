@@ -6,7 +6,7 @@ import _slice from './internal/_slice'
  * @signature [a] -> [a]
  * @since v0.17.0
  * @description
- * Returns all but the last element in a list.
+ * Returns a list that contains all but the last value from the input list.
  * @see head
  * @see tail
  *

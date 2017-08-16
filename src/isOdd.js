@@ -2,10 +2,10 @@ import _defn from './internal/_defn'
 
 /**
  * @name isOdd
- * @signature Number -> Boolean
+ * @signature Integer -> Boolean
  * @since v0.14.0
  * @description
- * Returns whether or not a number is odd.
+ * Tests whether an integer is odd.
  * @see isEven
  *
  * @example

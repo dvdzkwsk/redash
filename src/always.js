@@ -5,8 +5,8 @@ import _defn from './internal/_defn'
  * @signature a -> Any -> a
  * @since v0.9.0
  * @description
- * Takes a single argument and returns a function that, when invoked, always
- * returns that original argument.
+ * Takes a single argument and returns a function that always returns that
+ * argument.
  *
  * @example
  * const alwaysTrue = always(true) // => function

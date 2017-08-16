@@ -5,9 +5,9 @@ import _defn from './internal/_defn'
  * @signature [a] -> a
  * @since v0.1.0
  * @description
- * Returns the last element in a list. If the list is empty, `undefined` is
- * returned.
+ * Returns the last value in a list. If the list is empty, returns `undefined`.
  * @see head
+ * @see init
  * @see tail
  *
  * @example

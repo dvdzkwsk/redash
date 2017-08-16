@@ -5,7 +5,8 @@ import _defn from './internal/_defn'
  * @signature [Number] -> Number
  * @since v0.14.0
  * @description
- * Returns the smallest number from a list of numbers.
+ * Returns the smallest number from a list.
+ *
  * @see min
  * @example
  * min([1, 2, 3, 4, 5]) // => 1

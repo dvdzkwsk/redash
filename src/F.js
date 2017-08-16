@@ -7,10 +7,9 @@ import always from './always'
  * @since v0.16.0
  * @description
  * Always returns false; equivalent to `always(false)`.
- * Use `T` for a true stub.
  * @see T
  *
  * @example
- * times(F, 5) // => [false, false, false, false, false]
+ * F() // => false
  */
 export default _defn('F', always(false))

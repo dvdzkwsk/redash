@@ -10,8 +10,9 @@ import _mapObject from './internal/_mapObject'
  * @description
  * Applies a transformation function to all values in a functor. For lists,
  * this means producing a new list where each value has been transformed.
- * For objects, this produces a new object with the same keys where each
- * each own key has had its value transformed.
+ * For objects, this produces a new object from all own properties of the
+ * input, where each property's value has been transformed.
+ *
  * @see mapi
  *
  * @example

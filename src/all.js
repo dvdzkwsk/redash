@@ -5,11 +5,9 @@ import _defn from './internal/_defn'
  * @signature (a -> Boolean) -> [a] -> Boolean
  * @since v0.7.0
  * @description
- * Tests a predicate against all items in a list. Returns true if the predicate
- * returns true for all items in the list, otherwise returns false. If the list
- * is empty it will return true ([vacuous truth](https://en.wikipedia.org/wiki/Vacuous_truth)).
+ * Returns true if the predicate returns true for every value in a list, otherwise false.
+ * If the list is empty it will return true; see [vacuous truth](https://en.wikipedia.org/wiki/Vacuous_truth).
  *
- * If you wish to test multiple predicates, use `everyPred`.
  * @see any
  * @see everyPred
  *
