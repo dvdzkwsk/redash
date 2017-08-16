@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name sum
  * @signature [Number] -> Number
+ * @namespace Math
  * @since v0.10.0
  * @description
  * Returns the sum of all elements in a list.

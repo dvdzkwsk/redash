@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name clamp
  * @signature Number -> Number -> Number -> Number
+ * @namespace Relation
  * @since v0.18.0
  * @description
  * Restricts a value to a given range (inclusive).

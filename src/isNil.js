@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name isNil
  * @signature a -> Boolean
+ * @namespace Logic
  * @since v0.11.0
  * @description
  * Determines whether the argument is equal to `undefined` or `null`.

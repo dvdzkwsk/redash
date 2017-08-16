@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name ifElse
  * @signature (a -> Boolean) -> (a -> *) -> (a -> *) -> (a -> *)
+ * @namespace Logic
  * @since v0.12.0
  * @description
  * Creates a unary function that checks its argument against a predicate and,

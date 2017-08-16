@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name times
  * @signature (Number -> a) -> Number -> [a]
+ * @namespace Function
  * @since v0.5.0
  * @description
  * Calls a function N times with the index of each call as its argument.

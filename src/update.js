@@ -4,6 +4,7 @@ import updateIn from './updateIn'
 /**
  * @name update
  * @signature String k, Any v => k -> (v -> v) -> {k:v} -> {k:v}
+ * @namespace Object
  * @since v0.20.0
  * @description
  * Applies a transformation to the value associated with the provided key.

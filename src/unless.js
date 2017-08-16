@@ -5,6 +5,7 @@ import when from './when'
 /**
  * @name unless
  * @signature (a -> Boolean) -> (a -> b) -> a -> a | b
+ * @namespace Logic
  * @since v0.14.0
  * @description
  * Creates a unary function that dispatches to the provided function

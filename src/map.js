@@ -6,6 +6,7 @@ import _mapObject from './internal/_mapObject'
  * @name map
  * @signature
  * Functor f => (a -> b) -> f a -> f b
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * Applies a transformation function to all values in a functor. For lists,

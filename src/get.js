@@ -4,6 +4,7 @@ import _get from './internal/_get'
 /**
  * @name get
  * @signature String k => k -> {k:v} -> v
+ * @namespace Object
  * @since v0.20.0
  * @description
  * Returns the value associated with the provided key on an object.

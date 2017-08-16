@@ -4,6 +4,7 @@ import _match from './internal/_match'
 /**
  * @name match
  * @signature RegExp -> String -> [String]
+ * @namespace String
  * @since v0.19.0
  * @description
  * Returns a list containing all matches for the regular expression. If there

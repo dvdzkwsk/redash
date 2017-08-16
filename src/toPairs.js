@@ -4,6 +4,7 @@ import _eachOwn from './internal/_eachOwn'
 /**
  * @name toPairs
  * @signature String k, Any v => {k:v} -> [[k, v]]
+ * @namespace Object
  * @since v0.7.0
  * @description
  * Converts all own enumerable keys in an object into a list of [key, value] pairs.

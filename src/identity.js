@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name identity
  * @signature a -> a
+ * @namespace Function
  * @since v0.6.0
  * @description
  * Returns the argument it receives; ignores all but the first argument.

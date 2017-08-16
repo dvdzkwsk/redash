@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name isEven
  * @signature Integer -> Boolean
+ * @namespace Logic
  * @since v0.14.0
  * @description
  * Tests whether an integer is even.

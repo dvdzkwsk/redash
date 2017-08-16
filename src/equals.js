@@ -4,6 +4,7 @@ import _equals from './internal/_equals'
 /**
  * @name equals
  * @signature a -> a -> Boolean
+ * @namespace Relation
  * @since v0.7.0
  * @description
  * Returns whether or not two values are equal by performing a deep comparison.

@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name subtract
  * @signature Number -> Number -> Number
+ * @namespace Math
  * @since v0.13.0
  * @description
  * Returns the difference of two numbers. Because infix notation with `-` is

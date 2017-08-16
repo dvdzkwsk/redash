@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name set
  * @signature Lens k -> v -> {k:v} -> {k:v}
+ * @namespace Function
  * @since v0.11.0
  * @description
  * Applies a value to the target of a lens and returns the result of the lens'

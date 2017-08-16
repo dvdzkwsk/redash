@@ -4,6 +4,7 @@ import rangeBy from './rangeBy'
 /**
  * @name range
  * @signature Integer -> Integer -> [Integer]
+ * @namespace Collection
  * @since v0.7.0
  * @description
  * Returns a list of all integers between an initial value (inclusive) and an

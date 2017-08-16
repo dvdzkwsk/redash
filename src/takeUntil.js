@@ -5,6 +5,7 @@ import takeWhile from './takeWhile'
 /**
  * @name takeUntil
  * @signature (a -> Boolean) -> [a] -> [a]
+ * @namespace Collection
  * @since v0.12.0
  * @description
  * Selects values from the input list by comparing them against the predicate.

@@ -5,6 +5,7 @@ import _reduce from './internal/_reduce'
 /**
  * @name mapKeys
  * @signature (a -> b) -> {a:v} -> {b:v}
+ * @namespace Object
  * @since v0.15.0
  * @description
  * Iterates over all own, enumerable keys of an object, transforming each

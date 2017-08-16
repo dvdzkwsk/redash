@@ -4,6 +4,7 @@ import _contains from './internal/_contains'
 /**
  * @name without
  * @signature [a] -> [a] -> [a]
+ * @namespace Collection
  * @since v0.7.0
  * @description
  * Excludes all elements of the first list from the second list.

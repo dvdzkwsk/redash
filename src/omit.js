@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name omit
  * @signature String k, Any v => [k] -> {k:v} -> {k:v}
+ * @namespace Object
  * @since v0.14.0
  * @description
  * @see pick

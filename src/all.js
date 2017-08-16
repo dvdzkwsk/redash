@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name all
  * @signature (a -> Boolean) -> [a] -> Boolean
+ * @namespace Collection
  * @since v0.7.0
  * @description
  * Returns true if the predicate returns true for every value in a list, otherwise false.

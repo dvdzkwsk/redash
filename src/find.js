@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name find
  * @signature (a -> Boolean) -> [a] -> a | undefined
+ * @namespace Collection
  * @since v0.6.0
  * @description
  * Tests a predicate against a list, returning the first value that

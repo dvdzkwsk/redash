@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name dec
  * @signature Number -> Number
+ * @namespace Math
  * @since v0.6.0
  * @description
  * Decrements a number by `1`.

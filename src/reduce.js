@@ -4,6 +4,7 @@ import _reduce from './internal/_reduce'
 /**
  * @name reduce
  * @signature ((b, a) -> b) -> b -> [a] -> b
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * Reduces a list of values into a single value. Provided with a reducing

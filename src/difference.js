@@ -5,6 +5,7 @@ import _Set from './internal/_Set'
 /**
  * @name difference
  * @signature [a] -> [a] -> [a]
+ * @namespace Collection
  * @since v0.21.0
  * @description
  * Returns the _set_ of values contained in the first list but not the second.

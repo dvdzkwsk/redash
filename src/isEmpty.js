@@ -5,6 +5,7 @@ import empty from './empty'
 /**
  * @name isEmpty
  * @signature a -> Boolean
+ * @namespace Logic
  * @since v0.14.0
  * @description
  * Describes whether or not a value is empty. To determine "emptiness", the

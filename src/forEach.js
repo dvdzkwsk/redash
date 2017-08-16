@@ -4,6 +4,7 @@ import _forEach from './internal/_forEach'
 /**
  * @name forEach
  * @signature (a -> *) -> [a] -> undefined
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * Iterates through a list, calling the provided function with each value.

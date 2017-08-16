@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name partition
  * @signature (a -> Boolean) -> [a] -> [[a]]
+ * @namespace Collection
  * @since v0.16.0
  * @description
  * Partitions a list into two lists based on a predicate; the left contains

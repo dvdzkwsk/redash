@@ -4,6 +4,7 @@ import curryN from './curryN'
 /**
  * @name complement
  * @signature (*... -> Boolean) -> (*... -> Boolean)
+ * @namespace Function
  * @since v0.13.0
  * @description
  * Wraps a function so that when it is called, its

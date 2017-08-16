@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name padRight
  * @signature Integer -> String -> String -> String
+ * @namespace String
  * @since v0.19.0
  * @description
  * Pads a string to a given length by appending the given character to it

@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name rangeBy
  * @signature Number -> Number -> Number -> [Number]
+ * @namespace Collection
  * @since v0.7.0
  * @description
  * Returns containing all numbers between at an initial value (inclusive)

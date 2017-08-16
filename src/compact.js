@@ -7,6 +7,7 @@ import identity from './identity'
  * @signature
  * [a] -> [a]
  * String k, Any v => {k:v} -> {k:v}
+ * @namespace Collection
  * @description
  * Removes all falsy values from a list. For objects, dissociates all
  * properties with falsy values.

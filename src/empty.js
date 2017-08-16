@@ -4,6 +4,7 @@ import type from './type'
 /**
  * @name empty
  * @signature a -> a
+ * @namespace Function
  * @since v0.14.0
  * @description
  * Returns the empty representation of a value. Dispatches to the `empty`

@@ -5,6 +5,7 @@ import _reduce from './internal/_reduce'
  * @name groupBy
  * @signature
  * String k, Any v => (v -> k) -> [v] -> {k:v}
+ * @namespace Collection
  * @since v0.18.0
  * @description
  * Creates an object from a list of values where the values are grouped

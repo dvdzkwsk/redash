@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name toUpper
  * @signature String -> String
+ * @namespace String
  * @since v0.4.0
  * @description
  * Upper-cases all characters in a string.

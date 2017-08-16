@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name add
  * @signature Number -> Number -> Number
+ * @namespace Math
  * @since v0.1.0
  * @description
  * Returns the sum of two numbers.

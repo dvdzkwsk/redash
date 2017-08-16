@@ -4,6 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name tail
  * @signature [a] -> [a]
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * Returns a subset of a list containing all elements except the first. If

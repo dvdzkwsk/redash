@@ -5,6 +5,7 @@ import _reverse from './internal/_reverse'
 /**
  * @name reduceRight
  * @signature ((b, a) -> b) -> b -> [a]
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * The same as `reduce`, but runs the reducing function from right -> left.

@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name values
  * @signature String k, Any v => {k:v} -> [v]
+ * @namespace Object
  * @since v0.14.0
  * @description
  * Returns a list containing the values of an object's own enumerable properties.

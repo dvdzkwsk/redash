@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name findIndex
  * @signature (a -> Boolean) -> [a] -> Number
+ * @namespace Collection
  * @since v0.1.0
  * @description
  * Tests a predicate against a list, returning the index of the first

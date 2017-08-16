@@ -4,6 +4,7 @@ import always from './always'
 /**
  * @name F
  * @signature Any -> Boolean
+ * @namespace Function
  * @since v0.16.0
  * @description
  * Always returns false; equivalent to `always(false)`.

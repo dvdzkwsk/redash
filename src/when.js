@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name when
  * @signature (a -> Boolean) -> (a -> b) -> a -> a | b
+ * @namespace Logic
  * @since v0.14.0
  * @description
  * Creates a unary function that, when invoked, checks its argument against

@@ -4,6 +4,7 @@ import set from './set'
 /**
  * @name over
  * @signature Lens k -> (v -> *) -> {k:v} -> {k:v}
+ * @namespace Function
  * @since v0.11.0
  * @description
  * Transforms the value at the focal point of a lens on a given object.

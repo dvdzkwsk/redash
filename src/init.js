@@ -4,6 +4,7 @@ import _slice from './internal/_slice'
 /**
  * @name init
  * @signature [a] -> [a]
+ * @namespace Collection
  * @since v0.17.0
  * @description
  * Returns a list that contains all but the last value from the input list.

@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name lens
  * @signature (({k:v} -> v), (v, {k:v} -> {k:v})) -> Lens k
+ * @namespace Function
  * @since v0.11.0
  * @description
  * Creates a Lens that knows how to get and set a specific value on an object.

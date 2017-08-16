@@ -5,6 +5,7 @@ import _defn from './internal/_defn'
  * @signature
  * [a] -> [a] -> [a]
  * String -> String -> String
+ * @namespace Collection
  * @since v0.7.0
  * @description
  * Concatenates two values together. Dispatches to the `concat` method of the

@@ -6,6 +6,7 @@ import _defn from './internal/_defn'
  * @signature
  * a -> [a] -> [a]
  * String -> String -> String
+ * @namespace Collection
  * @since v0.10.0
  * @description
  * Appends a single value to the end of a list. If the argument in list position

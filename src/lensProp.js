@@ -6,6 +6,7 @@ import get from './get'
 /**
  * @name lensProp
  * @signature String -> Lens
+ * @namespace Function
  * @since v0.11.0
  * @description
  * Creates a Lens that is focused on a given property. The getter and setter

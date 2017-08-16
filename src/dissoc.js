@@ -3,6 +3,7 @@ import _defn from './internal/_defn'
 /**
  * @name dissoc
  * @signature String k, Any v => k -> {k:v} -> {k:v}
+ * @namespace Object
  * @since v0.10.0
  * @description
  * Removes a given key from an object. You can think of `dissoc` as the

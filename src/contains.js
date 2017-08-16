@@ -6,6 +6,7 @@ import _contains from './internal/_contains'
  * @signature
  * a -> [a] -> Boolean
  * String -> String -> Boolean
+ * @namespace Collection
  * @since v0.14.0
  * @description
  * Returns whether or not a list contains the target value. Performs a
