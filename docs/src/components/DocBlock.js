@@ -14,36 +14,19 @@ const Example = ({ children }) => (
 )
 
 class DocBlock extends React.PureComponent {
-  _onTryInREPL = () => {
-    const cleanedExample = pipe([
-      join('\n'),
-      split('\n'),
-      map(pipe([split('//'), head, trim])),
-      compact,
-      join('\n')
-    ])(this.props.examples)
-
-    this.props.onTryInREPL(cleanedExample)
-  }
-
   render () {
     const { name, signature, description, examples, since, see } = this.props
     return (
-      <div>
-        <h2 id={toLower(name)}>
+      <div className='doc-block'>
+        <h3 id={toLower(name)} className='mt-0 h2'>
           {name}
-        </h2>
-        {mapi((signature, i) => (
-          <Signature key={i} signature={signature} />
-        ), split('\n', signature))}
-        <div dangerouslySetInnerHTML={{ __html: marked(description || '') }} />
+        </h3>
+        <div
+          className='markdown-body'
+          dangerouslySetInnerHTML={{ __html: marked(description || '') }}
+        />
         {mapi((example, i) => (
           <div key={i}>
-            <div className='clearfix'>
-              <button className='btn btn-primary try-in-repl' onClick={this._onTryInREPL}>
-                Try in REPL
-              </button>
-            </div>
             <Example>{example}</Example>
           </div>
         ), examples)}

@@ -1,78 +1,63 @@
 import React from 'react'
 import DocBlock from './DocBlock'
-import REPL from './REPL'
 
-const SideNavigation = ({ functions }) => (
-  <nav>
-    {map(({ name }) => (
-      <a key={name} href={`#${toLower(name)}`}>
-        {name}
-      </a>
-    ), functions)}
+const Navbar = () =>
+  <nav className='navbar navbar-light sticky-top bg-primary' style={{ color: '#fff' }}>
+    <a className='navbar-brand mr-auto'>
+      Redash
+    </a>
   </nav>
-)
 
-class APIDocs extends React.PureComponent {
-  render () {
-    return (
-      <div>
-        {map(func => (
-          <DocBlock
-            key={func.name}
-            {...func}
-            onTryInREPL={this.props.onTryInREPL}
-          />
-        ), this.props.functions)}
-      </div>
-    )
-  }
+const scrollToTarget = (e) => {
+  e.preventDefault()
+  const target = document.querySelector(e.target.getAttribute('href'))
+  const bodyRect = document.body.getBoundingClientRect()
+  const elemRect = target.getBoundingClientRect()
+
+  window.scroll(0, elemRect.top - bodyRect.top - 75)
 }
 
+const TableOfContents = ({ functions }) => (
+  <div className='toc'>
+    <form className='toc__search d-flex align-items-center'>
+      <input
+        type='text'
+        className='form-control'
+        placeholder='Search...'
+      />
+    </form>
+    <nav>
+      <ul className='toc__items'>
+        {map(({ name }) => (
+          <li className='toc__item' key={name}>
+            <a className='toc__link' href={`#${toLower(name)}`} onClick={scrollToTarget}>
+              {name}
+            </a>
+          </li>
+        ), functions)}
+      </ul>
+    </nav>
+  </div>
+)
+
 class App extends React.Component {
-  state = {
-    replValue: '',
-    replVisible: true,
-  }
-
-  _onTryInREPL = (code) => {
-    this.setState({
-      replValue: code,
-      replVisible: true,
-    })
-  }
-
-  _onREPLChange = (code) => {
-    this.setState({ replValue: code })
-  }
-
-  _onHideREPL = () => {
-    this.setState({ replVisible: false })
-  }
-
   render () {
-    const { replValue, replVisible } = this.state
-    const { functions } = this.props
+    const { api } = this.props
 
     return (
       <div>
-        <SideNavigation functions={functions} />
-        <main className='container'>
-          <APIDocs
-            functions={functions}
-            onTryInREPL={this._onTryInREPL}
-          />
-        </main>
-        <div className={`repl-container ${replVisible ? 'visible' : ''}`}>
-          <REPL
-            value={replValue}
-            onChange={this._onREPLChange}
-          />
-          <button
-            className='btn btn-outline-secondary repl__hide'
-            onClick={this._onHideREPL}
-          >
-            Hide
-          </button>
+        <Navbar />
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-2 toc-wrapper'>
+              <TableOfContents functions={api} />
+            </div>
+            <div className='col-10'>
+              {map(fn => (
+                <DocBlock key={fn.name} {...fn} />
+              ), api)}
+            </div>
+          </div>
         </div>
       </div>
     )

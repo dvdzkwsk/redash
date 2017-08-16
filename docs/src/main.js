@@ -5,26 +5,18 @@ import './styles/main.scss'
 
 const MOUNT_NODE = document.getElementById('root')
 
-let render = () => {
-  const App = require('./components/App').default // eslint-disable-line
+const render = () => {
+  const App = require('./components/App').default
 
   ReactDOM.render(
-    <App functions={docs.api} />,
+    <App api={docs} />,
     MOUNT_NODE
   )
 }
 
+const __DEV__ = true
 if (__DEV__) {
   if (module.hot) {
-    const renderApp = render
-    render = () => {
-      try {
-        renderApp()
-      } catch (e) {
-        console.error(e) // eslint-disable-line no-console
-      }
-    }
-
     module.hot.accept('./components/App', () => {
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)
