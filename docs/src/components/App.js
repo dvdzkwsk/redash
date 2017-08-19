@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx h */
+import { h, Component } from 'preact'
 import DocBlock from './DocBlock'
 
 const Navbar = () =>
@@ -28,7 +29,7 @@ const TableOfContents = ({ functions, search, onSearchChange }) => (
         type='text'
         className='form-control'
         placeholder='Search...'
-        onChange={onSearchChange}
+        onInput={onSearchChange}
         value={search}
       />
     </form>
@@ -46,7 +47,7 @@ const TableOfContents = ({ functions, search, onSearchChange }) => (
   </div>
 )
 
-class App extends React.Component {
+class App extends Component {
   state = {
     search: '',
   }
