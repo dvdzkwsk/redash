@@ -49,9 +49,11 @@
     "require": []
   },
   "devDependencies": {
+    "@technologyadvice/genesis-core": "^0.13.0",
     "ava": "^0.16.0",
     "babel-eslint": "^7.1.1",
     "brace": "^0.9.1",
+    "bootstrap": "^4.0.0-beta",
     "eslint": "^2.13.1",
     "jsdoc": "^3.4.2",
     "marked": "^0.3.6",
@@ -62,9 +64,5 @@
     "sinon": "^1.17.5",
     "typescript": "^2.3.2",
     "uglify-js": "^2.6.1"
-  },
-  "dependencies": {
-    "@technologyadvice/genesis-core": "^0.13.0",
-    "bootstrap": "^4.0.0-beta"
   }
 }
