@@ -10,17 +10,22 @@ const Navbar = () =>
     </a>
   </nav>
 
-document.addEventListener('click', (e) => {
-  const href = e.target.getAttribute('href')
-  if (!href || href.length === 1 || href[0] !== '#') return
+const hijackAnchorScroll = () => {
+  document.addEventListener('click', (e) => {
+    const href = e.target.getAttribute('href')
+    if (!href || href.length === 1 || href[0] !== '#') return
 
-  e.preventDefault()
-  const target = document.querySelector(href)
-  const bodyRect = document.body.getBoundingClientRect()
-  const elemRect = target.getBoundingClientRect()
+    e.preventDefault()
+    const target = document.querySelector(href)
+    const bodyRect = document.body.getBoundingClientRect()
+    const elemRect = target.getBoundingClientRect()
 
-  window.scroll(0, elemRect.top - bodyRect.top - 75)
-})
+    window.scroll(0, elemRect.top - bodyRect.top - 75)
+  })
+}
+try {
+  hijackAnchorScroll()
+} catch (e) {}
 
 const TableOfContents = ({ functions, search, onSearchChange }) => (
   <div className='toc'>
