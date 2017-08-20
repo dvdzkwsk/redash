@@ -8,21 +8,16 @@ const MOUNT_NODE = document.getElementById('root')
 let root
 const render = () => {
   const App = require('./components/App').default
-
-  root = renderToDOM(
-    <App api={docs} />,
-    MOUNT_NODE,
-    root
-  )
+  root = renderToDOM(<App api={docs} />, MOUNT_NODE, root)
 }
 
-const __DEV__ = true
-if (__DEV__) {
-  if (module.hot) {
-    module.hot.accept('./components/App', () => {
-      setImmediate(render)
-    })
-  }
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    setImmediate(render)
+  })
 }
 
-render()
+;(function init () {
+  render()
+  require('./main.static')
+})()

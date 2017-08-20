@@ -10,38 +10,19 @@ const Navbar = () =>
     </a>
   </nav>
 
-const hijackAnchorScroll = () => {
-  document.addEventListener('click', (e) => {
-    const href = e.target.getAttribute('href')
-    if (!href || href.length === 1 || href[0] !== '#') return
-
-    e.preventDefault()
-    const target = document.querySelector(href)
-    const bodyRect = document.body.getBoundingClientRect()
-    const elemRect = target.getBoundingClientRect()
-
-    window.scroll(0, elemRect.top - bodyRect.top - 75)
-  })
-}
-try {
-  hijackAnchorScroll()
-} catch (e) {}
-
-const TableOfContents = ({ functions, search, onSearchChange }) => (
+const TableOfContents = ({ functions }) => (
   <div className='toc'>
-    <form className='toc__search d-flex align-items-center'>
+    <form className='toc__search-form d-flex align-items-center'>
       <input
         type='text'
-        className='form-control'
+        className='form-control toc__search'
         placeholder='Search...'
-        onInput={onSearchChange}
-        value={search}
       />
     </form>
     <nav>
       <ul className='toc__items'>
         {map(({ name }) => (
-          <li className='toc__item' key={name}>
+          <li key={name} className='toc__item' data-name={name}>
             <a className='toc__link' href={`#${toLower(name)}`}>
               {name}
             </a>
@@ -53,25 +34,8 @@ const TableOfContents = ({ functions, search, onSearchChange }) => (
 )
 
 class App extends Component {
-  state = {
-    search: '',
-  }
-
-  _onSearchChange = (e) => {
-    this.setState({ search: e.target.value })
-  }
-
   render () {
-    const { api } = this.props
-    const { search } = this.state
-
-    let functions = api
-    const normalizedSearch = search.trim().toLowerCase()
-    if (normalizedSearch) {
-      functions = filter((fn) => {
-        return fn.name.includes(normalizedSearch)
-      }, functions)
-    }
+    const functions = this.props.api
 
     return (
       <div style={{ height: '100%' }}>
@@ -79,7 +43,7 @@ class App extends Component {
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-2 toc-wrapper'>
-              <TableOfContents functions={functions} search={search} onSearchChange={this._onSearchChange} />
+              <TableOfContents functions={functions} />
             </div>
             <div className='col-10'>
               <main>
