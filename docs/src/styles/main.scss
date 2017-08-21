@@ -1,5 +1,11 @@
 @import 'base';
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar';
+@import '~bootstrap/scss/utilities';
 @import 'prism';
 
 html,
