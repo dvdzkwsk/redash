@@ -17,7 +17,7 @@ import isType from './isType'
  * @example
  * filter(isEven, [1, 2, 3, 4, 5]) // => [2, 4]
  */
-export default _defn('filter', function (pred, xs) {
+export default _defn(function filter (pred, xs) {
   return isType('Object', xs)
     ? _filterObject(pred, xs)
     : _filterList(pred, xs)

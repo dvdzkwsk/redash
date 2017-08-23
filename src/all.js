@@ -17,7 +17,7 @@ import _defn from './internal/_defn'
  * all(isEven, [2, 4, 6, 3]) // => false, 3 is not an even number
  * all(isEven, [])           // => true
  */
-export default _defn('all', function (fn, xs) {
+export default _defn(function all (fn, xs) {
   var i   = 0
     , len = xs.length
 

@@ -21,4 +21,4 @@ import _type from './internal/_type'
  * type(undefined)         // => 'Nil'
  * type(null)              // => 'Nil'
  */
-export default _defn('type', _type)
+export default _defn(_type)

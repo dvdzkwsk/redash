@@ -17,7 +17,7 @@ import _type from './type'
  * isString('hello!')    // => true
  * isType('number', 123) // => true
  */
-export default _defn('isType', function (type, a) {
+export default _defn(function isType (type, a) {
   if (type == null) {
     return typeof type === typeof a
   }

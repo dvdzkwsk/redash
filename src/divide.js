@@ -16,7 +16,7 @@ import _defn from './internal/_defn'
  * @example
  * map(divide(2), [2, 4, 6, 8]) // => [1, 2, 3, 4]
  */
-export default _defn('divide', function (a, b) {
+export default _defn(function divide (a, b) {
   if (!a) {
     throw new Error('Cannot divide by 0.')
   }

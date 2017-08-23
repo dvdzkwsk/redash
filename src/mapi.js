@@ -14,7 +14,7 @@ import _defn from './internal/_defn'
  * const xform = (x, i) => isOdd(i) ? x * 2 : x
  * mapi(xform, [1, 2, 3, 4, 5]) // => [2, 2, 6, 4, 5]
  */
-export default _defn('mapi', function (fn, as) {
+export default _defn(function mapi (fn, as) {
   var bs = new Array(as.length)
     , i  = 0
 

@@ -16,7 +16,7 @@ import _hasOwn from './internal/_hasOwn'
  * matches(spec, { name: 'Michael' }) // => true
  * matches(spec, { name: 'Dwight' })  // => false
  */
-export default _defn('matches', function matches (spec, target) {
+export default _defn(function matches (spec, target) {
   var prop
 
   if (!target) {

@@ -13,6 +13,6 @@ import _defn from './internal/_defn'
  * toLower('Hi There')  // => 'hi there'
  * toLower('GoodBye')   // => 'goodbye'
  */
-export default _defn('toLower', function toLower (a) {
+export default _defn(function toLower (a) {
   return a.toLowerCase()
 })

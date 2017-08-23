@@ -11,6 +11,6 @@ import _defn from './internal/_defn'
  * @example
  * length([1, 2, 3, 4, 5]) // => 5
  */
-export default _defn('length', function (xs) {
+export default _defn(function length (xs) {
   return xs.length
 })

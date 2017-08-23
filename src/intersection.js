@@ -12,7 +12,7 @@ import _Set from './internal/_Set'
  * @example
  * intersection([1, 2, 3, 4], [3, 4, 5]) // => [3, 4]
  */
-export default _defn('intersection', function (xs, ys) {
+export default _defn(function intersection (xs, ys) {
   var i   = 0
     , res = []
     , set = new _Set()

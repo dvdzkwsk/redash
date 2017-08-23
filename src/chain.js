@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * @example
  * chain(x => [x, x * 2], [1, 2, 3, 4]) // => [1, 2, 2, 4, 3, 6, 4, 8]
  */
-export default _defn('chain', function (fn, xs) {
+export default _defn(function chain (fn, xs) {
   var i   = 0
     , res  = []
     , x

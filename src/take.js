@@ -18,6 +18,6 @@ import _defn from './internal/_defn'
  * take(5, [1, 2, 3])       // => [1, 2, 3]
  * take(Infinity, [])       // => []
  */
-export default _defn('take', function (n, xs) {
+export default _defn(function take (n, xs) {
   return _slice.call(xs, 0, n)
 })

@@ -15,7 +15,7 @@ import _defn from './internal/_defn'
  * any(isEven, [1, 3, 5])       // => false, no numbers are even
  * any(isEven, [])              // => false
  */
-export default _defn('any', function (fn, xs) {
+export default _defn(function any (fn, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {

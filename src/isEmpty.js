@@ -21,6 +21,6 @@ import empty from './empty'
  * isEmpty(0)         // => true
  * isEmpty(false)     // => true
  */
-export default _defn('isEmpty', function (a) {
+export default _defn(function isEmpty (a) {
   return !a || _equals(a, empty(a))
 })

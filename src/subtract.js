@@ -19,6 +19,6 @@ import _defn from './internal/_defn'
  * subtract5(10) // => 5
  * subtract5(15) // => 10
  */
-export default _defn('subtract', function (a, b) {
+export default _defn(function subtract (a, b) {
   return b - a
 })

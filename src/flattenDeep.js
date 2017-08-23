@@ -11,7 +11,7 @@ import _defn from './internal/_defn'
  * @example
  * flattenDeep([1, 2, [3, [4, [5, 6, [7]]]]]) // => [1, 2, 3, 4, 5, 6, 7]
  */
-export default _defn('flattenDeep', function flattenDeep (xs) {
+export default _defn(function flattenDeep (xs) {
   var acc = []
     , i   = 0
     , x

@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * @example
  * pick(['a', 'b'], { a: 1, b: 2, c: 3 }) // => { a: 1, b: 2 }
  */
-export default _defn('pick', function (keys, obj) {
+export default _defn(function pick (keys, obj) {
   var i   = 0
     , res = {}
 

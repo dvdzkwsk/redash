@@ -23,6 +23,6 @@ import _defn from './internal/_defn'
  * fn(5)  // => (not even, but < 10, so double)
  * fn(13) // => 13 (else clause, return unmodified)
  */
-export default _defn('identity', function (a) {
+export default _defn(function identity (a) {
   return a
 })

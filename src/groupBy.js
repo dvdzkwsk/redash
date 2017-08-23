@@ -23,7 +23,7 @@ import _reduce from './internal/_reduce'
  * // , adult    : [{ age: 21 }]
  * // }
  */
-export default _defn('groupBy', function (fn, xs) {
+export default _defn(function groupBy (fn, xs) {
   return _reduce(function (acc, x) {
     var key = fn(x)
     acc[key] = (acc[key] || []).concat(x)

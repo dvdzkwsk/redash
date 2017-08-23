@@ -12,6 +12,6 @@ import _defn from './internal/_defn'
  * test(/bar/, 'foobarbaz') // => true
  * filter(test(/joe/i), ['Joe', 'Bill', 'joey']) // => ['Joe', 'joey']
  */
-export default _defn('test', function (regex, str) {
+export default _defn(function test (regex, str) {
   return regex.test(str)
 })

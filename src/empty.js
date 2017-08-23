@@ -20,7 +20,7 @@ import type from './type'
  * empty(0)                         // => undefined
  * empty(false)                     // => undefined
  */
-export default _defn('empty', function (a) {
+export default _defn(function empty (a) {
   if (a == null) return void 0
   if (typeof a.empty === 'function') return a.empty()
   if (a.constructor && typeof a.constructor.empty === 'function') {

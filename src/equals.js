@@ -15,4 +15,4 @@ import _equals from './internal/_equals'
  * equals({ name: 'Bill' }, { name: 'Bill' }) // => true
  * equals({ name: 'Bill' }, { name: 'Bob' })  // => false
  */
-export default _defn('equals', _equals)
+export default _defn(_equals)

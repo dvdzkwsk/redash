@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * clamp(1, 10, -5) // => 1
  * clamp(1, 10, 15) // => 10
  */
-export default _defn('clamp', function (lower, upper, value) {
+export default _defn(function clamp (lower, upper, value) {
   return value < lower ? lower :
          value > upper ? upper :
          value

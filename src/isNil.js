@@ -19,6 +19,6 @@ import _defn from './internal/_defn'
  * @param {*} x
  * @returns Boolean
  */
-export default _defn('isNil', function (x) {
+export default _defn(function isNil (x) {
   return x == null
 })

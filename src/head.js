@@ -15,6 +15,6 @@ import _defn from './internal/_defn'
  * head([1, 2, 3, 4]) // => [1]
  * head([])           // => undefined
  */
-export default _defn('head', function (xs) {
+export default _defn(function head (xs) {
   return xs[0]
 })

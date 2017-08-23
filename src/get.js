@@ -13,4 +13,4 @@ import _get from './internal/_get'
  * get('name', null)            // => undefined
  * get('name', { name: 'Bob' }) // => Bob
  */
-export default _defn('get', _get)
+export default _defn(_get)

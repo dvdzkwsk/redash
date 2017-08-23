@@ -17,4 +17,4 @@ import _forEach from './internal/_forEach'
  * const res = forEach(log, [1, 2, 3]) // => logs: 1, 2, 3
  * console.log(res)                    // => undefined
  */
-export default _defn('forEach', _forEach)
+export default _defn(_forEach)

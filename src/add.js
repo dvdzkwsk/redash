@@ -16,6 +16,6 @@ import _defn from './internal/_defn'
  * add5(10) // => 15
  * add5(15) // => 20
  */
-export default _defn('add', function (a, b) {
+export default _defn(function add (a, b) {
   return a + b
 })

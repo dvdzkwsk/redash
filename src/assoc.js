@@ -15,7 +15,7 @@ import _shallowClone from './internal/_shallowClone'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * assoc('first', 'Bob', user) // => { first: 'Bob', last: 'LobLaw' }
  */
-export default _defn('assoc', function (key, value, target) {
+export default _defn(function assoc (key, value, target) {
   var res = _shallowClone(target)
   res[key] = value
   return res

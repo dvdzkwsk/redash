@@ -18,6 +18,6 @@ import _curryN from './internal/_curryN'
  * fn(1, 2, 3) // => [1, 2, 3]
  * fn(1)(2)(3) // => [1, 2, 3]
  */
-export default _defn('curryN', function (arity, fn) {
+export default _defn(function curryN (arity, fn) {
   return _curryN(arity, [], fn)
 })

@@ -11,7 +11,7 @@ import _defn from './internal/_defn'
  * @example
  * omit(['a', 'b'], { a: 1, b: 2, c: 3, d: 4 }) // => { c: 3, d: 4 }
  */
-export default _defn('omit', function (keys, a) {
+export default _defn(function omit (keys, a) {
   var res = {}
     , prop
     , discard

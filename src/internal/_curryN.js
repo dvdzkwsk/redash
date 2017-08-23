@@ -1,7 +1,5 @@
 import _slice from './_slice'
 import _arity from './_arity'
-import _nameFunc from './_nameFunc'
-import _createFnName from './_createFnName'
 
 /**
  * @description
@@ -14,7 +12,7 @@ import _createFnName from './_createFnName'
  * smaller than the required amount, the function will be curried again.
  */
 export default function _curryN (arity, args, fn) {
-  var fnWrapper = _arity(arity, function () {
+  return _arity(arity, function () {
     var nextArgs  = args
       , nextArity = arity - arguments.length
       , i
@@ -30,6 +28,4 @@ export default function _curryN (arity, args, fn) {
       ? fn.apply(null, nextArgs)
       : _curryN(nextArity, nextArgs, fn)
   })
-  _nameFunc(_createFnName(fn.displayName || fn.name, args), fnWrapper)
-  return fnWrapper
 }

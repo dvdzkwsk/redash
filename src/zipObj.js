@@ -18,7 +18,7 @@ import _defn from './internal/_defn'
  * zipObj(['a', 'b', 'c'], [1, 2, 3]) // => { a: 1, b: 2, c: 3 }
  * zipObj(['a', 'b', 'c'], [1])       // => { a: 1 }
  */
-export default _defn('zipObj', function (ks, vs) {
+export default _defn(function zipObj (ks, vs) {
   var i   = 0
     , len = Math.min(ks.length, vs.length)
     , kv  = {}

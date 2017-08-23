@@ -13,6 +13,6 @@ import _match from './internal/_match'
  * @example
  * match(/foo[a-z]+/g, 'foobar foo bazbiz foobop') // => ['foobar', 'foobop']
  */
-export default _defn('match', function (regex, str) {
+export default _defn(function match (regex, str) {
   return _match.call(str, regex) || []
 })

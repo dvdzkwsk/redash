@@ -22,7 +22,7 @@ import _defn from './internal/_defn'
  * a.bar = 'BAR'
  * values(a) // => ['BAR'] (foo is inherited from A's protoype and is ignored)
  */
-export default _defn('values', function (obj) {
+export default _defn(function values (obj) {
   var keys   = Object.keys(obj)
     , i      = 0
     , values = new Array(keys.length)

@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * const users = [{ id: 1, name: 'Bob' }, { id: 2, name: 'Bill'}, { id: 3, name: 'Bob' }]
  * findLast(propEq('name', 'Bob'), users) // => { id: 3, name: 'Bob' }
  */
-export default _defn('findLast', function (pred, xs) {
+export default _defn(function findLast (pred, xs) {
   var i = xs.length - 1
 
   while (i >= 0) {

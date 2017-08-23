@@ -11,7 +11,7 @@ import _defn from './internal/_defn'
  * @example
  * max([1, 2, 3, 4, 5]) // => 5
  */
-export default _defn('max', function (xs) {
+export default _defn(function max (xs) {
   var i   = xs.length - 1
     , max = xs[i--]
 

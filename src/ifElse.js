@@ -19,7 +19,7 @@ import _defn from './internal/_defn'
  * myFunc(4) // => 5
  * myFunc(7) // => 6
  */
-export default _defn('ifElse', function (cond, whenTrue, whenElse) {
+export default _defn(function ifElse (cond, whenTrue, whenElse) {
   return function (x) {
     return cond(x) ? whenTrue(x) : whenElse(x)
   }

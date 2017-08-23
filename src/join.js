@@ -12,6 +12,6 @@ import _defn from './internal/_defn'
  * join(' & ', ['Michael', 'Dwight', 'Jim']) // => 'Michael & Dwight & Jim'
  * join('', ['Hello', 'Goodbye'])            // => 'HelloGoodbye'
  */
-export default _defn('join', function (joiner, xs) {
+export default _defn(function join (joiner, xs) {
   return xs.join(joiner)
 })

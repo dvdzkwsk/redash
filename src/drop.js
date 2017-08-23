@@ -13,6 +13,6 @@ import _slice from './internal/_slice'
  * @example
  * drop(2, [1, 2, 3, 4]) // => [3, 4]
  */
-export default _defn('drop', function (n, xs) {
+export default _defn(function drop (n, xs) {
   return _slice.call(xs, n)
 })

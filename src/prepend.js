@@ -14,7 +14,7 @@ import _concat from './internal/_concat'
  * prepend(1, [2, 3, 4]) // => [1, 2, 3, 4]
  * prepend('foo', 'bar') // => 'foobar'
  */
-export default _defn('prepend', function (a, as) {
+export default _defn(function prepend (a, as) {
   if (typeof as === 'string') {
     return a + as
   }

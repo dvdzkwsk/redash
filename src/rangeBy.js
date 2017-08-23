@@ -14,7 +14,7 @@ import _defn from './internal/_defn'
  * @example
  * rangeBy(4, 0, 17) // => [0, 4, 8, 12, 16]
  */
-export default _defn('rangeBy', function (step, start, end) {
+export default _defn(function rangeBy (step, start, end) {
   var res = []
     , length
     , i

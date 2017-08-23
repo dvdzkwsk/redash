@@ -16,7 +16,7 @@ import _defn from './internal/_defn'
  * find(isEven, [1, 3, 4, 6]) // => 2  (4 is the first even number)
  * find(isEven, [1, 3, 5, 7]) // => -1
  */
-export default _defn('findIndex', function (pred, xs) {
+export default _defn(function findIndex (pred, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {

@@ -15,6 +15,6 @@ import _slice from './internal/_slice'
  * tail([1])             // => []
  * tail([])              // => []
  */
-export default _defn('tail', function (xs) {
+export default _defn(function tail (xs) {
   return _slice.call(xs, 1)
 })

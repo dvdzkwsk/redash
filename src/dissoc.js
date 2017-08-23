@@ -15,7 +15,7 @@ import _defn from './internal/_defn'
  * const user = { first: 'Bob', last: 'Loblaw' }
  * dissoc('first', user) // => { last: 'Loblaw' }
  */
-export default _defn('dissoc', function (k, kv) {
+export default _defn(function dissoc (k, kv) {
   var y = {}
     , p
 

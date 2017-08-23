@@ -13,6 +13,6 @@ import _defn from './internal/_defn'
  * toUpper('hi there')  // => 'HI THERE'
  * toUpper('GoodBye')   // => 'GOODBYE'
  */
-export default _defn('toUpper', function toUpper (a) {
+export default _defn(function toUpper (a) {
   return a.toUpperCase()
 })

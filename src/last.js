@@ -14,6 +14,6 @@ import _defn from './internal/_defn'
  * @example
  * last([1, 2, 3, 4]) // => 4
  */
-export default _defn('last', function (xs) {
+export default _defn(function last (xs) {
   return xs[xs.length - 1]
 })

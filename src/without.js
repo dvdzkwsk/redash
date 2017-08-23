@@ -12,7 +12,7 @@ import _contains from './internal/_contains'
  * @example
  * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) // => [3, 4, 7]
  */
-export default _defn('without', function (as, bs) {
+export default _defn(function without (as, bs) {
   var i   = 0
     , res = []
 

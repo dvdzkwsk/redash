@@ -15,6 +15,6 @@ import rangeBy from './rangeBy'
  * range(1, 5)  // => [1, 2, 3, 4]
  * range(0, -5) // => [0, -1, -2, -3, -4]
  */
-export default _defn('range', function (start, end) {
+export default _defn(function range (start, end) {
   return rangeBy(start < end ? 1 : -1, start, end)
 })

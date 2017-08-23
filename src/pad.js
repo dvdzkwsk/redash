@@ -14,7 +14,7 @@ import padRight from './padRight'
  * @example
  * pad(5, 'X', 'hi') // => 'XXhiX'
  */
-export default _defn('pad', function (length, char, str) {
+export default _defn(function pad (length, char, str) {
   var leftPadding = str.length + Math.ceil((length - str.length) / 2)
   return padRight(length, char, padLeft(leftPadding, char, str))
 })

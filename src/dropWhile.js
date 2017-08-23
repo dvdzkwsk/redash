@@ -16,7 +16,7 @@ import _slice from './internal/_slice'
  * @example
  * dropWhile(isEven, [2, 4, 6, 7, 8]) // => [7, 8]
  */
-export default _defn('dropWhile', function (fn, xs) {
+export default _defn(function dropWhile (fn, xs) {
   var i = 0
 
   while (i < xs.length && fn(xs[i])) i += 1

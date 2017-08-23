@@ -22,20 +22,6 @@ Redash is designed to encourage functional programming styles without sacrificin
 ### Built for the Next Generation of JavaScript
 The Redash codebase is written with ES2015 modules and packaged with rollup so you to take advantage of tree shaking without the need for extra tooling. Redash also offers complete typings for TypeScript users so that you can work with its API with complete confidence.
 
-### Developer Tools
-One pain point often arises when working with JavaScript in a more functional style: debugging. Ever encounter stack traces with multiple frames of unintelligible function calls? This problem is exacerbated by composition, something we should be encouraging. Redash attempts to improve this experience by enhancing function names to describe their curried arguments. Let's take a look:
-
-```js
-import _ from 'lodash/fp'
-import R from 'redash'
-
-const getNames = _.map(_.get('name'))
-console.log(getNames.toString()) // => 'function uu(n,t){\n/* [wrapped with…*/\nreturn(af(n)?l:Yt)(n,je(t,3))}'
-
-const getNames_ = R.map(R.get('name'))
-console.log(getNames_.toString()) // => 'map(get("name"))'
-```
-
 ## Usage
 
 ```bash

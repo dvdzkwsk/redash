@@ -12,7 +12,7 @@ import _defn from './internal/_defn'
  * sum([1, 10, 100]) // => 111
  * sum([])           // => 0
  */
-export default _defn('sum', function (xs) {
+export default _defn(function sum (xs) {
   var i   = 0
     , sum = 0
 

@@ -18,4 +18,4 @@ import _contains from './internal/_contains'
  * contains({ id: 1 }, [{ id: 1 }, { id: 2 }]) // => true
  * contains('foo', 'foobarbaz')                // => true
  */
-export default _defn('contains', _contains)
+export default _defn(_contains)

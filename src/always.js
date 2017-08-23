@@ -15,7 +15,7 @@ import _defn from './internal/_defn'
  * alwaysTrue(false)    // => true
  * times(alwaysTrue, 5) // => [true, true, true, true, true]
  */
-export default _defn('always', function (x) {
+export default _defn(function always (x) {
   return function () {
     return x
   }

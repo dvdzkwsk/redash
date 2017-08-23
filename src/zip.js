@@ -15,7 +15,7 @@ import _defn from './internal/_defn'
  * zip(['a', 'b', 'c'], [1, 2, 3]) // => [['a', 1], ['b', 2], ['c', 3]]
  * zip(['a', 'b', 'c'], [1])       // => [['a', 1]]
  */
-export default _defn('zip', function (as, bs) {
+export default _defn(function zip (as, bs) {
   var i   = 0
     , len = Math.min(as.length, bs.length)
     , abs = new Array(len)

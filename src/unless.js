@@ -20,6 +20,6 @@ import when from './when'
  * doubleIfNotEven(3) // => 6
  * doubleIfNotEven(2) // => 2
  */
-export default _defn('unless', function (pred, fn) {
+export default _defn(function unless (pred, fn) {
   return when(complement(pred), fn)
 })

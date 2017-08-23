@@ -17,7 +17,7 @@ import _defn from './internal/_defn'
  * evenAndLessThanTen(7)  // => false (7 is odd)
  * evenAndLessThanTen(12) // => false (12 is even but > 10)
  */
-export default _defn('everyPred', function (predicates, x) {
+export default _defn(function everyPred (predicates, x) {
   var i = 0
 
   for (; i < predicates.length; i++) {

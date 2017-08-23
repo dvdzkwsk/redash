@@ -1,7 +1,5 @@
 import _defn from './internal/_defn'
 import _reverse from './internal/_reverse'
-import _createFnName from './internal/_createFnName'
-import _nameFunc from './internal/_nameFunc'
 import pipe from './pipe'
 
 /**
@@ -24,6 +22,6 @@ import pipe from './pipe'
  * // e.g. Math.sqrt(inc(16))
  * fn(15) // => true
  */
-export default _defn('compose', function (fns) {
-  return _nameFunc(_createFnName('compose', [fns]), pipe(_reverse.call(fns)))
+export default _defn(function compose (fns) {
+  return pipe(_reverse.call(fns))
 })

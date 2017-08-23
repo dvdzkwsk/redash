@@ -18,7 +18,7 @@ import _defn from './internal/_defn'
  * // fourth step: 6 + 4   --> 10
  * scan(add, 0, [1, 2, 3, 4]) // => [0, 1, 3, 6, 10]
  */
-export default _defn('scan', function (fn, acc, xs) {
+export default _defn(function scan (fn, acc, xs) {
   var i   = 0
     , res = [acc]
 

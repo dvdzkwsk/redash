@@ -20,7 +20,7 @@ import _defn from './internal/_defn'
  * append([4, 5], [1, 2, 3]) // => [1, 2, 3, [4, 5]]
  * append('bar', 'foo')      // => 'foobar'
  */
-export default _defn('append', function (x, xs) {
+export default _defn(function append (x, xs) {
   if (typeof xs === 'string') {
     return xs + x
   }

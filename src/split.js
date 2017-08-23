@@ -13,6 +13,6 @@ import _defn from './internal/_defn'
  * @example
  * split(', ', 'Jim, Bill, Bob') // => ['Jim', 'Bill', 'Bob']
  */
-export default _defn('split', function (char, str) {
+export default _defn(function split (char, str) {
   return str.split(char)
 })

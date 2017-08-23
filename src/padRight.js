@@ -14,7 +14,7 @@ import _defn from './internal/_defn'
  */
 // TODO(zuko): how should we handle char of length > 1?
 // TODO(zuko): throw error if char is empty?
-export default _defn('padRight', function (length, char, str) {
+export default _defn(function padRight (length, char, str) {
   while (str.length < length) {
     str += char
   }

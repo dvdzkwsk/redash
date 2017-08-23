@@ -19,6 +19,6 @@ import _hasOwn from './internal/_hasOwn'
  * const a = new A()
  * has('foo', a) // => false
  */
-export default _defn('has', function (k, o) {
+export default _defn(function has (k, o) {
   return _hasOwn.call(o, k)
 })

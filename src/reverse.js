@@ -13,6 +13,6 @@ import _reverse from './internal/_reverse'
  * @example
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
  */
-export default _defn('reverse', function (xs) {
+export default _defn(function reverse (xs) {
   return _reverse.call(_slice.call(xs))
 })

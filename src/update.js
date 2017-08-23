@@ -13,6 +13,6 @@ import updateIn from './updateIn'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * update('first', toUpper, user) // => { first: 'BOB', last: 'LobLaw' }
  */
-export default _defn('update', function (key, xform, obj) {
+export default _defn(function update (key, xform, obj) {
   return updateIn([key], xform, obj)
 })

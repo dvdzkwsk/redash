@@ -16,6 +16,6 @@ import updateIn from './updateIn'
  * const model = { user: { age: 21 } }
  * assocIn(['user', 'age'], 42, user) // => { user: { age: 42 } }
  */
-export default _defn('assocIn', function (path, value, target) {
+export default _defn(function assocIn (path, value, target) {
   return updateIn(path, always(value), target)
 })

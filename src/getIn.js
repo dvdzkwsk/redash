@@ -16,7 +16,7 @@ import _get from './internal/_get'
  * getAge({ info: { age: 20 }}) // => 20
  * getAge({})                   // => undefined
  */
-export default _defn('getIn', function (keys, target) {
+export default _defn(function getIn (keys, target) {
   var i   = 0
     , val = target
 

@@ -20,7 +20,7 @@ import _mapObject from './internal/_mapObject'
  * map(x => x * 2, [1, 2, 3, 4, 5])      // => [2, 4, 6, 8, 10]
  * map(x => x * 2, { a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  */
-export default _defn('map', function (fn, functor) {
+export default _defn(function map (fn, functor) {
   if (Array.isArray(functor)) {
     return _mapList(fn, functor)
   }

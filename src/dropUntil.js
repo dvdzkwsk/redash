@@ -18,7 +18,7 @@ import _slice from './internal/_slice'
  * dropUntil(isEven, [1, 3, 6, 8, 10]) // => [6, 8, 10]
  * dropUntil(isEven, [1, 3, 6, 5, 7])  // => [6, 5, 7]
  */
-export default _defn('dropUntil', function (fn, xs) {
+export default _defn(function dropUntil (fn, xs) {
   var i = 0
 
   while (i < xs.length && !fn(xs[i])) i += 1

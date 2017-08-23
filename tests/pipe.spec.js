@@ -1,6 +1,6 @@
-const test          = require('ava')
-    , sinon         = require('sinon')
-    , { get, pipe } = require('../dist/redash')
+const test     = require('ava')
+    , sinon    = require('sinon')
+    , { pipe } = require('../dist/redash')
 
 test('properly reports its arity (is unary)', (t) => {
   t.is(pipe.length, 1)
@@ -32,9 +32,4 @@ test('invokes the functions from left to right and returns the result of the las
   t.true(s2.calledBefore(s3))
   t.true(s3.calledWithExactly(10))
   t.is(res, 5)
-})
-
-test('provides a friendly to-string representation', (t) => {
-  t.is(pipe([get('a'), get('b')]).toString()
-    , 'pipe([get("a"), get("b")])')
 })

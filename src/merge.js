@@ -7,7 +7,7 @@ import _eachOwn from './internal/_eachOwn'
  * @category Object
  * @since v0.4.0
  */
-export default _defn('merge', function (a, b) {
+export default _defn(function merge (a, b) {
   var y = {}
     , f = function (k, v) {
       y[k] = v

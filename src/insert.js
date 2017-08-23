@@ -15,7 +15,7 @@ import _slice from './internal/_slice'
  * @example
  * insert(1, 2, [0, 2, 3]) // => [0, 1, 2, 3]
  */
-export default _defn('insert', function (idx, x, xs) {
+export default _defn(function insert (idx, x, xs) {
   var ys = _slice.call(xs, 0, idx)
   ys[ys.length] = x
   return ys.concat(_slice.call(xs, idx))

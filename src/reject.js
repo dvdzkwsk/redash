@@ -17,6 +17,6 @@ import filter from './filter'
  * @example
  * reject(isEven, [1, 2, 3, 4, 5]) // => [1, 3, 5]
  */
-export default _defn('reject', function (pred, xs) {
+export default _defn(function reject (pred, xs) {
   return filter(complement(pred), xs)
 })

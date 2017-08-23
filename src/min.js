@@ -12,7 +12,7 @@ import _defn from './internal/_defn'
  * @example
  * min([1, 2, 3, 4, 5]) // => 1
  */
-export default _defn('min', function (xs) {
+export default _defn(function min (xs) {
   var i   = xs.length - 1
     , min = xs[i--]
 

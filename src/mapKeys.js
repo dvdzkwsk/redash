@@ -15,7 +15,7 @@ import _reduce from './internal/_reduce'
  * @example
  * mapKeys(prepend('myKey_'), { a: 1, b: 2 }) // => { myKey_a: 1, myKey_b: 2 }
  */
-export default _defn('mapKeys', function (fn, obj) {
+export default _defn(function mapKeys (fn, obj) {
   return _reduce(function (acc, key) {
     acc[fn(key)] = obj[key]
     return acc

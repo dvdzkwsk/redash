@@ -1,4 +1,3 @@
-import _defn from './internal/_defn'
 import always from './always'
 
 /**
@@ -13,4 +12,4 @@ import always from './always'
  * @example
  * F() // => false
  */
-export default _defn('F', always(false))
+export default always(false)

@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * @example
  * partition(isEven, [1, 2, 3, 4, 5]) // => [[2, 4], [1, 3, 5]]
  */
-export default _defn('partition', function (pred, xs) {
+export default _defn(function partition (pred, xs) {
   var left  = []
     , right = []
     , i     = 0

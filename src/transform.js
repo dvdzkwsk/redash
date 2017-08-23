@@ -23,7 +23,7 @@ import _hasOwn from './internal/_hasOwn'
  *   }
  * ) // => { name: 'JOE', details: { age: 40, location: 'USA' } }
  */
-export default _defn('transform', function transform (transforms, obj) {
+export default _defn(function transform (transforms, obj) {
   var res = {}
     , prop
 

@@ -24,4 +24,4 @@ import _defn from './internal/_defn'
  * a.bar = () => {}
  * keys(a) // => ['bar']
  */
-export default _defn('keys', _keys)
+export default _defn(_keys)

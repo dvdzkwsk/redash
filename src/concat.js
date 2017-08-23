@@ -17,6 +17,6 @@ import _defn from './internal/_defn'
  * concat('foo', 'bar')         // => 'foobar'
  */
 // TODO(zuko): consider flipping argument order, breaking change
-export default _defn('concat', function (xs, ys) {
+export default _defn(function concat (xs, ys) {
   return xs.concat(ys)
 })

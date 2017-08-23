@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * @example
  * times(identity, 5) // => [0, 1, 2, 3, 4]
  */
-export default _defn('times', function (fn, n) {
+export default _defn(function times (fn, n) {
   var i  = 0
     , bs = []
 

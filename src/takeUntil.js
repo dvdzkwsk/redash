@@ -19,6 +19,6 @@ import takeWhile from './takeWhile'
  * @example
  * takeUntil(isEven, [1, 3, 5, 2, 7]) // => [1, 3, 5]
  */
-export default _defn('takeUntil', function (fn, xs) {
+export default _defn(function takeUntil (fn, xs) {
   return takeWhile(complement(fn), xs)
 })

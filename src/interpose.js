@@ -13,7 +13,7 @@ import init from './init'
  * @example
  * interpose('FOO', ['a', 'b', 'c']) // => ['a', 'FOO', 'b', 'FOO', 'c']
  */
-export default _defn('interpose', function (separator, xs) {
+export default _defn(function interpose (separator, xs) {
   return init(chain(function (x) {
     return [x, separator]
   }, xs))

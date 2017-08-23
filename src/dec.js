@@ -13,6 +13,6 @@ import _defn from './internal/_defn'
  * dec(10) // => 9
  * dec(-1) // => -2
  */
-export default _defn('dec', function (a) {
+export default _defn(function dec (a) {
   return a - 1
 })

@@ -15,6 +15,6 @@ import _defn from './internal/_defn'
  * isOdd(3.9)      // => false
  * isOdd(Infinity) // => false
  */
-export default _defn('isOdd', function (a) {
+export default _defn(function isOdd (a) {
   return !isNaN(a) && isFinite(a) && !!a && a === Math.floor(a) && a % 2 !== 0
 })

@@ -22,4 +22,4 @@ import _reduce from './internal/_reduce'
  * const sum = reduce((acc, n) => acc + n, 0)
  * sum([1, 2, 3, 4, 5]) // => 15
  */
-export default _defn('reduce', _reduce)
+export default _defn(_reduce)

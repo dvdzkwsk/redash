@@ -12,6 +12,6 @@ import sum from './sum'
  * @example
  * mean([1, 2, 3, 4, 5, 6]) // => 3.5
  */
-export default _defn('mean', function (xs) {
+export default _defn(function mean (xs) {
   return sum(xs) / xs.length
 })

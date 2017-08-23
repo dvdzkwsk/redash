@@ -11,6 +11,6 @@ import _defn from './internal/_defn'
  * @example
  * trim('  hello  ') // => 'hello'
  */
-export default _defn('trim', function (a) {
+export default _defn(function trim (a) {
   return a.trim()
 })

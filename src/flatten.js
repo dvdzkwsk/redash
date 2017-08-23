@@ -13,7 +13,7 @@ import _defn from './internal/_defn'
  * flatten([1, 2, [3, 4]])   // => [1, 2, 3, 4]
  * flatten([1, 2, [3, [4]]]) // => [1, 2, 3, [4]]
  */
-export default _defn('flatten', function (xs) {
+export default _defn(function flatten (xs) {
   var acc = []
     , i   = 0
     , x

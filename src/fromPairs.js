@@ -15,7 +15,7 @@ import _defn from './internal/_defn'
  * fromPairs([['a', 1], ['b', 2]])           // => { a: 1, b: 2 }
  * fromPairs([['a', 1], ['b', 2], ['a', 3]]) // => { a: 3, b: 2 }
  */
-export default _defn('fromPairs', function (pairs) {
+export default _defn(function fromPairs (pairs) {
   var i   = 0
     , acc = {}
 

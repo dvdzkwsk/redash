@@ -21,4 +21,4 @@ import _identical from './internal/_identical'
  * identical(a, a)                 // => true
  * identical({ id: 1 }, { id: 1 }) // => false
  */
-export default _defn('identical', _identical)
+export default _defn(_identical)

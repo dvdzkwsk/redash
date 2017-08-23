@@ -16,4 +16,4 @@ import identity from './identity'
  * compact([null, undefined, 0, true, false]) // => [true]
  * compact({ a: false, b: null, c: true })    // => { c: true }
  */
-export default _defn('compact', filter(identity))
+export default _defn(filter(identity))

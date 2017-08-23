@@ -13,7 +13,7 @@ import _Set from './internal/_Set'
  * @example
  * difference([1, 2, 3, 4], [1, 2]) // => [3, 4]
  */
-export default _defn('difference', function (as, bs) {
+export default _defn(function difference (as, bs) {
   var i   = 0
     , res = []
     , set = new _Set()

@@ -28,6 +28,6 @@ import curryN from './curryN'
  * const add8 = add5(3) // => Function
  * add8(2) // => 10
  */
-export default _defn('curry', function (fn) {
+export default _defn(function curry (fn) {
   return curryN(fn.length, fn)
 })

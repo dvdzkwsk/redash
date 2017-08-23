@@ -13,7 +13,7 @@ import _Set from './internal/_Set'
  * @example
  * unique([1, 1, 2, 2, 3, 3]) // => [1, 2, 3]
  */
-export default _defn('unique', function (xs) {
+export default _defn(function unique (xs) {
   var i   = 0
     , res = []
     , set = new _Set()

@@ -13,7 +13,7 @@ import _hasOwn from './internal/_hasOwn'
  * @example
  * invert({ a: 1, b: 2 }) // => { 1: a, 2: b }
  */
-export default _defn('invert', function (target) {
+export default _defn(function invert (target) {
   var res = {}
     , key
 

@@ -1,6 +1,4 @@
 import _defn from './internal/_defn'
-import _nameFunc from './internal/_nameFunc'
-import _createFnName from './internal/_createFnName'
 import tap from './tap'
 
 /**
@@ -27,8 +25,8 @@ import tap from './tap'
  * // ...
  * // value after multiply 10
  */
-export default _defn('trace', function (message) {
-  return _nameFunc(_createFnName('trace', [message]), tap(function (x) {
+export default _defn(function trace (message) {
+  return tap(function (x) {
     console.log(message, x)
-  }))
+  })
 })

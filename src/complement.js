@@ -17,7 +17,7 @@ import curryN from './curryN'
  * isEven(2)             // => true
  * complement(isEven)(2) // => false
  */
-export default _defn('complement', function (x) {
+export default _defn(function complement (x) {
   return curryN(x.length, function () {
     return !x.apply(null, arguments)
   })

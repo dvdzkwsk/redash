@@ -14,7 +14,7 @@ import _shallowClone from './internal/_shallowClone'
  * const user = { info: { data: { age: 17 } } }
  * updateIn(['info', 'data', 'age'], inc, user) // => { info: { data: { age: 18 } } }
  */
-var updateIn = _defn('updateIn', function (path, xform, obj) {
+var updateIn = _defn(function updateIn (path, xform, obj) {
   var res = _shallowClone(obj)
     , key = path[0]
 

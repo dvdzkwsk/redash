@@ -20,7 +20,7 @@ import _slice from './internal/_slice'
  * @example
  * takeWhile(isEven, [2, 4, 6, 7, 8]) // => [2, 4, 6]
  */
-export default _defn('takeWhile', function (fn, xs) {
+export default _defn(function takeWhile (fn, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {

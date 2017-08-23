@@ -15,4 +15,4 @@ import always from './always'
  * @example
  * times(T, 5) // => [true, true, true, true, true]
  */
-export default _defn('T', always(true))
+export default _defn(always(true))
