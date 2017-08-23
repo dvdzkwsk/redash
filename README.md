@@ -25,16 +25,27 @@ The Redash codebase is written with ES2015 modules and packaged with rollup so y
 ## Usage
 
 ```bash
-npm i --save redash
+# Yarn (Recommended)
+yarn add redash
+
+# NPM (Alternative)
+npm install --save redash
 ```
 
 After that's done, just import it in your code and get on to building awesome stuff. If you haven't already done so, you should check out the [API documentation](https://redash.zuko.me) to see what functions are available and learn how to use them. Here are a few of the most common ways to use Redash:
 
-### ES2015 Module
-```js
-import { map, get } from 'redash'
+### CommonJS
 
-map(get('name'), [{ name: 'Dwight' }, { name: 'Jim' }]) // => ['Dwight', 'Jim']
+```js
+const _ = require('redash')            // import everything
+const { map, get } = require('redash') // or just what you need
+```
+
+### ES2015 Module
+
+```js
+import * as _ from 'redash'       // import everything
+import { map, get } from 'redash' // or just what you need
 ```
 
 ### Installer
@@ -53,7 +64,7 @@ get('name', { name: 'Michael' }) // => 'Michael'
 
 Category        | Redash  | Ramda | Lodash    | Lodash/FP
 --------------- | ------- | ----- | --------- | ---------
-Minified (kb)   | 14.8    | 44.7  | 71.1      | 82.4
+Minified (kb)   | 12.4    | 44.7  | 71.4      | 71.4
 100% Immutable  | Yes     | Yes   | No        | Yes
 Auto-Curry      | Yes     | Yes   | No        | Yes
 Object Equality | Value   | Value | Reference | Reference
