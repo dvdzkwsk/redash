@@ -1,3 +1,34 @@
+## v0.23.0
+
+### Deprecations
+* `getEq` has been deprecated. Use `matches` or `where` for similar functionality.
+* `pair` has been deprecated.
+* `lens` has been deprecated.
+* `lensProp` has been deprecated.
+* `set` has been deprecated. Use `assocIn` for similar functionality.
+* `over` has been deprecated. Use `updateIn` for similar functionality.
+* `view` has been deprecated. Use `getIn` for similar functionality.
+
+### Improvements
+* Documentation site has been entirely redesigned.
+* `mean` no longer throws if the list is empty, returns `0` instead.
+* `rangeBy` no longer throws for bad ranges, returns an empty list instead.
+* `transform` no longer throws for invalid transforms, the original value is passed through.
+
+### Changes
+* The redash API no longer modifies function names. This will eventually be moved to a separate addon for developer usage.
+
+## v0.22.0
+
+### Features
+* Added `assocIn`.
+* Added `everyPred`.
+* Added `matches`.
+
+### Fixes
+* `assoc` now respects arrays (does not convert them to array-like objects).
+
+
 ## v0.21.0
 
 ### Deprecations
