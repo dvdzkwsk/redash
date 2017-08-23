@@ -52,7 +52,7 @@ test('passes through properties without a transform', (t) => {
 })
 
 test('transforms recursively', (t) => {
-  /* eslint-disable */
+  /* eslint-disable indent */
   const spec = {
     info: {
       things: head
@@ -62,11 +62,10 @@ test('transforms recursively', (t) => {
       }
     }
   }
-  /* eslint-enasble */
 
   t.deepEqual(transform(spec, {
-    foo: 'bar',
-    info: {
+    foo: 'bar'
+  , info: {
       things: [1, 2, 3, 4]
     , bar: 'baz'
     , data: {
@@ -75,8 +74,8 @@ test('transforms recursively', (t) => {
       }
     }
   }), {
-    foo: 'bar',
-    info: {
+    foo: 'bar'
+  , info: {
       things: 1
     , bar: 'baz'
     , data: {
@@ -85,6 +84,7 @@ test('transforms recursively', (t) => {
       }
     }
   })
+  /* eslint-enable */
 })
 
 test('transforms undefined/null properties', (t) => {
@@ -97,7 +97,7 @@ test('transforms undefined/null properties', (t) => {
   })
 })
 
-test('does not transform inherited properties', (t) => {
+test('transforms inherited properties', (t) => {
   function A () {}
   A.prototype.bar = () => {}
   const obj = new A()
@@ -107,14 +107,11 @@ test('does not transform inherited properties', (t) => {
     bar: () => 'BAR'
   , foo: () => 'FOO'
   }, obj), {
-    bar: A.prototype.bar
+    bar: 'BAR'
   , foo: 'FOO'
   })
 })
 
-test('throws for invalid transforms', (t) => {
-  t.throws(
-    () => transform({ bar: 'baz' }, { bar: 'bar' }),
-    /Invalid transformation/
-  )
+test('passes through the original value if transform is of an unknown type', (t) => {
+  t.deepEqual(transform({ bar: 'baz' }, { bar: 'bar' }), { bar: 'bar' })
 })

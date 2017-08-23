@@ -1,5 +1,4 @@
 import _defn from './internal/_defn'
-import _hasOwn from './internal/_hasOwn'
 
 /**
  * @name transform
@@ -23,25 +22,17 @@ import _hasOwn from './internal/_hasOwn'
  *   }
  * ) // => { name: 'JOE', details: { age: 40, location: 'USA' } }
  */
-export default _defn(function transform (transforms, obj) {
+export default _defn(function transform (transforms, target) {
   var res = {}
-    , prop
+    , key
 
-  for (prop in obj) {
-    if (_hasOwn.call(obj, prop) && _hasOwn.call(transforms, prop)) {
-      if (typeof transforms[prop] === 'object') {
-        res[prop] = transform(transforms[prop], obj[prop])
-      } else if (typeof transforms[prop] === 'function') {
-        res[prop] = transforms[prop](obj[prop])
-      } else {
-        throw new Error(
-          'Invalid transformation supplied under the key "' + prop + '". ' +
-          'Transformation must be either a function or object, but was ' +
-          '"' + typeof transforms[prop] + '".'
-        )
-      }
+  for (key in target) {
+    if (typeof transforms[key] === 'function') {
+      res[key] = transforms[key](target[key])
+    } else if (typeof transforms[key] === 'object') {
+      res[key] = transform(transforms[key], target[key])
     } else {
-      res[prop] = obj[prop]
+      res[key] = target[key]
     }
   }
   return res
