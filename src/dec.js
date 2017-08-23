@@ -1,4 +1,4 @@
-import _defn from './internal/_defn'
+import add from './add'
 
 /**
  * @name dec
@@ -13,6 +13,4 @@ import _defn from './internal/_defn'
  * dec(10) // => 9
  * dec(-1) // => -2
  */
-export default _defn(function dec (a) {
-  return a - 1
-})
+export default add(-1)
