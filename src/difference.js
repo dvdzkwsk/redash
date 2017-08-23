@@ -8,7 +8,7 @@ import _Set from './internal/_Set'
  * @category Collection
  * @since v0.21.0
  * @description
- * Returns the _set_ of values contained in the first list but not the second.
+ * Returns the **set** of values contained in the first list but not the second.
  *
  * @example
  * difference([1, 2, 3, 4], [1, 2]) // => [3, 4]

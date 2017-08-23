@@ -9,12 +9,10 @@ import curryN from './curryN'
  * @description
  * Curries a function based on its reported arity, which is determined by its `length`
  * property. Curried functions keep track of the arguments they've received, returning
- * new curried functions until the number of arguments meets or exceeds their arity.
- * When all arguments are fully supplied, the wrapped function is applied to those
- * arguments.
+ * new curried functions until all arguments have been received. Once all arguments are
+ * fully supplied, the original function is applied to those arguments.
  *
- * If you wish to curry a function to a different arity than it reports, such as with
- * variadic functions, use [curryN](#curryn).
+ * To curry a function to a fixed arity use [curryN](#curryn).
  *
  * @see curryN
  *

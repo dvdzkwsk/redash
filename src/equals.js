@@ -7,7 +7,8 @@ import _equals from './internal/_equals'
  * @category Relation
  * @since v0.7.0
  * @description
- * Returns whether or not two values are equal by performing a deep comparison.
+ * Performs a deep equality comparison between two values. This differs from `identical`,
+ * which simply checks whether two values reference the same value.
  * @see identical
  *
  * @example

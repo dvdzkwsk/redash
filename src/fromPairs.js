@@ -6,8 +6,8 @@ import _defn from './internal/_defn'
  * @category Collection
  * @since v0.7.0
  * @description
- * Builds an object out of a list of [key, value] tuples. If you have two separate
- * lists, rather than a single list of tuples, you can use [zipObj](#zipObj).
+ * Builds an object out of a list of `[key, value]` tuples. If you have two separate
+ * lists rather than a 2D list, you can use [zipObj](#zipObj).
  * @see toPairs
  * @see zipObj
  *

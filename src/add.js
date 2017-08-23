@@ -8,6 +8,7 @@ import _defn from './internal/_defn'
  * @description
  * Returns the sum of two numbers.
  * @see subtract
+ * @see sum
  *
  * @example
  * add(1, 2) // => 3

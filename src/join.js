@@ -6,7 +6,7 @@ import _defn from './internal/_defn'
  * @category Collection
  * @since v0.13.0
  * @description
- * Joins all elements of a list together with the provided string.
+ * Joins all values in a list together with the provided string.
  *
  * @example
  * join(' & ', ['Michael', 'Dwight', 'Jim']) // => 'Michael & Dwight & Jim'

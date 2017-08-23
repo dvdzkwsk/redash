@@ -7,7 +7,7 @@ import _Set from './internal/_Set'
  * @category Collection
  * @since v0.19.0
  * @description
- * Returns a list of unique values which occur in both of the input lists.
+ * Returns the **set** of values that are present in both of the input lists.
  *
  * @example
  * intersection([1, 2, 3, 4], [3, 4, 5]) // => [3, 4]
