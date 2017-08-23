@@ -14,35 +14,22 @@ import _defn from './internal/_defn'
  * @example
  * rangeBy(4, 0, 17) // => [0, 4, 8, 12, 16]
  */
-export default _defn('rangeBy', function (inc, start, end) {
-  var ys = []
-    , times
+export default _defn('rangeBy', function (step, start, end) {
+  var res = []
+    , length
     , i
 
-  if (start === end) {
+  if (
+    step === 0 ||
+    start === end ||
+    (step > 0 && start > end) ||
+    (step < 0 && start < end)
+  ) {
     return []
   }
-  if (inc === 0) {
-    throw new Error(
-      'The `increment` value provided to `rangeBy` must be a non-zero number.'
-    )
-  } else if (inc > 0 && start > end) {
-    throw new Error(
-      'The `increment` value provided to `rangeBy` must be negative when ' +
-      'the start value (' + start + ') is greater than the end value (' +
-      end + '). Received: ' + inc + '.'
-    )
-  } else if (inc < 0 && start < end) {
-    throw new Error(
-      'The `increment` value provided to `rangeBy` must be positive when ' +
-      'the start value (' + start + ') is less than the end value (' +
-      end + '). Received: ' + inc + '.'
-    )
+  length = Math.abs(Math.ceil((end - start) / step))
+  for (i = 0; i < length; i++) {
+    res[res.length] = start + (step * i)
   }
-
-  times = Math.abs(Math.ceil((end - start) / inc))
-  for (i = 0; i < times; i++) {
-    ys.push(start + (inc * i))
-  }
-  return ys
+  return res
 })
