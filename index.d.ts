@@ -37,6 +37,7 @@ declare namespace Redash {
     clamp (lower: number): (upper: number) => (value: number) => number
 
     compact<T> (xs: Array<T>): Array<T>
+    compact (xs: object): object
 
     complement (fn: (...args: Array<any>) => boolean): (...args: Array<any>) => boolean
 
@@ -44,6 +45,8 @@ declare namespace Redash {
 
     concat<T> (as: Array<T>, bs: Array<T>): Array<T>
     concat<T> (as: Array<T>): (bs: Array<T>) => Array<T>
+    concat (as: string, bs: string): string
+    concat (as: string): (bs: string) => string
 
     cond (...args: Array<any>): any
 
@@ -110,8 +113,6 @@ declare namespace Redash {
     get<T> (key: number, target: List<T>): T | undefined
     get<T> (key: number): (target: List<T>) => T | undefined
 
-    getEq (...args: Array<any>): any
-
     getIn (path: Array<Key>, target: object): any | undefined
     getIn (path: Array<Key>): (target: object) => any | undefined
 
@@ -165,10 +166,6 @@ declare namespace Redash {
 
     length (xs: Array<any>): boolean
 
-    lens (...args: Array<any>): any
-
-    lensProp (...args: Array<any>): any
-
     map<A, B> (fn: (a: A) => B, as: Functor<A>): Functor<B>
     map<A, B> (fn: (a: A) => B): (as: Functor<A>) => Functor<B>
 
@@ -199,8 +196,6 @@ declare namespace Redash {
     omit (keys: Array<Key>, target: object): object
     omit (keys: Array<Key>): (target: object) => object
 
-    over (...args: Array<any>): any
-
     pad (length: number, char: string, string: string): string
     pad (length: number, char: string): (string: string) => string
     pad (length: number): (char: string) => (string: string) => string
@@ -213,10 +208,8 @@ declare namespace Redash {
     padRight (length: number, char: string): (string: string) => string
     padRight (length: number): (char: string) => (string: string) => string
 
-    pair<T1, T2> (a: T1, b: T2): [T1, T2]
-    pair<T1, T2> (a: T1): (b: T2) => [T1, T2]
-
     partition<T> (fn: (x: T) => boolean, xs: List<T>): [T[], T[]]
+    partition<T> (fn: (x: T) => boolean): (xs: List<T>) => [T[], T[]]
 
     pick (keys: Array<string>, object: object): object
     pick (keys: Array<string>): (object: object) => object
@@ -229,7 +222,9 @@ declare namespace Redash {
     range (start: number, end: number): Array<number>
     range (start: number): (end: number) => Array<number>
 
-    rangeBy (...args: Array<any>): any
+    rangeBy (step: number, start: number, end: number): Array<number>
+    rangeBy (step: number, start: number): (end: number) => Array<number>
+    rangeBy (step: number): (start: number) => (end: number) => Array<number>
 
     reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC, xs: List<T>): ACC
     reduce<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => ACC
@@ -251,8 +246,6 @@ declare namespace Redash {
     scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC, xs: List<T>): Array<ACC>
     scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC, acc: ACC): (xs: List<T>) => Array<ACC>
     scan<T, ACC> (reducer: (acc: ACC, x: T) => ACC): (acc: ACC) => (xs: List<T>) => Array<ACC>
-
-    set (...args: Array<any>): any
 
     split (char: string, str: string): Array<string>
     split (char: string): (str: string) => Array<string>
@@ -310,8 +303,6 @@ declare namespace Redash {
     updateIn (...args: Array<any>): any
 
     values<T> (obj: { [key: string]: T }): Array<T>
-
-    view (...args: Array<any>): any
 
     when<T, Y> (predicate: (x: T) => boolean, fn: (x: T) => Y): (x: T) => T | Y
     when<T, Y> (predicate: (x: T) => boolean): (fn: (x: T) => Y) => (x: T) => T | Y
