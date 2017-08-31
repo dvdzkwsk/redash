@@ -14,7 +14,6 @@ import _defn from './internal/_defn'
  * If no predicate is matched `undefined` is returned. It is common to use `T`
  * -- shorthand for `always(true)` -- as the last condition to act as a final
  * else clause.
- * @see ifElse
  * @see when
  * @see unless
  *

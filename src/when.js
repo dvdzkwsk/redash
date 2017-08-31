@@ -12,7 +12,6 @@ import _defn from './internal/_defn'
  * original argument is returned unmodified.
  * You can think of `when` as shorthand for `ifElse(predicate, xform, identity)`,
  * though keep in mind that it only supports unary functions.
- * @see ifElse
  * @see unless
  * @example
  * const doubleIfEven = when(isEven, multiply(2))
