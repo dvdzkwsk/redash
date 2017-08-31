@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import complement from './complement'
+import _complement from './internal/_complement'
 import filter from './filter'
 
 /**
@@ -18,5 +18,5 @@ import filter from './filter'
  * reject(isEven, [1, 2, 3, 4, 5]) // => [1, 3, 5]
  */
 export default _defn(function reject (pred, xs) {
-  return filter(complement(pred), xs)
+  return filter(_complement(pred), xs)
 })

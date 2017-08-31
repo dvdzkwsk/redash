@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import complement from './complement'
+import _complement from './internal/_complement'
 import takeWhile from './takeWhile'
 
 /**
@@ -20,5 +20,5 @@ import takeWhile from './takeWhile'
  * takeUntil(isEven, [1, 3, 5, 2, 7]) // => [1, 3, 5]
  */
 export default _defn(function takeUntil (fn, xs) {
-  return takeWhile(complement(fn), xs)
+  return takeWhile(_complement(fn), xs)
 })

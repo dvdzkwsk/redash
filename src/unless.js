@@ -1,5 +1,5 @@
 import _defn from './internal/_defn'
-import complement from './complement'
+import _complement from './internal/_complement'
 import when from './when'
 
 /**
@@ -21,5 +21,5 @@ import when from './when'
  * doubleIfNotEven(2) // => 2
  */
 export default _defn(function unless (pred, fn) {
-  return when(complement(pred), fn)
+  return when(_complement(pred), fn)
 })
