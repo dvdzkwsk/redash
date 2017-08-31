@@ -39,8 +39,6 @@ declare namespace Redash {
     compact<T> (xs: Array<T>): Array<T>
     compact (xs: object): object
 
-    complement (fn: (...args: Array<any>) => boolean): (...args: Array<any>) => boolean
-
     compose (...args: Array<any>): any
 
     concat<T> (as: Array<T>, bs: Array<T>): Array<T>
@@ -128,8 +126,6 @@ declare namespace Redash {
     identical (a: any): (b: any) => boolean
 
     identity<T> (x: T): T
-
-    ifElse (...args: Array<any>): any
 
     inc (x: number): number
 
