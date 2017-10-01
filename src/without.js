@@ -1,5 +1,6 @@
 import _defn from './internal/_defn'
 import _contains from './internal/_contains'
+import _filterList from './internal/_filterList'
 
 /**
  * @name without
@@ -13,14 +14,7 @@ import _contains from './internal/_contains'
  * without([1, 2], [1, 2, 3, 4, 2, 1, 7]) // => [3, 4, 7]
  */
 export default _defn(function without (as, bs) {
-  var i   = 0
-    , res = []
-
-  while (i < bs.length) {
-    if (!_contains(bs[i], as)) {
-      res[res.length] = bs[i]
-    }
-    i++
-  }
-  return res
+  return _filterList(function (b) {
+    return !_contains(b, as)
+  }, bs)
 })
