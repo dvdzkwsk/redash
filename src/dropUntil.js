@@ -1,5 +1,6 @@
 import _defn from './internal/_defn'
-import _slice from './internal/_slice'
+import _complement from './internal/_complement'
+import dropWhile from './dropWhile'
 
 /**
  * @name dropUntil
@@ -19,8 +20,5 @@ import _slice from './internal/_slice'
  * dropUntil(isEven, [1, 3, 6, 5, 7])  // => [6, 5, 7]
  */
 export default _defn(function dropUntil (fn, xs) {
-  var i = 0
-
-  while (i < xs.length && !fn(xs[i])) i += 1
-  return _slice.call(xs, i)
+  return dropWhile(_complement(fn), xs)
 })
