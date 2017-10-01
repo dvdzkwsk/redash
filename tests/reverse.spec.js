@@ -20,3 +20,7 @@ test('does not mutate the original array', (t) => {
   t.deepEqual(arr, [1, 2, 3, 4, 5])
   t.deepEqual(res, [5, 4, 3, 2, 1])
 })
+
+test('supports strings', (t) => {
+  t.is(reverse('hello'), 'olleh')
+})

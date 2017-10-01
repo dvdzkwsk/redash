@@ -12,7 +12,10 @@ import _reverse from './internal/_reverse'
  *
  * @example
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
+ * reverse('hello')      // => 'olleh'
  */
 export default _defn(function reverse (xs) {
-  return _reverse.call(_slice.call(xs))
+  return typeof xs === 'string'
+    ? _reverse.call(xs.split('')).join('')
+    : _reverse.call(_slice.call(xs))
 })
