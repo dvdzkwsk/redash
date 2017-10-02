@@ -35,6 +35,6 @@ export default _defn(function empty (a) {
     case 'Object':
       return {}
     default:
-      return undefined
+      // implicitly return undefined
   }
 })
