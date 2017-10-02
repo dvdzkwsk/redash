@@ -1,14 +1,14 @@
 import _defn from './internal/_defn'
 import _slice from './internal/_slice'
-import map from './map'
+import _map from './internal/_map'
 
 /**
  * @name juxt
  * @signature [(x, y, z... -> a), (x, y, z... -> b), ...] -> (x, y, z...) -> [a, b, ...]
  * @category Function
  * @description
- * Applies a set of arguments to a list of functions, returning a list that
- * contains the result of each function call in its corresponding position.
+ * Applies a list of functions to a given set of arguments, returning a list
+ * of the results of those applications.
  *
  * @example
  * juxt([inc, dec, multiply(3)])(2)    // => [3, 1, 6]
@@ -17,7 +17,7 @@ import map from './map'
 export default _defn(function juxt (fns) {
   return function () {
     var args = _slice.call(arguments)
-    return map(function (fn) {
+    return _map(function (fn) {
       return fn.apply(null, args)
     }, fns)
   }
