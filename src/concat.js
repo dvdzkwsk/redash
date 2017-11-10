@@ -1,4 +1,7 @@
 import _defn from './internal/_defn'
+import _isArray from './internal/_isArray'
+import _shallowCloneList from './internal/_shallowCloneList'
+import merge from './merge'
 
 /**
  * @name concat
@@ -16,7 +19,20 @@ import _defn from './internal/_defn'
  * concat([1, 2, 3], [])        // => [1, 2, 3]
  * concat('foo', 'bar')         // => 'foobar'
  */
-// TODO(zuko): consider flipping argument order, breaking change
-export default _defn(function concat (xs, ys) {
-  return xs.concat(ys)
+export default _defn(function concat (target, toAppend) {
+  var res, i
+
+  if (_isArray(target)) {
+    res = _shallowCloneList(target)
+    for (i = 0; i < toAppend.length; i++) {
+      res[res.length] = toAppend[i]
+    }
+    return res
+  } else if (typeof target === 'object') {
+    if (target.concat) return target.concat(toAppend)
+    return merge(target, toAppend)
+  } else if (typeof target === 'string') {
+    return target + toAppend
+  }
+  throw new Error('Value of type "' + typeof target + '" does not implement `concat`')
 })

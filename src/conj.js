@@ -1,8 +1,7 @@
-import _isArray from './internal/_isArray'
 import _slice from './internal/_slice'
-import _shallowCloneList from './internal/_shallowCloneList'
+import _isArray from './internal/_isArray'
 import _shallowCloneObject from './internal/_shallowCloneObject'
-import _hasOwn from './internal/_hasOwn'
+import concat from './concat'
 
 /**
  * @name conj
@@ -23,18 +22,13 @@ export default function conj (target) {
   var args = _slice.call(arguments, 1)
     , arg
     , i
-    , j
     , res
 
   target = target || []
 
   // Array target
   if (_isArray(target)) {
-    res = _shallowCloneList(target)
-    for (i = 0; i < args.length; i++) {
-      res[res.length] = args[i]
-    }
-    return res
+    return concat(target, args)
   }
 
   // Object target
@@ -52,12 +46,7 @@ export default function conj (target) {
         res[arg[0]] = arg[1]
         continue
       } else if (typeof arg === 'object' && arg) {
-        // TODO(zuko): use a merge util
-        for (j in arg) {
-          if (_hasOwn.call(arg, j)) {
-            res[j] = arg[j]
-          }
-        }
+        res = concat(res, arg)
       } else {
         throw new TypeError(
           'Cannot `conj` value of type "' + typeof arg + '" to target object.'
