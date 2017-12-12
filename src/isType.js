@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _type from './type'
 
 /**
  * @name isType
- * @signature (String | Function) -> Boolean
  * @category Logic
  * @since v0.13.0
  * @description
@@ -17,7 +15,7 @@ import _type from './type'
  * isString('hello!')    // => true
  * isType('number', 123) // => true
  */
-export default _defn(function isType (type, a) {
+export default function isType (type, a) {
   if (type == null) {
     return typeof type === typeof a
   }
@@ -25,4 +23,4 @@ export default _defn(function isType (type, a) {
   return typeof type === 'string'
     ? _type(a).toLowerCase() === type.toLowerCase()
     : a instanceof type || a.constructor === type
-})
+}

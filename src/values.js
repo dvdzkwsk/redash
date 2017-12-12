@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name values
- * @signature String k, Any v => {k:v} -> [v]
  * @category Object
  * @since v0.14.0
  * @description
@@ -22,7 +19,7 @@ import _defn from './internal/_defn'
  * a.bar = 'BAR'
  * values(a) // => ['BAR'] (foo is inherited from A's protoype and is ignored)
  */
-export default _defn(function values (obj) {
+export default function values (obj) {
   var keys   = Object.keys(obj)
     , i      = 0
     , values = new Array(keys.length)
@@ -32,4 +29,4 @@ export default _defn(function values (obj) {
     i += 1
   }
   return values
-})
+}

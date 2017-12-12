@@ -2,14 +2,6 @@
 const test            = require('ava')
   ,  { isType, type } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(isType.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof isType('String'), 'function')
-})
-
 test('correctly checks string types', (t) => {
   t.true(isType('String', 'hello'))
   t.true(isType('String', new String('hello')))

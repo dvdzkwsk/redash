@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name partition
- * @signature (a -> Boolean) -> [a] -> [[a]]
  * @category Collection
  * @since v0.16.0
  * @description
@@ -13,7 +10,7 @@ import _defn from './internal/_defn'
  * @example
  * partition(isEven, [1, 2, 3, 4, 5]) // => [[2, 4], [1, 3, 5]]
  */
-export default _defn(function partition (pred, xs) {
+export default function partition (pred, xs) {
   var left  = []
     , right = []
     , i     = 0
@@ -26,4 +23,4 @@ export default _defn(function partition (pred, xs) {
     }
   }
   return [left, right]
-})
+}

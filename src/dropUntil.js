@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _complement from './internal/_complement'
 import dropWhile from './dropWhile'
 
 /**
  * @name dropUntil
- * @signature (a -> Boolean) -> [a] -> [a]
  * @category Collection
  * @since v0.14.0
  * @description
@@ -19,6 +17,6 @@ import dropWhile from './dropWhile'
  * dropUntil(isEven, [1, 3, 6, 8, 10]) // => [6, 8, 10]
  * dropUntil(isEven, [1, 3, 6, 5, 7])  // => [6, 5, 7]
  */
-export default _defn(function dropUntil (fn, xs) {
+export default function dropUntil (fn, xs) {
   return dropWhile(_complement(fn), xs)
-})
+}

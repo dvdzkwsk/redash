@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { append } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(append.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof append(1), 'function')
-})
-
 test('appends the first argument onto the end of the list', (t) => {
   t.deepEqual(append(5, [1, 2, 3, 4]), [1, 2, 3, 4, 5])
 })

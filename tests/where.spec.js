@@ -1,14 +1,6 @@
 const test      = require('ava')
     , { where } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(where.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof where({}), 'function')
-})
-
 test('returns false if a single spec fails', (t) => {
   t.false(
     where({ name: x => x === 'Michael' },

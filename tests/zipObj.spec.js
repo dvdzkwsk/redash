@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { zipObj } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(zipObj.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof zipObj([1, 2, 3]), 'function')
-})
-
 test('creates an object out of an array of key/value pairs', (t) => {
   t.deepEqual(
     zipObj([1, 2, 3, 4, 5, 6, 7], ['a', 'b', 'c', 'd', 'e', 'f', 'g']),

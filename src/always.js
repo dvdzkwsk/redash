@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name always
- * @signature a -> Any -> a
  * @category Function
  * @since v0.9.0
  * @description
@@ -15,8 +12,8 @@ import _defn from './internal/_defn'
  * alwaysTrue(false)    // => true
  * times(alwaysTrue, 5) // => [true, true, true, true, true]
  */
-export default _defn(function always (x) {
+export default function always (x) {
   return function () {
     return x
   }
-})
+}

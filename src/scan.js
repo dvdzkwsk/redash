@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name scan
- * @signature (b, a -> b) -> b -> [a] -> [b]
  * @category Collection
  * @since v0.12.0
  * @description
@@ -18,7 +15,7 @@ import _defn from './internal/_defn'
  * // fourth step: 6 + 4   --> 10
  * scan(add, 0, [1, 2, 3, 4]) // => [0, 1, 3, 6, 10]
  */
-export default _defn(function scan (fn, acc, xs) {
+export default function scan (fn, acc, xs) {
   var i   = 0
     , res = [acc]
 
@@ -27,4 +24,4 @@ export default _defn(function scan (fn, acc, xs) {
     res[res.length] = acc
   }
   return res
-})
+}

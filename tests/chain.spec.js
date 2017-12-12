@@ -1,14 +1,6 @@
 const test               = require('ava')
     , { chain, flatMap } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(chain.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof chain(() => {}), 'function')
-})
-
 test('transforms each item in the collection.', (t) => {
   t.deepEqual(chain(x => x * 2, [1, 2, 3, 4]), [2, 4, 6, 8])
 })

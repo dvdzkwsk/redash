@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _match from './internal/_match'
 
 /**
  * @name match
- * @signature RegExp -> String -> [String]
  * @category String
  * @since v0.19.0
  * @description
@@ -13,6 +11,6 @@ import _match from './internal/_match'
  * @example
  * match(/foo[a-z]+/g, 'foobar foo bazbiz foobop') // => ['foobar', 'foobop']
  */
-export default _defn(function match (regex, str) {
+export default function match (regex, str) {
   return _match.call(str, regex) || []
-})
+}

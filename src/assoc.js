@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _shallowClone from './internal/_shallowClone'
 
 /**
  * @name assoc
- * @signature String k, Any v => k -> v -> {k:v} -> {k:v}
  * @category Object
  * @since v0.6.0
  * @description
@@ -16,8 +14,8 @@ import _shallowClone from './internal/_shallowClone'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * assoc('first', 'Bob', user) // => { first: 'Bob', last: 'LobLaw' }
  */
-export default _defn(function assoc (key, value, target) {
+export default function assoc (key, value, target) {
   var res = _shallowClone(target)
   res[key] = value
   return res
-})
+}

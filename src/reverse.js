@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 import _reverse from './internal/_reverse'
 
 /**
  * @name reverse
- * @signature [a] -> [a]
  * @category Collection
  * @since v0.1.0
  * @description
@@ -14,8 +12,8 @@ import _reverse from './internal/_reverse'
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
  * reverse('hello')      // => 'olleh'
  */
-export default _defn(function reverse (xs) {
+export default function reverse (xs) {
   return typeof xs === 'string'
     ? _reverse.call(xs.split('')).join('')
     : _reverse.call(_slice.call(xs))
-})
+}

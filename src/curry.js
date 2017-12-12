@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import curryN from './curryN'
 
 /**
  * @name curry
- * @signature (a, b, ..., j -> v) -> a -> b -> ... -> j -> v
  * @category Function
  * @since v0.1.0
  * @description
@@ -26,6 +24,6 @@ import curryN from './curryN'
  * const add8 = add5(3) // => Function
  * add8(2) // => 10
  */
-export default _defn(function curry (fn) {
+export default function curry (fn) {
   return curryN(fn.length, fn)
-})
+}

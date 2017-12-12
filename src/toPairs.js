@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _eachOwn from './internal/_eachOwn'
 
 /**
  * @name toPairs
- * @signature String k, Any v => {k:v} -> [[k, v]]
  * @category Object
  * @since v0.7.0
  * @description
@@ -15,11 +13,11 @@ import _eachOwn from './internal/_eachOwn'
  * @example
  * toPairs({ a: 'foo', b: 'bar' }) // => [['a', 'foo'], ['b', 'bar']]
  */
-export default _defn(function toPairs (o) {
+export default function toPairs (o) {
   var kvs = []
 
   _eachOwn(function (k, v) {
     kvs.push([k, v])
   }, o)
   return kvs
-})
+}

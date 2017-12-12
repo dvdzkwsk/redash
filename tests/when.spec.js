@@ -1,14 +1,6 @@
 const test     = require('ava')
     , { when } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(when.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof when(() => {}), 'function')
-})
-
 test('creates a unary function', (t) => {
   t.is(when(() => {}, () => {}).length, 1)
 })

@@ -1,10 +1,6 @@
 const test     = require('ava')
     , { keys } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(keys.length, 1)
-})
-
 test('returns all own properties of an object.', (t) => {
   t.deepEqual(keys({
     foo: true

@@ -2,14 +2,6 @@ const test       = require('ava')
     , sinon      = require('sinon')
     , { update } = require('../dist/redash')
 
-test('properly report its arity (is ternary)', (t) => {
-  t.is(update.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof update('a')(x => x), 'function')
-})
-
 test('applies the result of the transformation to the object', (t) => {
   const obj = { name: 'joe', age: 18 }
       , xform = x => x.toUpperCase()

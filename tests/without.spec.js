@@ -1,14 +1,6 @@
 const test        = require('ava')
     , { without } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(without.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof without([1, 2, 3]), 'function')
-})
-
 test('excludes items from the second array that are present in the first array', (t) => {
   t.deepEqual(
     without([1, 2, 3], [5,  4, 3, 2, 1]),

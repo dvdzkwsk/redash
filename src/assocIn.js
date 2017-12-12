@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import always from './always'
 import updateIn from './updateIn'
 
 /**
  * @name assocIn
- * @signature String k, Any v => [k] -> v -> {k:v} -> {k:v}
  * @category Object
  * @since v0.22.0
  * @description
@@ -16,6 +14,6 @@ import updateIn from './updateIn'
  * const model = { user: { age: 21 } }
  * assocIn(['user', 'age'], 42, user) // => { user: { age: 42 } }
  */
-export default _defn(function assocIn (path, value, target) {
+export default function assocIn (path, value, target) {
   return updateIn(path, always(value), target)
-})
+}

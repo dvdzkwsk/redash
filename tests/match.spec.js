@@ -1,14 +1,6 @@
 const test      = require('ava')
     , { match } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(match.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof match(/foo/), 'function')
-})
-
 test('returns a list containing all matches', (t) => {
   t.deepEqual(
     match(/foo[a-z]+/g, 'foobar foo bazbiz foobop'),

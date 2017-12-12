@@ -1,9 +1,7 @@
 import _slice from './internal/_slice'
-import _defn from './internal/_defn'
 
 /**
  * @name take
- * @signature Integer -> [a] -> [a]
  * @category Collection
  * @since v0.1.0
  * @description
@@ -18,6 +16,6 @@ import _defn from './internal/_defn'
  * take(5, [1, 2, 3])       // => [1, 2, 3]
  * take(Infinity, [])       // => []
  */
-export default _defn(function take (n, xs) {
+export default function take (n, xs) {
   return _slice.call(xs, 0, n)
-})
+}

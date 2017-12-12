@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _equals from './internal/_equals'
 import empty from './empty'
 
 /**
  * @name isEmpty
- * @signature a -> Boolean
  * @category Logic
  * @since v0.14.0
  * @description
@@ -21,6 +19,6 @@ import empty from './empty'
  * isEmpty(0)         // => true
  * isEmpty(false)     // => true
  */
-export default _defn(function isEmpty (a) {
+export default function isEmpty (a) {
   return !a || _equals(a, empty(a))
-})
+}

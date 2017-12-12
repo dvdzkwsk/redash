@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _reverse from './internal/_reverse'
 import pipe from './pipe'
 
 /**
  * @name compose
- * @signature [(y -> z), ..., (b -> c), (a -> b)] -> a -> z
  * @category Function
  * @since v0.1.0
  * @description
@@ -22,6 +20,6 @@ import pipe from './pipe'
  * // e.g. Math.sqrt(inc(16))
  * fn(15) // => true
  */
-export default _defn(function compose (fns) {
+export default function compose (fns) {
   return pipe(_reverse.call(fns))
-})
+}

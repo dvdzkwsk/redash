@@ -1,14 +1,6 @@
 const test     = require('ava')
     , { omit } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(omit.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof omit(['a']), 'function')
-})
-
 test('omits the listed properties from the resulting object', (t) => {
   t.deepEqual(
     omit(['a', 'b'], { a: true, b: true, c: true, d: true }),

@@ -2,14 +2,6 @@ const test        = require('ava')
     , sinon       = require('sinon')
     , { forEach } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(forEach.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof forEach(() => {}), 'function')
-})
-
 test('calls the provided function with each item in the list', (t) => {
   const spy = sinon.spy()
 

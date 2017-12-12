@@ -7,14 +7,6 @@ const test  = require('ava')
     , transform
     } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(transform.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof transform({}), 'function')
-})
-
 test('shallowly transforms based on a spec', (t) => {
   const spec = {
     name: x => x.toUpperCase()
@@ -58,7 +50,7 @@ test('transforms recursively', (t) => {
       things: head
     , data: {
         name: toUpper
-      , nums: filter(x => (x >= 10))
+      , nums: xs => filter(x => (x >= 10), xs)
       }
     }
   }

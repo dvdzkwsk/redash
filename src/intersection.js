@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _Set from './internal/_Set'
 
 /**
  * @name intersection
- * @signature [a] -> [a] -> [a]
  * @category Collection
  * @since v0.19.0
  * @description
@@ -12,7 +10,7 @@ import _Set from './internal/_Set'
  * @example
  * intersection([1, 2, 3, 4], [3, 4, 5]) // => [3, 4]
  */
-export default _defn(function intersection (xs, ys) {
+export default function intersection (xs, ys) {
   var i   = 0
     , res = []
     , set = new _Set()
@@ -35,4 +33,4 @@ export default _defn(function intersection (xs, ys) {
     }
   }
   return res
-})
+}

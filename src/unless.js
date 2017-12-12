@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _complement from './internal/_complement'
 import when from './when'
 
 /**
  * @name unless
- * @signature (a -> Boolean) -> (a -> b) -> a -> a | b
  * @category Logic
  * @since v0.14.0
  * @description
@@ -20,6 +18,6 @@ import when from './when'
  * doubleIfNotEven(3) // => 6
  * doubleIfNotEven(2) // => 2
  */
-export default _defn(function unless (pred, fn) {
+export default function unless (pred, fn) {
   return when(_complement(pred), fn)
-})
+}

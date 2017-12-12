@@ -1,8 +1,5 @@
-import add from './add'
-
 /**
  * @name dec
- * @signature Number -> Number
  * @category Math
  * @since v0.6.0
  * @description
@@ -13,4 +10,6 @@ import add from './add'
  * dec(10) // => 9
  * dec(-1) // => -2
  */
-export default add(-1)
+export default function dec (n) {
+  return n - 1
+}

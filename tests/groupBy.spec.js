@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { groupBy } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(groupBy.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof groupBy(() => {}), 'function')
-})
-
 test('correctly groups items by key', (t) => {
   t.deepEqual(
     groupBy(

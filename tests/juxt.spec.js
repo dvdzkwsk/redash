@@ -1,21 +1,17 @@
 const test       = require('ava')
     , { juxt
       , add
+      , inc
       , multiply
       , divide
-      , inc
       , dec
     }            = require('../dist/redash')
-
-test('properly reports its arity (is unary)', (t) => {
-  t.is(juxt.length, 1)
-})
 
 test('correctly applies a single value to a list of functions', (t) => {
   t.deepEqual(juxt([
     inc
   , dec
-  , multiply(3)
+  , x => x * 3
   ])(2), [3, 1, 6])
 })
 

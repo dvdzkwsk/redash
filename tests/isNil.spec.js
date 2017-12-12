@@ -1,10 +1,6 @@
 const test     = require('ava')
   ,  { isNil } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(isNil.length, 1)
-})
-
 test('returns true for `undefined`', (t) => {
   t.true(isNil(undefined))
 })

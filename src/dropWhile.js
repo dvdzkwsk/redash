@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 
 /**
  * @name dropWhile
- * @signature (a -> Boolean) -> [a] -> [a]
  * @category Collection
  * @since v0.14.0
  * @description
@@ -16,9 +14,9 @@ import _slice from './internal/_slice'
  * @example
  * dropWhile(isEven, [2, 4, 6, 7, 8]) // => [7, 8]
  */
-export default _defn(function dropWhile (fn, xs) {
+export default function dropWhile (fn, xs) {
   var i = 0
 
   while (i < xs.length && fn(xs[i])) i += 1
   return _slice.call(xs, i)
-})
+}

@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name zip
- * @signature [a] -> [b] -> [[a, b]]
  * @category Collection
  * @since v0.3.0
  * @description
@@ -15,7 +12,7 @@ import _defn from './internal/_defn'
  * zip(['a', 'b', 'c'], [1, 2, 3]) // => [['a', 1], ['b', 2], ['c', 3]]
  * zip(['a', 'b', 'c'], [1])       // => [['a', 1]]
  */
-export default _defn(function zip (as, bs) {
+export default function zip (as, bs) {
   var i   = 0
     , len = Math.min(as.length, bs.length)
     , abs = new Array(len)
@@ -24,4 +21,4 @@ export default _defn(function zip (as, bs) {
     abs[i] = [as[i], bs[i]]
   }
   return abs
-})
+}

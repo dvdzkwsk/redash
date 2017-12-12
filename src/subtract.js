@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name subtract
- * @signature Number -> Number -> Number
  * @category Math
  * @since v0.13.0
  * @description
@@ -19,6 +16,6 @@ import _defn from './internal/_defn'
  * subtract5(10) // => 5
  * subtract5(15) // => 10
  */
-export default _defn(function subtract (a, b) {
+export default function subtract (a, b) {
   return b - a
-})
+}

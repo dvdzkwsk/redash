@@ -2,14 +2,6 @@ const test       = require('ava')
     , { equals } = require('../dist/redash')
     , implementsSameValueZero = require('./utils/implementsSameValueZero')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(equals.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof equals(5), 'function')
-})
-
 implementsSameValueZero(equals, test)
 
 // ========================================================

@@ -1,13 +1,9 @@
-import _defn from './internal/_defn'
 import _isArray from './internal/_isArray'
 import _shallowCloneList from './internal/_shallowCloneList'
 import merge from './merge'
 
 /**
  * @name concat
- * @signature
- * [a] -> [a] -> [a]
- * String -> String -> String
  * @category Collection
  * @since v0.7.0
  * @description
@@ -19,7 +15,7 @@ import merge from './merge'
  * concat([1, 2, 3], [])        // => [1, 2, 3]
  * concat('foo', 'bar')         // => 'foobar'
  */
-export default _defn(function concat (target, toAppend) {
+export default function concat (target, toAppend) {
   var res, i
 
   if (_isArray(target)) {
@@ -35,4 +31,4 @@ export default _defn(function concat (target, toAppend) {
     return target + toAppend
   }
   throw new Error('Value of type "' + typeof target + '" does not implement `concat`')
-})
+}

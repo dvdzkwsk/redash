@@ -2,14 +2,6 @@ const test         = require('ava')
     , sinon        = require('sinon')
     , { findLast } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(findLast.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof findLast(() => {}), 'function')
-})
-
 test('returns the last item in a list that matches the predicate', (t) => {
   const a = { id: 1 }
       , b = { id: 1 }

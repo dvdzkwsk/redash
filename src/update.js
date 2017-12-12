@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import updateIn from './updateIn'
 
 /**
  * @name update
- * @signature String k, Any v => k -> (v -> v) -> {k:v} -> {k:v}
  * @category Object
  * @since v0.20.0
  * @description
@@ -13,6 +11,6 @@ import updateIn from './updateIn'
  * const user = { first: 'Chris', last: 'Loblaw' }
  * update('first', toUpper, user) // => { first: 'BOB', last: 'LobLaw' }
  */
-export default _defn(function update (key, xform, obj) {
+export default function update (key, xform, obj) {
   return updateIn([key], xform, obj)
-})
+}

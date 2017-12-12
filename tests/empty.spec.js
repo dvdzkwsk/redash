@@ -1,10 +1,6 @@
 const test      = require('ava')
     , { empty } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(empty.length, 1)
-})
-
 test('returns [] for an array', (t) => {
   t.deepEqual(empty([1, 2, 3]), [])
 })

@@ -2,14 +2,6 @@ const test     = require('ava')
     , sinon    = require('sinon')
     , { pipe } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(pipe.length, 1)
-})
-
-test('returns a function', (t) => {
-  t.is(typeof pipe([() => {}]), 'function')
-})
-
 test('correctly reports its arity to match the leftmost function', (t) => {
   const unary   = (a0) => {}
       , binary  = (a0, a1) => {}

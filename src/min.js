@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name min
- * @signature [Number] -> Number
  * @category Relation
  * @since v0.14.0
  * @description
@@ -12,7 +9,7 @@ import _defn from './internal/_defn'
  * @example
  * min([1, 2, 3, 4, 5]) // => 1
  */
-export default _defn(function min (xs) {
+export default function min (xs) {
   var i   = xs.length - 1
     , min = xs[i--]
 
@@ -23,4 +20,4 @@ export default _defn(function min (xs) {
     i--
   }
   return min
-})
+}

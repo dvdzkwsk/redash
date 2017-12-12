@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _identical from './internal/_identical'
 
 /**
  * @name identical
- * @signature a -> a -> Boolean
  * @category Relation
  * @since v0.13.0
  * @description
@@ -21,4 +19,4 @@ import _identical from './internal/_identical'
  * identical(a, a)                 // => true
  * identical({ id: 1 }, { id: 1 }) // => false
  */
-export default _defn(_identical)
+export default _identical

@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name find
- * @signature (a -> Boolean) -> [a] -> a | undefined
  * @category Collection
  * @since v0.6.0
  * @description
@@ -15,7 +12,7 @@ import _defn from './internal/_defn'
  * find(isEven, [1, 3, 5, 7]) // => undefined
  * find(propEq('id', 2), [{ id: 1 }, { id : 2 }]) // => { id: 2 }
  */
-export default _defn(function find (pred, xs) {
+export default function find (pred, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {
@@ -23,4 +20,4 @@ export default _defn(function find (pred, xs) {
       return xs[i]
     }
   }
-})
+}

@@ -2,14 +2,6 @@ const test       = require('ava')
     , sinon      = require('sinon')
     , { reduce } = require('../dist/redash')
 
-test('properly reports its arity (is ternary)', (t) => {
-  t.is(reduce.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof reduce(() => {}, 0), 'function')
-})
-
 test('runs the accumulator function through the array from L -> R', (t) => {
   const spy = sinon.spy((acc, a) => acc + a)
 

@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name trim
- * @signature String -> String
  * @category String
  * @since v0.13.0
  * @description
@@ -11,6 +8,6 @@ import _defn from './internal/_defn'
  * @example
  * trim('  hello  ') // => 'hello'
  */
-export default _defn(function trim (a) {
+export default function trim (a) {
   return a.trim()
-})
+}

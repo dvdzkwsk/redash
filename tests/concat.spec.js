@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { concat } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(concat.length, 2)
-})
-
-test('be curried', (t) => {
-  t.is(typeof concat([1, 2, 3]), 'function')
-})
-
 test('concatenates the second array onto the first', (t) => {
   t.deepEqual(concat([1, 2, 3], [4, 5, 6]), [1, 2, 3, 4, 5, 6])
 })

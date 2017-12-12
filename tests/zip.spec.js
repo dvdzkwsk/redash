@@ -1,14 +1,6 @@
 const test    = require('ava')
     , { zip } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(zip.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof zip([1, 2, 3]), 'function')
-})
-
 test('combines two arrays into a single array of tuples', (t) => {
   t.deepEqual(
     zip([1, 2, 3, 4, 5, 6, 7], ['a', 'b', 'c', 'd', 'e', 'f', 'g']),

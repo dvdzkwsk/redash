@@ -1,5 +1,3 @@
-import _defn from './internal/_defn'
-
 /**
  * @name apply
  * @category Function
@@ -12,6 +10,6 @@ import _defn from './internal/_defn'
  *
  * apply(add3, [1, 2, 3]) => 6
  */
-export default _defn(function apply (fn, args) {
+export default function apply (fn, args) {
   return fn.apply(null, args)
-})
+}

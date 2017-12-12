@@ -1,14 +1,6 @@
 const test          = require('ava')
     , { partition } = require('../dist/redash')
 
-test('properly reports its arity (is curried)', (t) => {
-  t.is(partition.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof partition(() => {}), 'function')
-})
-
 test('correctly partitions lists to the left and right', (t) => {
   const isEven = x => x % 2 === 0
 

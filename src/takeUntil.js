@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _complement from './internal/_complement'
 import takeWhile from './takeWhile'
 
 /**
  * @name takeUntil
- * @signature (a -> Boolean) -> [a] -> [a]
  * @category Collection
  * @since v0.12.0
  * @description
@@ -19,6 +17,6 @@ import takeWhile from './takeWhile'
  * @example
  * takeUntil(isEven, [1, 3, 5, 2, 7]) // => [1, 3, 5]
  */
-export default _defn(function takeUntil (fn, xs) {
+export default function takeUntil (fn, xs) {
   return takeWhile(_complement(fn), xs)
-})
+}

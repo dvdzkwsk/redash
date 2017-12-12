@@ -2,14 +2,6 @@ const test    = require('ava')
     , sinon   = require('sinon')
     , { every } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(every.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof every(() => {}), 'function')
-})
-
 test('returns true if all items in the list pass the predicate', (t) => {
   t.true(every(x => x % 2 === 0, [2, 4, 6, 8, 10]))
 })

@@ -1,9 +1,7 @@
 import _keys from './internal/_keys'
-import _defn from './internal/_defn'
 
 /**
  * @name keys
- * @signature {k:v} -> [k]
  * @category Object
  * @since v0.1.0
  * @description
@@ -24,4 +22,4 @@ import _defn from './internal/_defn'
  * a.bar = () => {}
  * keys(a) // => ['bar']
  */
-export default _defn(_keys)
+export default _keys

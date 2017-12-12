@@ -1,15 +1,6 @@
 const test        = require('ava')
     , { replace } = require('../dist/redash')
 
-test('properly reports its arity (is ternary)', (t) => {
-  t.is(replace.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof replace('foo'), 'function')
-  t.is(typeof replace('bar', 'baz'), 'function')
-})
-
 test('replaces a string if its found', (t) => {
   t.is(replace('bar', 'BAR', 'foobarbaz'), 'fooBARbaz')
 })

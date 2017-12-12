@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name cond
- * @signature [[(a -> Boolean), (a -> b)]] -> a -> b | undefined
  * @category Function
  * @since v0.12.0
  * @description
@@ -27,7 +24,7 @@ import _defn from './internal/_defn'
  *
  * map(fizzbuzz, [1, 2, 3, 4, 5]) // => [1, 2, 'Fizz', 4, 'Buzz']
  */
-export default _defn(function cond (conditions, a) {
+export default function cond (conditions, a) {
   var i = 0
 
   for (; i < conditions.length; i++) {
@@ -35,4 +32,4 @@ export default _defn(function cond (conditions, a) {
       return conditions[i][1](a)
     }
   }
-})
+}

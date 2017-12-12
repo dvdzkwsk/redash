@@ -1,11 +1,7 @@
 import _concat from './internal/_concat'
-import _defn from './internal/_defn'
 
 /**
  * @name append
- * @signature
- * a -> [a] -> [a]
- * String -> String -> String
  * @category Collection
  * @since v0.10.0
  * @description
@@ -20,9 +16,9 @@ import _defn from './internal/_defn'
  * append([4, 5], [1, 2, 3]) // => [1, 2, 3, [4, 5]]
  * append('bar', 'foo')      // => 'foobar'
  */
-export default _defn(function append (x, xs) {
+export default function append (x, xs) {
   if (typeof xs === 'string') {
     return xs + x
   }
   return _concat.call(xs, [x])
-})
+}

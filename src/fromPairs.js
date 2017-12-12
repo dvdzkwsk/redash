@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name fromPairs
- * @signature [[k, v]] -> {k:v}
  * @category Collection
  * @since v0.7.0
  * @description
@@ -15,7 +12,7 @@ import _defn from './internal/_defn'
  * fromPairs([['a', 1], ['b', 2]])           // => { a: 1, b: 2 }
  * fromPairs([['a', 1], ['b', 2], ['a', 3]]) // => { a: 3, b: 2 }
  */
-export default _defn(function fromPairs (pairs) {
+export default function fromPairs (pairs) {
   var i   = 0
     , acc = {}
 
@@ -24,4 +21,4 @@ export default _defn(function fromPairs (pairs) {
   }
 
   return acc
-})
+}

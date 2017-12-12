@@ -2,14 +2,6 @@ const test    = require('ava')
     , sinon   = require('sinon')
     , { any } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(any.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof any(() => {}), 'function')
-})
-
 test('sequentially provides each element in the list to the predicate', (t) => {
   const spy = sinon.spy(() => false)
 

@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name times
- * @signature (Number -> a) -> Number -> [a]
  * @category Function
  * @since v0.5.0
  * @description
@@ -13,7 +10,7 @@ import _defn from './internal/_defn'
  * @example
  * times(identity, 5) // => [0, 1, 2, 3, 4]
  */
-export default _defn(function times (fn, n) {
+export default function times (fn, n) {
   var i  = 0
     , bs = []
 
@@ -21,4 +18,4 @@ export default _defn(function times (fn, n) {
     bs.push(fn(i))
   }
   return bs
-})
+}

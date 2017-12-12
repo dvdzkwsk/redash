@@ -1,14 +1,6 @@
 const test      = require('ava')
     , { assoc } = require('../dist/redash')
 
-test('properly report its arity (is ternary)', (t) => {
-  t.is(assoc.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof assoc('a')('b'), 'function')
-})
-
 test('adds the property if it does not exist', (t) => {
   t.deepEqual(assoc('foo', 'bar', {}), { foo: 'bar' })
 })

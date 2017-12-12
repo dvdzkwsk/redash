@@ -1,14 +1,6 @@
 const test    = require('ava')
     , { get } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(get.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof get('foo'), 'function')
-})
-
 test('returns the requested property off of the object', (t) => {
   t.is(get('foo', { foo: 'bar' }), 'bar')
 })

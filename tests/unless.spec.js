@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { unless } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(unless.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof unless(() => {}), 'function')
-})
-
 test('returns a unary function', (t) => {
   t.is(typeof unless(() => {}, () => {}), 'function')
   t.is(unless(() => {}, () => {}).length, 1)

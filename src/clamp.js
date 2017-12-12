@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name clamp
- * @signature Number -> Number -> Number -> Number
  * @category Relation
  * @since v0.18.0
  * @description
@@ -13,8 +10,8 @@ import _defn from './internal/_defn'
  * clamp(1, 10, -5) // => 1
  * clamp(1, 10, 15) // => 10
  */
-export default _defn(function clamp (lower, upper, value) {
+export default function clamp (lower, upper, value) {
   return value < lower ? lower :
          value > upper ? upper :
          value
-})
+}

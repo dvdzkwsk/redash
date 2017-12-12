@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name isNil
- * @signature a -> Boolean
  * @category Logic
  * @since v0.11.0
  * @description
@@ -19,6 +16,6 @@ import _defn from './internal/_defn'
  * @param {*} x
  * @returns Boolean
  */
-export default _defn(function isNil (x) {
+export default function isNil (x) {
   return x == null
-})
+}

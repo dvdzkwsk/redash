@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name split
- * @signature String -> String -> [String]
  * @category String
  * @since v0.10.0
  * @description
@@ -13,6 +10,6 @@ import _defn from './internal/_defn'
  * @example
  * split(', ', 'Jim, Bill, Bob') // => ['Jim', 'Bill', 'Bob']
  */
-export default _defn(function split (char, str) {
+export default function split (char, str) {
   return str.split(char)
-})
+}

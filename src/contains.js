@@ -1,11 +1,7 @@
-import _defn from './internal/_defn'
 import _contains from './internal/_contains'
 
 /**
  * @name contains
- * @signature
- * a -> [a] -> Boolean
- * String -> String -> Boolean
  * @category Collection
  * @since v0.14.0
  * @description
@@ -18,4 +14,4 @@ import _contains from './internal/_contains'
  * contains({ id: 1 }, [{ id: 1 }, { id: 2 }]) // => true
  * contains('foo', 'foobarbaz')                // => true
  */
-export default _defn(_contains)
+export default _contains

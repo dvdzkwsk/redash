@@ -1,14 +1,6 @@
 const test      = require('ava')
     , { getIn } = require('../dist/redash')
 
-test('property reports its arity (is binary)', (t) => {
-  t.is(getIn.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof getIn(['foo']), 'function')
-})
-
 test('returns the value at the specified path from the object', (t) => {
   t.is(getIn(['foo', 'bar'], { foo: { bar: 'baz'} }), 'baz')
 })

@@ -1,10 +1,6 @@
 const test       = require('ava')
     , { unique } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(unique.length, 1)
-})
-
 test('correctly removes duplicate values for numbers', (t) => {
   t.deepEqual(unique([1, 1, 2, 2, 3, 3, 4]), [1, 2, 3, 4])
 })

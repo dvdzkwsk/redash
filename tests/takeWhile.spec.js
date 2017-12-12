@@ -2,14 +2,6 @@ const test          = require('ava')
     , sinon         = require('sinon')
     , { takeWhile } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(takeWhile.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof takeWhile(() => {}), 'function')
-})
-
 test('returns a new array containing all the items up until the predicate returned false', (t) => {
   t.deepEqual(takeWhile(x => x !== 5, [1, 2, 3, 4, 5, 6, 7]), [1, 2, 3, 4])
 })

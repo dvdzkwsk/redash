@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 import _reverse from './internal/_reverse'
 
 /**
  * @name reduceRight
- * @signature ((b, a) -> b) -> b -> [a]
  * @category Collection
  * @since v0.1.0
  * @description
@@ -24,6 +22,6 @@ import _reverse from './internal/_reverse'
  * const reverse = reduce((acc, x) => [x].concat(acc), [])
  * reverse([1, 2, 3, 4]) // => [4, 3, 2, 1]
  */
-export default _defn(function reduceRight (fn, y, xs) {
+export default function reduceRight (fn, y, xs) {
   return _reduce(fn, y, _reverse.call(xs))
-})
+}

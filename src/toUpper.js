@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name toUpper
- * @signature String -> String
  * @category String
  * @since v0.4.0
  * @description
@@ -13,6 +10,6 @@ import _defn from './internal/_defn'
  * toUpper('hi there')  // => 'HI THERE'
  * toUpper('GoodBye')   // => 'GOODBYE'
  */
-export default _defn(function toUpper (a) {
+export default function toUpper (a) {
   return a.toUpperCase()
-})
+}

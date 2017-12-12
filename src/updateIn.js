@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _shallowClone from './internal/_shallowClone'
 
 /**
  * @name updateIn
- * @signature String k, Any v => [k] -> (v -> v) -> {k:v} -> {k:v}
  * @category Object
  * @since v0.20.0
  * @description
@@ -14,7 +12,7 @@ import _shallowClone from './internal/_shallowClone'
  * const user = { info: { data: { age: 17 } } }
  * updateIn(['info', 'data', 'age'], inc, user) // => { info: { data: { age: 18 } } }
  */
-var updateIn = _defn(function updateIn (path, xform, obj) {
+var updateIn = function updateIn (path, xform, obj) {
   var res = _shallowClone(obj)
     , key = path[0]
 
@@ -25,6 +23,6 @@ var updateIn = _defn(function updateIn (path, xform, obj) {
   }
   res[key] = xform(res[key])
   return res
-})
+}
 
 export default updateIn

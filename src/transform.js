@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name transform
- * @signature String k, Any v => {k: (v -> v)} -> {k:v} -> {k:v}
  * @category Object
  * @since v0.18.0
  * @description
@@ -22,7 +19,7 @@ import _defn from './internal/_defn'
  *   }
  * ) // => { name: 'JOE', details: { age: 40, location: 'USA' } }
  */
-export default _defn(function transform (transforms, target) {
+export default function transform (transforms, target) {
   var res = {}
     , key
 
@@ -36,4 +33,4 @@ export default _defn(function transform (transforms, target) {
     }
   }
   return res
-})
+}

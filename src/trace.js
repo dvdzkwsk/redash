@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import tap from './tap'
 
 /**
  * @name trace
- * @signature String -> a -> a
  * @category Function
  * @since v0.18.0
  * @description
@@ -25,8 +23,8 @@ import tap from './tap'
  * // ...
  * // value after multiply 10
  */
-export default _defn(function trace (message) {
+export default function trace (message) {
   return tap(function (x) {
     console.log(message, x)
   })
-})
+}

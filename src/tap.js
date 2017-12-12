@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name tap
- * @signature (a -> *) -> a -> a
  * @category Function
  * @since v0.7.0
  * @description
@@ -16,9 +13,9 @@ import _defn from './internal/_defn'
  * // logs: 1, 2, 2, 4, 3, 6, 4, 8
  * map(pipe([log, multiply(2), log]), [1, 2, 3, 4]) // => [2, 4, 6, 8]
  */
-export default _defn(function tap (fn) {
+export default function tap (fn) {
   return function (a) {
     fn(a)
     return a
   }
-})
+}

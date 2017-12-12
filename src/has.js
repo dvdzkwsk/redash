@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _hasOwn from './internal/_hasOwn'
 
 /**
  * @name has
- * @signature String k -> {k:v} -> Boolean
  * @category Object
  * @since v0.11.0
  * @description
@@ -19,6 +17,6 @@ import _hasOwn from './internal/_hasOwn'
  * const a = new A()
  * has('foo', a) // => false
  */
-export default _defn(function has (k, o) {
+export default function has (k, o) {
   return _hasOwn.call(o, k)
-})
+}

@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { dropWhile } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(dropWhile.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof dropWhile(() => {}), 'function')
-})
-
 test('drops all elements of an array until the predicate returns false', (t) => {
   const isEven = x => x % 2 === 0
 

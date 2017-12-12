@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _type from './internal/_type'
 
 /**
  * @name type
- * @signature a -> String
  * @category Function
  * @since v0.13.0
  * @description
@@ -21,4 +19,4 @@ import _type from './internal/_type'
  * type(undefined)         // => 'Nil'
  * type(null)              // => 'Nil'
  */
-export default _defn(_type)
+export default _type

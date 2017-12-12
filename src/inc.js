@@ -1,8 +1,5 @@
-import add from './add'
-
 /**
  * @name inc
- * @signature Number -> Number
  * @category Math
  * @since v0.6.0
  * Increments a number by `1`.
@@ -12,4 +9,6 @@ import add from './add'
  * inc(10) // => 11
  * inc(-1) // => 0
  */
-export default add(1)
+export default function inc (n) {
+  return n + 1
+}

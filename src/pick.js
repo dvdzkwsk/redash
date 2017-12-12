@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name pick
- * @signature String k, Any v => [k] -> {k:v} -> {k:v}
  * @category Object
  * @since v0.15.0
  * @description
@@ -13,7 +10,7 @@ import _defn from './internal/_defn'
  * @example
  * pick(['a', 'b'], { a: 1, b: 2, c: 3 }) // => { a: 1, b: 2 }
  */
-export default _defn(function pick (keys, obj) {
+export default function pick (keys, obj) {
   var i   = 0
     , res = {}
 
@@ -22,4 +19,4 @@ export default _defn(function pick (keys, obj) {
     i++
   }
   return res
-})
+}

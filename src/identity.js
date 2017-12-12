@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name identity
- * @signature a -> a
  * @category Function
  * @since v0.6.0
  * @description
@@ -23,6 +20,6 @@ import _defn from './internal/_defn'
  * fn(5)  // => (not even, but < 10, so double)
  * fn(13) // => 13 (else clause, return unmodified)
  */
-export default _defn(function identity (a) {
+export default function identity (a) {
   return a
-})
+}

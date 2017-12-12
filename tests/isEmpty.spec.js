@@ -1,10 +1,6 @@
 const test        = require('ava')
     , { isEmpty } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(isEmpty.length, 1)
-})
-
 test('returns true for an array with 0 items', (t) => {
   t.true(isEmpty([]))
 })

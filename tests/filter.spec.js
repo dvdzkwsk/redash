@@ -2,14 +2,6 @@ const test       = require('ava')
     , sinon      = require('sinon')
     , { filter } = require('../dist/redash')
 
-test('properlys report its arity (is binary)', (t) => {
-  t.is(filter.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof filter(() => {}), 'function')
-})
-
 test('includes only items where the predicate is true', (t) => {
   const even = x => x % 2 === 0
 

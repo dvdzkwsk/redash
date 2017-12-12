@@ -1,9 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name replace
- * @signature
- * String|RegExp -> String -> String
  * @category String
  * @since v0.17.0
  * @description
@@ -13,6 +9,6 @@ import _defn from './internal/_defn'
  * replace('Scott', 'Schrute', 'Dwight Scott') // => 'Dwight Schrute'
  * replace(/hi/g, 'hey', 'hi hi hi')           // => 'hey hey hey'
  */
-export default _defn(function replace (match, value, str) {
+export default function replace (match, value, str) {
   return str.replace(match, value)
-})
+}

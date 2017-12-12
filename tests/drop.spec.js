@@ -1,14 +1,6 @@
 const test     = require('ava')
     , { drop } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(drop.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof drop(5), 'function')
-})
-
 test('returns a new list with the first N items removed', (t) => {
   t.deepEqual(drop(2, [1, 2, 3, 4]), [3, 4])
 })

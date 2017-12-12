@@ -1,8 +1,6 @@
-import _defn from './internal/_defn'
 
 /**
  * @name omit
- * @signature String k, Any v => [k] -> {k:v} -> {k:v}
  * @category Object
  * @since v0.14.0
  * @description
@@ -11,7 +9,7 @@ import _defn from './internal/_defn'
  * @example
  * omit(['a', 'b'], { a: 1, b: 2, c: 3, d: 4 }) // => { c: 3, d: 4 }
  */
-export default _defn(function omit (keys, a) {
+export default function omit (keys, a) {
   var res = {}
     , prop
     , discard
@@ -30,4 +28,4 @@ export default _defn(function omit (keys, a) {
     }
   }
   return res
-})
+}

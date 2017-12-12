@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name flattenDeep
- * @signature [[a]] -> [a]
  * @category Collection
  * @since v0.5.0
  * @description
@@ -11,7 +8,7 @@ import _defn from './internal/_defn'
  * @example
  * flattenDeep([1, 2, [3, [4, [5, 6, [7]]]]]) // => [1, 2, 3, 4, 5, 6, 7]
  */
-export default _defn(function flattenDeep (xs) {
+export default function flattenDeep (xs) {
   var acc = []
     , i   = 0
     , x
@@ -29,4 +26,4 @@ export default _defn(function flattenDeep (xs) {
     }
   }
   return acc
-})
+}

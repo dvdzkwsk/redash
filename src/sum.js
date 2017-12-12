@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name sum
- * @signature [Number] -> Number
  * @category Math
  * @since v0.10.0
  * @description
@@ -12,7 +9,7 @@ import _defn from './internal/_defn'
  * sum([1, 10, 100]) // => 111
  * sum([])           // => 0
  */
-export default _defn(function sum (xs) {
+export default function sum (xs) {
   var i   = 0
     , sum = 0
 
@@ -20,4 +17,4 @@ export default _defn(function sum (xs) {
     sum += xs[i]
   }
   return sum
-})
+}

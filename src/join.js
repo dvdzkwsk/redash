@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name join
- * @signature String -> [String] -> String
  * @category Collection
  * @since v0.13.0
  * @description
@@ -12,6 +9,6 @@ import _defn from './internal/_defn'
  * join(' & ', ['Michael', 'Dwight', 'Jim']) // => 'Michael & Dwight & Jim'
  * join('', ['Hello', 'Goodbye'])            // => 'HelloGoodbye'
  */
-export default _defn(function join (joiner, xs) {
+export default function join (joiner, xs) {
   return xs.join(joiner)
-})
+}

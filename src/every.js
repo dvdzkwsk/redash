@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name every
- * @signature (a -> Boolean) -> [a] -> Boolean
  * @category Collection
  * @since v0.7.0
  * @description
@@ -17,7 +14,7 @@ import _defn from './internal/_defn'
  * every(isEven, [2, 4, 6, 3]) // => false, 3 is not an even number
  * every(isEven, [])           // => true
  */
-export default _defn(function every (fn, xs) {
+export default function every (fn, xs) {
   var i   = 0
     , len = xs.length
 
@@ -27,4 +24,4 @@ export default _defn(function every (fn, xs) {
     }
   }
   return true
-})
+}

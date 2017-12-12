@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _get from './internal/_get'
 
 /**
  * @name getIn
- * @signature String k => [k] -> {k:v} -> v
  * @category Object
  * @since v0.20.0
  * @description
@@ -16,7 +14,7 @@ import _get from './internal/_get'
  * getAge({ info: { age: 20 }}) // => 20
  * getAge({})                   // => undefined
  */
-export default _defn(function getIn (keys, target) {
+export default function getIn (keys, target) {
   var i   = 0
     , val = target
 
@@ -25,4 +23,4 @@ export default _defn(function getIn (keys, target) {
     i += 1
   }
   return val
-})
+}

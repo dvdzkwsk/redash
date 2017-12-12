@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { divide } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(divide.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof divide(2), 'function')
-})
-
 test('divides the second argument by the first', (t) => {
   t.is(divide(2, 8), 4)
 })

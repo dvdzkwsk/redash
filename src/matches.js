@@ -1,10 +1,8 @@
-import _defn from './internal/_defn'
 import _equals from './internal/_equals'
 import _hasOwn from './internal/_hasOwn'
 
 /**
  * @name matches
- * @signature String k, Any v => {k:v} -> Boolean
  * @category Logic
  * @since v0.22.0
  * @description
@@ -16,7 +14,7 @@ import _hasOwn from './internal/_hasOwn'
  * matches(spec, { name: 'Michael' }) // => true
  * matches(spec, { name: 'Dwight' })  // => false
  */
-export default _defn(function matches (spec, target) {
+export default function matches (spec, target) {
   var prop
 
   if (!target) {
@@ -35,4 +33,4 @@ export default _defn(function matches (spec, target) {
     }
   }
   return true
-})
+}

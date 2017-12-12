@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name dissoc
- * @signature String k, Any v => k -> {k:v} -> {k:v}
  * @category Object
  * @since v0.10.0
  * @description
@@ -15,7 +12,7 @@ import _defn from './internal/_defn'
  * const user = { first: 'Bob', last: 'Loblaw' }
  * dissoc('first', user) // => { last: 'Loblaw' }
  */
-export default _defn(function dissoc (k, kv) {
+export default function dissoc (k, kv) {
   var y = {}
     , p
 
@@ -25,4 +22,4 @@ export default _defn(function dissoc (k, kv) {
     }
   }
   return y
-})
+}

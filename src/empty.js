@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import type from './type'
 
 /**
  * @name empty
- * @signature a -> a
  * @category Function
  * @since v0.14.0
  * @description
@@ -20,7 +18,7 @@ import type from './type'
  * empty(0)                         // => undefined
  * empty(false)                     // => undefined
  */
-export default _defn(function empty (a) {
+export default function empty (a) {
   if (a == null) return void 0
   if (typeof a.empty === 'function') return a.empty()
   if (a.constructor && typeof a.constructor.empty === 'function') {
@@ -37,4 +35,4 @@ export default _defn(function empty (a) {
     default:
       // implicitly return undefined
   }
-})
+}

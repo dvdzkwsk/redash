@@ -1,14 +1,6 @@
 const test       = require('ava')
     , { dissoc } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(dissoc.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof dissoc('a'), 'function')
-})
-
 test('removes the target key from the object', (t) => {
   t.deepEqual(dissoc('foo', { foo: true,  baz: true }), {
     baz: true

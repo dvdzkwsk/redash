@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _slice from './internal/_slice'
 
 /**
  * @name tail
- * @signature [a] -> [a]
  * @category Collection
  * @since v0.1.0
  * @description
@@ -15,6 +13,6 @@ import _slice from './internal/_slice'
  * tail([1])             // => []
  * tail([])              // => []
  */
-export default _defn(function tail (xs) {
+export default function tail (xs) {
   return _slice.call(xs, 1)
-})
+}

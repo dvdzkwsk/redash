@@ -2,14 +2,6 @@ const test          = require('ava')
     , sinon         = require('sinon')
     , { takeUntil } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(takeUntil.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof takeUntil(() => {}), 'function')
-})
-
 test('returns a new array containing all the items up until the predicate returned true', (t) => {
   t.deepEqual(takeUntil(x => x === 5, [1, 2, 3, 4, 5, 6, 7]), [1, 2, 3, 4])
 })

@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name padLeft
- * @signature Integer -> String -> String -> String
  * @category String
  * @since v0.19.0
  * @description
@@ -14,9 +11,9 @@ import _defn from './internal/_defn'
  */
 // TODO(zuko): how should we handle char of length > 1?
 // TODO(zuko): throw error if char is empty?
-export default _defn(function padLeft (length, char, str) {
+export default function padLeft (length, char, str) {
   while (str.length < length) {
     str = char + str
   }
   return str
-})
+}

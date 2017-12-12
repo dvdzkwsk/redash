@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import rangeBy from './rangeBy'
 
 /**
  * @name range
- * @signature Integer -> Integer -> [Integer]
  * @category Collection
  * @since v0.7.0
  * @description
@@ -15,6 +13,6 @@ import rangeBy from './rangeBy'
  * range(1, 5)  // => [1, 2, 3, 4]
  * range(0, -5) // => [0, -1, -2, -3, -4]
  */
-export default _defn(function range (start, end) {
+export default function range (start, end) {
   return rangeBy(start < end ? 1 : -1, start, end)
-})
+}

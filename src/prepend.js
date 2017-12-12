@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _concat from './internal/_concat'
 
 /**
  * @name prepend
- * @signature a -> [a] -> a | String -> String -> String
  * @category Collection
  * @since v0.14.0
  * @description
@@ -14,9 +12,9 @@ import _concat from './internal/_concat'
  * prepend(1, [2, 3, 4]) // => [1, 2, 3, 4]
  * prepend('foo', 'bar') // => 'foobar'
  */
-export default _defn(function prepend (a, as) {
+export default function prepend (a, as) {
   if (typeof as === 'string') {
     return a + as
   }
   return _concat.call([a], as)
-})
+}

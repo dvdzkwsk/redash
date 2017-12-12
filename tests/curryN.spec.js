@@ -2,14 +2,6 @@ const test       = require('ava')
     , sinon      = require('sinon')
     , { curryN } = require('../dist/redash')
 
-test('properly report its arity (is binary)', (t) => {
-  t.is(curryN.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof curryN(2), 'function')
-})
-
 test('curries based off of the provided arity, regardless of function length', (t) => {
   const curr0 = curryN(0, (a, b, c) => {})
       , curr3 = curryN(3, () => {})

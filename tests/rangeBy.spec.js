@@ -1,14 +1,6 @@
 const test        = require('ava')
     , { rangeBy } = require('../dist/redash')
 
-test('properly reports its arity (is ternary)', (t) => {
-  t.is(rangeBy.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof rangeBy(1, 1), 'function')
-})
-
 test('includes the lower bound', (t) => {
   t.is(rangeBy(1, 1, 3)[0], 1)
 })

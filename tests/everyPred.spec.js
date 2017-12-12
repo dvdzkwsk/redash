@@ -1,14 +1,6 @@
 const test        = require('ava')
   , { everyPred } = require('../dist/redash')
 
-test('properly report its arity (is binary)', (t) => {
-  t.is(everyPred.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof everyPred([() => true]), 'function')
-})
-
 test('returns true if all predicates pass', (t) => {
   t.true(everyPred([
     () => true

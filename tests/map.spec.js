@@ -2,14 +2,6 @@ const test    = require('ava')
     , sinon   = require('sinon')
     , { map } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(map.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof map(() => {}), 'function')
-})
-
 // Dispatching
 // ------------------------------------
 test('dispatches to `map` if present', (t) => {

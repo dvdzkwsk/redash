@@ -1,10 +1,6 @@
 const test     = require('ava')
   ,  { isOdd } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(isOdd.length, 1)
-})
-
 test('returns true for odd numbers', (t) => {
   t.true(isOdd(1))
   t.true(isOdd(3))

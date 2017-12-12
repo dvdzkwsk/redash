@@ -2,14 +2,6 @@ const test          = require('ava')
     , sinon         = require('sinon')
     , { findIndex } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(findIndex.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof findIndex(() => {}), 'function')
-})
-
 test('return the index of the first matching item.', (t) => {
   t.is(findIndex(x => x === 'c', ['a', 'b', 'c', 'd', 'c']), 2)
 })

@@ -1,14 +1,6 @@
 const test    = require('ava')
     , { pad } = require('../dist/redash')
 
-test('properly reports its arity (is ternary)', (t) => {
-  t.is(pad.length, 3)
-})
-
-test('is curried', (t) => {
-  t.is(typeof pad(5, ' '), 'function')
-})
-
 test('pads the string to the target length', (t) => {
   t.is(pad(6, 'X', 'hi'), 'XXhiXX')
 })

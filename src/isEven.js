@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name isEven
- * @signature Integer -> Boolean
  * @category Logic
  * @since v0.14.0
  * @description
@@ -15,6 +12,6 @@ import _defn from './internal/_defn'
  * isEven(2.4)      // => false
  * isEven(Infinity) // => false
  */
-export default _defn(function isEven (a) {
+export default function isEven (a) {
   return !isNaN(a) && isFinite(a) && a % 2 === 0
-})
+}

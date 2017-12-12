@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _Set from './internal/_Set'
 
 /**
  * @name unique
- * @signature [a] -> [a]
  * @category Collection
  * @since v0.19.0
  * @description
@@ -13,7 +11,7 @@ import _Set from './internal/_Set'
  * @example
  * unique([1, 1, 2, 2, 3, 3]) // => [1, 2, 3]
  */
-export default _defn(function unique (xs) {
+export default function unique (xs) {
   var i   = 0
     , res = []
     , set = new _Set()
@@ -25,4 +23,4 @@ export default _defn(function unique (xs) {
   }
   set.clear()
   return res
-})
+}

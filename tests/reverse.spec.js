@@ -1,10 +1,6 @@
 const test        = require('ava')
     , { reverse } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(reverse.length, 1)
-})
-
 test('reverses the provided list', (t) => {
   t.deepEqual(reverse([1, 2, 3, 4]), [4, 3, 2, 1])
 })

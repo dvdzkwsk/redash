@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _hasOwn from './internal/_hasOwn'
 
 /**
  * @name invert
- * @signature String k, Any v => {k:v} -> {v:k}
  * @category Object
  * @since v0.21.0
  * @description
@@ -13,7 +11,7 @@ import _hasOwn from './internal/_hasOwn'
  * @example
  * invert({ a: 1, b: 2 }) // => { 1: a, 2: b }
  */
-export default _defn(function invert (target) {
+export default function invert (target) {
   var res = {}
     , key
 
@@ -23,4 +21,4 @@ export default _defn(function invert (target) {
     }
   }
   return res
-})
+}

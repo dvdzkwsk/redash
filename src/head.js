@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name head
- * @signature [a] -> a
  * @category Collection
  * @since v0.1.0
  * @description
@@ -15,6 +12,6 @@ import _defn from './internal/_defn'
  * head([1, 2, 3, 4]) // => [1]
  * head([])           // => undefined
  */
-export default _defn(function head (xs) {
+export default function head (xs) {
   return xs[0]
-})
+}

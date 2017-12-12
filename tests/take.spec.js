@@ -1,14 +1,6 @@
 const test     = require('ava')
     , { take } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(take.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof take(5), 'function')
-})
-
 test('returns an array containing `n` items from the provided array', (t) => {
   t.deepEqual(take(2, [1, 2, 3, 4]), [1, 2])
 })

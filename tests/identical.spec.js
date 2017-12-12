@@ -2,14 +2,6 @@ const test          = require('ava')
     , { identical } = require('../dist/redash')
     , implementsSameValueZero = require('./utils/implementsSameValueZero')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(identical.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof identical(1), 'function')
-})
-
 test('returns true if primitive values are the same', (t) => {
   t.true(identical(1, 1))
   t.true(identical('hello', 'hello'))

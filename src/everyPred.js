@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name everyPred
- * @signature [(a -> Boolean)] -> a -> Boolean
  * @category Logic
  * @since v0.22.0
  * @description
@@ -17,7 +14,7 @@ import _defn from './internal/_defn'
  * evenAndLessThanTen(7)  // => false (7 is odd)
  * evenAndLessThanTen(12) // => false (12 is even but > 10)
  */
-export default _defn(function everyPred (predicates, x) {
+export default function everyPred (predicates, x) {
   var i = 0
 
   for (; i < predicates.length; i++) {
@@ -26,4 +23,4 @@ export default _defn(function everyPred (predicates, x) {
     }
   }
   return true
-})
+}

@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _curryN from './internal/_curryN'
 
 /**
  * @name pipe
- * @signature [(a -> b), (b -> c), ... (y -> z)] -> a -> z
  * @category Function
  * @since v0.1.0
  * @description
@@ -27,7 +25,7 @@ import _curryN from './internal/_curryN'
  * const user = { friends: [{ name: 'Jim' }, { name: 'Dwight' }] }
  * getFriends(user) // => 'JIM, DWIGHT'
  */
-export default _defn(function pipe (fns) {
+export default function pipe (fns) {
   return _curryN(fns[0].length, [], function () {
     var i   = 0
       , len = fns.length
@@ -38,4 +36,4 @@ export default _defn(function pipe (fns) {
     }
     return acc
   })
-})
+}

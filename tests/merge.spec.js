@@ -1,14 +1,6 @@
 const test      = require('ava')
     , { merge } = require('../dist/redash')
 
-test('properly report its arity (is binary)', (t) => {
-  t.is(merge.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof merge({}), 'function')
-})
-
 test('merges all own properties of the second argument onto the first', (t) => {
   t.deepEqual(
     merge({ foo: 'bar' }, { fiz: 'baz' })

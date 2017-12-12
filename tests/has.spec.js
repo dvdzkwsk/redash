@@ -1,14 +1,6 @@
 const test    = require('ava')
     , { has } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(has.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof has(5), 'function')
-})
-
 test('returns `true` when the property exists as an own property on the target object', (t) => {
   t.true(has('hello', { hello: 'foo' }))
 })

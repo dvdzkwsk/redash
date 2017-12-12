@@ -2,14 +2,6 @@ const test      = require('ava')
     , sinon     = require('sinon')
     , { times } = require('../dist/redash')
 
-test('properly reports its arity (is binary)', (t) => {
-  t.is(times.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof times(() => {}), 'function')
-})
-
 test('calls the provided function N times', (t) => {
   const spy = sinon.spy()
 

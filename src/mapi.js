@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name mapi
- * @signature ((a, Integer) -> b) -> [a] -> [b]
  * @category Collection
  * @since v0.16.0
  * @description
@@ -14,7 +11,7 @@ import _defn from './internal/_defn'
  * const xform = (x, i) => isOdd(i) ? x * 2 : x
  * mapi(xform, [1, 2, 3, 4, 5]) // => [2, 2, 6, 4, 5]
  */
-export default _defn(function mapi (fn, as) {
+export default function mapi (fn, as) {
   var bs = new Array(as.length)
     , i  = 0
 
@@ -22,4 +19,4 @@ export default _defn(function mapi (fn, as) {
     bs[i] = fn(as[i], i)
   }
   return bs
-})
+}

@@ -1,9 +1,7 @@
-import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 
 /**
  * @name reduce
- * @signature ((b, a) -> b) -> b -> [a] -> b
  * @category Collection
  * @since v0.1.0
  * @description
@@ -22,4 +20,4 @@ import _reduce from './internal/_reduce'
  * const sum = reduce((acc, n) => acc + n, 0)
  * sum([1, 2, 3, 4, 5]) // => 15
  */
-export default _defn(_reduce)
+export default _reduce

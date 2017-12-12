@@ -1,10 +1,6 @@
 const test     = require('ava')
     , { tail } = require('../dist/redash')
 
-test('properly repots its arity (is unary)', (t) => {
-  t.is(tail.length, 1)
-})
-
 test('returns all but the first item in an array', (t) => {
   t.deepEqual(tail([1, 2, 3, 4]), [2, 3, 4])
 })

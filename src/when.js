@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name when
- * @signature (a -> Boolean) -> (a -> b) -> a -> a | b
  * @category Logic
  * @since v0.14.0
  * @description
@@ -20,8 +17,8 @@ import _defn from './internal/_defn'
  * doubleIfEven(5) // => 5
  * map(doubleIfEven, [1, 2, 3, 4, 5]) // => [1, 4, 3, 8, 5]
  */
-export default _defn(function when (pred, fn) {
+export default function when (pred, fn) {
   return function (x) {
     return pred(x) ? fn(x) : x
   }
-})
+}

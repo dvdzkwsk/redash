@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name zipObj
- * @signature String k, Any v => [k] -> [v] -> {k:v}
  * @category Collection
  * @since v0.3.0
  * @description
@@ -18,7 +15,7 @@ import _defn from './internal/_defn'
  * zipObj(['a', 'b', 'c'], [1, 2, 3]) // => { a: 1, b: 2, c: 3 }
  * zipObj(['a', 'b', 'c'], [1])       // => { a: 1 }
  */
-export default _defn(function zipObj (ks, vs) {
+export default function zipObj (ks, vs) {
   var i   = 0
     , len = Math.min(ks.length, vs.length)
     , kv  = {}
@@ -27,4 +24,4 @@ export default _defn(function zipObj (ks, vs) {
     kv[ks[i]] = vs[i]
   }
   return kv
-})
+}

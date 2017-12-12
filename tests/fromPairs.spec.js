@@ -1,10 +1,6 @@
 const test          = require('ava')
     , { fromPairs } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(fromPairs.length, 1)
-})
-
 test('returns an object constructed from the [key, value] tuples', (t) => {
   t.deepEqual(
     fromPairs([['foo', 'bar'], ['baz', 'biz']]), {

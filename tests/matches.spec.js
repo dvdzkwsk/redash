@@ -1,14 +1,6 @@
 const test      = require('ava')
   , { matches } = require('../dist/redash')
 
-test('properly report its arity (is ternary)', (t) => {
-  t.is(matches.length, 2)
-})
-
-test('is curried', (t) => {
-  t.is(typeof matches({ id: 1 }), 'function')
-})
-
 test('returns true if the spec is a partial match of the target', (t) => {
   t.true(matches({ a: { b: { c: 'hello' } } }, { a: { b: { c: 'hello' } } }))
 })

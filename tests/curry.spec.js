@@ -2,11 +2,7 @@ const test      = require('ava')
     , sinon     = require('sinon')
     , { curry } = require('../dist/redash')
 
-test('properly report its arity (is unary)', (t) => {
-  t.is(curry.length, 1)
-})
-
-test('return a function', (t) => {
+test('returns a function', (t) => {
   t.is(typeof curry(() => {}), 'function')
 })
 

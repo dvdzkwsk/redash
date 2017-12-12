@@ -1,10 +1,6 @@
 const test       = require('ava')
     , { always } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(always.length, 1)
-})
-
 test('returns a function', (t) => {
   t.is(typeof always(5), 'function')
 })

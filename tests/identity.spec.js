@@ -1,10 +1,6 @@
 const test         = require('ava')
     , { identity } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(identity.length, 1)
-})
-
 test('returns the value it is given', (t) => {
   const obj = {}
 

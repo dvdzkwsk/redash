@@ -3,8 +3,6 @@ import _mapObject from './_mapObject'
 
 /**
  * @name map
- * @signature
- * Functor f => (a -> b) -> f a -> f b
  * @category Collection
  * @since v0.1.0
  * @description

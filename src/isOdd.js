@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name isOdd
- * @signature Integer -> Boolean
  * @category Logic
  * @since v0.14.0
  * @description
@@ -15,6 +12,6 @@ import _defn from './internal/_defn'
  * isOdd(3.9)      // => false
  * isOdd(Infinity) // => false
  */
-export default _defn(function isOdd (a) {
+export default function isOdd (a) {
   return !isNaN(a) && isFinite(a) && !!a && a === Math.floor(a) && a % 2 !== 0
-})
+}

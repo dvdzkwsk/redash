@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name last
- * @signature [a] -> a
  * @category Collection
  * @since v0.1.0
  * @description
@@ -14,6 +11,6 @@ import _defn from './internal/_defn'
  * @example
  * last([1, 2, 3, 4]) // => 4
  */
-export default _defn(function last (xs) {
+export default function last (xs) {
   return xs[xs.length - 1]
-})
+}

@@ -1,10 +1,6 @@
 const test        = require('ava')
     , { compact } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(compact.length, 1)
-})
-
 test('omits `null` from the result', (t) => {
   t.deepEqual(compact([null]), [])
 })

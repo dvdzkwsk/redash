@@ -1,10 +1,7 @@
-import _defn from './internal/_defn'
 import _reduce from './internal/_reduce'
 
 /**
  * @name groupBy
- * @signature
- * String k, Any v => (v -> k) -> [v] -> {k:v}
  * @category Collection
  * @since v0.18.0
  * @description
@@ -23,10 +20,10 @@ import _reduce from './internal/_reduce'
  * // , adult    : [{ age: 21 }]
  * // }
  */
-export default _defn(function groupBy (fn, xs) {
+export default function groupBy (fn, xs) {
   return _reduce(function (acc, x) {
     var key = fn(x)
     acc[key] = (acc[key] || []).concat(x)
     return acc
   }, {}, xs)
-})
+}

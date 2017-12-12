@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name add
- * @signature Number -> Number -> Number
  * @category Math
  * @since v0.1.0
  * @description
@@ -17,6 +14,6 @@ import _defn from './internal/_defn'
  * add5(10) // => 15
  * add5(15) // => 20
  */
-export default _defn(function add (a, b) {
+export default function add (a, b) {
   return a + b
-})
+}

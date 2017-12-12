@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name any
- * @signature (a -> Boolean) -> [a] -> Boolean
  * @category Collection
  * @since v0.7.0
  * @description
@@ -15,7 +12,7 @@ import _defn from './internal/_defn'
  * any(isEven, [1, 3, 5])       // => false, no numbers are even
  * any(isEven, [])              // => false
  */
-export default _defn(function any (fn, xs) {
+export default function any (fn, xs) {
   var i = 0
 
   for (; i < xs.length; i++) {
@@ -24,4 +21,4 @@ export default _defn(function any (fn, xs) {
     }
   }
   return false
-})
+}

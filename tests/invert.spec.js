@@ -1,10 +1,6 @@
 const test       = require('ava')
     , { invert } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(invert.length, 1)
-})
-
 test('inverts key/value pairs', (t) => {
   t.deepEqual(
     invert({ a: 1, b: 2, c: 3 })

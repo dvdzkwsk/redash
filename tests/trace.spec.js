@@ -2,10 +2,6 @@ const test      = require('ava')
     , sinon     = require('sinon')
     , { trace } = require('../dist/redash')
 
-test('properly reports its arity (is unary)', (t) => {
-  t.is(trace.length, 1)
-})
-
 test('returns a unary function', (t) => {
   const traced = trace('hello')
 

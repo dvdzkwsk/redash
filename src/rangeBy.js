@@ -1,8 +1,5 @@
-import _defn from './internal/_defn'
-
 /**
  * @name rangeBy
- * @signature Number -> Number -> Number -> [Number]
  * @category Collection
  * @since v0.7.0
  * @description
@@ -14,7 +11,7 @@ import _defn from './internal/_defn'
  * @example
  * rangeBy(4, 0, 17) // => [0, 4, 8, 12, 16]
  */
-export default _defn(function rangeBy (step, start, end) {
+export default function rangeBy (step, start, end) {
   var res = []
     , length
     , i
@@ -32,4 +29,4 @@ export default _defn(function rangeBy (step, start, end) {
     res[res.length] = start + (step * i)
   }
   return res
-})
+}
